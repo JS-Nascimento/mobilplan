@@ -1,0 +1,86 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'checkstyle'
+    id "io.freefair.lombok" version "6.6.3"
+    id 'org.springframework.boot' version '3.1.3'
+    id 'io.spring.dependency-management' version '1.1.3'
+}
+
+group = 'br.dev.jstec'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+compileJava.options.encoding = 'UTF-8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+bootJar {
+    mainClass.set('br.dev.jstec.basic_project.Application')
+}
+
+
+springBoot {
+    buildInfo()
+}
+
+ext {
+    set('springdocVersion', '2.1.0')
+    set('encoding', "UTF-8")
+}
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.h2database:h2'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}"
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+
+    testImplementation 'io.github.benas:random-beans:3.9.0'
+    testImplementation 'com.tngtech.archunit:archunit-junit5:0.22.0'
+}
+
+checkstyle {
+    configFile = file("checkStyle/check-code-style.xml")
+}
+
+checkstyleMain {
+    source = 'src/main/java'
+}
+
+checkstyleTest {
+    source = 'src/test/java'
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+
+    getExecutionData()
+            .setFrom(fileTree(buildDir)
+                    .include("/jacoco/test.exec"))
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}

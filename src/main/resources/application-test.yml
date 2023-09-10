@@ -1,8 +1,0 @@
-info:
-  app:
-    name: 'Projeto Básico'
-    description: 'Projeto básico com Spring Boot'
-    version: '1.0.0'
-    contact:
-      name: 'Jorge Nascimento'
-      email: 'jorge@jstec.dev.br'

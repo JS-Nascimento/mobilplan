@@ -1,4 +1,4 @@
-package br.dev.jstec.basicproject.configuration;
+package br.dev.jstec.basicproject.infrastructure.configuration;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;

@@ -1,28 +1,25 @@
 image: openjdk:17
 
-clone:
-  depth: full  # Necessário para SonarCloud para atribuição correta dos problemas.
-
 definitions:
-  caches:
-    gradle: ~/.gradle
-    m2: ~/.m2
-    sonar: ~/.sonar/cache  # Cache para o SonarCloud.
-
-pipelines:
-  default:
-    - step:
-        name: Build, Test, and Sonar Analysis
+  steps:
+    - step: &build-step
+        name: SonarQube analysis
         caches:
           - gradle
-          - m2
           - sonar
         script:
-          # Conceder permissão de execução para o wrapper do Gradle
-          - chmod +x ./gradlew
+          - bash ./gradlew sonar
+  caches:
+    sonar: ~/.sonar
 
-          # Executar tarefas do Gradle para construir, testar e analisar com SonarCloud
-          - ./gradlew clean build sonarqube
+clone:
+  depth: full
 
-        artifacts:
-          - "build/libs/**/*.jar"
+pipelines:
+  branches:
+    '{master,main,develop}':
+      - step: *build-step
+
+  pull-requests:
+    '**':
+      - step: *build-step

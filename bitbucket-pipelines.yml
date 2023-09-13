@@ -14,7 +14,6 @@ definitions:
           - sonar
         script:
           - chmod +x ./gradlew
-          - apt-get update && apt-get install -y findutils
           - ./gradlew build sonar
         artifacts:
           - build/libs/**

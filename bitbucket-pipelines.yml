@@ -1,4 +1,4 @@
-image: openjdk:17
+image: java:8
 
 clone:
   depth: full              # SonarCloud scanner needs the full history to assign issues properly
@@ -13,15 +13,13 @@ definitions:
           - gradle
           - sonar
         script:
-          - chmod +x ./gradlew
-          - ./gradlew build sonar
+          - ./gradlew build sonarqube
         artifacts:
           - build/libs/**
 
-pipelines: # More info here: https://confluence.atlassian.com/bitbucket/configure-bitbucket-pipelines-yml-792298910.html
-  branches:
-    master:
-      - step: *build-test-sonarcloud
+pipelines:
+  default:
+    - step: *build-test-sonarcloud
   pull-requests:
     '**':
       - step: *build-test-sonarcloud

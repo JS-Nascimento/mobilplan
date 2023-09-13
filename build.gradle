@@ -9,6 +9,7 @@ plugins {
 
 group = 'br.dev.jstec'
 version = '0.0.1-SNAPSHOT'
+
 sourceCompatibility = '17'
 compileJava.options.encoding = 'UTF-8'
 

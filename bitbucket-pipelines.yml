@@ -1,25 +1,28 @@
-image: java:8
+image: adoptopenjdk:17-jdk-hotspot
 
 clone:
-  depth: full              # SonarCloud scanner needs the full history to assign issues properly
+  depth: full  # Necessário para SonarCloud para atribuição correta dos problemas.
 
 definitions:
   caches:
-    sonar: ~/.sonar/cache  # Caching SonarCloud artifacts will speed up your build
-  steps:
-    - step: &build-test-sonarcloud
-        name: Build, test and analyze on SonarCloud
-        caches:
-          - gradle
-          - sonar
-        script:
-          - ./gradlew build sonarqube
-        artifacts:
-          - build/libs/**
+    gradle: ~/.gradle
+    m2: ~/.m2
+    sonar: ~/.sonar/cache  # Cache para o SonarCloud.
 
 pipelines:
   default:
-    - step: *build-test-sonarcloud
-  pull-requests:
-    '**':
-      - step: *build-test-sonarcloud
+    - step:
+        name: Build, Test, and Sonar Analysis
+        caches:
+          - gradle
+          - m2
+          - sonar
+        script:
+          # Conceder permissão de execução para o wrapper do Gradle
+          - chmod +x ./gradlew
+
+          # Executar tarefas do Gradle para construir, testar e analisar com SonarCloud
+          - ./gradlew clean build sonarqube
+
+        artifacts:
+          - "build/libs/**/*.jar"

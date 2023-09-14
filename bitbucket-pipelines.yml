@@ -14,6 +14,7 @@ definitions:
           - gradle
           - sonar
         script:
+          - chmod +x gradlew
           - ./gradlew build sonarqube
         artifacts:
           - build/libs/**

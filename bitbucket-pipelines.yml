@@ -1,4 +1,4 @@
-image: openjdk:17
+image: openjdk:17-jdk-slim
 
 clone:
   depth: full              # SonarCloud scanner needs the full history to assign issues properly
@@ -15,7 +15,7 @@ definitions:
           - sonar
         script:
           - chmod +x gradlew
-          - RUN apk update && apk add findutils
+          - apk update && apk add findutils
           - ./gradlew build sonarqube
         artifacts:
           - build/libs/**

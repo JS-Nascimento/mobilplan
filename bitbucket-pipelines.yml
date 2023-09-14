@@ -6,6 +6,7 @@ clone:
 definitions:
   caches:
     sonar: ~/.sonar/cache  # Caching SonarCloud artifacts will speed up your build
+
   steps:
     - step: &build-test-sonarcloud
         name: Build, test and analyze on SonarCloud
@@ -13,8 +14,7 @@ definitions:
           - gradle
           - sonar
         script:
-          - chmod -R a+rw $BUILD_DIR
-          - ./gradlew build sonar
+          - ./gradlew build sonarqube
         artifacts:
           - build/libs/**
 

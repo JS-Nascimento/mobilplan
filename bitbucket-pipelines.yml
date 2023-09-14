@@ -1,4 +1,4 @@
-image: openjdk:11
+image: openjdk:17-jdk-slim
 
 clone:
   depth: full              # SonarCloud scanner needs the full history to assign issues properly
@@ -6,6 +6,7 @@ clone:
 definitions:
   caches:
     sonar: ~/.sonar/cache  # Caching SonarCloud artifacts will speed up your build
+
   steps:
     - step: &build-test-sonarcloud
         name: Build, test and analyze on SonarCloud
@@ -13,6 +14,7 @@ definitions:
           - gradle
           - sonar
         script:
+          - chmod +x gradlew
           - ./gradlew build sonar
         artifacts:
           - build/libs/**

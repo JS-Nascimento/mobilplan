@@ -9,6 +9,14 @@ plugins {
     id 'org.sonarqube' version '4.3.1.3277'
 }
 
+sonar {
+    properties {
+        property "sonar.projectKey", "fs-saasadmin_basic_project"
+        property "sonar.organization", "jstec"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
+
 group = 'br.dev.jstec'
 version = '0.0.1-SNAPSHOT'
 

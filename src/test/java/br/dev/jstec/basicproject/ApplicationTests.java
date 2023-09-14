@@ -8,13 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootTest
-public class ApplicationTests {
+class ApplicationTests {
 
     @Autowired
     private ApplicationContext context;
 
     @Test
-    public void contextLoads() {
+    void contextLoads() {
 
         assertThat(context).isNotNull();
     }

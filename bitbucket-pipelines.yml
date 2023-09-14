@@ -13,6 +13,7 @@ definitions:
           - gradle
           - sonar
         script:
+          - chmod -R a+rw .
           - ./gradlew build sonar
         artifacts:
           - build/libs/**

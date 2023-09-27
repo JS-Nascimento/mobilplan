@@ -11,14 +11,14 @@ plugins {
 
 sonar {
     properties {
-        property "sonar.projectKey", "fs-saasadmin_basic_project"
+        property "sonar.projectKey", "fs-saasadmin_eFurniture"
         property "sonar.organization", "jstec"
         property "sonar.host.url", "https://sonarcloud.io"
     }
 }
 
 group = 'br.dev.jstec'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 
 compileJava.options.encoding = 'UTF-8'
 
@@ -33,7 +33,7 @@ repositories {
 }
 
 bootJar {
-    mainClass.set('br.dev.jstec.basic_project.Application')
+    mainClass.set('br.dev.jstec.efurniture.Application')
 }
 
 
@@ -53,15 +53,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation('org.springframework.boot:spring-boot-starter-logging:2.5.6')
+    implementation 'org.springframework.boot:spring-boot-starter-logging:2.5.6'
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}"
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     implementation 'org.flywaydb:flyway-core:9.22.0'
+    implementation 'org.postgresql:postgresql'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-    runtimeOnly 'com.h2database:h2'
 
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'

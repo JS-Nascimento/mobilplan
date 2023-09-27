@@ -1,28 +1,25 @@
 # Configurações comuns a todos os perfis
 info:
   app:
-    name: 'Projeto Básico'
-    description: 'Projeto básico com Spring Boot- perfil teste'
+    name: 'eFurniture'
+    description: 'Aplicação para gerenciamento de orçamentos de móveis planejados.'
     version: '1.0.0'
 
 # Configurações específicas para o perfil "test"
 spring:
-  config:
-    activate:
-      on-profile: "test"
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
-      path: '/h2-console'
+    url: jdbc:postgresql://localhost:5432/efurniture
+    username: admin
+    password: funiture@Manager
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Postgre10SQLDialect
+
 
   flyway:
     baseline-on-migrate: true
+    enabled: false
+    encoding: utf-8

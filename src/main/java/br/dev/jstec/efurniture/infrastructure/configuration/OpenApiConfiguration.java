@@ -1,4 +1,4 @@
-package br.dev.jstec.basicproject.infrastructure.configuration;
+package br.dev.jstec.efurniture.infrastructure.configuration;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(
         info = @Info(
-                title = "Projeto básico.",
+                title = "eFurniture API",
                 version = "1.0.0",
-                description = "Projeto com implementações básicas para iniciar qualquer projeto.",
+                description = "Aplicativo de gestão de orçamento de móveis sob medida.",
                 contact = @Contact(
                         name = "JS Tecnologia",
                         email = "jorge@jstec.dev.br"

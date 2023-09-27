@@ -1,4 +1,4 @@
-package br.dev.jstec.basicproject;
+package br.dev.jstec.efurniture;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

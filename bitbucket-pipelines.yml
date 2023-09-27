@@ -1,11 +1,11 @@
 image: openjdk:17-jdk-slim
 
 clone:
-  depth: full              # SonarCloud scanner needs the full history to assign issues properly
+  depth: full
 
 definitions:
   caches:
-    sonar: ~/.sonar/cache  # Caching SonarCloud artifacts will speed up your build
+    sonar: ~/.sonar/cache
 
   steps:
     - step: &build-test-sonarcloud
@@ -18,8 +18,15 @@ definitions:
           - ./gradlew build sonar
         artifacts:
           - build/libs/**
+sonar:
+  coverage:
+    jacoco:
+      xml: true
+      html: true
+      xmlreportPaths:
+        - build/reports/jacoco/test/jacocoTestReport.xml
 
-pipelines: # More info here: https://confluence.atlassian.com/bitbucket/configure-bitbucket-pipelines-yml-792298910.html
+pipelines:
   branches:
     master:
       - step: *build-test-sonarcloud

@@ -1,4 +1,4 @@
-package br.dev.jstec.basicproject;
+package br.dev.jstec.efurniture;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

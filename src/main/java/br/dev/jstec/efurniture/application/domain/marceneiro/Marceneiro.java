@@ -1,5 +1,6 @@
 package br.dev.jstec.efurniture.application.domain.marceneiro;
 
+import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
 import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static java.util.Objects.isNull;
 
@@ -12,7 +13,6 @@ import br.dev.jstec.efurniture.application.domain.valueobject.NomeComercial;
 import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
 import br.dev.jstec.efurniture.application.domain.valueobject.TipoCliente;
 import br.dev.jstec.efurniture.exceptions.BusinessException;
-import java.util.ArrayList;
 import java.util.List;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -41,11 +41,20 @@ public class Marceneiro {
         final String email,
         final List<Telefone> telefones,
         final List<Endereco> endereco,
-        final AuditInfo auditInfo,
-        final String logomarca) {
+        final AuditInfo auditInfo) {
 
         if (isNull(marceneiroId)) {
             throw new BusinessException(ERRO_ID_INVALIDO, "marceneiro");
+        }
+
+        if (isNull(telefones) || telefones.isEmpty()) {
+
+            throw new BusinessException(ERRO_ATRIBUTO_OBRIGATORIO, "telefone");
+        }
+
+        if (isNull(endereco) || endereco.isEmpty()) {
+
+            throw new BusinessException(ERRO_ATRIBUTO_OBRIGATORIO, "endereço");
         }
 
         this.marceneiroId = marceneiroId;
@@ -53,11 +62,9 @@ public class Marceneiro {
         this.setNomeComercial(nomeComercial);
         this.tipoCliente = tipoCliente;
         this.setEmail(email);
-        this.telefones = telefones != null ? telefones : new ArrayList<>(0);
-        this.endereco = endereco != null ? endereco : new ArrayList<>(0);
+        this.telefones = telefones;
+        this.endereco = endereco;
         this.auditInfo = auditInfo;
-        this.setLogomarca(logomarca);
-
     }
 
     public static Marceneiro createOf(
@@ -67,8 +74,7 @@ public class Marceneiro {
         final String email,
         final List<Telefone> telefones,
         final List<Endereco> enderecos,
-        final String createdBy,
-        final String logomarca) {
+        final String createdBy) {
 
         return new Marceneiro(
             MarceneiroId.unique(),
@@ -78,8 +84,7 @@ public class Marceneiro {
             email,
             telefones,
             enderecos,
-            AuditInfo.auditedCreateOf(createdBy),
-            logomarca);
+            AuditInfo.auditedCreateOf(createdBy));
     }
 
     @Override
@@ -122,6 +127,7 @@ public class Marceneiro {
     }
 
     public MarceneiroId marceneiroId() {
+
         return marceneiroId;
     }
 

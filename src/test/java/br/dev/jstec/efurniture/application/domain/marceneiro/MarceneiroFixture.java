@@ -2,6 +2,7 @@ package br.dev.jstec.efurniture.application.domain.marceneiro;
 
 import static br.dev.jstec.efurniture.application.domain.TipoTelefone.WHATSAPP;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarCpf;
+import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarEmail;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarString;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarStringNumerica;
 import static java.util.List.of;
@@ -11,6 +12,7 @@ import br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo;
 import br.dev.jstec.efurniture.application.domain.valueobject.Endereco;
 import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
 import br.dev.jstec.efurniture.application.domain.valueobject.TipoCliente;
+import java.util.ArrayList;
 import java.util.UUID;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -25,7 +27,7 @@ public class MarceneiroFixture {
             gerarString(),
             gerarString(),
             TipoCliente.createOf("FISICA", gerarCpf(true)),
-            "jorge@gmail.com",
+            gerarEmail(true),
             of(Telefone.createOf(WHATSAPP,
                 gerarStringNumerica(9),
                 gerarStringNumerica(2))),
@@ -37,8 +39,7 @@ public class MarceneiroFixture {
                 gerarString(),
                 gerarString(),
                 gerarString(2))),
-            UUID.randomUUID().toString(),
-            gerarString());
+            UUID.randomUUID().toString());
     }
 
     public static void buildConstrutorIdNulo() {
@@ -48,7 +49,7 @@ public class MarceneiroFixture {
             gerarString(),
             gerarString(),
             TipoCliente.createOf("FISICA", gerarCpf(true)),
-            "jorge@gmail.com",
+            gerarEmail(true),
             of(Telefone.createOf(WHATSAPP,
                 gerarStringNumerica(9),
                 gerarStringNumerica(2))),
@@ -60,7 +61,39 @@ public class MarceneiroFixture {
                 gerarString(),
                 gerarString(),
                 gerarString(2))),
-            AuditInfo.auditedCreateOf(UUID.randomUUID().toString()),
-            gerarString());
+            AuditInfo.auditedCreateOf(UUID.randomUUID().toString()));
+    }
+
+    public static void buildTelefoneInvalido() {
+
+        Marceneiro.createOf(
+            gerarString(),
+            gerarString(),
+            TipoCliente.createOf("FISICA", gerarCpf(true)),
+            gerarEmail(true),
+            new ArrayList<>(),
+            of(Endereco.createOf(
+                gerarStringNumerica(8),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(2))),
+            UUID.randomUUID().toString());
+    }
+
+    public static void buildEnderecoInvalido() {
+
+        Marceneiro.createOf(
+            gerarString(),
+            gerarString(),
+            TipoCliente.createOf("FISICA", gerarCpf(true)),
+            gerarEmail(true),
+            of(Telefone.createOf(WHATSAPP,
+                gerarStringNumerica(9),
+                gerarStringNumerica(2))),
+            new ArrayList<>(),
+            UUID.randomUUID().toString());
     }
 }

@@ -9,6 +9,10 @@ plugins {
     id 'org.sonarqube' version '4.3.1.3277'
 }
 
+jacoco {
+    toolVersion = "0.8.7"
+}
+
 sonar {
     properties {
         property "sonar.projectKey", "fs-saasadmin_eFurniture"
@@ -97,13 +101,13 @@ tasks.withType(Test).configureEach {
     useJUnitPlatform()
 }
 
-jacocoTestReport {
-
-    getExecutionData()
-            .setFrom(fileTree(buildDir)
-                    .include("/jacoco/test.exec"))
+tasks.register('jacocoTestReport', JacocoReport) {
+    dependsOn['test']
     reports {
-        xml.required = true
-        html.required = true
+        xml.enabled = true
+        html.enabled = true
     }
+
+    sourceDirectories.setFrom(files('src/main/java'))
+    classDirectories.setFrom(files('build/classes/java/main'))
 }

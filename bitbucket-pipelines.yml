@@ -15,9 +15,10 @@ definitions:
           - sonar
         script:
           - chmod +x gradlew
-          - ./gradlew build sonar
+          - ./gradlew build jacocoTestReport sonar
         artifacts:
           - build/libs/**
+          - build/reports/jacoco/**
 sonar:
   coverage:
     jacoco:

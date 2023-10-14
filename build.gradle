@@ -61,6 +61,7 @@ dependencies {
     implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
     implementation 'net.coobird:thumbnailator:0.4.20'
+    implementation 'org.apache.commons:commons-lang3:3.13.0'
 
 
     compileOnly 'org.projectlombok:lombok'

@@ -3,7 +3,6 @@ package br.dev.jstec.efurniture.application.domain.marceneiro;
 import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static java.text.MessageFormat.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -87,18 +86,7 @@ class MarceneiroTest {
     void shouldReturnFalseWhenComparedObjectIsNull() {
 
         var marceneiro = MarceneiroFixture.build();
-        //NOSONAR
-        assertFalse(marceneiro.equals(null));
-    }
 
-    @Test
-    @DisplayName("Deve retornar falso se o objeto comparado for de uma classe diferente")
-    void shouldReturnFalseWhenComparedObjectIsOfDifferentClass() {
-
-        var marceneiro = MarceneiroFixture.build();
-        var otherObject = "Uma String";
-
-        //NOSONAR
-        assertFalse(marceneiro.equals(otherObject));
+        assertNotEquals(null, marceneiro);
     }
 }

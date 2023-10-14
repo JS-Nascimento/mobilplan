@@ -8,7 +8,9 @@ import br.dev.jstec.efurniture.exceptions.BusinessException;
 public record Email(String value) {
 
     public Email {
+
         if (isBlank(value) || !validar(value)) {
+
             throw new BusinessException(ERRO_CAMPO_INVALIDO, Email.class.getSimpleName());
         }
 
@@ -17,8 +19,10 @@ public record Email(String value) {
 
     private static boolean validar(String email) {
 
-        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        String regex =
+            "^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+"
+                + "@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?"
+                + "(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
         return email.matches(regex);
     }
-
 }

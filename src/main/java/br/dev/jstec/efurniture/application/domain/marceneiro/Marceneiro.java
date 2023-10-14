@@ -33,16 +33,16 @@ public class Marceneiro {
     private final AuditInfo auditInfo;
     private Logomarca logomarca;
 
-    //NOSONAR
-    public Marceneiro(final MarceneiroId marceneiroId,
-                      final String nome,
-                      final String nomeComercial,
-                      final TipoCliente tipoCliente,
-                      final String email,
-                      final List<Telefone> telefones,
-                      final List<Endereco> endereco,
-                      final AuditInfo auditInfo,
-                      final String logomarca) {
+    public Marceneiro(
+        final MarceneiroId marceneiroId,
+        final String nome,
+        final String nomeComercial,
+        final TipoCliente tipoCliente,
+        final String email,
+        final List<Telefone> telefones,
+        final List<Endereco> endereco,
+        final AuditInfo auditInfo,
+        final String logomarca) {
 
         if (isNull(marceneiroId)) {
             throw new BusinessException(ERRO_ID_INVALIDO, "marceneiro");
@@ -58,30 +58,28 @@ public class Marceneiro {
         this.auditInfo = auditInfo;
         this.setLogomarca(logomarca);
 
-        log.info("Marceneiro criado: {}", this);
     }
 
-    //NOSONAR
     public static Marceneiro createOf(
-                      final String nome,
-                      final String nomeComercial,
-                      final TipoCliente tipoCliente,
-                      final String email,
-                      final List<Telefone> telefones,
-                      final List<Endereco> enderecos,
-                      final String createdBy,
-                      final String logomarca) {
+        final String nome,
+        final String nomeComercial,
+        final TipoCliente tipoCliente,
+        final String email,
+        final List<Telefone> telefones,
+        final List<Endereco> enderecos,
+        final String createdBy,
+        final String logomarca) {
 
         return new Marceneiro(
-                      MarceneiroId.unique(),
-                      nome,
-                      nomeComercial,
-                      tipoCliente,
-                      email,
-                      telefones,
-                      enderecos,
-                      AuditInfo.auditedCreateOf(createdBy),
-                      logomarca);
+            MarceneiroId.unique(),
+            nome,
+            nomeComercial,
+            tipoCliente,
+            email,
+            telefones,
+            enderecos,
+            AuditInfo.auditedCreateOf(createdBy),
+            logomarca);
     }
 
     @Override

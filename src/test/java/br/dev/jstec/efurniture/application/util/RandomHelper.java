@@ -164,7 +164,7 @@ public class RandomHelper {
 
         if (valido) {
 
-            return nome + "@" + dominio + ".com";
+            return (nome + "@" + dominio + ".com").toLowerCase();
 
         } else {
 

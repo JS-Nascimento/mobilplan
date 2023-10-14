@@ -33,6 +33,7 @@ public class CriarMarceneiroUseCase
 
         var marceneiro = marceneiroRepository.salvar(
                 createOf(
+
                         input.nome,
                         input.nomeComercial,
                         input.tipoCliente,

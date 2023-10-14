@@ -18,11 +18,13 @@ public class EmailFixture {
         new Email("");
     }
 
-    public static void buildEmailInvalido() {
-        new Email(gerarEmail(false));
+    public static Email buildEmailInvalido() {
+
+        return new Email(gerarEmail(false));
     }
 
-    public static void buildEmailValido() {
-        new Email(gerarEmail(true));
+    public static Email buildEmailValido() {
+
+        return new Email(gerarEmail(true));
     }
 }

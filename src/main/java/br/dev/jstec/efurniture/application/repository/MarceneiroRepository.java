@@ -3,7 +3,6 @@ package br.dev.jstec.efurniture.application.repository;
 import br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro;
 import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroId;
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
-import jakarta.validation.constraints.NotBlank;
 import java.util.Optional;
 
 public interface MarceneiroRepository {
@@ -12,7 +11,7 @@ public interface MarceneiroRepository {
 
     Optional<Marceneiro> buscarPorEmail(Email email);
 
-    Optional<Marceneiro> buscarPorDocumento(@NotBlank String documento);
+    Optional<Marceneiro> buscarPorDocumento(String documento);
 
     Marceneiro salvar(Marceneiro marceneiro);
 }

@@ -1,7 +1,7 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
-import static br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorEmailUseCaseFixture.buildOutput;
-import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarEmail;
+import static br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorDocumentoUseCaseFixture.buildOutput;
+import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarCpf;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,7 +11,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroFixture;
-import br.dev.jstec.efurniture.application.domain.valueobject.Email;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
@@ -24,10 +23,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 @RequiredArgsConstructor
-class BuscarMarceneiroPorEmailUseCaseTest {
+class BuscarMarceneiroPorDocumentoUseCaseTest {
 
     @InjectMocks
-    private BuscarMarceneiroPorEmailUseCase buscarMarceneiroPorEmailUseCase;
+    private BuscarMarceneiroPorDocumentoUseCase buscarMarceneiroPorDocUseCase;
 
     @Mock
     private MarceneiroRepository marceneiroRepository;
@@ -39,40 +38,40 @@ class BuscarMarceneiroPorEmailUseCaseTest {
     @DisplayName("Deve retornar o marceneiro correspondente quando um e-mail existente é fornecido")
     void deveRetornarMarceneiroQuandoEmailExistenteFornecido() {
 
-        var email = gerarEmail(true);
-        var input = new BuscarMarceneiroPorEmailUseCase.Input(email);
+        var documento = gerarCpf(true);
+        var input = new BuscarMarceneiroPorDocumentoUseCase.Input(documento);
 
         var marceneiro = MarceneiroFixture.build();
         var output = buildOutput(marceneiro);
 
-        doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorEmail(new Email(email));
+        doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorDocumento(documento);
 
-        var result = buscarMarceneiroPorEmailUseCase.execute(input);
+        var result = buscarMarceneiroPorDocUseCase.execute(input);
 
         assertTrue(result.isPresent());
         result.ifPresent(
             r -> assertEquals(output, r));
 
-        verify(marceneiroRepository).buscarPorEmail(new Email(email));
-        verify(mapper).mapperToBuscaPorEmailOutput(marceneiro);
+        verify(marceneiroRepository).buscarPorDocumento(documento);
+        verify(mapper).mapperToBuscaPorDocumentoOutput(marceneiro);
     }
 
     @Test
     @DisplayName("Deve retornar um Optional vazio quando um e-mail não existente é fornecido")
     void deveRetornarOptionalVazioQuandoEmailNaoExistenteFornecido() {
 
-        var email = gerarEmail(true);
-        var input = new BuscarMarceneiroPorEmailUseCase.Input(email);
+        var documento = gerarCpf(true);
+        var input = new BuscarMarceneiroPorDocumentoUseCase.Input(documento);
 
         doReturn(empty())
             .when(marceneiroRepository)
-            .buscarPorEmail(new Email(email));
+            .buscarPorDocumento(documento);
 
-        var result = buscarMarceneiroPorEmailUseCase.execute(input);
+        var result = buscarMarceneiroPorDocUseCase.execute(input);
 
         assertTrue(result.isEmpty());
 
-        verify(marceneiroRepository).buscarPorEmail(new Email(email));
+        verify(marceneiroRepository).buscarPorDocumento(documento);
         verifyNoInteractions(mapper);
     }
 }

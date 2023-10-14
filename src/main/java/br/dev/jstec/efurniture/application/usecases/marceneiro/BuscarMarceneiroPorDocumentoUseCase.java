@@ -1,18 +1,17 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
-import br.dev.jstec.efurniture.application.domain.valueobject.Email;
 import br.dev.jstec.efurniture.application.domain.valueobject.Endereco;
 import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
 import br.dev.jstec.efurniture.application.usecases.UseCase;
-import br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorEmailUseCase.Input;
-import br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorEmailUseCase.Output;
+import br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorDocumentoUseCase.Input;
+import br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorDocumentoUseCase.Output;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class BuscarMarceneiroPorEmailUseCase
+public class BuscarMarceneiroPorDocumentoUseCase
     extends UseCase<Input, Optional<Output>> {
 
     private final MarceneiroRepository marceneiroRepository;
@@ -22,11 +21,11 @@ public class BuscarMarceneiroPorEmailUseCase
     public Optional<Output> execute(final Input input) {
 
         return marceneiroRepository
-            .buscarPorEmail(new Email(input.email()))
-            .map(mapper::mapperToBuscaPorEmailOutput);
+            .buscarPorDocumento(input.documentoFiscal())
+            .map(mapper::mapperToBuscaPorDocumentoOutput);
     }
 
-    public record Input(String email) {
+    public record Input(String documentoFiscal) {
 
     }
 

@@ -22,11 +22,6 @@ public class CnpjFixture {
         Cnpj.createOf(cnpj);
     }
 
-    public static void buildInvalidoQuantidadeDeDigitos(String cnpj) {
-
-        Cnpj.createOf(cnpj);
-    }
-
     public static String buildSoNumeros(Cnpj cnpj) {
 
         return onlyNumericOf(cnpj);

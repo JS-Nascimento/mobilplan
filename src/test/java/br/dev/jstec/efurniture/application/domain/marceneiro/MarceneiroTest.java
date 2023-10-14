@@ -97,6 +97,7 @@ class MarceneiroTest {
 
         var marceneiro = MarceneiroFixture.build();
         var otherObject = "Uma String";
+
         //NOSONAR
         assertFalse(marceneiro.equals(otherObject));
     }

@@ -24,7 +24,7 @@ public record Logomarca(
     }
     public static Logomarca of(String fileName) {
 
-        return new Logomarca(fileName, processImage((InputStream) null));
+        return new Logomarca(fileName, processImage(null));
     }
 
     public static Logomarca of(String marceneiroId, InputStream imageStream) {

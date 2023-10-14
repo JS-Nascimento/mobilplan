@@ -16,11 +16,6 @@ public class CpfFixture {
         Cpf.createOf(cpf);
     }
 
-    public static void buildInvalidoQuantidadeDeDigitos(String cpf) {
-
-        Cpf.createOf(cpf);
-    }
-
     public static String buildSoNumeros(Cpf cpf) {
 
         return onlyNumericOf(cpf);

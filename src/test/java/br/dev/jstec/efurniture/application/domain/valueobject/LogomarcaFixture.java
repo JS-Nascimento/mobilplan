@@ -23,8 +23,7 @@ class LogomarcaFixture {
 
     private static InputStream loadPngImageAsStream() {
 
-        InputStream imageStream = LogomarcaFixture.class.getResourceAsStream(
+        return LogomarcaFixture.class.getResourceAsStream(
             "/teste1200x1200.png");
-        return imageStream;
     }
 }

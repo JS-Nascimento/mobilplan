@@ -19,9 +19,9 @@ public class EmailFixture {
         new Email("");
     }
 
-    public static Email buildEmailInvalido() {
+    public static void buildEmailInvalido() {
 
-        return new Email(gerarString());
+        new Email(gerarString());
     }
 
     public static Email buildEmailValido() {

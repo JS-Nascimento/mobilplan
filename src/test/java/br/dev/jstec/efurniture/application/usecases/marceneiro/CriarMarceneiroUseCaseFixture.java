@@ -17,7 +17,7 @@ public class CriarMarceneiroUseCaseFixture {
             marceneiro.tipoCliente(),
             marceneiro.email().value(),
             marceneiro.telefones(),
-            marceneiro.endereco(),
+            marceneiro.enderecos(),
             marceneiro.auditInfo().createdBy().toString());
     }
 }

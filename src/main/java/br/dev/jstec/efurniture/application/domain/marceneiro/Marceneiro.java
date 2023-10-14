@@ -14,6 +14,7 @@ import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
 import br.dev.jstec.efurniture.application.domain.valueobject.TipoCliente;
 import br.dev.jstec.efurniture.exceptions.BusinessException;
 import java.util.List;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -21,6 +22,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Slf4j
 @ToString
+@Getter
 public class Marceneiro {
 
     private final MarceneiroId marceneiroId;
@@ -29,7 +31,7 @@ public class Marceneiro {
     private final TipoCliente tipoCliente;
     private Email email;
     private final List<Telefone> telefones;
-    private final List<Endereco> endereco;
+    private final List<Endereco> enderecos;
     private final AuditInfo auditInfo;
     private Logomarca logomarca;
 
@@ -40,7 +42,7 @@ public class Marceneiro {
         final TipoCliente tipoCliente,
         final String email,
         final List<Telefone> telefones,
-        final List<Endereco> endereco,
+        final List<Endereco> enderecos,
         final AuditInfo auditInfo) {
 
         if (isNull(marceneiroId)) {
@@ -52,7 +54,7 @@ public class Marceneiro {
             throw new BusinessException(ERRO_ATRIBUTO_OBRIGATORIO, "telefone");
         }
 
-        if (isNull(endereco) || endereco.isEmpty()) {
+        if (isNull(enderecos) || enderecos.isEmpty()) {
 
             throw new BusinessException(ERRO_ATRIBUTO_OBRIGATORIO, "endereço");
         }
@@ -63,7 +65,7 @@ public class Marceneiro {
         this.tipoCliente = tipoCliente;
         this.setEmail(email);
         this.telefones = telefones;
-        this.endereco = endereco;
+        this.enderecos = enderecos;
         this.auditInfo = auditInfo;
     }
 
@@ -151,8 +153,8 @@ public class Marceneiro {
         return telefones;
     }
 
-    public List<Endereco> endereco() {
-        return endereco;
+    public List<Endereco> enderecos() {
+        return enderecos;
     }
 
     public AuditInfo auditInfo() {

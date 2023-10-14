@@ -64,7 +64,7 @@ class CriarMarceneiroUseCaseTest {
         assertEquals(input.tipoCliente(), realMarceneiro.tipoCliente());
         assertEquals(input.email(), realMarceneiro.email().value());
         assertEquals(input.telefones(), realMarceneiro.telefones());
-        assertEquals(input.enderecos(), realMarceneiro.endereco());
+        assertEquals(input.enderecos(), realMarceneiro.enderecos());
         assertEquals(input.createdBy(), realMarceneiro.auditInfo().createdBy().toString());
 
         verify(marceneiroRepository).buscarPorDocumento(documento);

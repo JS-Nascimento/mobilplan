@@ -27,7 +27,7 @@ class MarceneiroTest {
             marceneiro.tipoCliente(),
             marceneiro.email().value(),
             marceneiro.telefones(),
-            marceneiro.endereco(),
+            marceneiro.enderecos(),
             AuditInfo.fromUuid(marceneiro.auditInfo().createdBy()));
 
         assertNotNull(resultado.marceneiroId());

@@ -1,5 +1,6 @@
 package br.dev.jstec.efurniture.application.domain.marceneiro;
 
+import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
 import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static java.text.MessageFormat.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,9 +28,7 @@ class MarceneiroTest {
             marceneiro.email().value(),
             marceneiro.telefones(),
             marceneiro.endereco(),
-            AuditInfo.fromUuid(marceneiro.auditInfo().createdBy()),
-            marceneiro.logomarca().fileName()
-        );
+            AuditInfo.fromUuid(marceneiro.auditInfo().createdBy()));
 
         assertNotNull(resultado.marceneiroId());
         assertEquals(marceneiro.nome().value(), resultado.nome().value());
@@ -48,6 +47,30 @@ class MarceneiroTest {
         assertEquals(format(ERRO_ID_INVALIDO.getMsg(), "marceneiro"),
             exception.getErrorMessage().getMsg());
         assertEquals(ERRO_ID_INVALIDO.getCode(),
+            exception.getErrorMessage().getCode());
+    }
+
+    @Test
+    @DisplayName("Deve lancar excecao quando não conter ao menos 1 telefone")
+    void shouldThrowExceptionWhenTelefoneIsEmpty() {
+
+        var exception = assertThrows(BusinessException.class, MarceneiroFixture::buildTelefoneInvalido);
+
+        assertEquals(format(ERRO_ATRIBUTO_OBRIGATORIO.getMsg(), "telefone"),
+            exception.getErrorMessage().getMsg());
+        assertEquals(ERRO_ATRIBUTO_OBRIGATORIO.getCode(),
+            exception.getErrorMessage().getCode());
+    }
+
+    @Test
+    @DisplayName("Deve lancar excecao quando não conter ao menos 1 endereço")
+    void shouldThrowExceptionWhenEnderecoIsEmpty() {
+
+        var exception = assertThrows(BusinessException.class, MarceneiroFixture::buildEnderecoInvalido);
+
+        assertEquals(format(ERRO_ATRIBUTO_OBRIGATORIO.getMsg(), "endereço"),
+            exception.getErrorMessage().getMsg());
+        assertEquals(ERRO_ATRIBUTO_OBRIGATORIO.getCode(),
             exception.getErrorMessage().getCode());
     }
 

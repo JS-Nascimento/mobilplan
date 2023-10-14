@@ -17,38 +17,36 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class CriarMarceneiroUseCase
-        extends UseCase<CriarMarceneiroUseCase.Input, CriarMarceneiroUseCase.Output> {
+    extends UseCase<CriarMarceneiroUseCase.Input, CriarMarceneiroUseCase.Output> {
 
     private final MarceneiroRepository marceneiroRepository;
 
     public Output execute(final Input input) {
 
-        if (marceneiroRepository.buscarPorDocumento(input.tipoCliente().documentoFiscal()).isPresent()) {
+        if (marceneiroRepository.buscarPorDocumento(input.tipoCliente().documentoFiscal())
+            .isPresent()) {
             throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "marceneiro");
         }
 
         if (marceneiroRepository.buscarPorEmail(new Email(input.email)).isPresent()) {
             throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "marceneiro");
         }
+        var marceneiro = createOf(
+            input.nome,
+            input.nomeComercial,
+            input.tipoCliente,
+            input.email,
+            input.telefones,
+            input.enderecos,
+            input.createdBy);
 
-        var marceneiro = marceneiroRepository.salvar(
-                createOf(
+        var marceneiroSalvo = marceneiroRepository.salvar(marceneiro);
 
-                        input.nome,
-                        input.nomeComercial,
-                        input.tipoCliente,
-                        input.email,
-                        input.telefones,
-                        input.enderecos,
-                        input.createdBy,
-                        input.logomarca
-                )
-        );
         return new Output(
-                marceneiro.marceneiroId().value(),
-                marceneiro.nome().value(),
-                fromUuid(marceneiro.auditInfo().createdBy()),
-                fromInstant(marceneiro.auditInfo().createdAt())
+            marceneiroSalvo.marceneiroId().value(),
+            marceneiroSalvo.nome().value(),
+            fromUuid(marceneiroSalvo.auditInfo().createdBy()),
+            fromInstant(marceneiroSalvo.auditInfo().createdAt())
         );
     }
 
@@ -58,13 +56,14 @@ public class CriarMarceneiroUseCase
                         String email,
                         List<Telefone> telefones,
                         List<Endereco> enderecos,
-                        String createdBy,
-                        String logomarca) {
+                        String createdBy) {
+
     }
 
     public record Output(String id,
                          String nome,
                          String createBy,
                          String createdAt) {
+
     }
 }

@@ -10,7 +10,7 @@ plugins {
 }
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.10"
 }
 
 sonar {
@@ -101,11 +101,11 @@ tasks.withType(Test).configureEach {
     useJUnitPlatform()
 }
 
-tasks.register('jacocoEfurReport', JacocoReport) {
+jacocoTestReport {
     dependsOn test
     reports {
-        xml.enabled = true
-        html.enabled = true
+        xml.required = true
+        html.required = true
     }
 
     sourceDirectories.setFrom(files(sourceSets.main.allSource.srcDirs))

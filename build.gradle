@@ -101,13 +101,13 @@ tasks.withType(Test).configureEach {
     useJUnitPlatform()
 }
 
-tasks.register('jacocoTestReport', JacocoReport) {
-    dependsOn['test']
+tasks.register('jacocoEfurReport', JacocoReport) {
+    dependsOn test
     reports {
         xml.enabled = true
         html.enabled = true
     }
 
-    sourceDirectories.setFrom(files('src/main/java'))
-    classDirectories.setFrom(files('build/classes/java/main'))
+    sourceDirectories.setFrom(files(sourceSets.main.allSource.srcDirs))
+    classDirectories.setFrom(files(sourceSets.main.output))
 }

@@ -70,7 +70,7 @@ public class RandomHelper {
     public static BigDecimal gerarBigDecimalPositivoMoeda() {
 
         return random(BigDecimal.class, new BigDecimalRangeRandomizer(MIN, MAX)).setScale(2,
-                RoundingMode.HALF_DOWN).stripTrailingZeros();
+            RoundingMode.HALF_DOWN).stripTrailingZeros();
     }
 
     public static Integer gerarInteger() {
@@ -137,9 +137,10 @@ public class RandomHelper {
     }
 
     private static String calculateVerificationDigits(String baseCnpj) {
-        int firstDigit = calculateVerificationDigit(baseCnpj, new int[] {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2});
+        int firstDigit = calculateVerificationDigit(baseCnpj,
+            new int[]{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2});
         int secondDigit = calculateVerificationDigit(baseCnpj
-                + firstDigit, new int[] {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2});
+            + firstDigit, new int[]{6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2});
 
         return String.valueOf(firstDigit) + secondDigit;
     }

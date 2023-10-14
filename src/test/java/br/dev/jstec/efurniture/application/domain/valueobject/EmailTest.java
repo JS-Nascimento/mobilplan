@@ -19,10 +19,11 @@ class EmailTest {
     void shouldThrowExceptionWhenEmailIsNull() {
 
         var exception = assertThrows(BusinessException.class,
-                EmailFixture::buildEmailNulo);
+            EmailFixture::buildEmailNulo);
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -30,10 +31,11 @@ class EmailTest {
     void shouldThrowExceptionWhenEmailIsEmpty() {
 
         var exception = assertThrows(BusinessException.class,
-                EmailFixture::buildEmailVazio);
+            EmailFixture::buildEmailVazio);
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -41,10 +43,11 @@ class EmailTest {
     void shouldThrowExceptionWhenEmailIsInvalid() {
 
         var exception = assertThrows(BusinessException.class,
-                EmailFixture::buildEmailInvalido);
+            EmailFixture::buildEmailInvalido);
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test

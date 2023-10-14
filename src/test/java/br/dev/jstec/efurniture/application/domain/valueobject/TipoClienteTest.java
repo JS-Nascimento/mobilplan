@@ -27,7 +27,7 @@ class TipoClienteTest {
     void shouldThrowExceptionWhenTipoPessoaIsNull() {
 
         var exception = assertThrows(BusinessException.class,
-                TipoClienteFixture::buildTipoClienteTipoPessoaNulo);
+            TipoClienteFixture::buildTipoClienteTipoPessoaNulo);
 
         assertEquals(ERRO_TIPO_PESSOA_NULO.getCode(), exception.getErrorMessage().getCode());
         assertEquals(ERRO_TIPO_PESSOA_NULO.getMsg(), exception.getErrorMessage().getMsg());
@@ -40,10 +40,11 @@ class TipoClienteTest {
         var tipoPessoa = gerarString();
 
         var exception = assertThrows(BusinessException.class,
-                () -> TipoClienteFixture.buildTipoClienteTipoPessoaInvalida(tipoPessoa));
+            () -> TipoClienteFixture.buildTipoClienteTipoPessoaInvalida(tipoPessoa));
 
         assertEquals(ERRO_TIPO_PESSOA_INEXISTENTE.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_TIPO_PESSOA_INEXISTENTE.getMsg(), tipoPessoa), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_TIPO_PESSOA_INEXISTENTE.getMsg(), tipoPessoa),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -53,7 +54,7 @@ class TipoClienteTest {
         var cpf = gerarCpf(false);
 
         var exception = assertThrows(BusinessException.class,
-                () -> TipoClienteFixture.buildTipoClienteCpfInvalido(cpf));
+            () -> TipoClienteFixture.buildTipoClienteCpfInvalido(cpf));
 
         assertEquals(ERRO_CPF_INVALIDO.getCode(), exception.getErrorMessage().getCode());
         assertEquals(format(ERRO_CPF_INVALIDO.getMsg(), cpf), exception.getErrorMessage().getMsg());
@@ -66,10 +67,11 @@ class TipoClienteTest {
         var cnpj = gerarCnpj(false);
 
         var exception = assertThrows(BusinessException.class,
-                () -> TipoClienteFixture.buildTipoClienteCnpjInvalido(cnpj));
+            () -> TipoClienteFixture.buildTipoClienteCnpjInvalido(cnpj));
 
         assertEquals(ERRO_CNPJ_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CNPJ_INVALIDO.getMsg(), cnpj), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CNPJ_INVALIDO.getMsg(), cnpj),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -77,6 +79,13 @@ class TipoClienteTest {
     void notShouldThrowExceptionWhenTipoCliente() {
 
         assertDoesNotThrow(TipoClienteFixture::buildTipoClienteValido);
+    }
+
+    @Test
+    @DisplayName("Não deve disparar exceção quando o Tipo Cliente for válido para pessoa juridica")
+    void notShouldThrowExceptionWhenTipoClientePessoaJuridica() {
+
+        assertDoesNotThrow(TipoClienteFixture::buildTipoClienteValidoPessoaJuridica);
     }
 
 }

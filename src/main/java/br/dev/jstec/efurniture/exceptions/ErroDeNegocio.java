@@ -19,7 +19,10 @@ public enum ErroDeNegocio {
     ERRO_TIPO_TELEFONE_INEXISTENTE("EFURNITURE-010", "Tipo de telefone {0} inválido."),
     ERRO_TIPO_TELEFONE_INCOMPATIVEL("EFURNITURE-011", "Tipo de telefone {0} é incompátivel com o numero {1}."),
     ERRO_ATRIBUTOS_ENDERECO_OBRIGATORIOS("EFURNITURE-012",
-            "Os atributos de Endereço, com exceção de complemento são obrigatórios.");
+        "Os atributos de Endereço, com exceção de complemento são obrigatórios."),
+
+    ERRO_DADOS_OBRIGATORIOS_INCONSISTENTES("EFURNITURE-013",
+        "As informações informadas são inconsistentes.");
 
     private final String code;
     private final String msg;

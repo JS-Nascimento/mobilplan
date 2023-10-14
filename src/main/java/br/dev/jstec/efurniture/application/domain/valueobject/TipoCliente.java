@@ -12,11 +12,11 @@ public record TipoCliente(TipoPessoa tipoPessoa, String documentoFiscal) {
 
         if (FISICA.equals(tipoPessoa)) {
 
-            documentoFiscal = Cpf.createOf(documentoFiscal, true);
+            documentoFiscal = Cpf.createOf(documentoFiscal).value();
 
         } else if (JURIDICA.equals(tipoPessoa)) {
 
-            documentoFiscal = Cnpj.createOf(documentoFiscal, true);
+            documentoFiscal = Cnpj.createOf(documentoFiscal).value();
         }
     }
 

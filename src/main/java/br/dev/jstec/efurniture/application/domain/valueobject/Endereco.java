@@ -10,21 +10,29 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import br.dev.jstec.efurniture.exceptions.BusinessException;
 
 public record Endereco(
-        String cep,
-        String logradouro,
-        String numero,
-        String complemento,
-        String bairro,
-        String cidade,
-        String uf) {
+    String cep,
+    String logradouro,
+    String numero,
+    String complemento,
+    String bairro,
+    String cidade,
+    String uf) {
 
     public Endereco {
 
-        if (isBlank(cep) || isBlank(logradouro) || isBlank(numero) || isBlank(bairro) || isBlank(cidade)
-                || isBlank(uf)) {
+        if (validarDadosObrigatorios(cep)
+            || validarDadosObrigatorios(logradouro)
+            || validarDadosObrigatorios(numero)
+            || validarDadosObrigatorios(bairro)
+            || validarDadosObrigatorios(cidade)
+            || validarDadosObrigatorios(uf)) {
 
             throw new BusinessException(ERRO_ATRIBUTOS_ENDERECO_OBRIGATORIOS);
         }
+
+        complemento = validarDadosObrigatorios(complemento())
+            ? EMPTY
+            : complemento();
 
         if (!validarCep(cep)) {
 
@@ -46,25 +54,30 @@ public record Endereco(
     public static String formatedOf(Endereco endereco) {
 
         return format(
-                "%s, Nº %s, %s, bairro: %s, %s - %s, CEP: %s,",
-                endereco.logradouro(),
-                endereco.numero(),
-                endereco.complemento() == null ? EMPTY : " - " + endereco.complemento() + ",",
-                endereco.bairro(),
-                endereco.cidade(),
-                endereco.uf(),
-                endereco.cep()
+            "%s, Nº %s, %s, bairro: %s, %s - %s, CEP: %s,",
+            endereco.logradouro(),
+            endereco.numero(),
+            endereco.complemento(),
+            endereco.bairro(),
+            endereco.cidade(),
+            endereco.uf(),
+            endereco.cep()
         );
     }
 
     public static Endereco createOf(String cep,
-                                    String logradouro,
-                                    String numero,
-                                    String complemento,
-                                    String bairro,
-                                    String cidade,
-                                    String uf) {
+        String logradouro,
+        String numero,
+        String complemento,
+        String bairro,
+        String cidade,
+        String uf) {
         return new Endereco(cep, logradouro, numero, complemento, bairro, cidade, uf);
+    }
+
+    private static boolean validarDadosObrigatorios(String dado) {
+
+        return isBlank(dado);
     }
 
     private static boolean validarCep(String cep) {

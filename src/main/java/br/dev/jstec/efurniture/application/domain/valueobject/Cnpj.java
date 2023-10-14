@@ -2,9 +2,8 @@ package br.dev.jstec.efurniture.application.domain.valueobject;
 
 import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_CNPJ_INVALIDO;
 import static java.lang.String.format;
-import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.apache.commons.lang3.StringUtils.trimToNull;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 import br.dev.jstec.efurniture.exceptions.BusinessException;
 
@@ -12,9 +11,13 @@ public record Cnpj(String value) {
 
     public Cnpj {
 
-        if (isNull(trimToNull(value))) {
+        if (isBlank(value)) {
 
             value = EMPTY;
+
+        } else if (validar(value)) {
+
+            throw new BusinessException(ERRO_CNPJ_INVALIDO, value);
         }
     }
 
@@ -55,16 +58,6 @@ public record Cnpj(String value) {
 
     public static String formatedOf(Cnpj cnpj) {
 
-        if (isNull(trimToNull(cnpj.value))) {
-
-            return EMPTY;
-        }
-
-        if (validar(cnpj.value)) {
-
-            throw new BusinessException(ERRO_CNPJ_INVALIDO, cnpj.value);
-        }
-
         var bloco1 = cnpj.value.substring(0, 2);
         var bloco2 = cnpj.value.substring(2, 5);
         var bloco3 = cnpj.value.substring(5, 8);
@@ -76,27 +69,16 @@ public record Cnpj(String value) {
 
     public static String onlyNumericOf(Cnpj cnpj) {
 
-        if (isNull(trimToNull(cnpj.value))) {
-
-            return EMPTY;
-        }
-
-        if (validar(cnpj.value)) {
-            throw new BusinessException(ERRO_CNPJ_INVALIDO, cnpj.value);
-        }
-
         return cnpj.value.replaceAll("\\D", "");
     }
 
-    public static String createOf(String value, boolean formated) {
+    public static Cnpj createOf(String value) {
 
-        var cnpj = new Cnpj(value);
+        if (!isBlank(value) && validar(value)) {
 
-        if (cnpj.value().isEmpty()) {
-
-            return EMPTY;
+            throw new BusinessException(ERRO_CNPJ_INVALIDO, value);
         }
 
-        return formated ? formatedOf(cnpj) : onlyNumericOf(cnpj);
+        return new Cnpj(value);
     }
 }

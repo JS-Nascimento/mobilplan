@@ -1,9 +1,15 @@
 package br.dev.jstec.efurniture.application.domain.marceneiro;
 
+import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
+import static java.text.MessageFormat.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo;
+import br.dev.jstec.efurniture.exceptions.BusinessException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,14 +22,14 @@ class MarceneiroTest {
         final var marceneiro = MarceneiroFixture.build();
 
         final var resultado = Marceneiro.createOf(
-                marceneiro.nome().value(),
-                marceneiro.nomeComercial().value(),
-                marceneiro.tipoCliente(),
-                marceneiro.email().value(),
-                marceneiro.telefones(),
-                marceneiro.endereco(),
-                AuditInfo.fromUuid(marceneiro.auditInfo().createdBy()),
-                marceneiro.logomarca().fileName()
+            marceneiro.nome().value(),
+            marceneiro.nomeComercial().value(),
+            marceneiro.tipoCliente(),
+            marceneiro.email().value(),
+            marceneiro.telefones(),
+            marceneiro.endereco(),
+            AuditInfo.fromUuid(marceneiro.auditInfo().createdBy()),
+            marceneiro.logomarca().fileName()
         );
 
         assertNotNull(resultado.marceneiroId());
@@ -32,5 +38,66 @@ class MarceneiroTest {
         assertEquals(marceneiro.tipoCliente(), resultado.tipoCliente());
         assertEquals(marceneiro.email().value(), resultado.email().value());
         assertEquals(marceneiro.telefones(), resultado.telefones());
+    }
+
+    @Test
+    @DisplayName("Deve lancar excecao quando o Id for nulo")
+    void shouldThrowExceptionWhenMarceneiroIdIsNull() {
+
+        var exception = assertThrows(BusinessException.class, MarceneiroFixture::buildConstrutorIdNulo);
+
+        assertEquals(format(ERRO_ID_INVALIDO.getMsg(), "marceneiro"),
+            exception.getErrorMessage().getMsg());
+        assertEquals(ERRO_ID_INVALIDO.getCode(),
+            exception.getErrorMessage().getCode());
+    }
+
+    @Test
+    @DisplayName("Deve retornar verdadeiro quando os objetos Marceneiro são iguais")
+    void shouldReturnTrueWhenMarceneirosAreEqual() {
+
+        var marceneiro1 = MarceneiroFixture.build();
+        var marceneiro2 = marceneiro1;
+
+        assertEquals(marceneiro1, marceneiro2);
+    }
+
+    @Test
+    @DisplayName("Deve retornar falso quando os objetos Marceneiro não são iguais")
+    void shouldReturnFalseWhenMarceneirosAreNotEqual() {
+
+        var marceneiro1 = MarceneiroFixture.build();
+        var marceneiro2 = MarceneiroFixture.build();
+
+        assertNotEquals(marceneiro1, marceneiro2);
+    }
+
+    @Test
+    @DisplayName("Deve retornar o mesmo hashCode para objetos Marceneiro iguais")
+    void shouldReturnSameHashCodeForEqualMarceneiros() {
+
+        var marceneiro1 = MarceneiroFixture.build();
+        var marceneiro2 = marceneiro1;
+
+        assertEquals(marceneiro1.hashCode(), marceneiro2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve retornar falso se o objeto comparado for nulo")
+    void shouldReturnFalseWhenComparedObjectIsNull() {
+
+        var marceneiro = MarceneiroFixture.build();
+        //NOSONAR
+        assertFalse(marceneiro.equals(null));
+    }
+
+    @Test
+    @DisplayName("Deve retornar falso se o objeto comparado for de uma classe diferente")
+    void shouldReturnFalseWhenComparedObjectIsOfDifferentClass() {
+
+        var marceneiro = MarceneiroFixture.build();
+        var otherObject = "Uma String";
+        //NOSONAR
+        assertFalse(marceneiro.equals(otherObject));
     }
 }

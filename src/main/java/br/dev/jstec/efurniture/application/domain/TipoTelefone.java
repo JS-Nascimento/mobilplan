@@ -1,6 +1,5 @@
 package br.dev.jstec.efurniture.application.domain;
 
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_TIPO_PESSOA_NULO;
 import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_TIPO_TELEFONE_INEXISTENTE;
 import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_TIPO_TELEFONE_NULO;
 import static java.util.Arrays.stream;
@@ -24,7 +23,7 @@ public enum TipoTelefone {
 
         if (isNull(descricao)) {
 
-            throw new BusinessException(ERRO_TIPO_PESSOA_NULO);
+            throw new BusinessException(ERRO_TIPO_TELEFONE_NULO);
         }
 
         return stream(values())
@@ -34,11 +33,6 @@ public enum TipoTelefone {
     }
 
     public static TipoTelefone byOrdinal(int ordinal) {
-
-        if (isNull(ordinal)) {
-
-            throw new BusinessException(ERRO_TIPO_TELEFONE_NULO);
-        }
 
         return stream(values())
                 .filter(tipo -> tipo.ordinal() == ordinal)

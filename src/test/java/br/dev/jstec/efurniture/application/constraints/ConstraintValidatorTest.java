@@ -26,13 +26,13 @@ class ConstraintValidatorTest {
         var classWithAnnotations = new ClassWithAnnotations(null, null);
 
         var exception = assertThrows(ConstraintException.class,
-                () -> ConstraintValidator.validarConstraints(classWithAnnotations));
+            () -> ConstraintValidator.validarConstraints(classWithAnnotations));
 
         validarConstraints(
-                exception.getMessage(),
-                2,
-                "string1: must not be blank",
-                "string2: must not be null");
+            exception.getMessage(),
+            2,
+            "string1: must not be blank",
+            "string2: must not be null");
     }
 
     @Test
@@ -40,7 +40,7 @@ class ConstraintValidatorTest {
     void shouldNotThrowConstraintExceptionWhenValidationsIsValid() {
 
         assertDoesNotThrow(() -> ConstraintValidator.validarConstraints(
-                new ClassWithAnnotations("string1", "string2")));
+            new ClassWithAnnotations("string1", "string2")));
     }
 
     @AllArgsConstructor

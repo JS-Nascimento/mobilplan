@@ -31,7 +31,7 @@ public class StringUtil {
                 .collect(Collectors.joining("-"));
     }
 
-    private static String normalizeString(String str) {
+    public static String normalizeString(String str) {
 
         var normalized = normalize(str, NFD);
         var pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");

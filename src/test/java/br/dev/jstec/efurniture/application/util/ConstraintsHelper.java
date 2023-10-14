@@ -16,12 +16,13 @@ public class ConstraintsHelper {
         validaMensagensDeExcecao(exception, quantity, messages);
     }
 
-    private static void validaMensagensDeExcecao(String exception, int quantity, String... messages) {
+    private static void validaMensagensDeExcecao(String exception, int quantity,
+        String... messages) {
 
         assertThat(exception.split(SEPARADOR_ERROR_CONSTRAINT))
-                .hasSize(quantity)
-                .extracting(String::valueOf)
-                .containsExactlyInAnyOrder(messages);
+            .hasSize(quantity)
+            .extracting(String::valueOf)
+            .containsExactlyInAnyOrder(messages);
     }
 
     public static String notBeNull(String value) {

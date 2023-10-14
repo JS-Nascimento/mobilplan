@@ -19,10 +19,11 @@ class NomeComercialTest {
     void shouldThrowExceptionWhenNomeComercialIsNull() {
 
         var exception = assertThrows(BusinessException.class,
-                NomeComercialFixture::buildNomeNulo);
+            NomeComercialFixture::buildNomeNulo);
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -30,10 +31,11 @@ class NomeComercialTest {
     void shouldThrowExceptionWhenNomeComercialIsEmpty() {
 
         var exception = assertThrows(BusinessException.class,
-                NomeComercialFixture::buildNomeVazio);
+            NomeComercialFixture::buildNomeVazio);
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), CAMPO),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test

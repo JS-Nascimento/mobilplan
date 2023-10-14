@@ -39,10 +39,11 @@ class TelefoneTest {
 
         var ddiInvalido = gerarStringNumerica(4);
         var exception = assertThrows(BusinessException.class,
-                () -> TelefoneFixture.buildDdiInvalido(ddiInvalido));
+            () -> TelefoneFixture.buildDdiInvalido(ddiInvalido));
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "DDI"), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "DDI"),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -51,10 +52,47 @@ class TelefoneTest {
 
         var dddInvalido = gerarStringNumerica(1);
         var exception = assertThrows(BusinessException.class,
-                () -> TelefoneFixture.buildDddInvalido(dddInvalido));
+            () -> TelefoneFixture.buildDddInvalido(dddInvalido));
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "DDD"), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "DDD"),
+            exception.getErrorMessage().getMsg());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando criar um telefone com Ddi nao informado")
+    void shouldThrowsExceptionWhenCreateTelefoneComDdiNulo() {
+
+        var exception = assertThrows(BusinessException.class,
+            TelefoneFixture::buildDdiVazio);
+
+        assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "DDI"),
+            exception.getErrorMessage().getMsg());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando criar um telefone com Ddd nao informado")
+    void shouldThrowsExceptionWhenCreateTelefoneComDddNulo() {
+
+        var exception = assertThrows(BusinessException.class,
+            TelefoneFixture::buildDddVazio);
+
+        assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "DDD"),
+            exception.getErrorMessage().getMsg());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando criar um telefone com numero nao informado")
+    void shouldThrowsExceptionWhenCreateTelefoneComNumeroNulo() {
+
+        var exception = assertThrows(BusinessException.class,
+            TelefoneFixture::buildNumeroVazio);
+
+        assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "número do telefone"),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -62,10 +100,11 @@ class TelefoneTest {
     void shouldThrowsExceptionWhenCreateTelefoneComTipoInvalido() {
 
         var exception = assertThrows(BusinessException.class,
-                TelefoneFixture::buildTelefoneTipoTelefoneInvalido);
+            TelefoneFixture::buildTelefoneTipoTelefoneInvalido);
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "Tipo de telefone"), exception.getErrorMessage().getMsg());
+        assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "Tipo de telefone"),
+            exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -76,11 +115,12 @@ class TelefoneTest {
         var numero = gerarStringNumerica(9);
 
         var exception = assertThrows(BusinessException.class,
-                () -> TelefoneFixture.buildNumeroTelefoneIncompativelComNumero(tipo, numero));
+            () -> TelefoneFixture.buildNumeroTelefoneIncompativelComNumero(tipo, numero));
 
-        assertEquals(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getCode(), exception.getErrorMessage().getCode());
+        assertEquals(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getCode(),
+            exception.getErrorMessage().getCode());
         assertEquals(format(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getMsg(),
-                tipo, numero), exception.getErrorMessage().getMsg());
+            tipo, numero), exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -91,11 +131,12 @@ class TelefoneTest {
         var numero = gerarStringNumerica(8);
 
         var exception = assertThrows(BusinessException.class,
-                () -> TelefoneFixture.buildNumeroTelefoneIncompativelComNumero(tipo, numero));
+            () -> TelefoneFixture.buildNumeroTelefoneIncompativelComNumero(tipo, numero));
 
-        assertEquals(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getCode(), exception.getErrorMessage().getCode());
+        assertEquals(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getCode(),
+            exception.getErrorMessage().getCode());
         assertEquals(format(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getMsg(),
-                tipo, numero), exception.getErrorMessage().getMsg());
+            tipo, numero), exception.getErrorMessage().getMsg());
     }
 
     @Test
@@ -106,11 +147,22 @@ class TelefoneTest {
         var numero = gerarStringComLetraENumero(9);
 
         var exception = assertThrows(BusinessException.class,
-                () -> TelefoneFixture.buildNumeroTelefoneIncompativelComNumero(tipo, numero));
+            () -> TelefoneFixture.buildNumeroTelefoneIncompativelComNumero(tipo, numero));
 
-        assertEquals(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getCode(), exception.getErrorMessage().getCode());
+        assertEquals(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getCode(),
+            exception.getErrorMessage().getCode());
         assertEquals(format(ERRO_TIPO_TELEFONE_INCOMPATIVEL.getMsg(),
-                tipo, removerNaoDigitos(numero)), exception.getErrorMessage().getMsg());
+            tipo, removerNaoDigitos(numero)), exception.getErrorMessage().getMsg());
+    }
+
+    @Test
+    @DisplayName("Deve formatar um telefone com sucesso")
+    void shouldFormatTelefoneWithSuccess() {
+
+        var telefone = TelefoneFixture.buildFixo();
+        var telefoneFormatado = TelefoneFixture.buildTelfoneFormatado(telefone);
+
+        assertEquals(telefoneFormatado, Telefone.formatedOf(telefone));
     }
 
     private String removerNaoDigitos(String valor) {

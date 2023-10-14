@@ -11,6 +11,7 @@ public record Nome(String value) {
     public Nome {
 
         if (isBlank(value)) {
+
             throw new BusinessException(ERRO_CAMPO_INVALIDO, Nome.class.getSimpleName());
         }
         value = normalizarNome(value);

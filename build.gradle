@@ -60,6 +60,8 @@ dependencies {
     implementation 'org.postgresql:postgresql'
     implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'net.coobird:thumbnailator:0.4.20'
+
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -68,6 +70,7 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
 
+    testImplementation 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.github.benas:random-beans:3.9.0'
     testImplementation 'com.tngtech.archunit:archunit-junit5:0.22.0'
@@ -87,6 +90,9 @@ checkstyleTest {
 }
 
 tasks.withType(Test).configureEach {
+
+    systemProperty "user.language", "en"
+    systemProperty "user.country", "US"
     useJUnitPlatform()
 }
 

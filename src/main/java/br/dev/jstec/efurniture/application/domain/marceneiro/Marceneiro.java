@@ -3,10 +3,10 @@ package br.dev.jstec.efurniture.application.domain.marceneiro;
 import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static java.util.Objects.isNull;
 
-import br.dev.jstec.efurniture.application.domain.marceneiro.logomarca.Logomarca;
 import br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo;
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
 import br.dev.jstec.efurniture.application.domain.valueobject.Endereco;
+import br.dev.jstec.efurniture.application.domain.valueobject.Logomarca;
 import br.dev.jstec.efurniture.application.domain.valueobject.Nome;
 import br.dev.jstec.efurniture.application.domain.valueobject.NomeComercial;
 import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
@@ -14,23 +14,26 @@ import br.dev.jstec.efurniture.application.domain.valueobject.TipoCliente;
 import br.dev.jstec.efurniture.exceptions.BusinessException;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Slf4j
+@ToString
 public class Marceneiro {
 
     private final MarceneiroId marceneiroId;
     private Nome nome;
     private NomeComercial nomeComercial;
-    private TipoCliente tipoCliente;
+    private final TipoCliente tipoCliente;
     private Email email;
-    private List<Telefone> telefones;
-    private List<Endereco> endereco;
-    private AuditInfo auditInfo;
+    private final List<Telefone> telefones;
+    private final List<Endereco> endereco;
+    private final AuditInfo auditInfo;
     private Logomarca logomarca;
 
+    //NOSONAR
     public Marceneiro(final MarceneiroId marceneiroId,
                       final String nome,
                       final String nomeComercial,
@@ -58,6 +61,7 @@ public class Marceneiro {
         log.info("Marceneiro criado: {}", this);
     }
 
+    //NOSONAR
     public static Marceneiro createOf(
                       final String nome,
                       final String nomeComercial,
@@ -115,7 +119,8 @@ public class Marceneiro {
     }
 
     public void setLogomarca(String logomarca) {
-        this.logomarca = new Logomarca(logomarca);
+
+        this.logomarca = Logomarca.of(logomarca);
     }
 
     public MarceneiroId marceneiroId() {

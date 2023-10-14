@@ -2,9 +2,8 @@ package br.dev.jstec.efurniture.application.domain.valueobject;
 
 import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_CPF_INVALIDO;
 import static java.lang.String.format;
-import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.apache.commons.lang3.StringUtils.trimToNull;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 import br.dev.jstec.efurniture.exceptions.BusinessException;
 
@@ -12,9 +11,13 @@ public record Cpf(String value) {
 
     public Cpf {
 
-        if (isNull(trimToNull(value))) {
+        if (isBlank(value)) {
 
             value = EMPTY;
+
+        } else if (validar(value)) {
+
+            throw new BusinessException(ERRO_CPF_INVALIDO, value);
         }
     }
 
@@ -46,15 +49,6 @@ public record Cpf(String value) {
 
     public static String formatedOf(Cpf cpf) {
 
-        if (isNull(trimToNull(cpf.value))) {
-
-            return EMPTY;
-        }
-
-        if (validar(cpf.value)) {
-            throw new BusinessException(ERRO_CPF_INVALIDO, cpf.value);
-        }
-
         var bloco1 = cpf.value.substring(0, 3);
         var bloco2 = cpf.value.substring(3, 6);
         var bloco3 = cpf.value.substring(6, 9);
@@ -65,27 +59,16 @@ public record Cpf(String value) {
 
     public static String onlyNumericOf(Cpf cpf) {
 
-        if (isNull(trimToNull(cpf.value))) {
-
-            return EMPTY;
-        }
-
-        if (validar(cpf.value)) {
-            throw new BusinessException(ERRO_CPF_INVALIDO, cpf.value);
-        }
-
         return cpf.value.replaceAll("\\D", "");
     }
 
-    public static String createOf(String value, boolean formated) {
+    public static Cpf createOf(String value) {
 
-        var cpf = new Cpf(value);
+        if (!isBlank(value) && validar(value)) {
 
-        if (cpf.value().isEmpty()) {
-
-            return EMPTY;
+            throw new BusinessException(ERRO_CPF_INVALIDO, value);
         }
 
-        return formated ? formatedOf(cpf) : onlyNumericOf(cpf);
+        return new Cpf(value);
     }
 }

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: eFurniture
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    h2:
+      console:
+        enabled: true
+
+
+logging:
+  level:
+    org.springframework: INFO
+    org.hibernate: ERROR
+
+server:
+  port: 8080
+
+info:
+  app:
+    name: 'eFurniture'
+    description: 'Aplicação para gerenciamento de orçamentos de móveis planejados.'
+    version: '1.0.0'

@@ -1,9 +1,12 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
+import static br.dev.jstec.efurniture.application.domain.valueobject.Endereco.createOf;
+import static br.dev.jstec.efurniture.application.domain.valueobject.Endereco.formatedOf;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarString;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarStringComLetraENumero;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarStringNumerica;
 import static lombok.AccessLevel.PRIVATE;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -14,49 +17,126 @@ public class EnderecoFixture {
 
     public static Endereco build() {
 
-        return Endereco.createOf(
-                gerarStringNumerica(8),
-                "Rua " + gerarString(),
-                gerarStringNumerica(4),
-                null,
-                gerarString(),
-                gerarString(),
-                gerarString(2));
+        return createOf(
+            gerarStringNumerica(8),
+            "Rua " + gerarString(),
+            gerarStringNumerica(4),
+            gerarStringComLetraENumero(3),
+            gerarString(),
+            gerarString(),
+            gerarString(2));
+    }
+
+    public static Endereco buildComplememtoVazio() {
+
+        return createOf(
+            gerarStringNumerica(8),
+            "Rua " + gerarString(),
+            gerarStringNumerica(4),
+            EMPTY,
+            gerarString(),
+            gerarString(),
+            gerarString(2));
     }
 
     public static void buildCepNulo() {
 
-        Endereco.createOf(
-                null,
-                "Rua " + gerarString(),
-                gerarStringNumerica(4),
-                null,
-                gerarString(),
-                gerarString(),
-                gerarString(2));
+        createOf(
+            null,
+            "Rua " + gerarString(),
+            gerarStringNumerica(4),
+            gerarStringComLetraENumero(3),
+            gerarString(),
+            gerarString(),
+            gerarString(2));
     }
 
     public static void buildCepInvalido() {
 
-        Endereco.createOf(
-                gerarStringComLetraENumero(8),
-                "Rua " + gerarString(),
-                gerarStringNumerica(4),
-                null,
-                gerarString(),
-                gerarString(),
-                gerarString(2));
+        createOf(
+            gerarStringComLetraENumero(8),
+            "Rua " + gerarString(),
+            gerarStringNumerica(4),
+            gerarStringComLetraENumero(3),
+            gerarString(),
+            gerarString(),
+            gerarString(2));
     }
 
-    public static Endereco buildComUfInvalido() {
+    public static void buildLogradouroNulo() {
 
-        return Endereco.createOf(
-                gerarStringNumerica(8),
-                "Rua " + gerarString(),
-                gerarStringNumerica(4),
-                null,
-                gerarString(),
-                gerarString(),
-                gerarStringNumerica(2));
+        createOf(
+            gerarStringComLetraENumero(8),
+            null,
+            gerarStringNumerica(4),
+            gerarStringComLetraENumero(3),
+            gerarString(),
+            gerarString(),
+            gerarString(2));
+    }
+
+    public static void buildNumeroNulo() {
+
+        createOf(
+            gerarStringComLetraENumero(8),
+            gerarString(),
+            null,
+            gerarStringComLetraENumero(3),
+            gerarString(),
+            gerarString(),
+            gerarString(2));
+    }
+
+    public static void buildBairroNulo() {
+
+        createOf(
+            gerarStringComLetraENumero(8),
+            gerarString(),
+            gerarStringNumerica(3),
+            gerarStringComLetraENumero(3),
+            null,
+            gerarString(),
+            gerarString(2));
+    }
+
+    public static void buildCidadeNula() {
+
+        createOf(
+            gerarStringComLetraENumero(8),
+            gerarString(),
+            gerarStringNumerica(3),
+            gerarStringComLetraENumero(3),
+            gerarString(),
+            null,
+            gerarString(2));
+    }
+
+    public static void buildUfNula() {
+
+        createOf(
+            gerarStringComLetraENumero(8),
+            gerarString(),
+            gerarStringNumerica(3),
+            gerarStringComLetraENumero(3),
+            gerarString(),
+            gerarString(2),
+            null);
+    }
+
+    public static void buildComUfInvalido() {
+
+        createOf(
+            gerarStringNumerica(8),
+            "Rua " + gerarString(),
+            gerarStringNumerica(4),
+            gerarStringComLetraENumero(3),
+            gerarString(),
+            gerarString(),
+            gerarStringNumerica(2));
+    }
+
+    public static String buildFormatado(Endereco endereco) {
+
+        return formatedOf(endereco);
     }
 }

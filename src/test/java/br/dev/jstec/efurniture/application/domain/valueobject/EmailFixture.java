@@ -1,6 +1,7 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarEmail;
+import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarString;
 import static lombok.AccessLevel.PRIVATE;
 
 import lombok.Builder;
@@ -20,7 +21,7 @@ public class EmailFixture {
 
     public static Email buildEmailInvalido() {
 
-        return new Email(gerarEmail(false));
+        return new Email(gerarString());
     }
 
     public static Email buildEmailValido() {

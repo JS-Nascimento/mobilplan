@@ -1,7 +1,7 @@
 package br.dev.jstec.efurniture.application.domain.marceneiro;
 
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static java.text.MessageFormat.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo;
-import br.dev.jstec.efurniture.exceptions.BusinessException;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +42,8 @@ class MarceneiroTest {
     @DisplayName("Deve lancar excecao quando o Id for nulo")
     void shouldThrowExceptionWhenMarceneiroIdIsNull() {
 
-        var exception = assertThrows(BusinessException.class, MarceneiroFixture::buildConstrutorIdNulo);
+        var exception = assertThrows(BusinessException.class,
+            MarceneiroFixture::buildConstrutorIdNulo);
 
         assertEquals(format(ERRO_ID_INVALIDO.getMsg(), "marceneiro"),
             exception.getErrorMessage().getMsg());
@@ -54,7 +55,8 @@ class MarceneiroTest {
     @DisplayName("Deve lancar excecao quando não conter ao menos 1 telefone")
     void shouldThrowExceptionWhenTelefoneIsEmpty() {
 
-        var exception = assertThrows(BusinessException.class, MarceneiroFixture::buildTelefoneInvalido);
+        var exception = assertThrows(BusinessException.class,
+            MarceneiroFixture::buildTelefoneInvalido);
 
         assertEquals(format(ERRO_ATRIBUTO_OBRIGATORIO.getMsg(), "telefone"),
             exception.getErrorMessage().getMsg());
@@ -66,7 +68,8 @@ class MarceneiroTest {
     @DisplayName("Deve lancar excecao quando não conter ao menos 1 endereço")
     void shouldThrowExceptionWhenEnderecoIsEmpty() {
 
-        var exception = assertThrows(BusinessException.class, MarceneiroFixture::buildEnderecoInvalido);
+        var exception = assertThrows(BusinessException.class,
+            MarceneiroFixture::buildEnderecoInvalido);
 
         assertEquals(format(ERRO_ATRIBUTO_OBRIGATORIO.getMsg(), "endereço"),
             exception.getErrorMessage().getMsg());

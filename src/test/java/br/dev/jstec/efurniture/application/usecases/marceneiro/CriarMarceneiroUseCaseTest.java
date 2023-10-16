@@ -1,7 +1,7 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
 import static br.dev.jstec.efurniture.application.usecases.marceneiro.CriarMarceneiroUseCaseFixture.buildCriarMarceneiroUseCaseInputComMarceneiro;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
 import static java.text.MessageFormat.format;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -15,8 +15,8 @@ import static org.mockito.Mockito.verify;
 import br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro;
 import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroFixture;
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
-import br.dev.jstec.efurniture.exceptions.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

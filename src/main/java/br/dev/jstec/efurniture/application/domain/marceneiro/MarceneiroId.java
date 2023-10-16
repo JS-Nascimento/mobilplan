@@ -1,9 +1,9 @@
 package br.dev.jstec.efurniture.application.domain.marceneiro;
 
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import br.dev.jstec.efurniture.exceptions.BusinessException;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import java.util.UUID;
 
 public record MarceneiroId(String value) {

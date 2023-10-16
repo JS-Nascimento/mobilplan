@@ -43,5 +43,6 @@ public class BuscarMarceneiroPorEmailUseCase
         String createdAt,
         String updatedBy,
         String updatedAt) {
+
     }
 }

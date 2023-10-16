@@ -5,16 +5,16 @@ import static br.dev.jstec.efurniture.application.domain.TipoTelefone.FIXO;
 import static br.dev.jstec.efurniture.application.domain.TipoTelefone.WHATSAPP;
 import static br.dev.jstec.efurniture.application.domain.TipoTelefone.byOrdinal;
 import static br.dev.jstec.efurniture.application.domain.TipoTelefone.of;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_TIPO_TELEFONE_INEXISTENTE;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_TIPO_TELEFONE_NULO;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarInteger;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarString;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_TIPO_TELEFONE_INEXISTENTE;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_TIPO_TELEFONE_NULO;
 import static java.lang.String.valueOf;
 import static java.text.MessageFormat.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import br.dev.jstec.efurniture.exceptions.BusinessException;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

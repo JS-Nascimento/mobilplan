@@ -1,14 +1,14 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_CAMPO_INVALIDO;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_DADOS_OBRIGATORIOS_INCONSISTENTES;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_CAMPO_INVALIDO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_DADOS_OBRIGATORIOS_INCONSISTENTES;
 import static java.time.format.DateTimeFormatter.ofPattern;
 import static java.util.Objects.isNull;
 import static java.util.UUID.fromString;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import br.dev.jstec.efurniture.exceptions.BusinessException;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.UUID;

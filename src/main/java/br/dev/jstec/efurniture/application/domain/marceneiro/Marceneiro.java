@@ -1,7 +1,7 @@
 package br.dev.jstec.efurniture.application.domain.marceneiro;
 
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static java.util.Objects.isNull;
 
 import br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo;
@@ -12,7 +12,7 @@ import br.dev.jstec.efurniture.application.domain.valueobject.Nome;
 import br.dev.jstec.efurniture.application.domain.valueobject.NomeComercial;
 import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
 import br.dev.jstec.efurniture.application.domain.valueobject.TipoCliente;
-import br.dev.jstec.efurniture.exceptions.BusinessException;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import java.util.List;
 import lombok.Getter;
 import lombok.ToString;
@@ -26,13 +26,13 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Marceneiro {
 
     private final MarceneiroId marceneiroId;
-    private Nome nome;
-    private NomeComercial nomeComercial;
     private final TipoCliente tipoCliente;
-    private Email email;
     private final List<Telefone> telefones;
     private final List<Endereco> enderecos;
     private final AuditInfo auditInfo;
+    private Nome nome;
+    private NomeComercial nomeComercial;
+    private Email email;
     private Logomarca logomarca;
 
     public Marceneiro(

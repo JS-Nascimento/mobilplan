@@ -51,7 +51,28 @@ interface MarceneiroMapper {
     @Mapping(source = "auditInfo.updatedAt", target = "updatedAt",
         dateFormat = "dd/MM/yyyy HH:mm:ss",
         defaultExpression = "java(defaultInstant(marceneiro.getAuditInfo().updatedAt()))")
-    BuscarMarceneiroPorDocumentoUseCase.Output mapperToBuscaPorDocumentoOutput(Marceneiro marceneiro);
+    BuscarMarceneiroPorDocumentoUseCase.Output mapperToBuscaPorDocumentoOutput(
+        Marceneiro marceneiro);
+
+    @Mapping(target = "marceneiroId", expression = "java(marceneiro.getMarceneiroId().value())")
+    @Mapping(source = "nome.value", target = "nome")
+    @Mapping(source = "nomeComercial.value", target = "nomeComercial",
+        nullValueCheckStrategy = ALWAYS)
+    @Mapping(source = "tipoCliente.tipoPessoa", target = "tipoPessoa",
+        nullValueCheckStrategy = ALWAYS)
+    @Mapping(source = "tipoCliente.documentoFiscal", target = "documentoFiscal",
+        nullValueCheckStrategy = ALWAYS)
+    @Mapping(source = "email.value", target = "email")
+    @Mapping(source = "auditInfo.createdBy", target = "createdBy", nullValueCheckStrategy = ALWAYS)
+    @Mapping(source = "auditInfo.createdAt", target = "createdAt",
+        dateFormat = "dd/MM/yyyy HH:mm:ss", nullValueCheckStrategy = ALWAYS)
+    @Mapping(source = "auditInfo.updatedBy", target = "updatedBy",
+        defaultExpression = "java(defaultUpdateBy(marceneiro.getAuditInfo().updatedBy()))")
+    @Mapping(source = "auditInfo.updatedAt", target = "updatedAt",
+        dateFormat = "dd/MM/yyyy HH:mm:ss",
+        defaultExpression = "java(defaultInstant(marceneiro.getAuditInfo().updatedAt()))")
+    BuscarMarceneiroPorIdUseCase.Output mapperToBuscaPorIdOutput(
+        Marceneiro marceneiro);
 
     default String defaultUpdateBy(UUID value) {
         return value != null ? value.toString() : EMPTY;

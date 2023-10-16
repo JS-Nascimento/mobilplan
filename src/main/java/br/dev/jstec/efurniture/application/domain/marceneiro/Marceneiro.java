@@ -27,7 +27,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Marceneiro {
 
     private final MarceneiroId marceneiroId;
-    private final Situacao situacao;
+    private Situacao situacao;
     private final TipoCliente tipoCliente;
     private final List<Telefone> telefones;
     private final List<Endereco> enderecos;
@@ -92,6 +92,12 @@ public class Marceneiro {
             telefones,
             enderecos,
             AuditInfo.auditedCreateOf(createdBy));
+    }
+
+    public static Marceneiro updateStatus(Marceneiro marceneiro, String situacao) {
+
+        marceneiro.situacao = Situacao.of(situacao);
+        return marceneiro;
     }
 
     @Override

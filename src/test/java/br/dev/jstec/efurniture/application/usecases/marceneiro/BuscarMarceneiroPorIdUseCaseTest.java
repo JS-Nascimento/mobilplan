@@ -1,7 +1,6 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
-import static br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorDocumentoUseCaseFixture.buildOutput;
-import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarCpf;
+import static br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorIdUseCaseFixture.buildOutput;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,6 +10,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroFixture;
+import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroId;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
@@ -23,10 +23,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 @RequiredArgsConstructor
-class BuscarMarceneiroPorDocumentoUseCaseTest {
+class BuscarMarceneiroPorIdUseCaseTest {
 
     @InjectMocks
-    private BuscarMarceneiroPorDocumentoUseCase buscarMarceneiroPorDocUseCase;
+    private BuscarMarceneiroPorIdUseCase buscarMarceneiroPorIdUseCase;
 
     @Mock
     private MarceneiroRepository marceneiroRepository;
@@ -35,43 +35,43 @@ class BuscarMarceneiroPorDocumentoUseCaseTest {
     private MarceneiroMapperImpl mapper;
 
     @Test
-    @DisplayName("Deve retornar o marceneiro correspondente quando um documento existente é fornecido")
+    @DisplayName("Deve retornar o marceneiro correspondente quando um id existente é fornecido")
     void deveRetornarMarceneiroQuandoEmailExistenteFornecido() {
 
-        var documento = gerarCpf(true);
-        var input = new BuscarMarceneiroPorDocumentoUseCase.Input(documento);
+        var marceneiroId = MarceneiroId.unique();
+        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId);
 
         var marceneiro = MarceneiroFixture.build();
         var output = buildOutput(marceneiro);
 
-        doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorDocumento(documento);
+        doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorId(marceneiroId);
 
-        var result = buscarMarceneiroPorDocUseCase.execute(input);
+        var result = buscarMarceneiroPorIdUseCase.execute(input);
 
         assertTrue(result.isPresent());
         result.ifPresent(
             r -> assertEquals(output, r));
 
-        verify(marceneiroRepository).buscarPorDocumento(documento);
-        verify(mapper).mapperToBuscaPorDocumentoOutput(marceneiro);
+        verify(marceneiroRepository).buscarPorId(marceneiroId);
+        verify(mapper).mapperToBuscaPorIdOutput(marceneiro);
     }
 
     @Test
-    @DisplayName("Deve retornar um Optional vazio quando um documento não existente é fornecido")
+    @DisplayName("Deve retornar um Optional vazio quando um id não existente é fornecido")
     void deveRetornarOptionalVazioQuandoEmailNaoExistenteFornecido() {
 
-        var documento = gerarCpf(true);
-        var input = new BuscarMarceneiroPorDocumentoUseCase.Input(documento);
+        var marceneiroId = MarceneiroId.unique();
+        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId);
 
         doReturn(empty())
             .when(marceneiroRepository)
-            .buscarPorDocumento(documento);
+            .buscarPorId(marceneiroId);
 
-        var result = buscarMarceneiroPorDocUseCase.execute(input);
+        var result = buscarMarceneiroPorIdUseCase.execute(input);
 
         assertTrue(result.isEmpty());
 
-        verify(marceneiroRepository).buscarPorDocumento(documento);
+        verify(marceneiroRepository).buscarPorId(marceneiroId);
         verifyNoInteractions(mapper);
     }
 }

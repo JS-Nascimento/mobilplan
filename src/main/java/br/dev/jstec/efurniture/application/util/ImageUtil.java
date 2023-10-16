@@ -1,12 +1,12 @@
 package br.dev.jstec.efurniture.application.util;
 
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_CAMPO_INVALIDO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_CAMPO_INVALIDO;
 import static java.awt.Color.WHITE;
 import static javax.imageio.ImageIO.read;
 import static lombok.AccessLevel.PRIVATE;
 import static net.coobird.thumbnailator.Thumbnails.of;
 
-import br.dev.jstec.efurniture.exceptions.BusinessException;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;

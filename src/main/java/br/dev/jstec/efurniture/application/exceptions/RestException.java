@@ -1,4 +1,4 @@
-package br.dev.jstec.efurniture.exceptions;
+package br.dev.jstec.efurniture.application.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

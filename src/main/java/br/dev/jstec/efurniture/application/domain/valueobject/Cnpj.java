@@ -1,11 +1,11 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_CNPJ_INVALIDO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_CNPJ_INVALIDO;
 import static java.lang.String.format;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import br.dev.jstec.efurniture.exceptions.BusinessException;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 
 public record Cnpj(String value) {
 
@@ -31,8 +31,8 @@ public record Cnpj(String value) {
 
         var numeros = value.chars().map(Character::getNumericValue).toArray();
 
-        return validarDigito(numeros, 12, new int[] {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2})
-                || validarDigito(numeros, 13, new int[] {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2});
+        return validarDigito(numeros, 12, new int[]{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2})
+            || validarDigito(numeros, 13, new int[]{6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2});
     }
 
     private static boolean validarDigito(int[] numeros, int posicao, int[] pesos) {

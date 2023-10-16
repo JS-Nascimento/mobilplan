@@ -1,17 +1,18 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
+import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroId;
 import br.dev.jstec.efurniture.application.domain.valueobject.Endereco;
 import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
 import br.dev.jstec.efurniture.application.usecases.UseCase;
-import br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorDocumentoUseCase.Input;
-import br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorDocumentoUseCase.Output;
+import br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorIdUseCase.Input;
+import br.dev.jstec.efurniture.application.usecases.marceneiro.BuscarMarceneiroPorIdUseCase.Output;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class BuscarMarceneiroPorDocumentoUseCase
+public class BuscarMarceneiroPorIdUseCase
     extends UseCase<Input, Optional<Output>> {
 
     private final MarceneiroRepository marceneiroRepository;
@@ -21,11 +22,11 @@ public class BuscarMarceneiroPorDocumentoUseCase
     public Optional<Output> execute(final Input input) {
 
         return marceneiroRepository
-            .buscarPorDocumento(input.documentoFiscal())
-            .map(mapper::mapperToBuscaPorDocumentoOutput);
+            .buscarPorId(input.marceneiroId())
+            .map(mapper::mapperToBuscaPorIdOutput);
     }
 
-    public record Input(String documentoFiscal) {
+    public record Input(MarceneiroId marceneiroId) {
 
     }
 
@@ -42,6 +43,5 @@ public class BuscarMarceneiroPorDocumentoUseCase
         String createdAt,
         String updatedBy,
         String updatedAt) {
-
     }
 }

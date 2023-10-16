@@ -1,18 +1,18 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_CNPJ_INVALIDO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_CPF_INVALIDO;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_TIPO_PESSOA_INEXISTENTE;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_TIPO_PESSOA_NULO;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarCnpj;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarCpf;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarString;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_CNPJ_INVALIDO;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_CPF_INVALIDO;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_TIPO_PESSOA_INEXISTENTE;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_TIPO_PESSOA_NULO;
 import static java.text.MessageFormat.format;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import br.dev.jstec.efurniture.exceptions.BusinessException;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;

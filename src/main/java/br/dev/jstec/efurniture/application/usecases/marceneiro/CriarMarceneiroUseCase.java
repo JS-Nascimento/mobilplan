@@ -3,15 +3,15 @@ package br.dev.jstec.efurniture.application.usecases.marceneiro;
 import static br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro.createOf;
 import static br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo.fromInstant;
 import static br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo.fromUuid;
-import static br.dev.jstec.efurniture.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
+import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
 
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
 import br.dev.jstec.efurniture.application.domain.valueobject.Endereco;
 import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
 import br.dev.jstec.efurniture.application.domain.valueobject.TipoCliente;
+import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
 import br.dev.jstec.efurniture.application.usecases.UseCase;
-import br.dev.jstec.efurniture.exceptions.BusinessException;
 import java.util.List;
 import lombok.AllArgsConstructor;
 

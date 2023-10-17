@@ -6,4 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface MarceneiroJpaRepository extends CrudRepository<MarceneiroEntity, UUID> {
 
+    MarceneiroEntity findByEmail(String email);
+
+    MarceneiroEntity findByDocumento(String documento);
 }

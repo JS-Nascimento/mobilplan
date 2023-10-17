@@ -12,12 +12,11 @@ public class CriarMarceneiroUseCaseFixture {
     buildCriarMarceneiroUseCaseInputComMarceneiro(Marceneiro marceneiro) {
 
         return new CriarMarceneiroUseCase.Input(
-            marceneiro.nome().value(),
-            marceneiro.nomeComercial().value(),
-            marceneiro.tipoCliente(),
-            marceneiro.email().value(),
-            marceneiro.telefones(),
-            marceneiro.enderecos(),
-            marceneiro.auditInfo().createdBy().toString());
+            marceneiro.getNome().value(),
+            marceneiro.getNomeComercial().value(),
+            marceneiro.getTipoCliente(),
+            marceneiro.getEmail().value(),
+            marceneiro.getTelefones(),
+            marceneiro.getEnderecos());
     }
 }

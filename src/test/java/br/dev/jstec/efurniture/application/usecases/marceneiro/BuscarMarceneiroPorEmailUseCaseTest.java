@@ -42,7 +42,7 @@ class BuscarMarceneiroPorEmailUseCaseTest {
         var email = gerarEmail(true);
         var input = new BuscarMarceneiroPorEmailUseCase.Input(email);
 
-        var marceneiro = MarceneiroFixture.build();
+        var marceneiro = MarceneiroFixture.buildComAuditoria();
         var output = buildOutput(marceneiro);
 
         doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorEmail(new Email(email));

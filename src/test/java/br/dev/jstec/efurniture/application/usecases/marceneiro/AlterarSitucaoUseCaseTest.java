@@ -40,7 +40,7 @@ class AlterarSitucaoUseCaseTest {
         var marceneiro = MarceneiroFixture.build();
         var situacao = Situacao.values()[gerarInteger(1, 4)].getDescricao();
 
-        doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorId(marceneiro.marceneiroId());
+        doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorId(marceneiro.getMarceneiroId());
 
         var input = buildInput(marceneiro, situacao);
 
@@ -56,7 +56,7 @@ class AlterarSitucaoUseCaseTest {
         var marceneiro = MarceneiroFixture.build();
         var situacao = Situacao.values()[gerarInteger(1, 4)].getDescricao();
 
-        doReturn(empty()).when(marceneiroRepository).buscarPorId(marceneiro.marceneiroId());
+        doReturn(empty()).when(marceneiroRepository).buscarPorId(marceneiro.getMarceneiroId());
 
         var input = buildInput(marceneiro, situacao);
 
@@ -64,7 +64,7 @@ class AlterarSitucaoUseCaseTest {
             alterarSitucaoUseCase.execute(input));
 
         assertEquals(ERRO_ID_INVALIDO.getCode(), exception.getErrorMessage().getCode());
-        assertEquals(format(ERRO_ID_INVALIDO.getMsg(), marceneiro.marceneiroId().value()),
+        assertEquals(format(ERRO_ID_INVALIDO.getMsg(), marceneiro.getMarceneiroId().value()),
             exception.getErrorMessage().getMsg());
     }
 }

@@ -13,17 +13,17 @@ class BuscarMarceneiroPorEmailUseCaseFixture {
     public static BuscarMarceneiroPorEmailUseCase.Output buildOutput(Marceneiro marceneiro) {
 
         return new BuscarMarceneiroPorEmailUseCase.Output(
-            marceneiro.marceneiroId().value(),
-            marceneiro.nome().value(),
-            marceneiro.nomeComercial().value(),
-            marceneiro.tipoCliente().tipoPessoa().name(),
-            marceneiro.tipoCliente().documentoFiscal(),
-            marceneiro.email().value(),
-            marceneiro.telefones(),
-            marceneiro.enderecos(),
-            fromUuid(marceneiro.auditInfo().createdBy()),
-            fromInstant(marceneiro.auditInfo().createdAt()),
-            fromUuid(marceneiro.auditInfo().updatedBy()),
-            fromInstant(marceneiro.auditInfo().updatedAt()));
+            marceneiro.getMarceneiroId().value(),
+            marceneiro.getNome().value(),
+            marceneiro.getNomeComercial().value(),
+            marceneiro.getTipoCliente().tipoPessoa().name(),
+            marceneiro.getTipoCliente().documentoFiscal(),
+            marceneiro.getEmail().value(),
+            marceneiro.getTelefones(),
+            marceneiro.getEnderecos(),
+            fromUuid(marceneiro.getAuditInfo().createdBy()),
+            fromInstant(marceneiro.getAuditInfo().createdAt()),
+            fromUuid(marceneiro.getAuditInfo().updatedBy()),
+            fromInstant(marceneiro.getAuditInfo().updatedAt()));
     }
 }

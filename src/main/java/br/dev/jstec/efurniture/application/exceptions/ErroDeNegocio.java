@@ -26,7 +26,9 @@ public enum ErroDeNegocio {
 
     ERRO_DADOS_OBRIGATORIOS_INCONSISTENTES("EFURNITURE-013",
         "As informações informadas são inconsistentes."),
-    ERRO_ATRIBUTO_OBRIGATORIO("EFURNITURE-014", "O atributo {0} é obrigatório.");
+    ERRO_ATRIBUTO_OBRIGATORIO("EFURNITURE-014", "O atributo {0} é obrigatório."),
+    ERRO_SITUACAO_INEXISTENTE("EFURNITURE-015", "Situação {0} inválida."),
+    ERRO_SITUACAO_NULA("EFURNITURE-016", "Situação não pode ser nulo.");
 
     private final String code;
     private final String msg;

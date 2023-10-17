@@ -1,5 +1,6 @@
 package br.dev.jstec.efurniture.application.domain.marceneiro;
 
+import static br.dev.jstec.efurniture.application.domain.marceneiro.Situacao.ATIVO;
 import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
 import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static java.util.Objects.isNull;
@@ -26,6 +27,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Marceneiro {
 
     private final MarceneiroId marceneiroId;
+    private Situacao situacao;
     private final TipoCliente tipoCliente;
     private final List<Telefone> telefones;
     private final List<Endereco> enderecos;
@@ -37,6 +39,7 @@ public class Marceneiro {
 
     public Marceneiro(
         final MarceneiroId marceneiroId,
+        final Situacao situacao,
         final String nome,
         final String nomeComercial,
         final TipoCliente tipoCliente,
@@ -60,6 +63,7 @@ public class Marceneiro {
         }
 
         this.marceneiroId = marceneiroId;
+        this.situacao = situacao;
         this.setNome(nome);
         this.setNomeComercial(nomeComercial);
         this.tipoCliente = tipoCliente;
@@ -80,6 +84,7 @@ public class Marceneiro {
 
         return new Marceneiro(
             MarceneiroId.unique(),
+            ATIVO,
             nome,
             nomeComercial,
             tipoCliente,
@@ -87,6 +92,12 @@ public class Marceneiro {
             telefones,
             enderecos,
             AuditInfo.auditedCreateOf(createdBy));
+    }
+
+    public static Marceneiro updateStatus(Marceneiro marceneiro, String situacao) {
+
+        marceneiro.situacao = Situacao.of(situacao);
+        return marceneiro;
     }
 
     @Override

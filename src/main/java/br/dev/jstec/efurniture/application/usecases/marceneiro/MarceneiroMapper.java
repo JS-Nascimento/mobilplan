@@ -6,7 +6,7 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
 
 import br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 import org.mapstruct.Mapper;
@@ -78,7 +78,7 @@ interface MarceneiroMapper {
         return value != null ? value.toString() : EMPTY;
     }
 
-    default String defaultInstant(Instant value) {
+    default String defaultInstant(LocalDateTime value) {
 
         if (isNull(value)) {
             return EMPTY;

@@ -1,9 +1,8 @@
 package br.dev.jstec.efurniture.application.domain.marceneiro;
 
-import static br.dev.jstec.efurniture.application.domain.marceneiro.Situacao.ATIVO;
+import static br.dev.jstec.efurniture.application.domain.marceneiro.Situacao.of;
 import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
 import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
-import static java.util.Objects.isNull;
 
 import br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo;
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
@@ -18,8 +17,6 @@ import java.util.List;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Slf4j
 @ToString
@@ -27,152 +24,96 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Marceneiro {
 
     private final MarceneiroId marceneiroId;
+    private final Nome nome;
+    private final NomeComercial nomeComercial;
+    private final Email email;
     private Situacao situacao;
     private final TipoCliente tipoCliente;
     private final List<Telefone> telefones;
     private final List<Endereco> enderecos;
     private final AuditInfo auditInfo;
-    private Nome nome;
-    private NomeComercial nomeComercial;
-    private Email email;
     private Logomarca logomarca;
 
     public Marceneiro(
-        final MarceneiroId marceneiroId,
-        final Situacao situacao,
-        final String nome,
-        final String nomeComercial,
-        final TipoCliente tipoCliente,
-        final String email,
-        final List<Telefone> telefones,
-        final List<Endereco> enderecos,
-        final AuditInfo auditInfo) {
+        MarceneiroId marceneiroId,
+        Situacao situacao,
+        TipoCliente tipoCliente,
+        List<Telefone> telefones,
+        List<Endereco> enderecos,
+        Nome nome,
+        NomeComercial nomeComercial,
+        Email email,
+        AuditInfo auditInfo) {
 
-        if (isNull(marceneiroId)) {
-            throw new BusinessException(ERRO_ID_INVALIDO, "marceneiro");
-        }
-
-        if (isNull(telefones) || telefones.isEmpty()) {
-
-            throw new BusinessException(ERRO_ATRIBUTO_OBRIGATORIO, "telefone");
-        }
-
-        if (isNull(enderecos) || enderecos.isEmpty()) {
-
-            throw new BusinessException(ERRO_ATRIBUTO_OBRIGATORIO, "endereço");
-        }
+        validate(marceneiroId, telefones, enderecos);
 
         this.marceneiroId = marceneiroId;
         this.situacao = situacao;
-        this.setNome(nome);
-        this.setNomeComercial(nomeComercial);
         this.tipoCliente = tipoCliente;
-        this.setEmail(email);
         this.telefones = telefones;
         this.enderecos = enderecos;
+        this.nome = nome;
+        this.nomeComercial = nomeComercial;
+        this.email = email;
         this.auditInfo = auditInfo;
     }
 
     public static Marceneiro createOf(
-        final String nome,
-        final String nomeComercial,
-        final TipoCliente tipoCliente,
-        final String email,
-        final List<Telefone> telefones,
-        final List<Endereco> enderecos,
-        final String createdBy) {
+        String nome,
+        String nomeComercial,
+        TipoCliente tipoCliente,
+        String email,
+        List<Telefone> telefones,
+        List<Endereco> enderecos) {
 
         return new Marceneiro(
             MarceneiroId.unique(),
-            ATIVO,
-            nome,
-            nomeComercial,
+            Situacao.ATIVO,
             tipoCliente,
-            email,
             telefones,
             enderecos,
-            AuditInfo.auditedCreateOf(createdBy));
+            new Nome(nome),
+            new NomeComercial(nomeComercial),
+            new Email(email),
+            null);
     }
 
     public static Marceneiro updateStatus(Marceneiro marceneiro, String situacao) {
-
-        marceneiro.situacao = Situacao.of(situacao);
+        marceneiro.situacao = of(situacao);
         return marceneiro;
+    }
+
+    private void validate(
+        MarceneiroId marceneiroId,
+        List<Telefone> telefones,
+        List<Endereco> enderecos
+
+    ) {
+        if (marceneiroId == null) {
+            throw new BusinessException(ERRO_ID_INVALIDO, "marceneiro");
+        }
+
+        if (telefones == null || telefones.isEmpty()) {
+            throw new BusinessException(ERRO_ATRIBUTO_OBRIGATORIO, "telefone");
+        }
+
+        if (enderecos == null || enderecos.isEmpty()) {
+            throw new BusinessException(ERRO_ATRIBUTO_OBRIGATORIO, "endereço");
+        }
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
+        if (this == o)
             return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || getClass() != o.getClass())
             return false;
-        }
-
         Marceneiro that = (Marceneiro) o;
-
-        return new EqualsBuilder().append(marceneiroId, that.marceneiroId).isEquals();
+        return marceneiroId.equals(that.marceneiroId);
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(marceneiroId).toHashCode();
-    }
-
-    private void setNome(String nome) {
-
-        this.nome = new Nome(nome);
-    }
-
-    public void setNomeComercial(String nomeComercial) {
-
-        this.nomeComercial = new NomeComercial(nomeComercial);
-    }
-
-    public void setEmail(String email) {
-        this.email = new Email(email);
-    }
-
-    public void setLogomarca(String logomarca) {
-
-        this.logomarca = Logomarca.of(logomarca);
-    }
-
-    public MarceneiroId marceneiroId() {
-
-        return marceneiroId;
-    }
-
-    public Nome nome() {
-        return nome;
-    }
-
-    public NomeComercial nomeComercial() {
-        return nomeComercial;
-    }
-
-    public TipoCliente tipoCliente() {
-        return tipoCliente;
-    }
-
-    public Email email() {
-        return email;
-    }
-
-    public List<Telefone> telefones() {
-        return telefones;
-    }
-
-    public List<Endereco> enderecos() {
-        return enderecos;
-    }
-
-    public AuditInfo auditInfo() {
-        return auditInfo;
-    }
-
-    public Logomarca logomarca() {
-        return logomarca;
+        return marceneiroId.hashCode();
     }
 }

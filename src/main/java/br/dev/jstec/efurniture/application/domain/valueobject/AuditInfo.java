@@ -1,55 +1,19 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
-import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_CAMPO_INVALIDO;
-import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_DADOS_OBRIGATORIOS_INCONSISTENTES;
 import static java.time.format.DateTimeFormatter.ofPattern;
 import static java.util.Objects.isNull;
-import static java.util.UUID.fromString;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import br.dev.jstec.efurniture.application.exceptions.BusinessException;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
 public record AuditInfo(UUID createdBy,
-                        Instant createdAt,
+                        LocalDateTime createdAt,
                         UUID updatedBy,
-                        Instant updatedAt) {
+                        LocalDateTime updatedAt) {
 
-    public static AuditInfo auditedCreateOf(String createdBy) {
-
-        if (isBlank(createdBy)) {
-
-            throw new BusinessException(ERRO_CAMPO_INVALIDO, "Usuário");
-        }
-
-        return new AuditInfo(fromString(createdBy),
-            Instant.now(),
-            null,
-            null);
-    }
-
-    public static AuditInfo auditedUpdateOf(String updatedBy, AuditInfo auditInfo) {
-
-        if (isBlank(updatedBy)) {
-
-            throw new BusinessException(ERRO_CAMPO_INVALIDO, "Usuário");
-        }
-
-        if (isNull(auditInfo)) {
-
-            throw new BusinessException(ERRO_DADOS_OBRIGATORIOS_INCONSISTENTES);
-        }
-
-        return new AuditInfo(auditInfo.createdBy,
-            auditInfo.createdAt,
-            fromString(updatedBy),
-            Instant.now());
-    }
-
-    public static String fromInstant(Instant instant) {
+    public static String fromInstant(LocalDateTime instant) {
 
         if (isNull(instant)) {
 

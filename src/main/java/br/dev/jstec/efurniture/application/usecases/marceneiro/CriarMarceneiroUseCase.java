@@ -1,8 +1,6 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
 import static br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro.createOf;
-import static br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo.fromInstant;
-import static br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo.fromUuid;
 import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
 
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
@@ -37,17 +35,13 @@ public class CriarMarceneiroUseCase
             input.tipoCliente,
             input.email,
             input.telefones,
-            input.enderecos,
-            input.createdBy);
+            input.enderecos);
 
         var marceneiroSalvo = marceneiroRepository.salvar(marceneiro);
 
         return new Output(
-            marceneiroSalvo.marceneiroId().value(),
-            marceneiroSalvo.nome().value(),
-            fromUuid(marceneiroSalvo.auditInfo().createdBy()),
-            fromInstant(marceneiroSalvo.auditInfo().createdAt())
-        );
+            marceneiroSalvo.getMarceneiroId().value(),
+            marceneiroSalvo.getNome().value());
     }
 
     public record Input(String nome,
@@ -55,15 +49,12 @@ public class CriarMarceneiroUseCase
                         TipoCliente tipoCliente,
                         String email,
                         List<Telefone> telefones,
-                        List<Endereco> enderecos,
-                        String createdBy) {
+                        List<Endereco> enderecos) {
 
     }
 
     public record Output(String id,
-                         String nome,
-                         String createBy,
-                         String createdAt) {
+                         String nome) {
 
     }
 }

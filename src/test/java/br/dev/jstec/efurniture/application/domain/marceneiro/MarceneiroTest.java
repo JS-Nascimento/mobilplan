@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo;
 import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,20 +21,19 @@ class MarceneiroTest {
         final var marceneiro = MarceneiroFixture.build();
 
         final var resultado = Marceneiro.createOf(
-            marceneiro.nome().value(),
-            marceneiro.nomeComercial().value(),
-            marceneiro.tipoCliente(),
-            marceneiro.email().value(),
-            marceneiro.telefones(),
-            marceneiro.enderecos(),
-            AuditInfo.fromUuid(marceneiro.auditInfo().createdBy()));
+            marceneiro.getNome().value(),
+            marceneiro.getNomeComercial().value(),
+            marceneiro.getTipoCliente(),
+            marceneiro.getEmail().value(),
+            marceneiro.getTelefones(),
+            marceneiro.getEnderecos());
 
-        assertNotNull(resultado.marceneiroId());
-        assertEquals(marceneiro.nome().value(), resultado.nome().value());
-        assertEquals(marceneiro.nomeComercial().value(), resultado.nomeComercial().value());
-        assertEquals(marceneiro.tipoCliente(), resultado.tipoCliente());
-        assertEquals(marceneiro.email().value(), resultado.email().value());
-        assertEquals(marceneiro.telefones(), resultado.telefones());
+        assertNotNull(resultado.getMarceneiroId());
+        assertEquals(marceneiro.getNome().value(), resultado.getNome().value());
+        assertEquals(marceneiro.getNomeComercial().value(), resultado.getNomeComercial().value());
+        assertEquals(marceneiro.getTipoCliente(), resultado.getTipoCliente());
+        assertEquals(marceneiro.getEmail().value(), resultado.getEmail().value());
+        assertEquals(marceneiro.getTelefones(), resultado.getTelefones());
     }
 
     @Test

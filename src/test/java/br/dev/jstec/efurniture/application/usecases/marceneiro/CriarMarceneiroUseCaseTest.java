@@ -45,8 +45,8 @@ class CriarMarceneiroUseCaseTest {
     void shouldCreateMarceneiroSuccessfully() {
 
         var marceneiro = MarceneiroFixture.build();
-        var email = marceneiro.email().value();
-        var documento = marceneiro.tipoCliente().documentoFiscal();
+        var email = marceneiro.getEmail().value();
+        var documento = marceneiro.getTipoCliente().documentoFiscal();
 
         doReturn(empty()).when(marceneiroRepository).buscarPorDocumento(documento);
         doReturn(empty()).when(marceneiroRepository).buscarPorEmail(new Email(email));
@@ -59,13 +59,12 @@ class CriarMarceneiroUseCaseTest {
         verify(marceneiroRepository).salvar(marceneiroCaptor.capture());
         var realMarceneiro = marceneiroCaptor.getValue();
 
-        assertEquals(input.nome(), realMarceneiro.nome().value());
-        assertEquals(input.nomeComercial(), realMarceneiro.nomeComercial().value());
-        assertEquals(input.tipoCliente(), realMarceneiro.tipoCliente());
-        assertEquals(input.email(), realMarceneiro.email().value());
-        assertEquals(input.telefones(), realMarceneiro.telefones());
-        assertEquals(input.enderecos(), realMarceneiro.enderecos());
-        assertEquals(input.createdBy(), realMarceneiro.auditInfo().createdBy().toString());
+        assertEquals(input.nome(), realMarceneiro.getNome().value());
+        assertEquals(input.nomeComercial(), realMarceneiro.getNomeComercial().value());
+        assertEquals(input.tipoCliente(), realMarceneiro.getTipoCliente());
+        assertEquals(input.email(), realMarceneiro.getEmail().value());
+        assertEquals(input.telefones(), realMarceneiro.getTelefones());
+        assertEquals(input.enderecos(), realMarceneiro.getEnderecos());
 
         verify(marceneiroRepository).buscarPorDocumento(documento);
         verify(marceneiroRepository).buscarPorEmail(new Email(email));
@@ -76,8 +75,8 @@ class CriarMarceneiroUseCaseTest {
     void shouldThrowBusinessExceptionWhenEmailExists() {
 
         var marceneiro = MarceneiroFixture.build();
-        var email = marceneiro.email().value();
-        var documento = marceneiro.tipoCliente().documentoFiscal();
+        var email = marceneiro.getEmail().value();
+        var documento = marceneiro.getTipoCliente().documentoFiscal();
 
         doReturn(empty()).when(marceneiroRepository).buscarPorDocumento(documento);
         doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorEmail(new Email(email));
@@ -101,7 +100,7 @@ class CriarMarceneiroUseCaseTest {
     void shouldThrowBusinessExceptionWhenDocumentoExists() {
 
         var marceneiro = MarceneiroFixture.build();
-        var documento = marceneiro.tipoCliente().documentoFiscal();
+        var documento = marceneiro.getTipoCliente().documentoFiscal();
 
         doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorDocumento(documento);
 

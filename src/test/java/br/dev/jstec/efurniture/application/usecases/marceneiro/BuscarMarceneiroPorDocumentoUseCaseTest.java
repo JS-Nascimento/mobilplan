@@ -41,7 +41,7 @@ class BuscarMarceneiroPorDocumentoUseCaseTest {
         var documento = gerarCpf(true);
         var input = new BuscarMarceneiroPorDocumentoUseCase.Input(documento);
 
-        var marceneiro = MarceneiroFixture.build();
+        var marceneiro = MarceneiroFixture.buildComAuditoria();
         var output = buildOutput(marceneiro);
 
         doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorDocumento(documento);

@@ -7,9 +7,12 @@ import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroId;
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
 import br.dev.jstec.efurniture.infrastructure.jpa.MarceneiroJpaRepository;
+import jakarta.transaction.Transactional;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class MarceneiroDatabaseRepository implements MarceneiroRepository {
 
@@ -26,16 +29,27 @@ public class MarceneiroDatabaseRepository implements MarceneiroRepository {
 
     @Override
     public Optional<Marceneiro> buscarPorEmail(Email email) {
-        return Optional.empty();
+
+        return repository.findByEmail(email.value())
+            .map(mapper::mapToMarceneiro)
+            .or(Optional::empty);
     }
 
     @Override
     public Optional<Marceneiro> buscarPorDocumento(String documento) {
-        return Optional.empty();
+
+        return repository.findByDocumento(documento)
+            .map(mapper::mapToMarceneiro)
+            .or(Optional::empty);
     }
 
     @Override
+    @Transactional
     public Marceneiro salvar(Marceneiro marceneiro) {
-        return null;
+
+        var marceneiroEntity = mapper.mapToMarceneiroEntity(marceneiro);
+        var marceneiroEntitySaved = repository.save(marceneiroEntity);
+
+        return mapper.mapToMarceneiro(marceneiroEntitySaved);
     }
 }

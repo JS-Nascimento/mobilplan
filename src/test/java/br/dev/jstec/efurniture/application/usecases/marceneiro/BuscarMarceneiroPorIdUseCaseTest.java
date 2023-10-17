@@ -41,7 +41,7 @@ class BuscarMarceneiroPorIdUseCaseTest {
         var marceneiroId = MarceneiroId.unique();
         var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId);
 
-        var marceneiro = MarceneiroFixture.build();
+        var marceneiro = MarceneiroFixture.buildComAuditoria();
         var output = buildOutput(marceneiro);
 
         doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorId(marceneiroId);

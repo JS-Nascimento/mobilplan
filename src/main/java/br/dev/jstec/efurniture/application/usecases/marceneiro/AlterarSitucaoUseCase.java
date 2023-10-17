@@ -18,7 +18,7 @@ public class AlterarSitucaoUseCase extends UnitUseCase<Input> {
     @Override
     public void execute(final Input input) {
 
-        marceneiroRepository.buscarPorId(input.marceneiro().marceneiroId())
+        marceneiroRepository.buscarPorId(input.marceneiro().getMarceneiroId())
             .stream()
             .findFirst()
             .ifPresentOrElse(
@@ -28,7 +28,7 @@ public class AlterarSitucaoUseCase extends UnitUseCase<Input> {
                 },
                 () -> {
                     throw new BusinessException(ERRO_ID_INVALIDO,
-                        input.marceneiro().marceneiroId().value());
+                        input.marceneiro().getMarceneiroId().value());
                 });
     }
 

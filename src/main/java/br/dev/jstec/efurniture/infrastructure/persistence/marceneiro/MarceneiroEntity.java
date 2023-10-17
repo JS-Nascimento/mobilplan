@@ -5,11 +5,9 @@ import static jakarta.persistence.CascadeType.ALL;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -27,7 +25,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @Setter
 @Entity
 @Builder
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = {"telefones", "enderecos"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "marceneiros")
@@ -55,13 +53,11 @@ public class MarceneiroEntity {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @OneToMany(cascade = ALL, orphanRemoval = true)
-    @JoinColumn(name = "marceneiro_id")
-    private List<TelefoneEntity> telefones = new ArrayList<>();
+    @OneToMany(cascade = ALL, orphanRemoval = true, mappedBy = "marceneiro")
+    private List<TelefoneEntity> telefones;
 
-    @OneToMany(cascade = ALL, orphanRemoval = true)
-    @JoinColumn(name = "marceneiro_id")
-    private List<EnderecoEntity> enderecos = new ArrayList<>();
+    @OneToMany(cascade = ALL, orphanRemoval = true, mappedBy = "marceneiro")
+    private List<EnderecoEntity> enderecos;
 
     @CreatedBy
     @Column(name = "created_by", nullable = false)

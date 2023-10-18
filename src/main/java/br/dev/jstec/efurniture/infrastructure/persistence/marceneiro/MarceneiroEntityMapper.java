@@ -33,7 +33,7 @@ public interface MarceneiroEntityMapper {
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "tipoCliente.tipoPessoa", target = "tipoPessoa",
         nullValueCheckStrategy = ALWAYS)
-    @Mapping(source = "tipoCliente.documentoFiscal", target = "documento",
+    @Mapping(source = "tipoCliente.documento", target = "documento",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "email.value", target = "email")
     @Mapping(target = "createdBy",

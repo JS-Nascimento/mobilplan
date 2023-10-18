@@ -15,12 +15,14 @@ import br.dev.jstec.efurniture.application.domain.valueobject.TipoCliente;
 import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 import java.util.List;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ToString
 @Getter
+@Setter
 public class Marceneiro {
 
     private final MarceneiroId marceneiroId;

@@ -14,10 +14,11 @@ class BuscarMarceneiroPorDocumentoUseCaseFixture {
 
         return new BuscarMarceneiroPorDocumentoUseCase.Output(
             marceneiro.getMarceneiroId().value(),
+            marceneiro.getSituacao().getDescricao(),
             marceneiro.getNome().value(),
             marceneiro.getNomeComercial().value(),
-            marceneiro.getTipoCliente().tipoPessoa().name(),
-            marceneiro.getTipoCliente().documentoFiscal(),
+            marceneiro.getTipoCliente().tipoPessoa().getDescricao(),
+            marceneiro.getTipoCliente().documento(),
             marceneiro.getEmail().value(),
             marceneiro.getTelefones(),
             marceneiro.getEnderecos(),

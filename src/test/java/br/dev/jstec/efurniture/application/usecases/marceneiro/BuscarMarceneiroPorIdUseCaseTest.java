@@ -39,7 +39,7 @@ class BuscarMarceneiroPorIdUseCaseTest {
     void deveRetornarMarceneiroQuandoEmailExistenteFornecido() {
 
         var marceneiroId = MarceneiroId.unique();
-        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId);
+        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId.value());
 
         var marceneiro = MarceneiroFixture.buildComAuditoria();
         var output = buildOutput(marceneiro);
@@ -61,7 +61,7 @@ class BuscarMarceneiroPorIdUseCaseTest {
     void deveRetornarOptionalVazioQuandoEmailNaoExistenteFornecido() {
 
         var marceneiroId = MarceneiroId.unique();
-        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId);
+        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId.value());
 
         doReturn(empty())
             .when(marceneiroRepository)

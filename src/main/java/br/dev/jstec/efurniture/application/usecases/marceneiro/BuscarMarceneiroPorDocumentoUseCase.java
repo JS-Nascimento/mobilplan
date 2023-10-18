@@ -31,10 +31,11 @@ public class BuscarMarceneiroPorDocumentoUseCase
 
     public record Output(
         String marceneiroId,
+        String situacao,
         String nome,
         String nomeComercial,
         String tipoPessoa,
-        String documentoFiscal,
+        String documento,
         String email,
         List<Telefone> telefones,
         List<Endereco> enderecos,

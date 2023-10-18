@@ -6,22 +6,22 @@ import static br.dev.jstec.efurniture.application.domain.TipoPessoa.of;
 
 import br.dev.jstec.efurniture.application.domain.TipoPessoa;
 
-public record TipoCliente(TipoPessoa tipoPessoa, String documentoFiscal) {
+public record TipoCliente(TipoPessoa tipoPessoa, String documento) {
 
     public TipoCliente {
 
         if (FISICA.equals(tipoPessoa)) {
 
-            documentoFiscal = Cpf.createOf(documentoFiscal).value();
+            documento = Cpf.createOf(documento).value();
 
         } else if (JURIDICA.equals(tipoPessoa)) {
 
-            documentoFiscal = Cnpj.createOf(documentoFiscal).value();
+            documento = Cnpj.createOf(documento).value();
         }
     }
 
-    public static TipoCliente createOf(String tipoPessoa, String documentoFiscal) {
+    public static TipoCliente createOf(String tipoPessoa, String documento) {
 
-        return new TipoCliente(of(tipoPessoa), documentoFiscal);
+        return new TipoCliente(of(tipoPessoa), documento);
     }
 }

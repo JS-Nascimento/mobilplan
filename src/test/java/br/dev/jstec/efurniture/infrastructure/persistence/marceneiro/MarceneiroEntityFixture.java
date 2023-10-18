@@ -30,7 +30,7 @@ class MarceneiroEntityFixture {
             marceneiro.getNome().value(),
             marceneiro.getNomeComercial().value(),
             marceneiro.getTipoCliente().tipoPessoa().name(),
-            marceneiro.getTipoCliente().documentoFiscal(),
+            marceneiro.getTipoCliente().documento(),
             marceneiro.getEmail().value(),
             telefoneEntities,
             enderecoEntities,

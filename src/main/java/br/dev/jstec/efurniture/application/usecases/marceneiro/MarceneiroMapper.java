@@ -13,15 +13,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
-interface MarceneiroMapper {
+public interface MarceneiroMapper {
 
     @Mapping(target = "marceneiroId", expression = "java(marceneiro.getMarceneiroId().value())")
+    @Mapping(target = "situacao", expression = "java(marceneiro.getSituacao().getDescricao())")
     @Mapping(source = "nome.value", target = "nome")
     @Mapping(source = "nomeComercial.value", target = "nomeComercial",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "tipoCliente.tipoPessoa", target = "tipoPessoa",
         nullValueCheckStrategy = ALWAYS)
-    @Mapping(source = "tipoCliente.documentoFiscal", target = "documentoFiscal",
+    @Mapping(source = "tipoCliente.documento", target = "documento",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "email.value", target = "email")
     @Mapping(source = "auditInfo.createdBy", target = "createdBy", nullValueCheckStrategy = ALWAYS)
@@ -35,12 +36,13 @@ interface MarceneiroMapper {
     BuscarMarceneiroPorEmailUseCase.Output mapperToBuscaPorEmailOutput(Marceneiro marceneiro);
 
     @Mapping(target = "marceneiroId", expression = "java(marceneiro.getMarceneiroId().value())")
+    @Mapping(target = "situacao", expression = "java(marceneiro.getSituacao().getDescricao())")
     @Mapping(source = "nome.value", target = "nome")
     @Mapping(source = "nomeComercial.value", target = "nomeComercial",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "tipoCliente.tipoPessoa", target = "tipoPessoa",
         nullValueCheckStrategy = ALWAYS)
-    @Mapping(source = "tipoCliente.documentoFiscal", target = "documentoFiscal",
+    @Mapping(source = "tipoCliente.documento", target = "documento",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "email.value", target = "email")
     @Mapping(source = "auditInfo.createdBy", target = "createdBy", nullValueCheckStrategy = ALWAYS)
@@ -55,12 +57,13 @@ interface MarceneiroMapper {
         Marceneiro marceneiro);
 
     @Mapping(target = "marceneiroId", expression = "java(marceneiro.getMarceneiroId().value())")
+    @Mapping(target = "situacao", expression = "java(marceneiro.getSituacao().getDescricao())")
     @Mapping(source = "nome.value", target = "nome")
     @Mapping(source = "nomeComercial.value", target = "nomeComercial",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "tipoCliente.tipoPessoa", target = "tipoPessoa",
         nullValueCheckStrategy = ALWAYS)
-    @Mapping(source = "tipoCliente.documentoFiscal", target = "documentoFiscal",
+    @Mapping(source = "tipoCliente.documento", target = "documento",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "email.value", target = "email")
     @Mapping(source = "auditInfo.createdBy", target = "createdBy", nullValueCheckStrategy = ALWAYS)

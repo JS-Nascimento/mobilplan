@@ -21,7 +21,7 @@ public class CriarMarceneiroUseCase
 
     public Output execute(final Input input) {
 
-        if (marceneiroRepository.buscarPorDocumento(input.tipoCliente().documentoFiscal())
+        if (marceneiroRepository.buscarPorDocumento(input.tipoCliente().documento())
             .isPresent()) {
             throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "marceneiro");
         }

@@ -1,5 +1,6 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
+import static br.dev.jstec.efurniture.application.domain.TipoTelefone.of;
 import static br.dev.jstec.efurniture.application.domain.valueobject.Telefone.createWithDdiOf;
 import static br.dev.jstec.efurniture.application.domain.valueobject.Telefone.formatedOf;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarInteger;
@@ -8,12 +9,13 @@ import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 import br.dev.jstec.efurniture.application.domain.TipoTelefone;
+import br.dev.jstec.efurniture.infrastructure.rest.dto.marceneiro.TelefoneDto;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Builder
 @NoArgsConstructor(access = PRIVATE)
-class TelefoneFixture {
+public class TelefoneFixture {
 
     public static Telefone buildCelularOuWhatsapp() {
 
@@ -63,7 +65,7 @@ class TelefoneFixture {
     public static void buildNumeroTelefoneIncompativelComNumero(String tipo, String numero) {
 
         createWithDdiOf(
-            TipoTelefone.of(tipo),
+            of(tipo),
             numero,
             gerarStringNumerica(2),
             gerarStringNumerica(3));
@@ -99,5 +101,15 @@ class TelefoneFixture {
     public static String buildTelfoneFormatado(Telefone telefone) {
 
         return formatedOf(telefone);
+    }
+
+    public static Telefone buildComTelefoneDto(TelefoneDto telefone) {
+
+        return new Telefone(
+            telefone.id(),
+            of(telefone.tipoTelefone()),
+            telefone.numero(),
+            telefone.ddd(),
+            telefone.ddi());
     }
 }

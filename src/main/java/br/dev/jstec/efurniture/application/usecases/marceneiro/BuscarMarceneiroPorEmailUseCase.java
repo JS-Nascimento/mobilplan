@@ -23,7 +23,7 @@ public class BuscarMarceneiroPorEmailUseCase
 
         return marceneiroRepository
             .buscarPorEmail(new Email(input.email()))
-            .map(mapper::mapperToBuscaPorEmailOutput);
+            .map(mapper::toBuscarMarceneiroPorEmailOutput);
 
 
     }
@@ -33,7 +33,7 @@ public class BuscarMarceneiroPorEmailUseCase
     }
 
     public record Output(
-        String marceneiroId,
+        String id,
 
         String situacao,
         String nome,

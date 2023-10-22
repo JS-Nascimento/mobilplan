@@ -1,5 +1,6 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
+import static java.time.LocalDateTime.parse;
 import static java.time.format.DateTimeFormatter.ofPattern;
 import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
@@ -22,7 +23,7 @@ public record AuditInfo(UUID createdBy,
 
         var formatter = ofPattern("dd/MM/yyyy HH:mm:ss")
             .withZone(ZoneId.systemDefault());
-        return formatter.format(instant);
+        return parse(instant.toString()).format(formatter);
     }
 
     public static String fromUuid(UUID uuid) {
@@ -33,5 +34,13 @@ public record AuditInfo(UUID createdBy,
         }
 
         return uuid.toString();
+    }
+
+    public static AuditInfo of(UUID createdBy,
+                               LocalDateTime createdAt,
+                               UUID updatedBy,
+                               LocalDateTime updatedAt) {
+
+        return new AuditInfo(createdBy, createdAt, updatedBy, updatedAt);
     }
 }

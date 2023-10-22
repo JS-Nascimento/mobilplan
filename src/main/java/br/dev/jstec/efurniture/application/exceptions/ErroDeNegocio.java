@@ -28,7 +28,11 @@ public enum ErroDeNegocio {
         "As informações informadas são inconsistentes."),
     ERRO_ATRIBUTO_OBRIGATORIO("EFURNITURE-014", "O atributo {0} é obrigatório."),
     ERRO_SITUACAO_INEXISTENTE("EFURNITURE-015", "Situação {0} inválida."),
-    ERRO_SITUACAO_NULA("EFURNITURE-016", "Situação não pode ser nulo.");
+    ERRO_SITUACAO_NULA("EFURNITURE-016", "Situação não pode ser nulo."),
+    ERRO_INFORMACAO_INVALIDA("EFURNITURE-017", "Erro ao validar informações. Erro: {0}"),
+    ERRO_CONVERTER_IMAGEM("EFURNITURE-018",
+        "Erro ao converter a imagem enviado em formato válido."),
+    ERRO_SALVAR_IMAGEM("EFURNITURE-018", "Erro ao salvar a logomarca.");
 
     private final String code;
     private final String msg;

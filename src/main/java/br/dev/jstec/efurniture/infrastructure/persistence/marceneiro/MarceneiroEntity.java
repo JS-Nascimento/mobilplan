@@ -4,8 +4,10 @@ import static jakarta.persistence.CascadeType.ALL;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,6 +22,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Getter
 @Setter
@@ -29,11 +32,12 @@ import org.springframework.data.annotation.LastModifiedDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "marceneiros")
+@EntityListeners(AuditingEntityListener.class)
 public class MarceneiroEntity {
 
     @Id
     @Column(name = "id", updatable = false, nullable = false)
-    private String id;
+    private UUID id;
 
     @Column(name = "situacao", nullable = false)
     private String situacao;
@@ -53,25 +57,38 @@ public class MarceneiroEntity {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @OneToMany(cascade = ALL, orphanRemoval = true, mappedBy = "marceneiro")
+    @OneToMany(cascade = ALL, orphanRemoval = true)
     private List<TelefoneEntity> telefones;
 
-    @OneToMany(cascade = ALL, orphanRemoval = true, mappedBy = "marceneiro")
+    @OneToMany(cascade = ALL, orphanRemoval = true)
     private List<EnderecoEntity> enderecos;
 
+    @Column(name = "logomarca_url")
+    private String logomarcaUrl;
+
+    @Column(name = "logomarca_filename")
+    private String logomarcaFilename;
+
     @CreatedBy
-    @Column(name = "created_by", nullable = false)
+    @Column(name = "created_by", updatable = false)
     private UUID createdBy;
 
     @CreatedDate
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedBy
-    @Column(name = "updated_by", nullable = false)
+    @Column(name = "updated_by")
     private UUID updatedBy;
 
     @LastModifiedDate
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @PrePersist
+    public void generateUuid() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

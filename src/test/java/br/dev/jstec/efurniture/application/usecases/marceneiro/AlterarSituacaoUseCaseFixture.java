@@ -4,15 +4,25 @@ import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro;
 import br.dev.jstec.efurniture.application.usecases.marceneiro.AlterarSitucaoUseCase.Input;
+import br.dev.jstec.efurniture.application.usecases.marceneiro.AlterarSitucaoUseCase.Output;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = PRIVATE)
-class AlterarSituacaoUseCaseFixture {
+public class AlterarSituacaoUseCaseFixture {
 
-    public static AlterarSitucaoUseCase.Input buildInput(Marceneiro marceneiro, String situacao) {
+    public static AlterarSitucaoUseCase.Output buildOutput(Marceneiro marceneiro, String situacao) {
+
+        return new Output(
+            marceneiro.getId().toString(),
+            marceneiro.getNome().value(),
+            situacao
+        );
+    }
+
+    public static AlterarSitucaoUseCase.Input buildInput(String id, String situacao) {
 
         return new Input(
-            marceneiro,
+            id,
             situacao
         );
     }

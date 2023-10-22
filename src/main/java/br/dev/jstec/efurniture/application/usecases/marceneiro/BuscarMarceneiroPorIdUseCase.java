@@ -1,6 +1,7 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
-import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroId;
+import static java.util.UUID.fromString;
+
 import br.dev.jstec.efurniture.application.domain.valueobject.Endereco;
 import br.dev.jstec.efurniture.application.domain.valueobject.Telefone;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
@@ -20,16 +21,16 @@ public class BuscarMarceneiroPorIdUseCase extends
     public Optional<Output> execute(final Input input) {
 
         return marceneiroRepository
-            .buscarPorId(MarceneiroId.with(input.marceneiroId()))
-            .map(mapper::mapperToBuscaPorIdOutput);
+            .buscarPorId(fromString(input.id))
+            .map(mapper::toBuscarMarceneiroPorIdOutput);
     }
 
-    public record Input(String marceneiroId) {
+    public record Input(String id) {
 
     }
 
     public record Output(
-        String marceneiroId,
+        String id,
         String situacao,
         String nome,
         String nomeComercial,
@@ -38,10 +39,11 @@ public class BuscarMarceneiroPorIdUseCase extends
         String email,
         List<Telefone> telefones,
         List<Endereco> enderecos,
+        String logomarcaUrl,
+        String logomarcaFilename,
         String createdBy,
         String createdAt,
         String updatedBy,
         String updatedAt) {
-
     }
 }

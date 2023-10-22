@@ -61,7 +61,9 @@ class CriarMarceneiroUseCaseTest {
 
         assertEquals(input.nome(), realMarceneiro.getNome().value());
         assertEquals(input.nomeComercial(), realMarceneiro.getNomeComercial().value());
-        assertEquals(input.tipoCliente(), realMarceneiro.getTipoCliente());
+        assertEquals(input.tipoPessoa(),
+            realMarceneiro.getTipoCliente().tipoPessoa().getDescricao());
+        assertEquals(input.documento(), realMarceneiro.getTipoCliente().documento());
         assertEquals(input.email(), realMarceneiro.getEmail().value());
         assertEquals(input.telefones(), realMarceneiro.getTelefones());
         assertEquals(input.enderecos(), realMarceneiro.getEnderecos());

@@ -8,12 +8,12 @@ import br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = PRIVATE)
-class BuscarMarceneiroPorEmailUseCaseFixture {
+public class BuscarMarceneiroPorEmailUseCaseFixture {
 
     public static BuscarMarceneiroPorEmailUseCase.Output buildOutput(Marceneiro marceneiro) {
 
         return new BuscarMarceneiroPorEmailUseCase.Output(
-            marceneiro.getMarceneiroId().value(),
+            marceneiro.getId().toString(),
             marceneiro.getSituacao().getDescricao(),
             marceneiro.getNome().value(),
             marceneiro.getNomeComercial().value(),
@@ -22,9 +22,9 @@ class BuscarMarceneiroPorEmailUseCaseFixture {
             marceneiro.getEmail().value(),
             marceneiro.getTelefones(),
             marceneiro.getEnderecos(),
-            fromUuid(marceneiro.getAuditInfo().createdBy()),
-            fromInstant(marceneiro.getAuditInfo().createdAt()),
-            fromUuid(marceneiro.getAuditInfo().updatedBy()),
-            fromInstant(marceneiro.getAuditInfo().updatedAt()));
+            fromUuid(marceneiro.getCreatedBy()),
+            fromInstant(marceneiro.getCreatedAt()),
+            fromUuid(marceneiro.getUpdatedBy()),
+            fromInstant(marceneiro.getUpdatedAt()));
     }
 }

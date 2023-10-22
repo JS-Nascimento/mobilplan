@@ -1,8 +1,6 @@
 package br.dev.jstec.efurniture.infrastructure.rest.dto.marceneiro;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.UUID;
 import lombok.Builder;
 import lombok.Value;
 
@@ -28,11 +26,15 @@ public class MarceneiroDto {
 
     Collection<EnderecoDto> enderecos;
 
-    UUID createdBy;
+    String logomarcaFilename;
 
-    LocalDateTime createdAt;
+    String logomarcaUrl;
 
-    UUID updatedBy;
+    String createdBy;
 
-    LocalDateTime updatedAt;
+    String createdAt;
+
+    String updatedBy;
+
+    String updatedAt;
 }

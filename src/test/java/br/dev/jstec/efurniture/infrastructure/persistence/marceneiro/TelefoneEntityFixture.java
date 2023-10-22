@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = PRIVATE)
 class TelefoneEntityFixture {
 
-    public static TelefoneEntity buildComMarceneiro(Telefone telefone) {
+    public static TelefoneEntity buildComTelefone(Telefone telefone) {
 
         return TelefoneEntity.builder()
             .id(gerarLong())

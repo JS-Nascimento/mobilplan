@@ -10,8 +10,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroFixture;
-import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroId;
 import br.dev.jstec.efurniture.application.repository.MarceneiroRepository;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,8 +38,8 @@ class BuscarMarceneiroPorIdUseCaseTest {
     @DisplayName("Deve retornar o marceneiro correspondente quando um id existente é fornecido")
     void deveRetornarMarceneiroQuandoEmailExistenteFornecido() {
 
-        var marceneiroId = MarceneiroId.unique();
-        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId.value());
+        var marceneiroId = UUID.randomUUID();
+        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId.toString());
 
         var marceneiro = MarceneiroFixture.buildComAuditoria();
         var output = buildOutput(marceneiro);
@@ -53,15 +53,15 @@ class BuscarMarceneiroPorIdUseCaseTest {
             r -> assertEquals(output, r));
 
         verify(marceneiroRepository).buscarPorId(marceneiroId);
-        verify(mapper).mapperToBuscaPorIdOutput(marceneiro);
+        verify(mapper).toBuscarMarceneiroPorIdOutput(marceneiro);
     }
 
     @Test
     @DisplayName("Deve retornar um Optional vazio quando um id não existente é fornecido")
     void deveRetornarOptionalVazioQuandoEmailNaoExistenteFornecido() {
 
-        var marceneiroId = MarceneiroId.unique();
-        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId.value());
+        var marceneiroId = UUID.randomUUID();
+        var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId.toString());
 
         doReturn(empty())
             .when(marceneiroRepository)

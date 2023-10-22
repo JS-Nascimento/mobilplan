@@ -1,7 +1,6 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
-import static br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo.fromInstant;
-import static br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo.fromUuid;
+import static java.time.format.DateTimeFormatter.ofPattern;
 import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro;
@@ -22,9 +21,9 @@ public class BuscarMarceneiroPorDocumentoUseCaseFixture {
             marceneiro.getEmail().value(),
             marceneiro.getTelefones(),
             marceneiro.getEnderecos(),
-            fromUuid(marceneiro.getCreatedBy()),
-            fromInstant(marceneiro.getCreatedAt()),
-            fromUuid(marceneiro.getUpdatedBy()),
-            fromInstant(marceneiro.getUpdatedAt()));
+            marceneiro.getCreatedBy().toString(),
+            marceneiro.getCreatedAt().format(ofPattern("dd/MM/yyyy HH:mm:ss")),
+            marceneiro.getUpdatedBy().toString(),
+            marceneiro.getUpdatedAt().format(ofPattern("dd/MM/yyyy HH:mm:ss")));
     }
 }

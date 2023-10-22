@@ -26,12 +26,12 @@ public interface MarceneiroMapper {
     @Mapping(source = "tipoCliente.documento", target = "documento",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "email.value", target = "email")
-    @Mapping(source = "createdBy", target = "createdBy", qualifiedByName = "defaultBy")
     @Mapping(source = "createdAt", target = "createdAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
         qualifiedByName = "defaultInstant")
-    @Mapping(target = "updatedBy", qualifiedByName = "defaultBy")
+    @Mapping(source = "createdBy", target = "createdBy", qualifiedByName = "defaultBy")
     @Mapping(source = "updatedAt", target = "updatedAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
         qualifiedByName = "defaultInstant")
+    @Mapping(source = "updatedBy", target = "updatedBy", qualifiedByName = "defaultBy")
     BuscarMarceneiroPorEmailUseCase.Output toBuscarMarceneiroPorEmailOutput(Marceneiro marceneiro);
 
     @Mapping(target = "id", expression = "java(marceneiro.getId().toString())")
@@ -64,9 +64,9 @@ public interface MarceneiroMapper {
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "email.value", target = "email")
     @Mapping(source = "createdBy", target = "createdBy", qualifiedByName = "defaultBy")
+    @Mapping(source = "updatedBy", target = "updatedBy", qualifiedByName = "defaultBy")
     @Mapping(source = "createdAt", target = "createdAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
         qualifiedByName = "defaultInstant")
-    @Mapping(target = "updatedBy", qualifiedByName = "defaultBy")
     @Mapping(source = "updatedAt", target = "updatedAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
         qualifiedByName = "defaultInstant")
     BuscarMarceneiroPorIdUseCase.Output toBuscarMarceneiroPorIdOutput(
@@ -82,11 +82,11 @@ public interface MarceneiroMapper {
     @Mapping(source = "tipoCliente.documento", target = "documento",
         nullValueCheckStrategy = ALWAYS)
     @Mapping(source = "email.value", target = "email")
+    @Mapping(source = "updatedBy", target = "updatedBy", qualifiedByName = "defaultBy")
+    @Mapping(source = "updatedAt", target = "updatedAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
+        qualifiedByName = "defaultInstant")
     @Mapping(source = "createdBy", target = "createdBy", qualifiedByName = "defaultBy")
     @Mapping(source = "createdAt", target = "createdAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
-        qualifiedByName = "defaultInstant")
-    @Mapping(target = "updatedBy", qualifiedByName = "defaultBy")
-    @Mapping(source = "updatedAt", target = "updatedAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
         qualifiedByName = "defaultInstant")
     BuscarTodosMarceneirosUseCase.Output toBuscarTodosMarceneirosOutput(
         Marceneiro marceneiro);
@@ -101,7 +101,7 @@ public interface MarceneiroMapper {
     @Mapping(source = "createdBy", target = "createdBy", qualifiedByName = "defaultBy")
     @Mapping(source = "createdAt", target = "createdAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
         qualifiedByName = "defaultInstant")
-    @Mapping(target = "updatedBy", qualifiedByName = "defaultBy")
+    @Mapping(source = "updatedBy", target = "updatedBy", qualifiedByName = "defaultBy")
     @Mapping(source = "updatedAt", target = "updatedAt", dateFormat = "dd/MM/yyyy HH:mm:ss",
         qualifiedByName = "defaultInstant")
     AlterarMarceneiroUseCase.Output toAlterarMarceneiroOutput(

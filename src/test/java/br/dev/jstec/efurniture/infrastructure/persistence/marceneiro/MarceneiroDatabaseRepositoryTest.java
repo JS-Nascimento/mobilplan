@@ -1,10 +1,11 @@
 package br.dev.jstec.efurniture.infrastructure.persistence.marceneiro;
 
+import static br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroFixture.buildComAuditoria;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarEmail;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarStringNumerica;
+import static br.dev.jstec.efurniture.infrastructure.persistence.marceneiro.MarceneiroEntityFixture.buildComMarceneiro;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
-import static java.util.UUID.fromString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -12,10 +13,10 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroFixture;
-import br.dev.jstec.efurniture.application.domain.marceneiro.MarceneiroId;
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
 import br.dev.jstec.efurniture.infrastructure.jpa.MarceneiroJpaRepository;
+import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,11 +43,11 @@ class MarceneiroDatabaseRepositoryTest {
     @DisplayName("Deve buscar marceneiro por ID")
     void buscarPorId() {
 
-        var id = MarceneiroId.unique();
-        var marceneiro = MarceneiroFixture.buildComAuditoria();
-        var entity = MarceneiroEntityFixture.buildComMarceneiro(marceneiro);
+        var id = UUID.randomUUID();
+        var marceneiro = buildComAuditoria();
+        var entity = buildComMarceneiro(marceneiro);
 
-        doReturn(of(entity)).when(repository).findById(fromString(id.value()));
+        doReturn(of(entity)).when(repository).findById(id);
 
         var result = databaseRepository.buscarPorId(id);
 
@@ -54,30 +55,30 @@ class MarceneiroDatabaseRepositoryTest {
         result.ifPresent(marceneiroEncontrado -> assertEquals(marceneiro, marceneiroEncontrado));
 
         verify(repository).findById(any());
-        verify(mapper).mapToMarceneiro(entity);
+        verify(mapper).toMarceneiro(entity);
     }
 
     @Test
     @DisplayName("Deve retornar vazio quando o ID não existir")
     void buscarPorIdNaoExistente() {
 
-        var id = MarceneiroId.unique();
+        var id = UUID.randomUUID();
 
-        doReturn(empty()).when(repository).findById(fromString(id.value()));
+        doReturn(empty()).when(repository).findById(id);
 
         var result = databaseRepository.buscarPorId(id);
 
         assertTrue(result.isEmpty());
-        verify(repository).findById(fromString(id.value()));
-        verify(mapper, never()).mapToMarceneiroEntity(any());
+        verify(repository).findById(id);
+        verify(mapper, never()).toMarceneiroEntity(any());
     }
 
     @Test
     @DisplayName("Deve buscar marceneiro por e-mail")
     void buscarPorEmail() {
         var email = new Email(gerarEmail(true));
-        var marceneiro = MarceneiroFixture.buildComAuditoria();
-        var entity = MarceneiroEntityFixture.buildComMarceneiro(marceneiro);
+        var marceneiro = buildComAuditoria();
+        var entity = buildComMarceneiro(marceneiro);
 
         doReturn(of(entity)).when(repository).findByEmail(email.value());
 
@@ -87,7 +88,7 @@ class MarceneiroDatabaseRepositoryTest {
         result.ifPresent(marceneiroEncontrado -> assertEquals(marceneiro, marceneiroEncontrado));
 
         verify(repository).findByEmail(email.value());
-        verify(mapper).mapToMarceneiro(entity);
+        verify(mapper).toMarceneiro(entity);
     }
 
     @Test
@@ -103,7 +104,7 @@ class MarceneiroDatabaseRepositoryTest {
         assertTrue(result.isEmpty());
 
         verify(repository).findByEmail(email.value());
-        verify(mapper, never()).mapToMarceneiroEntity(any());
+        verify(mapper, never()).toMarceneiroEntity(any());
     }
 
     @Test
@@ -111,8 +112,8 @@ class MarceneiroDatabaseRepositoryTest {
     void buscarPorDocumento() {
 
         var documento = gerarStringNumerica(11);
-        var marceneiro = MarceneiroFixture.buildComAuditoria();
-        var entity = MarceneiroEntityFixture.buildComMarceneiro(marceneiro);
+        var marceneiro = buildComAuditoria();
+        var entity = buildComMarceneiro(marceneiro);
 
         doReturn(of(entity)).when(repository).findByDocumento(documento);
 
@@ -122,7 +123,7 @@ class MarceneiroDatabaseRepositoryTest {
         result.ifPresent(marceneiroEncontrado -> assertEquals(marceneiro, marceneiroEncontrado));
 
         verify(repository).findByDocumento(documento);
-        verify(mapper).mapToMarceneiro(entity);
+        verify(mapper).toMarceneiro(entity);
     }
 
     @Test
@@ -138,15 +139,15 @@ class MarceneiroDatabaseRepositoryTest {
         assertTrue(result.isEmpty());
 
         verify(repository).findByDocumento(documento);
-        verify(mapper, never()).mapToMarceneiroEntity(any());
+        verify(mapper, never()).toMarceneiroEntity(any());
     }
 
     @Test
     @DisplayName("Deve salvar o marceneiro")
     void salvar() {
 
-        var marceneiro = MarceneiroFixture.buildComAuditoria();
-        var entity = MarceneiroEntityFixture.buildComMarceneiro(marceneiro);
+        var marceneiro = buildComAuditoria();
+        var entity = buildComMarceneiro(marceneiro);
 
         doReturn(entity).when(repository).save(entity);
 
@@ -155,8 +156,27 @@ class MarceneiroDatabaseRepositoryTest {
         assertEquals(marceneiro, result);
 
         verify(repository).save(entity);
-        verify(mapper).mapToMarceneiroEntity(marceneiro);
-        verify(mapper).mapToMarceneiro(entity);
+        verify(mapper).toMarceneiroEntity(marceneiro);
+        verify(mapper).toMarceneiro(entity);
     }
 
+    @Test
+    @DisplayName("Deve buscar todos os marceneiros")
+    void buscarTodosTest() {
+
+        var marceneiro = buildComAuditoria();
+        var entity = buildComMarceneiro(marceneiro);
+
+        var marceneirosEntity = List.of(entity);
+
+        doReturn(marceneirosEntity).when(repository).findAll();
+        doReturn(marceneiro).when(mapper).toMarceneiro(any(MarceneiroEntity.class));
+
+        var resultado = databaseRepository.buscarTodos();
+
+        assertEquals(marceneirosEntity.size(), resultado.size());
+        assertTrue(resultado.contains(marceneiro));
+
+        verify(mapper).toMarceneiro(any());
+    }
 }

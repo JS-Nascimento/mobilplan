@@ -21,7 +21,11 @@ public class CriarMarceneiroUseCase
 
     public Output execute(final Input input) {
 
-        if (marceneiroRepository.buscarPorDocumento(input.tipoCliente().documentoFiscal())
+        var tipoCliente = TipoCliente.createOf(
+            input.tipoPessoa(),
+            input.documento());
+
+        if (marceneiroRepository.buscarPorDocumento(tipoCliente.documento())
             .isPresent()) {
             throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "marceneiro");
         }
@@ -32,7 +36,7 @@ public class CriarMarceneiroUseCase
         var marceneiro = createOf(
             input.nome,
             input.nomeComercial,
-            input.tipoCliente,
+            tipoCliente,
             input.email,
             input.telefones,
             input.enderecos);
@@ -40,13 +44,15 @@ public class CriarMarceneiroUseCase
         var marceneiroSalvo = marceneiroRepository.salvar(marceneiro);
 
         return new Output(
-            marceneiroSalvo.getMarceneiroId().value(),
-            marceneiroSalvo.getNome().value());
+            marceneiroSalvo.getId().toString(),
+            marceneiroSalvo.getNome().value(),
+            marceneiroSalvo.getSituacao().getDescricao());
     }
 
     public record Input(String nome,
                         String nomeComercial,
-                        TipoCliente tipoCliente,
+                        String tipoPessoa,
+                        String documento,
                         String email,
                         List<Telefone> telefones,
                         List<Endereco> enderecos) {
@@ -54,7 +60,7 @@ public class CriarMarceneiroUseCase
     }
 
     public record Output(String id,
-                         String nome) {
-
+                         String nome,
+                         String situacao) {
     }
 }

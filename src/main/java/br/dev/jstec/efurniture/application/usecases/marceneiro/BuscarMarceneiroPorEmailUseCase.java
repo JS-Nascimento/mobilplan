@@ -23,7 +23,9 @@ public class BuscarMarceneiroPorEmailUseCase
 
         return marceneiroRepository
             .buscarPorEmail(new Email(input.email()))
-            .map(mapper::mapperToBuscaPorEmailOutput);
+            .map(mapper::toBuscarMarceneiroPorEmailOutput);
+
+
     }
 
     public record Input(String email) {
@@ -31,11 +33,13 @@ public class BuscarMarceneiroPorEmailUseCase
     }
 
     public record Output(
-        String marceneiroId,
+        String id,
+
+        String situacao,
         String nome,
         String nomeComercial,
         String tipoPessoa,
-        String documentoFiscal,
+        String documento,
         String email,
         List<Telefone> telefones,
         List<Endereco> enderecos,

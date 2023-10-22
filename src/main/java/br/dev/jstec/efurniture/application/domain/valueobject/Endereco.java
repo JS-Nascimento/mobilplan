@@ -4,12 +4,12 @@ import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_
 import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_CAMPO_INVALIDO;
 import static br.dev.jstec.efurniture.application.util.StringUtil.normalizarNome;
 import static java.lang.String.format;
-import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 
 public record Endereco(
+    Long id,
     String cep,
     String logradouro,
     String numero,
@@ -17,6 +17,18 @@ public record Endereco(
     String bairro,
     String cidade,
     String uf) {
+
+    public Endereco(
+        String cep,
+        String logradouro,
+        String numero,
+        String complemento,
+        String bairro,
+        String cidade,
+        String uf) {
+
+        this(null, cep, logradouro, numero, complemento, bairro, cidade, uf);
+    }
 
     public Endereco {
 
@@ -29,10 +41,6 @@ public record Endereco(
 
             throw new BusinessException(ERRO_ATRIBUTOS_ENDERECO_OBRIGATORIOS);
         }
-
-        complemento = validarDadosObrigatorios(complemento())
-            ? EMPTY
-            : complemento();
 
         if (!validarCep(cep)) {
 

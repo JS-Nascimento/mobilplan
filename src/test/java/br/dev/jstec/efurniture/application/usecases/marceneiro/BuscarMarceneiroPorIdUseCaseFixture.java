@@ -1,29 +1,31 @@
 package br.dev.jstec.efurniture.application.usecases.marceneiro;
 
-import static br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo.fromInstant;
-import static br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo.fromUuid;
+import static java.time.format.DateTimeFormatter.ofPattern;
 import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = PRIVATE)
-class BuscarMarceneiroPorIdUseCaseFixture {
+public class BuscarMarceneiroPorIdUseCaseFixture {
 
     public static BuscarMarceneiroPorIdUseCase.Output buildOutput(Marceneiro marceneiro) {
 
         return new BuscarMarceneiroPorIdUseCase.Output(
-            marceneiro.getMarceneiroId().value(),
+            marceneiro.getId().toString(),
+            marceneiro.getSituacao().getDescricao(),
             marceneiro.getNome().value(),
             marceneiro.getNomeComercial().value(),
-            marceneiro.getTipoCliente().tipoPessoa().name(),
-            marceneiro.getTipoCliente().documentoFiscal(),
+            marceneiro.getTipoCliente().tipoPessoa().getDescricao(),
+            marceneiro.getTipoCliente().documento(),
             marceneiro.getEmail().value(),
             marceneiro.getTelefones(),
             marceneiro.getEnderecos(),
-            fromUuid(marceneiro.getAuditInfo().createdBy()),
-            fromInstant(marceneiro.getAuditInfo().createdAt()),
-            fromUuid(marceneiro.getAuditInfo().updatedBy()),
-            fromInstant(marceneiro.getAuditInfo().updatedAt()));
+            marceneiro.getLogomarcaUrl(),
+            marceneiro.getLogomarcaFilename(),
+            marceneiro.getCreatedBy().toString(),
+            marceneiro.getCreatedAt().format(ofPattern("dd/MM/yyyy HH:mm:ss")),
+            marceneiro.getUpdatedBy().toString(),
+            marceneiro.getUpdatedAt().format(ofPattern("dd/MM/yyyy HH:mm:ss")));
     }
 }

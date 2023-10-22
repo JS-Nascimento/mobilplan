@@ -1,6 +1,5 @@
 package br.dev.jstec.efurniture.application.domain.valueobject;
 
-import static br.dev.jstec.efurniture.application.domain.DomainConstants.DDI_BRASIL;
 import static br.dev.jstec.efurniture.application.domain.TipoTelefone.FIXO;
 import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_CAMPO_INVALIDO;
 import static br.dev.jstec.efurniture.application.exceptions.ErroDeNegocio.ERRO_TIPO_TELEFONE_INCOMPATIVEL;
@@ -11,17 +10,19 @@ import br.dev.jstec.efurniture.application.domain.TipoTelefone;
 import br.dev.jstec.efurniture.application.exceptions.BusinessException;
 
 public record Telefone(
+    Long id,
     TipoTelefone tipoTelefone,
     String numero,
     String ddd,
     String ddi) {
 
-    public Telefone(TipoTelefone tipoTelefone, String numero, String ddd) {
+    private Telefone(TipoTelefone tipoTelefone, String numero, String ddd, String ddi) {
 
-        this(tipoTelefone,
-            validarNumero(tipoTelefone, numero),
-            validarDdd(ddd),
-            DDI_BRASIL);
+        this(null,
+            tipoTelefone,
+            numero,
+            ddd,
+            ddi);
     }
 
     public Telefone {
@@ -30,7 +31,6 @@ public record Telefone(
 
             throw new BusinessException(ERRO_CAMPO_INVALIDO, "Tipo de telefone");
         }
-
         ddi = validarDdi(ddi);
         ddd = validarDdd(ddd);
         numero = validarNumero(tipoTelefone, numero);
@@ -95,11 +95,6 @@ public record Telefone(
             telefone.ddd(),
             telefone.numero().substring(0, 4),
             telefone.numero().substring(4));
-    }
-
-    public static Telefone createOf(TipoTelefone tipoTelefone, String numero, String ddd) {
-
-        return new Telefone(tipoTelefone, numero, ddd);
     }
 
     public static Telefone createWithDdiOf(TipoTelefone tipoTelefone, String numero, String ddd,

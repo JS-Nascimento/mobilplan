@@ -53,7 +53,7 @@ class BuscarMarceneiroPorDocumentoUseCaseTest {
             r -> assertEquals(output, r));
 
         verify(marceneiroRepository).buscarPorDocumento(documento);
-        verify(mapper).mapperToBuscaPorDocumentoOutput(marceneiro);
+        verify(mapper).toBuscarMarceneiroPorDocumentoOutput(marceneiro);
     }
 
     @Test

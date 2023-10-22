@@ -18,7 +18,7 @@ class MarceneiroMapperTest {
     void testDefaultUpdateByWithNonNullValue() {
 
         var uuid = UUID.randomUUID();
-        var result = marceneiroMapper.defaultUpdateBy(uuid);
+        var result = marceneiroMapper.defaultBy(uuid);
 
         assertEquals(uuid.toString(), result);
     }
@@ -27,7 +27,7 @@ class MarceneiroMapperTest {
     @DisplayName("Testar DefaultUpdateBy com valor nulo")
     void testDefaultUpdateByWithNullValue() {
 
-        var result = marceneiroMapper.defaultUpdateBy(null);
+        var result = marceneiroMapper.defaultBy(null);
 
         assertEquals("", result);
     }

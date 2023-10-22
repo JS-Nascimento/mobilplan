@@ -22,7 +22,7 @@ public class BuscarMarceneiroPorDocumentoUseCase
 
         return marceneiroRepository
             .buscarPorDocumento(input.documentoFiscal())
-            .map(mapper::mapperToBuscaPorDocumentoOutput);
+            .map(mapper::toBuscarMarceneiroPorDocumentoOutput);
     }
 
     public record Input(String documentoFiscal) {
@@ -30,11 +30,12 @@ public class BuscarMarceneiroPorDocumentoUseCase
     }
 
     public record Output(
-        String marceneiroId,
+        String id,
+        String situacao,
         String nome,
         String nomeComercial,
         String tipoPessoa,
-        String documentoFiscal,
+        String documento,
         String email,
         List<Telefone> telefones,
         List<Endereco> enderecos,

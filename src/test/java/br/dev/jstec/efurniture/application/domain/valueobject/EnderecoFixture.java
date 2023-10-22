@@ -8,6 +8,7 @@ import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarStringN
 import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
+import br.dev.jstec.efurniture.infrastructure.rest.dto.marceneiro.EnderecoDto;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
@@ -138,5 +139,16 @@ public class EnderecoFixture {
     public static String buildFormatado(Endereco endereco) {
 
         return formatedOf(endereco);
+    }
+
+    public static Endereco buildComEnderecoDto(EnderecoDto endereco) {
+        return new Endereco(
+            endereco.cep(),
+            endereco.logradouro(),
+            endereco.numero(),
+            endereco.complemento(),
+            endereco.bairro(),
+            endereco.cidade(),
+            endereco.uf());
     }
 }

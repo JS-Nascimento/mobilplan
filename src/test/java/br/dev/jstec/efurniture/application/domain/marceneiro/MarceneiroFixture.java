@@ -3,13 +3,16 @@ package br.dev.jstec.efurniture.application.domain.marceneiro;
 import static br.dev.jstec.efurniture.application.domain.TipoTelefone.WHATSAPP;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarCpf;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarEmail;
+import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarInteger;
+import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarLong;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarObject;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarString;
 import static br.dev.jstec.efurniture.application.util.RandomHelper.gerarStringNumerica;
 import static java.util.List.of;
+import static java.util.UUID.fromString;
 import static lombok.AccessLevel.PRIVATE;
 
-import br.dev.jstec.efurniture.application.domain.valueobject.AuditInfo;
+import br.dev.jstec.efurniture.application.domain.TipoTelefone;
 import br.dev.jstec.efurniture.application.domain.valueobject.Email;
 import br.dev.jstec.efurniture.application.domain.valueobject.Endereco;
 import br.dev.jstec.efurniture.application.domain.valueobject.Nome;
@@ -28,14 +31,14 @@ public class MarceneiroFixture {
 
     public static Marceneiro build() {
 
-        return Marceneiro.createOf(
-            gerarString(),
-            gerarString(),
+        return new Marceneiro(
+            UUID.randomUUID(),
+            gerarObject(Situacao.class),
             TipoCliente.createOf("FISICA", gerarCpf(true)),
-            gerarEmail(true),
-            of(Telefone.createOf(WHATSAPP,
+            of(Telefone.createWithDdiOf(WHATSAPP,
                 gerarStringNumerica(9),
-                gerarStringNumerica(2))),
+                gerarStringNumerica(2),
+                gerarStringNumerica(3))),
             of(Endereco.createOf(
                 gerarStringNumerica(8),
                 gerarString(),
@@ -43,18 +46,24 @@ public class MarceneiroFixture {
                 gerarString(),
                 gerarString(),
                 gerarString(),
-                gerarString(2))));
+                gerarString(2))),
+            new Nome(gerarString()),
+            new NomeComercial(gerarString()),
+            new Email(gerarEmail(true)));
     }
 
     public static Marceneiro buildComAuditoria() {
 
         return new Marceneiro(
-            MarceneiroId.unique(),
+            UUID.randomUUID(),
             gerarObject(Situacao.class),
             TipoCliente.createOf("FISICA", gerarCpf(true)),
-            of(Telefone.createOf(WHATSAPP,
+            of(new Telefone(
+                gerarLong(),
+                TipoTelefone.byOrdinal(gerarInteger(1, 2)),
                 gerarStringNumerica(9),
-                gerarStringNumerica(2))),
+                gerarStringNumerica(2),
+                gerarStringNumerica(3))),
             of(Endereco.createOf(
                 gerarStringNumerica(8),
                 gerarString(),
@@ -66,36 +75,10 @@ public class MarceneiroFixture {
             new Nome(gerarString()),
             new NomeComercial(gerarString()),
             new Email(gerarEmail(true)),
-            new AuditInfo(UUID.randomUUID(),
-                LocalDateTime.now(),
-                UUID.randomUUID(),
-                LocalDateTime.now()));
-    }
-
-    public static void buildConstrutorIdNulo() {
-
-        new Marceneiro(
-            null,
-            gerarObject(Situacao.class),
-            TipoCliente.createOf("FISICA", gerarCpf(true)),
-            of(Telefone.createOf(WHATSAPP,
-                gerarStringNumerica(9),
-                gerarStringNumerica(2))),
-            of(Endereco.createOf(
-                gerarStringNumerica(8),
-                gerarString(),
-                gerarString(),
-                gerarString(),
-                gerarString(),
-                gerarString(),
-                gerarString(2))),
-            new Nome(gerarString()),
-            new NomeComercial(gerarString()),
-            new Email(gerarEmail(true)),
-            new AuditInfo(UUID.randomUUID(),
-                LocalDateTime.now(),
-                UUID.randomUUID(),
-                LocalDateTime.now()));
+            UUID.randomUUID(),
+            LocalDateTime.now(),
+            UUID.randomUUID(),
+            LocalDateTime.now());
     }
 
     public static void buildTelefoneInvalido() {
@@ -123,9 +106,64 @@ public class MarceneiroFixture {
             gerarString(),
             TipoCliente.createOf("FISICA", gerarCpf(true)),
             gerarEmail(true),
-            of(Telefone.createOf(WHATSAPP,
+            of(Telefone.createWithDdiOf(WHATSAPP,
                 gerarStringNumerica(9),
-                gerarStringNumerica(2))),
+                gerarStringNumerica(2),
+                gerarStringNumerica(3))),
             new ArrayList<>());
+    }
+
+    public static Marceneiro buildComIdESituacao(String id, String situacao) {
+
+        return new Marceneiro(
+            fromString(id),
+            Situacao.of(situacao),
+            TipoCliente.createOf("FISICA", gerarCpf(true)),
+            of(Telefone.createWithDdiOf(WHATSAPP,
+                gerarStringNumerica(9),
+                gerarStringNumerica(2),
+                gerarStringNumerica(3))),
+            of(Endereco.createOf(
+                gerarStringNumerica(8),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(2))),
+            new Nome(gerarString()),
+            new NomeComercial(gerarString()),
+            new Email(gerarEmail(true)),
+            UUID.randomUUID(),
+            LocalDateTime.now(),
+            UUID.randomUUID(),
+            LocalDateTime.now());
+    }
+
+    public static Marceneiro buildComId(String id) {
+
+        return new Marceneiro(
+            fromString(id),
+            gerarObject(Situacao.class),
+            TipoCliente.createOf("FISICA", gerarCpf(true)),
+            of(Telefone.createWithDdiOf(WHATSAPP,
+                gerarStringNumerica(9),
+                gerarStringNumerica(2),
+                gerarStringNumerica(3))),
+            of(Endereco.createOf(
+                gerarStringNumerica(8),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(),
+                gerarString(2))),
+            new Nome(gerarString()),
+            new NomeComercial(gerarString()),
+            new Email(gerarEmail(true)),
+            UUID.randomUUID(),
+            LocalDateTime.now(),
+            UUID.randomUUID(),
+            LocalDateTime.now());
     }
 }

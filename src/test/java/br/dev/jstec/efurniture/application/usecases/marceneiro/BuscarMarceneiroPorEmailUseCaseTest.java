@@ -54,7 +54,7 @@ class BuscarMarceneiroPorEmailUseCaseTest {
             r -> assertEquals(output, r));
 
         verify(marceneiroRepository).buscarPorEmail(new Email(email));
-        verify(mapper).mapperToBuscaPorEmailOutput(marceneiro);
+        verify(mapper).toBuscarMarceneiroPorEmailOutput(marceneiro);
     }
 
     @Test

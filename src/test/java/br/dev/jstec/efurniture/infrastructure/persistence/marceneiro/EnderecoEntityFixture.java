@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = PRIVATE)
 public class EnderecoEntityFixture {
 
-    public static EnderecoEntity build(Endereco endereco) {
+    public static EnderecoEntity buildComEndereco(Endereco endereco) {
         return EnderecoEntity.builder()
             .id(gerarLong())
             .cep(endereco.cep())

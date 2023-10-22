@@ -46,7 +46,7 @@ class CriarMarceneiroUseCaseTest {
 
         var marceneiro = MarceneiroFixture.build();
         var email = marceneiro.getEmail().value();
-        var documento = marceneiro.getTipoCliente().documentoFiscal();
+        var documento = marceneiro.getTipoCliente().documento();
 
         doReturn(empty()).when(marceneiroRepository).buscarPorDocumento(documento);
         doReturn(empty()).when(marceneiroRepository).buscarPorEmail(new Email(email));
@@ -61,7 +61,9 @@ class CriarMarceneiroUseCaseTest {
 
         assertEquals(input.nome(), realMarceneiro.getNome().value());
         assertEquals(input.nomeComercial(), realMarceneiro.getNomeComercial().value());
-        assertEquals(input.tipoCliente(), realMarceneiro.getTipoCliente());
+        assertEquals(input.tipoPessoa(),
+            realMarceneiro.getTipoCliente().tipoPessoa().getDescricao());
+        assertEquals(input.documento(), realMarceneiro.getTipoCliente().documento());
         assertEquals(input.email(), realMarceneiro.getEmail().value());
         assertEquals(input.telefones(), realMarceneiro.getTelefones());
         assertEquals(input.enderecos(), realMarceneiro.getEnderecos());
@@ -76,7 +78,7 @@ class CriarMarceneiroUseCaseTest {
 
         var marceneiro = MarceneiroFixture.build();
         var email = marceneiro.getEmail().value();
-        var documento = marceneiro.getTipoCliente().documentoFiscal();
+        var documento = marceneiro.getTipoCliente().documento();
 
         doReturn(empty()).when(marceneiroRepository).buscarPorDocumento(documento);
         doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorEmail(new Email(email));
@@ -100,7 +102,7 @@ class CriarMarceneiroUseCaseTest {
     void shouldThrowBusinessExceptionWhenDocumentoExists() {
 
         var marceneiro = MarceneiroFixture.build();
-        var documento = marceneiro.getTipoCliente().documentoFiscal();
+        var documento = marceneiro.getTipoCliente().documento();
 
         doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorDocumento(documento);
 

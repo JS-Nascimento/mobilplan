@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(
     info = @Info(
-        title = "eFurniture API",
+        title = "MobilPlan API",
         version = "1.0.0",
         description = "Aplicativo de gestão de orçamento de móveis sob medida.",
         contact = @Contact(
-            name = "JS Tecnologia",
+            name = "JS Tecnologia e Sistemas",
             email = "jorge@jstec.dev.br"
         ),
         license = @License(

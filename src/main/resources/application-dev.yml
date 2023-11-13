@@ -1,12 +1,12 @@
 spring:
   application:
-    name: eFurniture
+    name: mobilplan
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/efurniture
-    username: admin
-    password: funiture@Manager
+    url: jdbc:postgresql://${DATABASE_HOST}/mobilplan
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
 
   servlet:
     multipart:
@@ -22,6 +22,14 @@ spring:
         show_sql: true
     open-in-view: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${KEYCLOAK_HOST}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
+          issuer-uri: ${KEYCLOAK_HOST}/realms/${KEYCLOAK_REALM}
+
+
   flyway:
     baseline-on-migrate: true
     enabled: false
@@ -31,16 +39,22 @@ spring:
     init:
       mode: always
 
+keycloak:
+  realm: ${KEYCLOAK_REALM}
+  host: ${KEYCLOAK_HOST}
+  username: ${KEYCLOAK_USER}
+  password: ${KEYCLOAK_ADMIN_CLI_PASS}
+
 logging:
   level:
     org.springframework: INFO
     org.hibernate: ERROR
 
 server:
-  port: 8080
+  port: 8081
 
 info:
   app:
-    name: 'eFurniture'
+    name: 'mobilplan'
     description: 'Aplicação para gerenciamento de orçamentos de móveis planejados.'
     version: '1.0.0'

@@ -1,0 +1,643 @@
+21:03:39.638 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 16044 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:03:39.652 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:03:39.653 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:03:39.691 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:03:39.692 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:03:39.837 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [br.dev.jstec.mobilplan.Application]
+21:03:39.936 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [br.dev.jstec.mobilplan.Application]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:178)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:415)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:287)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:344)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:115)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:771)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:589)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at br.dev.jstec.mobilplan.Application.main(Application.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'useCaseConfiguration' for bean class [br.dev.jstec.mobilplan.infrastructure.configuration.usuario.UsuarioUseCaseConfiguration] conflicts with existing, non-compatible bean definition of same name and class [br.dev.jstec.mobilplan.infrastructure.configuration.marceneiro.MarceneiroUseCaseConfiguration]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:349)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:287)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:128)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:289)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:243)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:196)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:164)
+	... 16 common frames omitted
+21:05:53.603 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 21992 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:05:53.604 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:05:53.605 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:05:53.647 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:05:53.647 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:05:54.631 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:05:54.633 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:05:54.660 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:05:54.661 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:05:54.661 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 JDBC repository interfaces.
+21:05:54.668 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:05:54.669 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:05:54.695 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 2 JPA repository interfaces.
+21:05:55.246 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:05:55.313 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1665 ms
+21:05:55.819 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:05:56.900 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:05:58.264 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:05:58.377 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@40fc5609, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4e01af27, org.springframework.security.web.context.SecurityContextHolderFilter@126924c1, org.springframework.security.web.header.HeaderWriterFilter@740d8327, org.springframework.security.web.authentication.logout.LogoutFilter@2ebdc178, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@cf2336b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@656c259f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@75ce33a6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5375a4e7, org.springframework.security.web.session.SessionManagementFilter@244c5ee8, org.springframework.security.web.access.ExceptionTranslationFilter@7c3973cf, org.springframework.security.web.access.intercept.AuthorizationFilter@467428fb]
+21:05:58.799 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:05:58.859 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:05:58.871 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.735 seconds (process running for 6.339)
+21:05:59.097 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:05:59.098 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:06:48.995 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:11:28.935 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 25340 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:11:28.936 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:11:28.937 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:11:28.978 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:11:28.979 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:11:29.912 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:11:29.913 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:11:29.941 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:11:29.942 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:11:29.943 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 0 JDBC repository interfaces.
+21:11:29.950 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:11:29.951 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:11:29.980 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 2 JPA repository interfaces.
+21:11:30.515 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:11:30.581 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1602 ms
+21:11:31.073 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:11:32.109 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:11:33.473 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:11:33.576 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@545a69, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5cd7a03, org.springframework.security.web.context.SecurityContextHolderFilter@673e5d76, org.springframework.security.web.header.HeaderWriterFilter@755649ab, org.springframework.security.web.authentication.logout.LogoutFilter@cf2336b, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@5d243745, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ebdc178, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@507e7454, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@79afebe0, org.springframework.security.web.session.SessionManagementFilter@17d69588, org.springframework.security.web.access.ExceptionTranslationFilter@2376ae8, org.springframework.security.web.access.intercept.AuthorizationFilter@693debcd]
+21:11:33.986 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:11:34.049 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:11:34.061 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.563 seconds (process running for 6.18)
+21:11:34.544 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:11:34.545 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+21:13:02.322 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:13:04.746 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 3784 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:13:04.747 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:13:04.748 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:13:04.789 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:13:04.789 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:13:05.711 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:13:05.712 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:13:05.739 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:13:05.740 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:13:05.740 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+21:13:05.747 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:13:05.748 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:13:05.774 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 2 JPA repository interfaces.
+21:13:06.316 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:13:06.382 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1592 ms
+21:13:06.890 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:13:07.980 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:13:09.351 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:13:09.462 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@79afebe0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@8436058, org.springframework.security.web.context.SecurityContextHolderFilter@2ebdc178, org.springframework.security.web.header.HeaderWriterFilter@7950a350, org.springframework.security.web.authentication.logout.LogoutFilter@40fc5609, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@545a69, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45be46c0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e54d135, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2a66e42b, org.springframework.security.web.session.SessionManagementFilter@6b52bdf6, org.springframework.security.web.access.ExceptionTranslationFilter@755649ab, org.springframework.security.web.access.intercept.AuthorizationFilter@40779c9]
+21:13:09.878 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:13:09.935 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:13:09.947 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.631 seconds (process running for 6.216)
+21:13:10.429 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:13:10.430 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:14:59.705 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:15:02.115 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 14720 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:15:02.116 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:15:02.117 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:15:02.157 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:15:02.157 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:15:03.089 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:15:03.091 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:15:03.117 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:15:03.118 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:15:03.119 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+21:15:03.157 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:15:03.158 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:15:03.185 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 2 JPA repository interfaces.
+21:15:03.752 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:15:03.819 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1661 ms
+21:15:04.308 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:15:05.355 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:15:06.676 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:15:06.779 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@40779c9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@693b29d, org.springframework.security.web.context.SecurityContextHolderFilter@4089f183, org.springframework.security.web.header.HeaderWriterFilter@1a656592, org.springframework.security.web.authentication.logout.LogoutFilter@467428fb, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@693debcd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@42be4c3c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5e25ed1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@f64201, org.springframework.security.web.session.SessionManagementFilter@2376ae8, org.springframework.security.web.access.ExceptionTranslationFilter@7ddc2b48, org.springframework.security.web.access.intercept.AuthorizationFilter@1a229a33]
+21:15:07.181 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:15:07.244 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:15:07.255 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.559 seconds (process running for 6.154)
+21:15:07.784 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:15:07.785 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:15:10.909 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:16:19.744 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 9308 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:16:19.745 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:16:19.746 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:16:19.792 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:16:19.792 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:16:21.045 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:16:21.046 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:16:21.085 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:16:21.087 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:16:21.087 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 0 JDBC repository interfaces.
+21:16:21.096 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:16:21.097 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:16:21.126 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 2 JPA repository interfaces.
+21:16:21.859 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:16:21.946 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2153 ms
+21:16:22.658 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:16:24.195 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:16:26.155 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:16:26.307 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2c5131c5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46e898e0, org.springframework.security.web.context.SecurityContextHolderFilter@65377112, org.springframework.security.web.header.HeaderWriterFilter@63e07ffd, org.springframework.security.web.authentication.logout.LogoutFilter@7a44ac72, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@6f6f04e7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@335c5ac6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3662ed54, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51b7e4e6, org.springframework.security.web.session.SessionManagementFilter@5b389661, org.springframework.security.web.access.ExceptionTranslationFilter@5177e522, org.springframework.security.web.access.intercept.AuthorizationFilter@3a71bd]
+21:16:26.852 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:16:26.919 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:16:26.931 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 7.802 seconds (process running for 8.476)
+21:16:27.159 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:16:27.161 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+21:16:34.769 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:16:38.170 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 23216 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:16:38.172 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:16:38.172 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:16:38.210 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:16:38.210 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:16:39.141 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:16:39.142 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:16:39.168 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:16:39.169 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:16:39.170 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+21:16:39.176 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:16:39.177 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:16:39.202 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+21:16:39.745 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:16:39.812 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1601 ms
+21:16:40.301 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:16:41.334 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:16:42.707 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:16:42.828 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@51b1642b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ceb958a, org.springframework.security.web.context.SecurityContextHolderFilter@5d5d76c2, org.springframework.security.web.header.HeaderWriterFilter@4631a772, org.springframework.security.web.authentication.logout.LogoutFilter@401a3a8d, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@44959e06, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72a70aef, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f64eb7c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@24e657bf, org.springframework.security.web.session.SessionManagementFilter@45be46c0, org.springframework.security.web.access.ExceptionTranslationFilter@a68a207, org.springframework.security.web.access.intercept.AuthorizationFilter@4dbf3915]
+21:16:43.226 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:16:43.287 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:16:43.300 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.55 seconds (process running for 6.126)
+21:16:43.861 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:16:43.863 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+21:17:20.766 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:17:30.572 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 19472 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:17:30.574 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:17:30.575 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:17:30.614 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:17:30.614 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:17:31.562 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:17:31.575 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:17:31.602 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:17:31.603 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:17:31.604 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 JDBC repository interfaces.
+21:17:31.610 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:17:31.611 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:17:31.637 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+21:17:32.193 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:17:32.258 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1643 ms
+21:17:32.765 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:17:33.834 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:17:35.220 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:17:35.325 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7afafa9a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13c53e88, org.springframework.security.web.context.SecurityContextHolderFilter@4fcff1c8, org.springframework.security.web.header.HeaderWriterFilter@507e7454, org.springframework.security.web.authentication.logout.LogoutFilter@69559bd4, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@4d1008e3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@50364f71, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1827dd4f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5edf7b03, org.springframework.security.web.session.SessionManagementFilter@467428fb, org.springframework.security.web.access.ExceptionTranslationFilter@4467eecc, org.springframework.security.web.access.intercept.AuthorizationFilter@79afebe0]
+21:17:35.727 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:17:35.783 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:17:35.795 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.67 seconds (process running for 6.272)
+21:17:36.205 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:17:36.206 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:19:18.451 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:19:21.817 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 1540 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:19:21.819 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:19:21.819 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:19:21.860 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:19:21.860 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:19:22.791 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:19:22.793 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:19:22.819 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:19:22.820 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:19:22.820 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+21:19:22.826 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:19:22.827 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:19:22.853 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+21:19:23.394 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:19:23.461 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1600 ms
+21:19:23.956 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:19:25.000 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:19:26.327 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:19:26.436 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77a0ad0b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40fc5609, org.springframework.security.web.context.SecurityContextHolderFilter@e73d82c, org.springframework.security.web.header.HeaderWriterFilter@4f769591, org.springframework.security.web.authentication.logout.LogoutFilter@4467eecc, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@1a229a33, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5414837a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@656c259f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e01af27, org.springframework.security.web.session.SessionManagementFilter@7ddc2b48, org.springframework.security.web.access.ExceptionTranslationFilter@53bcdd81, org.springframework.security.web.access.intercept.AuthorizationFilter@2406798a]
+21:19:26.838 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:19:26.896 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:19:26.907 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.539 seconds (process running for 6.119)
+21:19:27.465 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:19:27.466 [RMI TCP Connection(2)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:22:32.470 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:22:35.747 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 15660 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:22:35.748 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:22:35.749 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:22:35.787 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:22:35.787 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:22:36.710 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:22:36.711 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:22:36.737 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:22:36.750 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:22:36.751 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 0 JDBC repository interfaces.
+21:22:36.757 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:22:36.758 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:22:36.785 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 2 JPA repository interfaces.
+21:22:37.329 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:22:37.397 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1609 ms
+21:22:37.883 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:22:38.911 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:22:40.236 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:22:40.343 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77a0ad0b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40fc5609, org.springframework.security.web.context.SecurityContextHolderFilter@e73d82c, org.springframework.security.web.header.HeaderWriterFilter@4f769591, org.springframework.security.web.authentication.logout.LogoutFilter@4467eecc, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@1a229a33, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5414837a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@656c259f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e01af27, org.springframework.security.web.session.SessionManagementFilter@7ddc2b48, org.springframework.security.web.access.ExceptionTranslationFilter@53bcdd81, org.springframework.security.web.access.intercept.AuthorizationFilter@2406798a]
+21:22:40.735 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:22:40.795 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:22:40.807 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.503 seconds (process running for 6.102)
+21:22:41.357 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:22:41.358 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:22:50.864 [http-nio-8081-exec-1] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-019, msg=Senha inválida. A senha deve ter entre 6 e 10 caracteres. Dever ao menos uma letra maiúscula, uma minúscula e um número. Não pode conter caracteres especiais (ex: !@#$%&*(), serviceName=null, response=null)
+21:22:50.878 [http-nio-8081-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:23:52.144 [http-nio-8081-exec-2] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-019, msg=Senha inválida. A senha deve ter entre 6 e 10 caracteres. Dever ao menos uma letra maiúscula, uma minúscula e um número. Não pode conter caracteres especiais (ex: !@#$%&*(), serviceName=null, response=null)
+21:23:52.145 [http-nio-8081-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:27:28.088 [http-nio-8081-exec-3] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-002, msg=O valor para o atributo Tipo de telefone é inválido., serviceName=null, response=null)
+21:27:28.089 [http-nio-8081-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:27:58.165 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:40:10.843 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 16572 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:40:10.845 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:40:10.845 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:40:10.884 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:40:10.884 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:40:11.844 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:40:11.846 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:40:11.879 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:40:11.880 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:40:11.881 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 0 JDBC repository interfaces.
+21:40:11.888 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:40:11.889 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:40:11.916 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 2 JPA repository interfaces.
+21:40:12.463 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:40:12.531 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1646 ms
+21:40:13.049 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:40:14.100 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:40:15.484 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:40:15.590 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2c32bd0d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@61c67ef, org.springframework.security.web.context.SecurityContextHolderFilter@7743fa67, org.springframework.security.web.header.HeaderWriterFilter@1ea9d411, org.springframework.security.web.authentication.logout.LogoutFilter@3264e933, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@29205788, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26a536d1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1203b777, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2d2bfcb3, org.springframework.security.web.session.SessionManagementFilter@3ee5b5f3, org.springframework.security.web.access.ExceptionTranslationFilter@4a86d75c, org.springframework.security.web.access.intercept.AuthorizationFilter@357afdad]
+21:40:16.005 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:40:16.066 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:40:16.078 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.721 seconds (process running for 6.36)
+21:40:16.389 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:40:16.390 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:40:24.326 [http-nio-8081-exec-1] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - ERROR: null value in column "ddd" of relation "usuarios" violates not-null constraint
+  Detalhe: Failing row contains (6e499b1e-b4c2-4186-b374-2ba931cd2978, null, null, 2023-10-27 21:40:24.286683, null, null, carlos@gmail.com, Carlos Camorin, null, $2a$10$5qCpxDhD4i69mPzoyjVSzOsiZdQpsFcgcDV.4EH2otDMU0oFaPGwy, INATIVO, null, 2023-10-27 21:40:24.286683, null).
+21:40:24.338 [http-nio-8081-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: could not execute statement [ERROR: null value in column "ddd" of relation "usuarios" violates not-null constraint
+  Detalhe: Failing row contains (6e499b1e-b4c2-4186-b374-2ba931cd2978, null, null, 2023-10-27 21:40:24.286683, null, null, carlos@gmail.com, Carlos Camorin, null, $2a$10$5qCpxDhD4i69mPzoyjVSzOsiZdQpsFcgcDV.4EH2otDMU0oFaPGwy, INATIVO, null, 2023-10-27 21:40:24.286683, null).] [insert into usuarios (avatar_filename,avatar_url,created_at,ddd,ddi,email,nome,numero,senha,situacao,tipo,updated_at,updated_by,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)]; SQL [insert into usuarios (avatar_filename,avatar_url,created_at,ddd,ddi,email,nome,numero,senha,situacao,tipo,updated_at,updated_by,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)]; constraint [ddd" of relation "usuarios]] with root cause
+org.postgresql.util.PSQLException: ERROR: null value in column "ddd" of relation "usuarios" violates not-null constraint
+  Detalhe: Failing row contains (6e499b1e-b4c2-4186-b374-2ba931cd2978, null, null, 2023-10-27 21:40:24.286683, null, null, carlos@gmail.com, Carlos Camorin, null, $2a$10$5qCpxDhD4i69mPzoyjVSzOsiZdQpsFcgcDV.4EH2otDMU0oFaPGwy, INATIVO, null, 2023-10-27 21:40:24.286683, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2713)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2401)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:368)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:498)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:415)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:190)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:152)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:275)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.performNonBatchedMutation(AbstractMutationExecutor.java:108)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:40)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:53)
+	at org.hibernate.persister.entity.mutation.InsertCoordinator.doStaticInserts(InsertCoordinator.java:169)
+	at org.hibernate.persister.entity.mutation.InsertCoordinator.coordinateInsert(InsertCoordinator.java:111)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:2762)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:102)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:633)
+	at org.hibernate.engine.spi.ActionQueue.executeInserts(ActionQueue.java:487)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:267)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:322)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:363)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:277)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:140)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:138)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:797)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:745)
+	at org.hibernate.engine.spi.CascadingActions$7.cascade(CascadingActions.java:290)
+	at org.hibernate.engine.spi.CascadingActions$7.cascade(CascadingActions.java:280)
+	at org.hibernate.engine.internal.Cascade.cascadeToOne(Cascade.java:513)
+	at org.hibernate.engine.internal.Cascade.cascadeAssociation(Cascade.java:434)
+	at org.hibernate.engine.internal.Cascade.cascadeProperty(Cascade.java:220)
+	at org.hibernate.engine.internal.Cascade.cascadeCollectionElements(Cascade.java:547)
+	at org.hibernate.engine.internal.Cascade.cascadeCollection(Cascade.java:477)
+	at org.hibernate.engine.internal.Cascade.cascadeAssociation(Cascade.java:437)
+	at org.hibernate.engine.internal.Cascade.cascadeProperty(Cascade.java:220)
+	at org.hibernate.engine.internal.Cascade.cascade(Cascade.java:153)
+	at org.hibernate.event.internal.AbstractSaveEventListener.cascadeAfterSave(AbstractSaveEventListener.java:490)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:289)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:136)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:755)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:739)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:360)
+	at jdk.proxy4/jdk.proxy4.$Proxy172.persist(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:311)
+	at jdk.proxy4/jdk.proxy4.$Proxy172.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:617)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:288)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:164)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244)
+	at jdk.proxy4/jdk.proxy4.$Proxy178.save(Unknown Source)
+	at br.dev.jstec.mobilplan.infrastructure.persistence.usuario.UsuarioDatabaseRepository.criar(UsuarioDatabaseRepository.java:35)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at br.dev.jstec.mobilplan.infrastructure.persistence.usuario.UsuarioDatabaseRepository$$SpringCGLIB$$0.criar(<generated>)
+	at br.dev.jstec.mobilplan.application.usecases.usuario.CriarUsuarioUseCase.execute(CriarUsuarioUseCase.java:29)
+	at br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario.UsuarioController.criarUsuario(UsuarioController.java:52)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:141)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario.UsuarioController$$SpringCGLIB$$0.criarUsuario(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:128)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+21:42:00.423 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:42:04.200 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 10876 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:42:04.201 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:42:04.202 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:42:04.240 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:42:04.240 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:42:05.177 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:42:05.178 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:42:05.208 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:42:05.212 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:42:05.212 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+21:42:05.219 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:42:05.219 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:42:05.248 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 2 JPA repository interfaces.
+21:42:05.793 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:42:05.859 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1619 ms
+21:42:06.351 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:42:07.427 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:42:08.794 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:42:08.900 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ab7b9d9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20fd0a98, org.springframework.security.web.context.SecurityContextHolderFilter@1f64eb7c, org.springframework.security.web.header.HeaderWriterFilter@1e0a1bf3, org.springframework.security.web.authentication.logout.LogoutFilter@6e399e5c, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@4ceb958a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@56bbc637, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c014e7d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@30aa8cc8, org.springframework.security.web.session.SessionManagementFilter@5d5d76c2, org.springframework.security.web.access.ExceptionTranslationFilter@51b27db3, org.springframework.security.web.access.intercept.AuthorizationFilter@773b29f7]
+21:42:09.304 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:42:09.362 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:42:09.375 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.619 seconds (process running for 6.248)
+21:42:09.791 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:42:09.794 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:42:14.168 [http-nio-8081-exec-1] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-002, msg=O valor para o atributo Tipo de telefone é inválido., serviceName=null, response=null)
+21:42:14.181 [http-nio-8081-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:46:04.811 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:46:08.473 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 24580 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:46:08.475 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:46:08.475 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:46:08.514 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:46:08.514 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:46:09.467 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:46:09.469 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:46:09.501 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:46:09.502 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:46:09.502 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+21:46:09.510 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:46:09.511 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:46:09.544 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 2 JPA repository interfaces.
+21:46:10.086 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:46:10.152 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1638 ms
+21:46:10.643 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:46:11.691 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:46:13.020 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:46:13.124 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@693debcd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4bd443c8, org.springframework.security.web.context.SecurityContextHolderFilter@6a3a2df3, org.springframework.security.web.header.HeaderWriterFilter@7ddc2b48, org.springframework.security.web.authentication.logout.LogoutFilter@1c014e7d, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@7fe61f44, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4089f183, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7950a350, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@40779c9, org.springframework.security.web.session.SessionManagementFilter@2267b285, org.springframework.security.web.access.ExceptionTranslationFilter@1195e04b, org.springframework.security.web.access.intercept.AuthorizationFilter@49fe6d8]
+21:46:13.605 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:46:13.679 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:46:13.692 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.675 seconds (process running for 6.318)
+21:46:14.041 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:46:14.043 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+21:46:23.671 [http-nio-8081-exec-1] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-002, msg=O valor para o atributo Tipo de telefone é inválido., serviceName=null, response=null)
+21:46:23.685 [http-nio-8081-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:48:22.365 [http-nio-8081-exec-2] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-002, msg=O valor para o atributo Tipo de telefone é inválido., serviceName=null, response=null)
+21:48:22.367 [http-nio-8081-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:49:51.851 [http-nio-8081-exec-3] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-002, msg=O valor para o atributo Tipo de telefone é inválido., serviceName=null, response=null)
+21:49:51.853 [http-nio-8081-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:50:08.875 [http-nio-8081-exec-4] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-002, msg=O valor para o atributo Tipo de telefone é inválido., serviceName=null, response=null)
+21:50:08.878 [http-nio-8081-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:51:24.975 [http-nio-8081-exec-5] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-002, msg=O valor para o atributo Tipo de telefone é inválido., serviceName=null, response=null)
+21:51:24.976 [http-nio-8081-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:52:15.890 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:56:46.349 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 19492 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:56:46.350 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:56:46.351 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:56:46.389 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:56:46.390 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:56:47.337 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:56:47.338 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:56:47.365 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:56:47.366 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:56:47.366 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 JDBC repository interfaces.
+21:56:47.373 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:56:47.374 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:56:47.403 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 2 JPA repository interfaces.
+21:56:47.945 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:56:48.012 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1622 ms
+21:56:48.504 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:56:49.555 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:56:50.927 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:56:51.033 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5375a4e7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21cf9377, org.springframework.security.web.context.SecurityContextHolderFilter@656c259f, org.springframework.security.web.header.HeaderWriterFilter@76f8bc0b, org.springframework.security.web.authentication.logout.LogoutFilter@45be46c0, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@40fc5609, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2eda4ef2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ea50700, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@321c559, org.springframework.security.web.session.SessionManagementFilter@e73d82c, org.springframework.security.web.access.ExceptionTranslationFilter@740d8327, org.springframework.security.web.access.intercept.AuthorizationFilter@58121969]
+21:56:51.448 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:56:51.506 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:56:51.518 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.602 seconds (process running for 6.203)
+21:56:51.976 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:56:51.977 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+21:57:03.757 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:57:07.403 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 21004 (C:\Projetos\eFurniture\build\classes\java\main started by Jorge in C:\Projetos\eFurniture)
+21:57:07.404 [restartedMain] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:57:07.405 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+21:57:07.444 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:57:07.444 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:57:08.371 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:57:08.372 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+21:57:08.405 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:57:08.406 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+21:57:08.407 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 0 JDBC repository interfaces.
+21:57:08.414 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+21:57:08.414 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:57:08.441 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 2 JPA repository interfaces.
+21:57:08.992 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+21:57:09.059 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1614 ms
+21:57:09.552 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:57:10.621 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:57:12.024 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+21:57:12.138 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@545a69, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5cd7a03, org.springframework.security.web.context.SecurityContextHolderFilter@673e5d76, org.springframework.security.web.header.HeaderWriterFilter@755649ab, org.springframework.security.web.authentication.logout.LogoutFilter@cf2336b, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@5d243745, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ebdc178, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@507e7454, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@79afebe0, org.springframework.security.web.session.SessionManagementFilter@17d69588, org.springframework.security.web.access.ExceptionTranslationFilter@2376ae8, org.springframework.security.web.access.intercept.AuthorizationFilter@693debcd]
+21:57:12.549 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:57:12.608 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+21:57:12.620 [restartedMain] INFO  br.dev.jstec.mobilplan.Application - Started Application in 5.672 seconds (process running for 6.295)
+21:57:12.983 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:57:12.984 [RMI TCP Connection(3)-192.168.0.122] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:57:23.260 [http-nio-8081-exec-1] ERROR b.d.j.m.i.e.CustomExceptionHandler - Erro ao validar informações. Erro: ErrorMessage(code=mobilplan-002, msg=O valor para o atributo Tipo de telefone é inválido., serviceName=null, response=null)
+21:57:23.273 [http-nio-8081-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [br.dev.jstec.mobilplan.application.exceptions.BusinessException]
+21:57:37.295 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

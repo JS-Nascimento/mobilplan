@@ -1,12 +1,12 @@
 spring:
   application:
-    name: eFurniture
+    name: mobilplan
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/efurniture
+    url: jdbc:postgresql://localhost:5432/mobilplan
     username: admin
-    password: funiture@Manager
+    password: mobilplan@admin
 
 
   jpa:
@@ -27,16 +27,20 @@ spring:
     init:
       mode: always
 
+keycloack:
+  realm: ${KEYCLOAK_REALM:jstec}
+  host: ${KEYCLOAK_HOST:http://localhost:8080}
+
 logging:
   level:
     org.springframework: INFO
     org.hibernate: ERROR
 
 server:
-  port: 8080
+  port: 8081
 
 info:
   app:
-    name: 'eFurniture'
+    name: 'mobilplan'
     description: 'Aplicação para gerenciamento de orçamentos de móveis planejados.'
     version: '1.0.0'

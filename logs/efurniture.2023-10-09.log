@@ -1,6 +1,6 @@
-15:43:12.971 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 24516 (started by Jorge in C:\Projetos\eFurniture)
-15:43:12.974 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-15:43:12.975 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+15:43:12.971 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 24516 (started by Jorge in C:\Projetos\mobilplan)
+15:43:12.974 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+15:43:12.975 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 15:43:13.957 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 15:43:13.958 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 15:43:13.980 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 JDBC repository interfaces.
@@ -10,13 +10,13 @@
 15:43:14.834 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 15:43:15.418 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 15:43:16.361 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-15:43:16.417 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 3.928 seconds (process running for 6.413)
-15:43:17.328 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@7194f1e4
-15:43:17.346 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@152de34c
+15:43:16.417 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 3.928 seconds (process running for 6.413)
+15:43:17.328 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@7194f1e4
+15:43:17.346 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@152de34c
 15:43:17.805 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-17:53:59.081 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 20056 (started by Jorge in C:\Projetos\eFurniture)
-17:53:59.083 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-17:53:59.084 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+17:53:59.081 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 20056 (started by Jorge in C:\Projetos\mobilplan)
+17:53:59.083 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+17:53:59.084 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 17:54:00.308 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 17:54:00.310 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 17:54:00.335 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 JDBC repository interfaces.
@@ -26,13 +26,13 @@
 17:54:01.155 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 17:54:01.775 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 17:54:02.833 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-17:54:02.888 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 4.6 seconds (process running for 6.643)
-17:54:03.796 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@75465e0a
-17:54:03.800 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@43ef4689
+17:54:02.888 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 4.6 seconds (process running for 6.643)
+17:54:03.796 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@75465e0a
+17:54:03.800 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@43ef4689
 17:54:04.230 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-17:54:42.410 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 1060 (started by Jorge in C:\Projetos\eFurniture)
-17:54:42.412 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-17:54:42.413 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+17:54:42.410 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 1060 (started by Jorge in C:\Projetos\mobilplan)
+17:54:42.412 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+17:54:42.413 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 17:54:43.490 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 17:54:43.492 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 17:54:43.513 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 JDBC repository interfaces.
@@ -42,13 +42,13 @@
 17:54:44.371 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 17:54:44.952 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 17:54:45.927 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-17:54:45.981 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 4.175 seconds (process running for 6.377)
-17:54:46.879 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@288fd663
-17:54:46.883 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@8f2bfcba
+17:54:45.981 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 4.175 seconds (process running for 6.377)
+17:54:46.879 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@288fd663
+17:54:46.883 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@8f2bfcba
 17:54:47.312 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-18:55:28.635 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 15448 (started by Jorge in C:\Projetos\eFurniture)
-18:55:28.638 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-18:55:28.639 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+18:55:28.635 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 15448 (started by Jorge in C:\Projetos\mobilplan)
+18:55:28.638 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+18:55:28.639 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 18:55:29.794 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 18:55:29.796 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 18:55:29.819 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
@@ -58,13 +58,13 @@
 18:55:30.646 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 18:55:31.247 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 18:55:32.241 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-18:55:32.305 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 4.539 seconds (process running for 6.601)
-18:55:33.273 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@a28da56f
-18:55:33.277 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@b158da4e
+18:55:32.305 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 4.539 seconds (process running for 6.601)
+18:55:33.273 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@a28da56f
+18:55:33.277 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@b158da4e
 18:55:33.758 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-18:57:21.102 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 22032 (started by Jorge in C:\Projetos\eFurniture)
-18:57:21.104 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-18:57:21.104 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+18:57:21.102 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 22032 (started by Jorge in C:\Projetos\mobilplan)
+18:57:21.104 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+18:57:21.104 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 18:57:22.156 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 18:57:22.161 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 18:57:22.184 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
@@ -74,13 +74,13 @@
 18:57:23.016 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 18:57:23.637 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 18:57:24.649 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-18:57:24.705 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 4.201 seconds (process running for 6.357)
-18:57:25.603 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@22d85f82
-18:57:25.607 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@924afa69
+18:57:24.705 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 4.201 seconds (process running for 6.357)
+18:57:25.603 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@22d85f82
+18:57:25.607 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@924afa69
 18:57:26.105 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-21:07:33.509 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 24780 (started by Jorge in C:\Projetos\eFurniture)
-21:07:33.511 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-21:07:33.512 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+21:07:33.509 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 24780 (started by Jorge in C:\Projetos\mobilplan)
+21:07:33.511 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:07:33.512 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 21:07:34.667 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 21:07:34.669 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 21:07:34.693 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 JDBC repository interfaces.
@@ -90,13 +90,13 @@
 21:07:35.556 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 21:07:36.172 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 21:07:37.146 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-21:07:37.202 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 4.703 seconds (process running for 6.784)
-21:07:38.129 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@18a4e562
-21:07:38.134 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@24e4964d
+21:07:37.202 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 4.703 seconds (process running for 6.784)
+21:07:38.129 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@18a4e562
+21:07:38.134 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@24e4964d
 21:07:38.677 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-21:08:30.801 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 20792 (started by Jorge in C:\Projetos\eFurniture)
-21:08:30.802 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-21:08:30.803 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+21:08:30.801 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 20792 (started by Jorge in C:\Projetos\mobilplan)
+21:08:30.802 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:08:30.803 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 21:08:31.840 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 21:08:31.842 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 21:08:31.863 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 JDBC repository interfaces.
@@ -106,13 +106,13 @@
 21:08:32.693 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 21:08:33.399 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 21:08:34.425 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-21:08:34.482 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 4.288 seconds (process running for 6.556)
-21:08:35.410 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@d598579
-21:08:35.414 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@2e43a921
+21:08:34.482 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 4.288 seconds (process running for 6.556)
+21:08:35.410 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@d598579
+21:08:35.414 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@2e43a921
 21:08:35.943 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-21:08:57.220 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 9584 (started by Jorge in C:\Projetos\eFurniture)
-21:08:57.223 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-21:08:57.223 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+21:08:57.220 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 9584 (started by Jorge in C:\Projetos\mobilplan)
+21:08:57.223 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+21:08:57.223 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 21:08:58.304 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 21:08:58.306 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 21:08:58.329 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 JDBC repository interfaces.
@@ -122,13 +122,13 @@
 21:08:59.187 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 21:08:59.821 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 21:09:00.810 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-21:09:00.864 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 4.259 seconds (process running for 6.359)
-21:09:01.831 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@1710a72
-21:09:01.836 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.efurniture.application.domain.marceneiro.Marceneiro@6038eb02
+21:09:00.864 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 4.259 seconds (process running for 6.359)
+21:09:01.831 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@1710a72
+21:09:01.836 [Test worker] INFO  b.d.j.e.a.d.marceneiro.Marceneiro - Marceneiro criado: br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro@6038eb02
 21:09:02.343 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-22:24:44.704 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 18380 (started by Jorge in C:\Projetos\eFurniture)
-22:24:44.707 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-22:24:44.708 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+22:24:44.704 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 18380 (started by Jorge in C:\Projetos\mobilplan)
+22:24:44.707 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+22:24:44.708 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 22:24:45.966 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 22:24:45.968 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 22:24:45.990 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
@@ -694,8 +694,8 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
 	... 176 common frames omitted
-22:24:50.190 [Test worker] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [br.dev.jstec.efurniture.ApplicationTests@28b0eae9]
-java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@16869348 testClass = br.dev.jstec.efurniture.ApplicationTests, locations = [], classes = [br.dev.jstec.efurniture.Application], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@5e9f73b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6bfaa0a6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7c2924d7, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6824b913, org.springframework.boot.test.context.SpringBootTestAnnotation@2cfd534a], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+22:24:50.190 [Test worker] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [br.dev.jstec.mobilplan.ApplicationTests@28b0eae9]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@16869348 testClass = br.dev.jstec.mobilplan.ApplicationTests, locations = [], classes = [br.dev.jstec.mobilplan.Application], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@5e9f73b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6bfaa0a6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7c2924d7, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6824b913, org.springframework.boot.test.context.SpringBootTestAnnotation@2cfd534a], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:143)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:127)
 	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
@@ -906,9 +906,9 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
 	... 176 common frames omitted
-22:25:44.665 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 14432 (started by Jorge in C:\Projetos\eFurniture)
-22:25:44.671 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-22:25:44.672 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+22:25:44.665 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 14432 (started by Jorge in C:\Projetos\mobilplan)
+22:25:44.671 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+22:25:44.672 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 22:25:45.802 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 22:25:45.804 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 22:25:45.829 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 JDBC repository interfaces.
@@ -1070,11 +1070,11 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	... 137 common frames omitted
 22:25:48.248 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 22:25:49.531 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-22:25:49.600 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 5.555 seconds (process running for 7.791)
+22:25:49.600 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 5.555 seconds (process running for 7.791)
 22:25:51.179 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-22:26:57.927 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 6208 (started by Jorge in C:\Projetos\eFurniture)
-22:26:57.929 [Test worker] DEBUG b.d.j.efurniture.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
-22:26:57.929 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+22:26:57.927 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Starting ApplicationTests using Java 18.0.2 with PID 6208 (started by Jorge in C:\Projetos\mobilplan)
+22:26:57.929 [Test worker] DEBUG b.d.j.mobilplan.ApplicationTests - Running with Spring Boot v3.1.3, Spring v6.0.11
+22:26:57.929 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - No active profile set, falling back to 1 default profile: "default"
 22:26:58.975 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
 22:26:58.977 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
 22:26:59.000 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 JDBC repository interfaces.
@@ -1084,5 +1084,5 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 22:26:59.858 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
 22:27:00.450 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 22:27:01.398 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-22:27:01.455 [Test worker] INFO  b.d.j.efurniture.ApplicationTests - Started ApplicationTests in 4.131 seconds (process running for 6.601)
+22:27:01.455 [Test worker] INFO  b.d.j.mobilplan.ApplicationTests - Started ApplicationTests in 4.131 seconds (process running for 6.601)
 22:27:02.875 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

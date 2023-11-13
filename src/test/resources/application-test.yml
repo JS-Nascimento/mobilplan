@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eFurniture
+    name: mobilplan
 
   datasource:
     url: jdbc:h2:mem:testdb
@@ -16,16 +16,20 @@ spring:
       max-file-size: 5MB
       max-request-size: 5MB
 
+keycloack:
+  realm: ${KEYCLOAK_REALM:jstec}
+  host: ${KEYCLOAK_HOST:http://localhost:8080}
+
 logging:
   level:
     org.springframework: INFO
     org.hibernate: ERROR
 
 server:
-  port: 8080
+  port: 8081
 
 info:
   app:
-    name: 'eFurniture'
+    name: 'mobilplan'
     description: 'Aplicação para gerenciamento de orçamentos de móveis planejados.'
     version: '1.0.0'

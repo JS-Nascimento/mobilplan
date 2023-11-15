@@ -57,7 +57,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/clientes*").hasAnyRole(ROLE_ADMIN, ROLE_CLIENTE)
                 .requestMatchers("/arquitetos*").hasAnyRole(ROLE_ADMIN, ROLE_ARQUITETO)
                 .requestMatchers("/fornecedores*").hasAnyRole(ROLE_ADMIN, ROLE_FORNECEDOR)
-                .requestMatchers(POST, "v1/usuarios*").permitAll()
+                .requestMatchers(POST, "v1/usuarios/novo*").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**",
                     "/swagger-resources/**", "/swagger-ui.html").permitAll()
                 .anyRequest().authenticated())

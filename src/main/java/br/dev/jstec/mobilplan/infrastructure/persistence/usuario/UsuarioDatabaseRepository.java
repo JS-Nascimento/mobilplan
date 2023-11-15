@@ -9,11 +9,13 @@ import br.dev.jstec.mobilplan.infrastructure.rest.client.keycloak.KeycloakUserCl
 import jakarta.transaction.Transactional;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class UsuarioDatabaseRepository implements UsuarioRepository {
 
     private final UsuarioJpaRepository repository;
@@ -33,6 +35,7 @@ public class UsuarioDatabaseRepository implements UsuarioRepository {
     @Transactional
     public Usuario criar(Usuario usuario) {
 
+        log.info("Criando usuário no keycloak");
         var userId = keycloakUserClient
             .createUser(
                 usuario.getNome().value(),
@@ -45,6 +48,7 @@ public class UsuarioDatabaseRepository implements UsuarioRepository {
         usuarioEntity.setId(fromString(userId));
         usuarioEntity.setSenha(passwordEncoder.encode(usuarioEntity.getSenha()));
 
+        log.info("Criando usuário no banco de dados");
         var usuarioEntitySaved = repository.save(usuarioEntity);
 
         return mapper.toUsuario(usuarioEntitySaved);

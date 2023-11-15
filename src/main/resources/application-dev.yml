@@ -1,3 +1,12 @@
+amqp:
+  admin:
+    auto-create: false
+  queues:
+    email-confirmation:
+      exchange: user.events
+      routing-key: email.confirmation
+      queue: email.confirmation.queue
+
 spring:
   application:
     name: mobilplan
@@ -7,6 +16,13 @@ spring:
     url: jdbc:postgresql://${DATABASE_HOST}/mobilplan
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
+
+  rabbitmq:
+    dynamic: ${amqp.admin.auto-create}
+    host: ${AMQP_RABBIT_HOST}
+    port: ${AMQP_RABBIT_PORT}
+    username: ${AMQP_RABBIT_USERNAME}
+    password: ${AMQP_RABBIT_PASSWORD}
 
   servlet:
     multipart:

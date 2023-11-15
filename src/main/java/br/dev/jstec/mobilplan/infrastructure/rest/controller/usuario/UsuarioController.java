@@ -31,7 +31,7 @@ public class UsuarioController {
     private final CriarUsuarioUseCase criarUsuarioUseCase;
     private final UsuarioDtoMapper mapper;
 
-    @PostMapping()
+    @PostMapping("/novo")
     @Operation(
         summary = "Cria um Usuário, retornando seu ID",
         description = "Este endpoint cria um Usuário e retorna nome e id criados. "

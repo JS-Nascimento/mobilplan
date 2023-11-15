@@ -20,10 +20,12 @@ import java.util.UUID;
 import java.util.stream.StreamSupport;
 import javax.imageio.ImageIO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class MarceneiroDatabaseRepository implements MarceneiroRepository {
 
     private final MarceneiroJpaRepository repository;
@@ -59,6 +61,8 @@ public class MarceneiroDatabaseRepository implements MarceneiroRepository {
     public Marceneiro salvar(Marceneiro marceneiro) {
 
         var marceneiroEntity = mapper.toMarceneiroEntity(marceneiro);
+
+        log.info("Salvando Marceneiro : {}", marceneiroEntity);
         var marceneiroEntitySaved = repository.save(marceneiroEntity);
 
         return mapper.toMarceneiro(marceneiroEntitySaved);
@@ -90,7 +94,9 @@ public class MarceneiroDatabaseRepository implements MarceneiroRepository {
 
         fileName = fileName.concat(".").concat(tipoImagem);
 
+        log.info("Upload logomarca : {}", fileName);
         var logoUrl = putFilesBucket.put(fileName, inputStream, contentLength);
+
 
         if (!isBlank(logoUrl)) {
 
@@ -98,6 +104,7 @@ public class MarceneiroDatabaseRepository implements MarceneiroRepository {
             entity.setLogomarcaUrl(logoUrl);
             entity.setLogomarcaFilename(fileName);
 
+            log.info("Salvando informações de logomarca para o Marceneiro : {}", entity);
             repository.save(entity);
 
             return logoUrl;

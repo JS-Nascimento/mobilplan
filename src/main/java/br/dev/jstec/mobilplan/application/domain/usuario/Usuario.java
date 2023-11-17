@@ -1,17 +1,17 @@
 package br.dev.jstec.mobilplan.application.domain.usuario;
 
-import static br.dev.jstec.mobilplan.application.domain.usuario.Situacao.INATIVO;
-
+import br.dev.jstec.mobilplan.application.domain.Events;
+import br.dev.jstec.mobilplan.application.domain.events.DomainEvent;
 import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
 import br.dev.jstec.mobilplan.application.domain.valueobject.Nome;
 import br.dev.jstec.mobilplan.application.domain.valueobject.Senha;
 import br.dev.jstec.mobilplan.application.domain.valueobject.Telefone;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 @Getter
 @Setter
-@NoArgsConstructor()
-public class Usuario {
+
+public class Usuario extends Events {
 
     UUID id;
     Nome nome;
@@ -36,7 +36,41 @@ public class Usuario {
     UUID updatedBy;
     LocalDateTime updatedAt;
 
-    private Usuario(
+    public Usuario() {
+        super(null);
+    }
+
+    protected Usuario(
+        UUID id,
+        Nome nome,
+        Email email,
+        Senha senha,
+        Telefone telefone,
+        Set<String> roles,
+        Situacao situacao,
+        String avatarFilename,
+        String avatarUrl,
+        LocalDateTime createdAt,
+        UUID updatedBy,
+        LocalDateTime updatedAt,
+        List<DomainEvent> domainEvents) {
+
+        super(domainEvents);
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.roles = roles;
+        this.situacao = situacao;
+        this.avatarFilename = avatarFilename;
+        this.avatarUrl = avatarUrl;
+        this.createdAt = createdAt;
+        this.updatedBy = updatedBy;
+        this.updatedAt = updatedAt;
+    }
+
+    protected Usuario(
         UUID id,
         Nome nome,
         Email email,
@@ -49,6 +83,7 @@ public class Usuario {
         LocalDateTime createdAt,
         UUID updatedBy,
         LocalDateTime updatedAt) {
+        super(null);
 
         this.id = id;
         this.nome = nome;
@@ -64,7 +99,7 @@ public class Usuario {
         this.updatedAt = updatedAt;
     }
 
-    private Usuario(
+    protected Usuario(
         UUID id,
         Nome nome,
         Email email,
@@ -76,6 +111,7 @@ public class Usuario {
         LocalDateTime createdAt,
         UUID updatedBy,
         LocalDateTime updatedAt) {
+        super(null);
 
         this.id = id;
         this.nome = nome;
@@ -90,25 +126,40 @@ public class Usuario {
         this.updatedAt = updatedAt;
     }
 
+    private Usuario(
+        Nome nome,
+        Email email,
+        Senha senha,
+        Set<String> roles,
+        Situacao situacao,
+        List<DomainEvent> domainEvents) {
+
+        super(domainEvents);
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.roles = roles;
+        this.situacao = situacao;
+    }
+
     public static Usuario createPrincipalOf(
         String nome,
         String email,
         String senha) {
 
-        return new Usuario(
-            null,
+        var usuario = new Usuario(
             new Nome(nome),
             new Email(email),
             new Senha(senha),
-            null,
             Set.of("ROLE_MOBILPLAN_USUARIO"),
-            INATIVO,
-            null,
-            null,
-            null,
-            null,
+            Situacao.INATIVO,
             null
         );
+
+        usuario.registerEvent(new UserEmailConfirmation(email, nome));
+
+
+        return usuario;
     }
 
     public static Usuario getOf(Usuario usuario) {

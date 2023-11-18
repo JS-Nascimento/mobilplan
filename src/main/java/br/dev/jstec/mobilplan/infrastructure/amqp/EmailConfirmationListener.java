@@ -24,6 +24,5 @@ public class EmailConfirmationListener {
         log.info("[message:email.listener.income] [payload:{}]", message);
 
         emailService.sendEmailConfirmation(aResult.email(), aResult.nome());
-
     }
 }

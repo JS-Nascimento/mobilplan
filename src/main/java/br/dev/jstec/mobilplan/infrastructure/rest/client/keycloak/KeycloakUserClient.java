@@ -6,13 +6,12 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.valueOf;
 
 import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.representations.idm.CredentialRepresentation;
-import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -25,10 +24,11 @@ public class KeycloakUserClient {
 
     @Value("${keycloak.realm}")
     private String keycloakRealm;
+
     private final Keycloak keycloak;
 
     public String createUser(String username, String email, String password,
-        Set<String> roleNames) {
+        Set<String> groupsName) {
 
         var user = new UserRepresentation();
         user.setFirstName(username);
@@ -36,6 +36,7 @@ public class KeycloakUserClient {
         user.setEmail(email);
         user.setEmailVerified(false);
         user.setEnabled(false);
+        user.setGroups(new ArrayList<>(groupsName));
 
         CredentialRepresentation credential = new CredentialRepresentation();
         credential.setType(CredentialRepresentation.PASSWORD);
@@ -65,15 +66,14 @@ public class KeycloakUserClient {
             userId = response.getLocation().getPath().replaceAll(".*/([^/]+)$", "$1");
         }
 
-        if (!roleNames.isEmpty()) {
-            List<RoleRepresentation> allRoles = realmResource.roles().list();
-            List<RoleRepresentation> rolesToAdd = allRoles.stream()
-                .filter(role -> roleNames.contains(role.getName()))
-                .toList();
-
-            usersResource.get(userId).roles().realmLevel().add(rolesToAdd);
-        }
-
         return userId;
+    }
+
+    public void deleteUser(String userId) {
+
+        var realmResource = keycloak.realm(keycloakRealm);
+        var usersResource = realmResource.users();
+        var userResource = usersResource.get(userId);
+        userResource.remove();
     }
 }

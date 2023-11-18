@@ -151,7 +151,7 @@ public class Usuario extends Events {
             new Nome(nome),
             new Email(email),
             new Senha(senha),
-            Set.of("ROLE_MOBILPLAN_USUARIO"),
+            Set.of("mobilplan_usuario_group"),
             Situacao.INATIVO,
             null
         );

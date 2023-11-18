@@ -38,6 +38,9 @@ spring:
     init:
       mode: always
 
+jwt:
+  secret: ${JWT_SECRET}
+
 keycloak:
   realm: ${KEYCLOAK_REALM}
   host: ${KEYCLOAK_HOST}

@@ -1,6 +1,9 @@
 package br.dev.jstec.mobilplan.infrastructure.configuration.json;
 
+import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_DESERIALIZACAO_JSON;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
+import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -51,7 +54,8 @@ public enum Json {
         try {
             return callable.call();
         } catch (final Exception e) {
-            throw new RuntimeException(e);
+
+            throw new RequestException(BAD_REQUEST, ERRO_DESERIALIZACAO_JSON, Json.class.getSimpleName(), e);
         }
     }
 }

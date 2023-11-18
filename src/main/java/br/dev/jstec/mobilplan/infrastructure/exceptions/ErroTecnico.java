@@ -10,7 +10,8 @@ public enum ErroTecnico {
     ERRO_PADRAO_INCORRETO("mobilplan-501", "Erro fora do padrão esperado"),
     ERRO_INFORMACAO_INCONSISTENTE("mobilplan-502", "As informações enviadas estão inconsistentes"),
     ERRO_TOKEN_INVALIDO("mobilplan-503", "As informações contidas no token estão inconsistentes"),
-    ERRO_USUARIO_EXISTENTE("mobilplan-504", "Já existe um usuário com o mesmo e-mail cadastrado");
+    ERRO_USUARIO_EXISTENTE("mobilplan-504", "Já existe um usuário com o mesmo e-mail cadastrado"),
+    ERRO_DESERIALIZACAO_JSON("mobilplan-505", "Erro ao deserializar o JSON : {0}");
 
     private final String code;
     private final String msg;

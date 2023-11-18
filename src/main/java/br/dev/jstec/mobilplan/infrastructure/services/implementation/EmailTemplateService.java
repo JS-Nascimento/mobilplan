@@ -17,9 +17,12 @@ public class EmailTemplateService implements EmailService {
 
     private final TemplateEngine templateEngine;
     private final JavaMailSender mailSender;
+    private final TokenService tokenService;
 
     @Override
     public void sendEmailConfirmation(String email, String nome) {
+
+        var token = tokenService.generateEmailVerificationToken(email);
 
         log.info("Enviando email de confirmação para {}", email);
         try {
@@ -27,6 +30,7 @@ public class EmailTemplateService implements EmailService {
             var context = new Context();
             context.setVariable("name", nome);
             context.setVariable("email", email);
+            context.setVariable("token", token);
 
             var body = templateEngine.process("UserEmailConfirmation", context);
 

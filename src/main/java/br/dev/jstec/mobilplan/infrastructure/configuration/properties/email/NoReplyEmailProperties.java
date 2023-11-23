@@ -26,7 +26,6 @@ public class NoReplyEmailProperties implements InitializingBean {
            + "host='" + host + '\''
            + ", port=" + port
            + ", username='" + username + '\''
-           + ", password='" + password + '\''
            + '}';
     }
 }

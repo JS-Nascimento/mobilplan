@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-class TokenService {
+public class TokenService {
 
     @Value("${jwt.secret}")
     private String secretKey;

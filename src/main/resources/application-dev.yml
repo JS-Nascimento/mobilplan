@@ -10,6 +10,8 @@ amqp:
 spring:
   application:
     name: mobilplan
+    url: http://localhost:8081
+    email-validation-url: ${spring.application.url}/v1/usuarios/novo/confirmar-email
 
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -86,3 +88,4 @@ info:
     name: 'MobilPlan'
     description: 'Aplicação para gerenciamento de orçamentos de móveis planejados.'
     version: '1.0.0'
+

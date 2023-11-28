@@ -2,6 +2,7 @@ package br.dev.jstec.mobilplan.infrastructure.configuration.email;
 
 import jakarta.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,27 +24,26 @@ public class TemplateConfiguration {
     public MimeMessageHelper mimeMessageHelper(
         @Value("${info.app.name}") String setFromName,
         @Value("${spring.mail.username}") String setFromEmail
+
     ) throws MessagingException, UnsupportedEncodingException {
 
         MimeMessageHelper helper = new MimeMessageHelper(mailSender.createMimeMessage(), true,
             "UTF-8");
 
+        Map<String, String> inlineImages = Map.of(
+            "instagramIcon", "instagram2x.png",
+            "twitterIcon", "twitter2x.png",
+            "facebookIcon", "facebook2x.png",
+            "linkedinIcon", "linkedin2x.png",
+            "logoImage", "mobilplan-ia.jpg"
+        );
+
+        for (Map.Entry<String, String> entry : inlineImages.entrySet()) {
+            ClassPathResource imageResource = new ClassPathResource(RESOURCE_PATH + entry.getValue());
+            helper.addInline(entry.getKey(), imageResource);
+        }
+
         helper.setFrom(setFromEmail, setFromName);
-
-        var resource = new ClassPathResource(RESOURCE_PATH + "mobilplan-ia.jpg");
-        helper.addInline("logoImage", resource);
-
-        var twitter = new ClassPathResource(RESOURCE_PATH + "twitter2x.png");
-        helper.addInline("twitterIcon", twitter);
-
-        var facebook = new ClassPathResource(RESOURCE_PATH + "facebook2x.png");
-        helper.addInline("facebookIcon", facebook);
-
-        var linkedin = new ClassPathResource(RESOURCE_PATH + "linkedin2x.png");
-        helper.addInline("linkedinIcon", linkedin);
-
-        var instagram = new ClassPathResource(RESOURCE_PATH + "instagram2x.png");
-        helper.addInline("instagramIcon", instagram);
 
         return helper;
     }

@@ -9,4 +9,6 @@ public interface UsuarioRepository {
 
     Usuario criar(Usuario usuario);
 
+    void criarValidacaoEmail(Usuario usuario);
+
 }

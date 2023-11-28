@@ -37,7 +37,7 @@ class MarceneiroDatabaseRepositoryTest {
     private MarceneiroEntityMapperImpl mapper;
 
     @InjectMocks
-    MarceneiroDatabaseRepository databaseRepository;
+    MarceneiroPersistence databaseRepository;
 
     @Test
     @DisplayName("Deve buscar marceneiro por ID")

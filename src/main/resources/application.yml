@@ -57,6 +57,6 @@ server:
 
 info:
   app:
-    name: 'mobilplan'
+    name: 'MobilPlan'
     description: 'Aplicação para gerenciamento de orçamentos de móveis planejados.'
     version: '1.0.0'

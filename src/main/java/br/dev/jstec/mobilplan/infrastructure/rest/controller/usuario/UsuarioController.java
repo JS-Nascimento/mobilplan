@@ -1,10 +1,16 @@
 package br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario;
 
+import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_INFORMACAO_INCONSISTENTE;
 import static java.net.URI.create;
 import static java.util.Objects.nonNull;
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 import br.dev.jstec.mobilplan.application.usecases.usuario.CriarUsuarioUseCase;
+import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
+import br.dev.jstec.mobilplan.infrastructure.gateways.UsuarioGateway;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.usuario.NewUsuarioDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.usuario.ResponseUsuarioDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +37,7 @@ public class UsuarioController {
 
     private final CriarUsuarioUseCase criarUsuarioUseCase;
     private final UsuarioDtoMapper mapper;
+    private final UsuarioGateway gateway;
 
     @PostMapping("/novo")
     @Operation(
@@ -54,13 +62,56 @@ public class UsuarioController {
         if (nonNull(output)) {
 
             var responseDto = mapper.toResponseUsuarioDto(output);
-            return ResponseEntity.created(create("/usuario/"
-                    + responseDto.id()))
+            return ResponseEntity.created(create("/v1/usuarios/" + responseDto.id()))
                 .body(responseDto);
+
+            /**            // Cria o EntityModel para o ResponseUsuarioDto
+            EntityModel<ResponseUsuarioDto> resource = EntityModel.of(responseDto);
+
+            // Adiciona um link HATEOAS para acessar o usuário recém-criado
+            resource.add(WebMvcLinkBuilder.linkTo(methodOn(UsuarioController.class).seuMetodoGetUsuario(responseDto.id()))
+                .withRel("self"));
+
+            // Construir a URI para o usuário recém-criado
+            URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(responseDto.id())
+                .toUri();
+
+            return ResponseEntity.created(location).body(resource);*/
 
         } else {
 
             return ResponseEntity.unprocessableEntity().build();
         }
+    }
+
+    @PostMapping("/novo/confirmar-email")
+    @Operation(
+        summary = "Faz a verificação do email do Usuário, retornando uma página HTML",
+        description = "Este endpoint verifica o email do Usuário e retorna uma página HTML com o resultado.",
+        tags = {"Usuário"}
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Email validado com sucesso",
+            content = @Content(mediaType = "text/html")),
+        @ApiResponse(responseCode = "400", description = "Erro ao validar o email do Usuário",
+            content = @Content)
+    })
+    @ResponseStatus(value = OK)
+    ResponseEntity<ResponseUsuarioDto> confirmarEmail(
+        @RequestParam String code,
+        @RequestParam String email) {
+
+        if (isBlank(code) || isBlank(email)) {
+
+            throw new RequestException(BAD_REQUEST, ERRO_INFORMACAO_INCONSISTENTE,
+                UsuarioController.class.getSimpleName());
+        }
+
+            return ResponseEntity
+                .status(OK)
+                .body(gateway.validarCodigo(code, email));
     }
 }

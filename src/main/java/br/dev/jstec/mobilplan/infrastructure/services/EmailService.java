@@ -4,6 +4,6 @@ public interface EmailService {
 
     void sendEmail(String email, String nome, String subject, String template);
 
-    void sendEmail(String email, String nome, String subject, String template, String token);
+    void sendEmail(String email, String nome, String validationCode, String subject, String template);
 
 }

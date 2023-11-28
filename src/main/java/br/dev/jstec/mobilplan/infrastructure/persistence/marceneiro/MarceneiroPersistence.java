@@ -26,7 +26,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class MarceneiroDatabaseRepository implements MarceneiroRepository {
+public class MarceneiroPersistence implements MarceneiroRepository {
 
     private final MarceneiroJpaRepository repository;
     private final MarceneiroEntityMapper mapper;

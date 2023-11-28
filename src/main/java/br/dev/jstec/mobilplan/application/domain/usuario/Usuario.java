@@ -1,5 +1,8 @@
 package br.dev.jstec.mobilplan.application.domain.usuario;
 
+import static java.lang.String.valueOf;
+import static java.util.random.RandomGenerator.getDefault;
+
 import br.dev.jstec.mobilplan.application.domain.Events;
 import br.dev.jstec.mobilplan.application.domain.events.DomainEvent;
 import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
@@ -20,12 +23,12 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 @Getter
 @Setter
-
 public class Usuario extends Events {
 
     UUID id;
     Nome nome;
     Email email;
+    boolean emailConfirmado;
     Senha senha;
     Telefone telefone;
     Set<String> roles;
@@ -35,6 +38,7 @@ public class Usuario extends Events {
     LocalDateTime createdAt;
     UUID updatedBy;
     LocalDateTime updatedAt;
+    String codigoConfirmacao;
 
     public Usuario() {
         super(null);
@@ -44,6 +48,7 @@ public class Usuario extends Events {
         UUID id,
         Nome nome,
         Email email,
+        boolean emailConfirmado,
         Senha senha,
         Telefone telefone,
         Set<String> roles,
@@ -59,6 +64,7 @@ public class Usuario extends Events {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.emailConfirmado = emailConfirmado;
         this.senha = senha;
         this.telefone = telefone;
         this.roles = roles;
@@ -74,6 +80,7 @@ public class Usuario extends Events {
         UUID id,
         Nome nome,
         Email email,
+        boolean emailConfirmado,
         Senha senha,
         Telefone telefone,
         Set<String> roles,
@@ -88,6 +95,7 @@ public class Usuario extends Events {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.emailConfirmado = emailConfirmado;
         this.senha = senha;
         this.telefone = telefone;
         this.roles = roles;
@@ -129,6 +137,7 @@ public class Usuario extends Events {
     private Usuario(
         Nome nome,
         Email email,
+        boolean emailConfirmado,
         Senha senha,
         Set<String> roles,
         Situacao situacao,
@@ -137,9 +146,12 @@ public class Usuario extends Events {
         super(domainEvents);
         this.nome = nome;
         this.email = email;
+        this.emailConfirmado = emailConfirmado;
         this.senha = senha;
         this.roles = roles;
         this.situacao = situacao;
+
+        validationCodeGenerate();
     }
 
     public static Usuario createPrincipalOf(
@@ -147,19 +159,16 @@ public class Usuario extends Events {
         String email,
         String senha) {
 
-        var usuario = new Usuario(
+        return new Usuario(
             new Nome(nome),
             new Email(email),
+            false,
             new Senha(senha),
             Set.of("mobilplan_usuario_group"),
             Situacao.INATIVO,
             null
         );
 
-        usuario.registerEvent(new UserEmailConfirmation(email, nome));
-
-
-        return usuario;
     }
 
     public static Usuario getOf(Usuario usuario) {
@@ -191,5 +200,10 @@ public class Usuario extends Events {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public static String validationCodeGenerate() {
+
+        return valueOf(getDefault().nextInt(100000, 999999));
     }
 }

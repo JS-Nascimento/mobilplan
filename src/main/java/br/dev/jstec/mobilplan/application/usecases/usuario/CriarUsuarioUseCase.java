@@ -1,7 +1,9 @@
 package br.dev.jstec.mobilplan.application.usecases.usuario;
 
+import static br.dev.jstec.mobilplan.application.domain.usuario.Usuario.validationCodeGenerate;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_EMAIL_CADASTRADO;
 
+import br.dev.jstec.mobilplan.application.domain.usuario.UserEmailConfirmation;
 import br.dev.jstec.mobilplan.application.domain.usuario.Usuario;
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.repository.UsuarioRepository;
@@ -26,7 +28,17 @@ public class CriarUsuarioUseCase extends UseCase<Input, Output> {
                 throw new BusinessException(ERRO_EMAIL_CADASTRADO, input.email);
             });
 
-        var usuarioSalvo =  usuarioRepository.criar(novoUsuario);
+        var usuarioSalvo = usuarioRepository.criar(novoUsuario);
+
+        usuarioSalvo.setCodigoConfirmacao(validationCodeGenerate());
+
+        usuarioSalvo.registerEvent(new UserEmailConfirmation(
+            usuarioSalvo.getId().toString(),
+            usuarioSalvo.getEmail().value(),
+            usuarioSalvo.getNome().value(),
+            usuarioSalvo.getCodigoConfirmacao()));
+
+        usuarioRepository.criarValidacaoEmail(usuarioSalvo);
 
         return usuarioMapper.toCriarUsuarioOutput(usuarioSalvo);
     }

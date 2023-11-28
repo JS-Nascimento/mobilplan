@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.configuration.auditoria;
 
-import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_TOKEN_INVALIDO;
+import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_CODIGO_VALIDACAO_INVALIDO;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.security.core.context.SecurityContextHolder.getContext;
 
@@ -34,7 +34,7 @@ public class AuditorAwareImpl implements AuditorAware<UUID> {
 
         } catch (IllegalArgumentException e) {
 
-            throw new RequestException(BAD_REQUEST,  ERRO_TOKEN_INVALIDO, this.getClass().getSimpleName(),
+            throw new RequestException(BAD_REQUEST, ERRO_CODIGO_VALIDACAO_INVALIDO, this.getClass().getSimpleName(),
                 e.getCause());
         }
     }

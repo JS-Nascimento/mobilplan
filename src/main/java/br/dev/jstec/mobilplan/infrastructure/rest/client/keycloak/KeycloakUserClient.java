@@ -1,14 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.rest.client.keycloak;
 
-import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_INFORMACAO_INCONSISTENTE;
-import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_USUARIO_EXISTENTE;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.valueOf;
-
 import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.admin.client.Keycloak;
@@ -16,6 +8,16 @@ import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Set;
+
+import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_INFORMACAO_INCONSISTENTE;
+import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_USUARIO_EXISTENTE;
+import static java.util.Collections.singletonList;
+import static org.keycloak.representations.idm.CredentialRepresentation.PASSWORD;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.valueOf;
 
 @Component
 @RequiredArgsConstructor
@@ -40,11 +42,11 @@ public class KeycloakUserClient {
         user.setEnabled(false);
         user.setGroups(new ArrayList<>(groupsName));
 
-        CredentialRepresentation credential = new CredentialRepresentation();
-        credential.setType(CredentialRepresentation.PASSWORD);
+        var credential = new CredentialRepresentation();
+        credential.setType(PASSWORD);
         credential.setValue(password);
         credential.setTemporary(false);
-        user.setCredentials(Collections.singletonList(credential));
+        user.setCredentials(singletonList(credential));
 
         var realmResource = keycloak.realm(keycloakRealm);
         var usersResource = realmResource.users();

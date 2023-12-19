@@ -1,5 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro;
 
+import br.dev.jstec.mobilplan.infrastructure.rest.dto.TelefoneDto;
 import java.util.List;
 
 public record NewMarceneiroDto(String nome,

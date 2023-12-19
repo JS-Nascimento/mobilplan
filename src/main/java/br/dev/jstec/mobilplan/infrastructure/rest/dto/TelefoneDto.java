@@ -1,4 +1,4 @@
-package br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro;
+package br.dev.jstec.mobilplan.infrastructure.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

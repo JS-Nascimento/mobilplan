@@ -13,11 +13,11 @@ import br.dev.jstec.mobilplan.application.usecases.marceneiro.SalvarLogomarcaUse
 import br.dev.jstec.mobilplan.domain.TipoTelefone;
 import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
 import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
+import br.dev.jstec.mobilplan.infrastructure.rest.dto.TelefoneDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.EnderecoDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.MarceneiroDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.NewMarceneiroDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.ResponseMarceneiroDto;
-import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.TelefoneDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.UpdateMarceneiroDto;
 import java.io.InputStream;
 import java.util.List;

@@ -9,7 +9,7 @@ import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 import br.dev.jstec.mobilplan.domain.TipoTelefone;
-import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.TelefoneDto;
+import br.dev.jstec.mobilplan.infrastructure.rest.dto.TelefoneDto;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 

@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import br.dev.jstec.mobilplan.application.domain.valueobject.Endereco;
+import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 

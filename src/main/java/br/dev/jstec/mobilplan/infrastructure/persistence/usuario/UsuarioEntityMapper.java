@@ -2,9 +2,9 @@ package br.dev.jstec.mobilplan.infrastructure.persistence.usuario;
 
 import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 
-import br.dev.jstec.mobilplan.application.domain.usuario.Usuario;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Nome;
+import br.dev.jstec.mobilplan.domain.usuario.Usuario;
+import br.dev.jstec.mobilplan.domain.valueobject.Email;
+import br.dev.jstec.mobilplan.domain.valueobject.Nome;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

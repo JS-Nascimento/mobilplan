@@ -1,8 +1,8 @@
 package br.dev.jstec.mobilplan.infrastructure.exceptions;
 
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_INFORMACAO_INVALIDA;
-import static br.dev.jstec.mobilplan.application.util.RandomHelper.gerarObject;
-import static br.dev.jstec.mobilplan.application.util.RandomHelper.gerarString;
+import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarObject;
+import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarString;
 import static java.text.MessageFormat.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -27,10 +27,8 @@ class CustomExceptionHandlerTest {
     private static final String CODE_ERRO_PADRAO_INCORRETO = "mobilplan-501";
     private static final String MSG_ERRO_PADRAO_INCORRETO = "Erro fora do padrão esperado";
     private static final String MSG = "Erro ao receber requisição. Informações inválidas.";
-    private static final String BODY =
-        "{\"code\":\"mobilplan-001\",\"msg\":\"Erro ao receber requisição. Informações inválidas.\"}";
-    private static final String BODY_SEM_CODE =
-        "{\"msg\":\"Erro ao receber requisição. Informações inválidas.\"}";
+    private static final ErroTecnico BODY = ErroTecnico.ERRO_TOKEN_INVALIDO;
+    private static final ErroTecnico BODY_SEM_CODE = null;
 
     @InjectMocks
     private CustomExceptionHandler customExceptionHandler;

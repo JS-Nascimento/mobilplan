@@ -5,7 +5,7 @@ import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;

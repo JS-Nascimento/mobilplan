@@ -46,6 +46,9 @@ public class UsuarioEntity {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
+    @Column(name = "email_confirmado", nullable = false, columnDefinition = "boolean default false")
+    private boolean emailConfirmado;
+
     @Column(name = "senha", nullable = false)
     private String senha;
 

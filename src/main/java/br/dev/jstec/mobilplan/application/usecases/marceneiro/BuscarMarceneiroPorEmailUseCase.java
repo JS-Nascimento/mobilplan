@@ -1,12 +1,12 @@
 package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
-import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Endereco;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Telefone;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarMarceneiroPorEmailUseCase.Input;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarMarceneiroPorEmailUseCase.Output;
+import br.dev.jstec.mobilplan.domain.valueobject.Email;
+import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
+import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -15,13 +15,13 @@ import lombok.RequiredArgsConstructor;
 public class BuscarMarceneiroPorEmailUseCase
     extends UseCase<Input, Optional<Output>> {
 
-    private final MarceneiroRepository marceneiroRepository;
+    private final MarceneiroPort marceneiroPort;
     private final MarceneiroMapper mapper;
 
     @Override
     public Optional<Output> execute(final Input input) {
 
-        return marceneiroRepository
+        return marceneiroPort
             .buscarPorEmail(new Email(input.email()))
             .map(mapper::toBuscarMarceneiroPorEmailOutput);
 

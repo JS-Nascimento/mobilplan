@@ -64,23 +64,6 @@ public class UsuarioController {
             var responseDto = mapper.toResponseUsuarioDto(output);
             return ResponseEntity.created(create("/v1/usuarios/" + responseDto.id()))
                 .body(responseDto);
-
-            /**            // Cria o EntityModel para o ResponseUsuarioDto
-            EntityModel<ResponseUsuarioDto> resource = EntityModel.of(responseDto);
-
-            // Adiciona um link HATEOAS para acessar o usuário recém-criado
-            resource.add(WebMvcLinkBuilder.linkTo(methodOn(UsuarioController.class).seuMetodoGetUsuario(responseDto.id()))
-                .withRel("self"));
-
-            // Construir a URI para o usuário recém-criado
-            URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(responseDto.id())
-                .toUri();
-
-            return ResponseEntity.created(location).body(resource);*/
-
         } else {
 
             return ResponseEntity.unprocessableEntity().build();

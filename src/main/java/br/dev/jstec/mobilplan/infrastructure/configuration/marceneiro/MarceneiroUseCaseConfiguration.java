@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.configuration.marceneiro;
 
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarSitucaoUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarMarceneiroPorDocumentoUseCase;
@@ -18,56 +18,56 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class MarceneiroUseCaseConfiguration {
 
-    private final MarceneiroRepository marceneiroRepository;
+    private final MarceneiroPort marceneiroPort;
     private final MarceneiroMapper mapper;
 
 
     @Bean
     public BuscarMarceneiroPorIdUseCase buscarMarceneiroPorIdUseCase() {
 
-        return new BuscarMarceneiroPorIdUseCase(marceneiroRepository, mapper);
+        return new BuscarMarceneiroPorIdUseCase(marceneiroPort, mapper);
     }
 
     @Bean
     public BuscarMarceneiroPorEmailUseCase buscarMarceneiroPorEmailUseCase() {
 
-        return new BuscarMarceneiroPorEmailUseCase(marceneiroRepository, mapper);
+        return new BuscarMarceneiroPorEmailUseCase(marceneiroPort, mapper);
     }
 
     @Bean
     public BuscarMarceneiroPorDocumentoUseCase buscarMarceneiroPorDocumentoUseCase() {
 
-        return new BuscarMarceneiroPorDocumentoUseCase(marceneiroRepository, mapper);
+        return new BuscarMarceneiroPorDocumentoUseCase(marceneiroPort, mapper);
     }
 
     @Bean
     public CriarMarceneiroUseCase criarMarceneiroUseCase() {
 
-        return new CriarMarceneiroUseCase(marceneiroRepository);
+        return new CriarMarceneiroUseCase(marceneiroPort);
     }
 
 
     @Bean
     public AlterarSitucaoUseCase alterarSitucaoUseCase() {
 
-        return new AlterarSitucaoUseCase(marceneiroRepository);
+        return new AlterarSitucaoUseCase(marceneiroPort);
     }
 
     @Bean
     public AlterarMarceneiroUseCase alterarMarceneiroUseCase() {
 
-        return new AlterarMarceneiroUseCase(marceneiroRepository, mapper);
+        return new AlterarMarceneiroUseCase(marceneiroPort, mapper);
     }
 
     @Bean
     BuscarTodosMarceneirosUseCase buscarTodosMarceneirosUseCase() {
 
-        return new BuscarTodosMarceneirosUseCase(marceneiroRepository, mapper);
+        return new BuscarTodosMarceneirosUseCase(marceneiroPort, mapper);
     }
 
     @Bean
     SalvarLogomarcaUseCase salvarLogomarcaUseCase() {
 
-        return new SalvarLogomarcaUseCase(marceneiroRepository);
+        return new SalvarLogomarcaUseCase(marceneiroPort);
     }
 }

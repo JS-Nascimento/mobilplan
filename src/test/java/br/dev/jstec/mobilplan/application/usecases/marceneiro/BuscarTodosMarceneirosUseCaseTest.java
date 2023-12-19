@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.MarceneiroFixture;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
+import br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture;
 import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +22,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class BuscarTodosMarceneirosUseCaseTest {
 
     @Mock
-    private MarceneiroRepository marceneiroRepository;
+    private MarceneiroPort marceneiroPort;
 
     @InjectMocks
     private BuscarTodosMarceneirosUseCase buscarTodosMarceneirosUseCase;
@@ -37,7 +37,7 @@ class BuscarTodosMarceneirosUseCaseTest {
         var marceneiro = MarceneiroFixture.buildComAuditoria();
         var marceneiros = singletonList(marceneiro);
 
-        doReturn(marceneiros).when(marceneiroRepository).buscarTodos();
+        doReturn(marceneiros).when(marceneiroPort).buscarTodos();
 
         var output = BuscarTodosMarceneirosUseCaseFixture.buildOutput(marceneiro);
         var expectedOutputs = singletonList(output);
@@ -48,7 +48,7 @@ class BuscarTodosMarceneirosUseCaseTest {
 
         assertEquals(expectedOutputs, new ArrayList<>(result));
 
-        verify(marceneiroRepository).buscarTodos();
+        verify(marceneiroPort).buscarTodos();
         verify(mapper).toBuscarTodosMarceneirosOutput(marceneiro);
     }
 }

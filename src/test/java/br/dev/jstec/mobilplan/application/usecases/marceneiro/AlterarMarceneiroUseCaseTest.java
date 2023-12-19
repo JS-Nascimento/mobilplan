@@ -1,8 +1,8 @@
 package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
-import static br.dev.jstec.mobilplan.application.domain.marceneiro.MarceneiroFixture.buildComId;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCaseFixture.buildInput;
+import static br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture.buildComId;
 import static java.text.MessageFormat.format;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.MarceneiroFixture;
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
+import br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class AlterarMarceneiroUseCaseTest {
 
     @Mock
-    private MarceneiroRepository marceneiroRepository;
+    private MarceneiroPort marceneiroPort;
 
     @InjectMocks
     private AlterarMarceneiroUseCase alterarMarceneiroUseCase;
@@ -46,11 +46,11 @@ class AlterarMarceneiroUseCaseTest {
         var input = buildInput(marceneiro);
 
         doReturn(of(marceneiro))
-            .when(marceneiroRepository)
+            .when(marceneiroPort)
             .buscarPorId(fromString(input.id()));
 
         doReturn(marceneiroAlterado)
-            .when(marceneiroRepository)
+            .when(marceneiroPort)
             .salvar(marceneiroAlterado);
 
         var result = alterarMarceneiroUseCase.execute(input);
@@ -67,7 +67,7 @@ class AlterarMarceneiroUseCaseTest {
         var marceneiro = MarceneiroFixture.build();
         var input = buildInput(marceneiro);
 
-        doReturn(empty()).when(marceneiroRepository).buscarPorId(marceneiro.getId());
+        doReturn(empty()).when(marceneiroPort).buscarPorId(marceneiro.getId());
 
         var exception = assertThrows(BusinessException.class, () ->
             alterarMarceneiroUseCase.execute(input));

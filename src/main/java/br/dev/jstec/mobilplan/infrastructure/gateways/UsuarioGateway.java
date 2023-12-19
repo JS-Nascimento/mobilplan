@@ -49,7 +49,7 @@ public class UsuarioGateway {
             }
         );
 
-        return  usuarioPersistence.updateUserStatus(usuario);
+        return  usuarioPersistence.atualizandoStatusUsuarioAposConfirmacaoEmail(usuario);
     }
 
     private final Consumer<LocalDateTime> isValidTimeToCode = validTo -> {

@@ -9,8 +9,8 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.MarceneiroFixture;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
+import br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +29,7 @@ class BuscarMarceneiroPorIdUseCaseTest {
     private BuscarMarceneiroPorIdUseCase buscarMarceneiroPorIdUseCase;
 
     @Mock
-    private MarceneiroRepository marceneiroRepository;
+    private MarceneiroPort marceneiroPort;
 
     @Spy
     private MarceneiroMapperImpl mapper;
@@ -44,7 +44,7 @@ class BuscarMarceneiroPorIdUseCaseTest {
         var marceneiro = MarceneiroFixture.buildComAuditoria();
         var output = buildOutput(marceneiro);
 
-        doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorId(marceneiroId);
+        doReturn(of(marceneiro)).when(marceneiroPort).buscarPorId(marceneiroId);
 
         var result = buscarMarceneiroPorIdUseCase.execute(input);
 
@@ -52,7 +52,7 @@ class BuscarMarceneiroPorIdUseCaseTest {
         result.ifPresent(
             r -> assertEquals(output, r));
 
-        verify(marceneiroRepository).buscarPorId(marceneiroId);
+        verify(marceneiroPort).buscarPorId(marceneiroId);
         verify(mapper).toBuscarMarceneiroPorIdOutput(marceneiro);
     }
 
@@ -64,14 +64,14 @@ class BuscarMarceneiroPorIdUseCaseTest {
         var input = new BuscarMarceneiroPorIdUseCase.Input(marceneiroId.toString());
 
         doReturn(empty())
-            .when(marceneiroRepository)
+            .when(marceneiroPort)
             .buscarPorId(marceneiroId);
 
         var result = buscarMarceneiroPorIdUseCase.execute(input);
 
         assertTrue(result.isEmpty());
 
-        verify(marceneiroRepository).buscarPorId(marceneiroId);
+        verify(marceneiroPort).buscarPorId(marceneiroId);
         verifyNoInteractions(mapper);
     }
 }

@@ -1,52 +1,52 @@
 package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
-import static br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro.createOf;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
+import static br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro.createOf;
 
-import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Endereco;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Telefone;
-import br.dev.jstec.mobilplan.application.domain.valueobject.TipoCliente;
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
+import br.dev.jstec.mobilplan.domain.valueobject.Email;
+import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
+import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
+import br.dev.jstec.mobilplan.domain.valueobject.TipoCliente;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class CriarMarceneiroUseCase
-    extends UseCase<CriarMarceneiroUseCase.Input, CriarMarceneiroUseCase.Output> {
+        extends UseCase<CriarMarceneiroUseCase.Input, CriarMarceneiroUseCase.Output> {
 
-    private final MarceneiroRepository marceneiroRepository;
+    private final MarceneiroPort marceneiroPort;
 
     public Output execute(final Input input) {
 
         var tipoCliente = TipoCliente.createOf(
-            input.tipoPessoa(),
-            input.documento());
+                input.tipoPessoa(),
+                input.documento());
 
-        if (marceneiroRepository.buscarPorDocumento(tipoCliente.documento())
-            .isPresent()) {
+        if (marceneiroPort.buscarPorDocumento(tipoCliente.documento())
+                .isPresent()) {
             throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "marceneiro");
         }
 
-        if (marceneiroRepository.buscarPorEmail(new Email(input.email)).isPresent()) {
+        if (marceneiroPort.buscarPorEmail(new Email(input.email)).isPresent()) {
             throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "marceneiro");
         }
         var marceneiro = createOf(
-            input.nome,
-            input.nomeComercial,
-            tipoCliente,
-            input.email,
-            input.telefones,
-            input.enderecos);
+                input.nome,
+                input.nomeComercial,
+                tipoCliente,
+                input.email,
+                input.telefones,
+                input.enderecos);
 
-        var marceneiroSalvo = marceneiroRepository.salvar(marceneiro);
+        var marceneiroSalvo = marceneiroPort.salvar(marceneiro);
 
         return new Output(
-            marceneiroSalvo.getId().toString(),
-            marceneiroSalvo.getNome().value(),
-            marceneiroSalvo.getSituacao().getDescricao());
+                marceneiroSalvo.getId().toString(),
+                marceneiroSalvo.getNome().value(),
+                marceneiroSalvo.getSituacao().getDescricao());
     }
 
     public record Input(String nome,

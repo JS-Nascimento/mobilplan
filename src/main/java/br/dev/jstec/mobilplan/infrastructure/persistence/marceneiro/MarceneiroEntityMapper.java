@@ -3,10 +3,10 @@ package br.dev.jstec.mobilplan.infrastructure.persistence.marceneiro;
 import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
 import static org.mapstruct.NullValueMappingStrategy.RETURN_NULL;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Nome;
-import br.dev.jstec.mobilplan.application.domain.valueobject.NomeComercial;
+import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.valueobject.Email;
+import br.dev.jstec.mobilplan.domain.valueobject.Nome;
+import br.dev.jstec.mobilplan.domain.valueobject.NomeComercial;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

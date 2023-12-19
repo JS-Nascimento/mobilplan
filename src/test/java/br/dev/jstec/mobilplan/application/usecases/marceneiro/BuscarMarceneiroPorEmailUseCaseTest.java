@@ -1,7 +1,7 @@
 package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
 import static br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarMarceneiroPorEmailUseCaseFixture.buildOutput;
-import static br.dev.jstec.mobilplan.application.util.RandomHelper.gerarEmail;
+import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarEmail;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,9 +10,9 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.MarceneiroFixture;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
+import br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture;
+import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ class BuscarMarceneiroPorEmailUseCaseTest {
     private BuscarMarceneiroPorEmailUseCase buscarMarceneiroPorEmailUseCase;
 
     @Mock
-    private MarceneiroRepository marceneiroRepository;
+    private MarceneiroPort marceneiroPort;
 
     @Spy
     private MarceneiroMapperImpl mapper;
@@ -45,15 +45,15 @@ class BuscarMarceneiroPorEmailUseCaseTest {
         var marceneiro = MarceneiroFixture.buildComAuditoria();
         var output = buildOutput(marceneiro);
 
-        doReturn(of(marceneiro)).when(marceneiroRepository).buscarPorEmail(new Email(email));
+        doReturn(of(marceneiro)).when(marceneiroPort).buscarPorEmail(new Email(email));
 
         var result = buscarMarceneiroPorEmailUseCase.execute(input);
 
         assertTrue(result.isPresent());
         result.ifPresent(
-            r -> assertEquals(output, r));
+                r -> assertEquals(output, r));
 
-        verify(marceneiroRepository).buscarPorEmail(new Email(email));
+        verify(marceneiroPort).buscarPorEmail(new Email(email));
         verify(mapper).toBuscarMarceneiroPorEmailOutput(marceneiro);
     }
 
@@ -65,14 +65,14 @@ class BuscarMarceneiroPorEmailUseCaseTest {
         var input = new BuscarMarceneiroPorEmailUseCase.Input(email);
 
         doReturn(empty())
-            .when(marceneiroRepository)
-            .buscarPorEmail(new Email(email));
+                .when(marceneiroPort)
+                .buscarPorEmail(new Email(email));
 
         var result = buscarMarceneiroPorEmailUseCase.execute(input);
 
         assertTrue(result.isEmpty());
 
-        verify(marceneiroRepository).buscarPorEmail(new Email(email));
+        verify(marceneiroPort).buscarPorEmail(new Email(email));
         verifyNoInteractions(mapper);
     }
 }

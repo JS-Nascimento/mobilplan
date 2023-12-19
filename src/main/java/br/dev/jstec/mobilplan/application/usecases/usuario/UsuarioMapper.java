@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.application.usecases.usuario;
 
-import br.dev.jstec.mobilplan.application.domain.usuario.Usuario;
+import br.dev.jstec.mobilplan.domain.usuario.Usuario;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -1,10 +1,10 @@
 package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Endereco;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Telefone;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
 import br.dev.jstec.mobilplan.application.usecases.NullaryUseCase;
+import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
+import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import java.util.Collection;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -13,13 +13,13 @@ import lombok.RequiredArgsConstructor;
 public class BuscarTodosMarceneirosUseCase extends
     NullaryUseCase<Collection<BuscarTodosMarceneirosUseCase.Output>> {
 
-    private final MarceneiroRepository marceneiroRepository;
+    private final MarceneiroPort marceneiroPort;
     private final MarceneiroMapper mapper;
 
     @Override
     public Collection<Output> execute() {
 
-        Collection<Marceneiro> marceneiros = marceneiroRepository.buscarTodos();
+        Collection<Marceneiro> marceneiros = marceneiroPort.buscarTodos();
 
         return marceneiros
             .stream()

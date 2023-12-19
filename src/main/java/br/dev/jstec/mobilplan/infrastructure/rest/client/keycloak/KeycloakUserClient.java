@@ -1,6 +1,15 @@
 package br.dev.jstec.mobilplan.infrastructure.rest.client.keycloak;
 
+import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_INFORMACAO_INCONSISTENTE;
+import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_USUARIO_EXISTENTE;
+import static java.util.Collections.singletonList;
+import static org.keycloak.representations.idm.CredentialRepresentation.PASSWORD;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.valueOf;
+
 import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
+import java.util.ArrayList;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.admin.client.Keycloak;
@@ -8,16 +17,6 @@ import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.Set;
-
-import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_INFORMACAO_INCONSISTENTE;
-import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_USUARIO_EXISTENTE;
-import static java.util.Collections.singletonList;
-import static org.keycloak.representations.idm.CredentialRepresentation.PASSWORD;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.valueOf;
 
 @Component
 @RequiredArgsConstructor
@@ -32,7 +31,7 @@ public class KeycloakUserClient {
     private final Keycloak keycloak;
 
     public String createUser(String username, String email, String password,
-        Set<String> groupsName) {
+                             Set<String> groupsName) {
 
         var user = new UserRepresentation();
         user.setFirstName(username);
@@ -56,16 +55,16 @@ public class KeycloakUserClient {
 
             var errorMessage = response.readEntity(String.class);
             if (response.getStatus() == 409
-                && errorMessage.contains(USER_EXISTS_WITH_SAME_USERNAME)) {
+                    && errorMessage.contains(USER_EXISTS_WITH_SAME_USERNAME)) {
 
                 throw new RequestException(BAD_REQUEST, ERRO_USUARIO_EXISTENTE,
-                    KeycloakUserClient.class.getSimpleName());
+                        KeycloakUserClient.class.getSimpleName());
 
             } else if (response.getStatus() != 201) {
 
                 throw new RequestException(valueOf(response.getStatus()),
-                    ERRO_INFORMACAO_INCONSISTENTE,
-                    this.getClass().getSimpleName());
+                        ERRO_INFORMACAO_INCONSISTENTE,
+                        this.getClass().getSimpleName());
 
             }
 

@@ -3,9 +3,9 @@ package br.dev.jstec.mobilplan.infrastructure.persistence.marceneiro;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
+import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository;
 import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.PutFilesBucket;
 import jakarta.transaction.Transactional;
@@ -26,7 +26,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class MarceneiroPersistence implements MarceneiroRepository {
+public class MarceneiroPersistence implements MarceneiroPort {
 
     private final MarceneiroJpaRepository repository;
     private final MarceneiroEntityMapper mapper;
@@ -36,24 +36,24 @@ public class MarceneiroPersistence implements MarceneiroRepository {
     public Optional<Marceneiro> buscarPorId(UUID anId) {
 
         return repository.findById(anId)
-            .map(mapper::toMarceneiro)
-            .or(Optional::empty);
+                .map(mapper::toMarceneiro)
+                .or(Optional::empty);
     }
 
     @Override
     public Optional<Marceneiro> buscarPorEmail(Email email) {
 
         return repository.findByEmail(email.value())
-            .map(mapper::toMarceneiro)
-            .or(Optional::empty);
+                .map(mapper::toMarceneiro)
+                .or(Optional::empty);
     }
 
     @Override
     public Optional<Marceneiro> buscarPorDocumento(String documento) {
 
         return repository.findByDocumento(documento)
-            .map(mapper::toMarceneiro)
-            .or(Optional::empty);
+                .map(mapper::toMarceneiro)
+                .or(Optional::empty);
     }
 
     @Override
@@ -74,15 +74,15 @@ public class MarceneiroPersistence implements MarceneiroRepository {
         var marceneirosFounded = repository.findAll();
 
         return StreamSupport.stream(
-                marceneirosFounded.spliterator(), false)
-            .map(mapper::toMarceneiro)
-            .toList();
+                        marceneirosFounded.spliterator(), false)
+                .map(mapper::toMarceneiro)
+                .toList();
     }
 
     @Override
     public String salvarLogomarca(Marceneiro marceneiro, String fileName, String tipoImagem,
-        BufferedImage image)
-        throws IOException, URISyntaxException {
+                                  BufferedImage image)
+            throws IOException, URISyntaxException {
 
         var outputStream = new ByteArrayOutputStream();
 

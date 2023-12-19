@@ -1,8 +1,8 @@
 package br.dev.jstec.mobilplan.infrastructure.persistence.marceneiro;
 
-import static br.dev.jstec.mobilplan.application.domain.marceneiro.MarceneiroFixture.buildComAuditoria;
-import static br.dev.jstec.mobilplan.application.util.RandomHelper.gerarEmail;
-import static br.dev.jstec.mobilplan.application.util.RandomHelper.gerarStringNumerica;
+import static br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture.buildComAuditoria;
+import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarEmail;
+import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarStringNumerica;
 import static br.dev.jstec.mobilplan.infrastructure.persistence.marceneiro.MarceneiroEntityFixture.buildComMarceneiro;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -13,7 +13,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-import br.dev.jstec.mobilplan.application.domain.valueobject.Email;
+import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository;
 import java.util.List;
 import java.util.UUID;

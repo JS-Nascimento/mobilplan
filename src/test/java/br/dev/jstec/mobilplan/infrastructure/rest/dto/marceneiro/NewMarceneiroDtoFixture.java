@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 

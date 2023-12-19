@@ -2,9 +2,6 @@ package br.dev.jstec.mobilplan.infrastructure.rest.controller.marceneiro;
 
 import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
 
-import br.dev.jstec.mobilplan.application.domain.TipoTelefone;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Endereco;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Telefone;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarSitucaoUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarMarceneiroPorDocumentoUseCase;
@@ -13,6 +10,9 @@ import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarMarceneiroPo
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarTodosMarceneirosUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.CriarMarceneiroUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.SalvarLogomarcaUseCase;
+import br.dev.jstec.mobilplan.domain.TipoTelefone;
+import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
+import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.EnderecoDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.MarceneiroDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.NewMarceneiroDto;

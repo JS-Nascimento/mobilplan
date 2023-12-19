@@ -1,29 +1,29 @@
 package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
-import static br.dev.jstec.mobilplan.application.domain.marceneiro.Marceneiro.updateOf;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
+import static br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro.updateOf;
 import static java.util.UUID.fromString;
 
-import br.dev.jstec.mobilplan.application.domain.valueobject.Endereco;
-import br.dev.jstec.mobilplan.application.domain.valueobject.Telefone;
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
-import br.dev.jstec.mobilplan.application.repository.MarceneiroRepository;
+import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCase.Input;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCase.Output;
+import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
+import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class AlterarMarceneiroUseCase extends UseCase<Input, Output> {
 
-    private final MarceneiroRepository marceneiroRepository;
+    private final MarceneiroPort marceneiroPort;
     private final MarceneiroMapper mapper;
 
     @Override
     public Output execute(final Input input) {
 
-        return marceneiroRepository.buscarPorId(fromString(input.id))
+        return marceneiroPort.buscarPorId(fromString(input.id))
             .map(marceneiro -> updateOf(
                 input.id,
                 input.situacao,
@@ -35,7 +35,7 @@ public class AlterarMarceneiroUseCase extends UseCase<Input, Output> {
                 input.telefones,
                 input.enderecos
             ))
-            .map(marceneiroRepository::salvar)
+            .map(marceneiroPort::salvar)
             .map(mapper::toAlterarMarceneiroOutput)
             .orElseThrow(() -> new BusinessException(ERRO_ID_INVALIDO, input.id));
     }

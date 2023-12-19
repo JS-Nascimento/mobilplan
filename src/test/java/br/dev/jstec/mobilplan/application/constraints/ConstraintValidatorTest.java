@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.application.constraints;
 
-import static br.dev.jstec.mobilplan.application.util.ConstraintsHelper.validarConstraints;
+import static br.dev.jstec.mobilplan.domain.util.ConstraintsHelper.validarConstraints;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

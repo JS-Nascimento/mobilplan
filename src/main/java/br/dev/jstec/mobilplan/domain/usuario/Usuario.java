@@ -1,6 +1,7 @@
 package br.dev.jstec.mobilplan.domain.usuario;
 
 import static java.lang.String.valueOf;
+import static java.util.UUID.fromString;
 import static java.util.random.RandomGenerator.getDefault;
 
 import br.dev.jstec.mobilplan.domain.Events;
@@ -112,6 +113,7 @@ public class Usuario extends Events {
             Nome nome,
             Email email,
             Telefone telefone,
+            Senha senha,
             Set<String> roles,
             Situacao situacao,
             String avatarFilename,
@@ -125,6 +127,7 @@ public class Usuario extends Events {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
+        this.senha = senha;
         this.roles = roles;
         this.situacao = situacao;
         this.avatarFilename = avatarFilename;
@@ -154,6 +157,19 @@ public class Usuario extends Events {
         validationCodeGenerate();
     }
 
+    private Usuario(
+            UUID id,
+            Nome nome,
+            Email email,
+            Telefone telefone) {
+
+        super(null);
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+    }
+
     public static Usuario createPrincipalOf(
             String nome,
             String email,
@@ -163,12 +179,60 @@ public class Usuario extends Events {
                 new Nome(nome),
                 new Email(email),
                 false,
-                new Senha(senha),
+                Senha.ofPureText(senha),
                 Set.of("mobilplan_usuario_group"),
                 Situacao.INATIVO,
                 null
         );
 
+    }
+
+    public static Usuario canonicalOf(
+            UUID id,
+            Nome nome,
+            Email email,
+            boolean emailConfirmado,
+            Senha senha,
+            Telefone telefone,
+            Set<String> roles,
+            Situacao situacao,
+            String avatarFilename,
+            String avatarUrl,
+            LocalDateTime createdAt,
+            UUID updatedBy,
+            LocalDateTime updatedAt,
+            List<DomainEvent> domainEvents) {
+
+        return new Usuario(
+                id,
+                new Nome(nome.value()),
+                new Email(email.value()),
+                emailConfirmado,
+                Senha.ofHashed(senha.getValue()),
+                telefone,
+                roles,
+                situacao,
+                avatarFilename,
+                avatarUrl,
+                createdAt,
+                updatedBy,
+                updatedAt,
+                domainEvents
+        );
+    }
+
+    public static Usuario with(
+            String id,
+            String nome,
+            String email,
+            Telefone telefone) {
+
+        return new Usuario(
+                fromString(id),
+                new Nome(nome),
+                new Email(email),
+                telefone
+        );
     }
 
     public static Usuario getOf(Usuario usuario) {
@@ -177,6 +241,7 @@ public class Usuario extends Events {
                 usuario.nome,
                 usuario.email,
                 usuario.telefone,
+                usuario.senha,
                 usuario.roles,
                 usuario.situacao,
                 usuario.avatarFilename,

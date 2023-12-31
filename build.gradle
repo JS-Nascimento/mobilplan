@@ -54,7 +54,6 @@ ext {
 dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -64,6 +63,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-resource-server')
 
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     implementation 'org.flywaydb:flyway-core:9.22.0'
@@ -76,8 +78,6 @@ dependencies {
 
     implementation 'org.keycloak:keycloak-admin-client:22.0.5'
 
-    implementation('org.springframework.boot:spring-boot-starter-security')
-    implementation('org.springframework.boot:spring-boot-starter-oauth2-resource-server')
 
     implementation 'com.nimbusds:nimbus-jose-jwt:9.37'
     implementation 'com.fasterxml.jackson.core:jackson-databind'

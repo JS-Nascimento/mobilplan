@@ -64,5 +64,4 @@ public class UsuarioGateway {
                 UsuarioGateway.class.getSimpleName());
         }
     };
-
 }

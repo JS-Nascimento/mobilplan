@@ -37,7 +37,9 @@ public enum ErroDeNegocio {
         "Senha inválida. A senha deve ter entre 6 e 10 caracteres. "
             + "Dever ao menos uma letra maiúscula, uma minúscula e um número. "
             + "Não pode conter caracteres especiais (ex: !@#$%&*()"),
-    ERRO_EMAIL_CADASTRADO("mobilplan-020", "O Email {0} já existe em nossa base de dados.");
+    ERRO_EMAIL_CADASTRADO("mobilplan-020", "O Email {0} já existe em nossa base de dados."),
+    ERRO_EMAIL_NAO_CONFIRMADO("mobilplan-021", "Email de cadastro ainda não confirmado. "
+            + "É necessario confirmar o email antes de continuar.");
 
     private final String code;
     private final String msg;

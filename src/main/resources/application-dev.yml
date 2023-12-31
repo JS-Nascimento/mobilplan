@@ -12,6 +12,12 @@ spring:
     name: mobilplan
     url: http://localhost:8081
     email-validation-url: ${spring.application.url}/v1/usuarios/novo/confirmar-email
+    waiting-time-to-confirm-email-in-minutes: 30
+
+  repository:
+    bucket-name:
+      logomarca: logomarca
+      avatar: avatar
 
   datasource:
     driver-class-name: org.postgresql.Driver

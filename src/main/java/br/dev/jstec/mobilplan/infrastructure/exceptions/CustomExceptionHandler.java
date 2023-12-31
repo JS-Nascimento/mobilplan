@@ -9,6 +9,7 @@ import static org.springframework.http.ResponseEntity.status;
 import br.dev.jstec.mobilplan.application.constraints.ConstraintException;
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.exceptions.ErrorMessage;
+import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,14 @@ public class CustomExceptionHandler {
         log.error(format(ERRO_INFORMACAO_INVALIDA.getMsg(), ex.getErrorMessage()));
         return status(BAD_REQUEST)
             .body(ex.getErrorMessage());
+    }
+
+    @ExceptionHandler(DomainException.class)
+    ResponseEntity<br.dev.jstec.mobilplan.domain.exceptions.ErrorMessage> handleDomainException(DomainException ex) {
+
+        log.error(format(ERRO_INFORMACAO_INVALIDA.getMsg(), ex.getErrorMessage()));
+        return status(BAD_REQUEST)
+                .body(ex.getErrorMessage());
     }
 
     @ExceptionHandler(RequestException.class)

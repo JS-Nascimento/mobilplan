@@ -1,0 +1,764 @@
+10:24:56.088 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 18052 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+10:24:56.092 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+10:24:56.093 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+10:24:57.182 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:24:57.184 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+10:24:57.218 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:24:57.219 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:24:57.220 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:24:57.221 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 0 JDBC repository interfaces.
+10:24:57.228 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:24:57.228 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:24:57.266 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 3 JPA repository interfaces.
+10:24:57.909 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+10:24:58.021 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1888 ms
+10:24:58.628 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+10:24:59.896 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:24:59.942 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+10:25:00.894 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+10:25:01.318 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+10:25:02.157 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+10:25:02.285 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@f054e29, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@426ead99, org.springframework.security.web.context.SecurityContextHolderFilter@7e389cd6, org.springframework.security.web.header.HeaderWriterFilter@145baec6, org.springframework.security.web.authentication.logout.LogoutFilter@72dc7b05, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@3db2665d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7657cc5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7a50482c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6c40bb07, org.springframework.security.web.session.SessionManagementFilter@5edca2ff, org.springframework.security.web.access.ExceptionTranslationFilter@1bf6c568, org.springframework.security.web.access.intercept.AuthorizationFilter@6bac4719]
+10:25:02.842 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+10:25:02.845 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+10:25:02.896 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#43c16e17:0/SimpleConnection@651a4c4 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=50762]
+10:25:02.934 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 7.376 seconds (process running for 8.366)
+10:25:03.315 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:25:03.319 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+10:25:30.269 [http-nio-8081-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.time.LocalDateTime.toString()" because "dateTimeStr" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "java.time.LocalDateTime.toString()" because "dateTimeStr" is null
+	at br.dev.jstec.mobilplan.application.usecases.usuario.UsuarioMapper.stringToLocalDateTime(UsuarioMapper.java:42)
+	at br.dev.jstec.mobilplan.application.usecases.usuario.UsuarioMapperImpl.toAtualizarUsuarioOutput(UsuarioMapperImpl.java:58)
+	at br.dev.jstec.mobilplan.application.usecases.usuario.AlterarUsuarioUseCase.execute(AlterarUsuarioUseCase.java:90)
+	at br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario.UsuarioController.atualizarUsuario(UsuarioController.java:125)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:141)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario.UsuarioController$$SpringCGLIB$$0.atualizarUsuario(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:145)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+10:26:18.005 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+10:26:18.543 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+10:26:18.564 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+10:26:22.621 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 15368 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+10:26:22.623 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+10:26:22.623 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+10:26:23.544 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:26:23.546 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+10:26:23.584 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:26:23.585 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:26:23.586 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:26:23.587 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 37 ms. Found 0 JDBC repository interfaces.
+10:26:23.593 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:26:23.594 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:26:23.627 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+10:26:24.202 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+10:26:24.311 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1657 ms
+10:26:24.822 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+10:26:25.988 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:26:26.027 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+10:26:26.876 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+10:26:27.274 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+10:26:28.069 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+10:26:28.186 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@12a96a6e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@18e8003a, org.springframework.security.web.context.SecurityContextHolderFilter@5c8ba2ed, org.springframework.security.web.header.HeaderWriterFilter@4840e7, org.springframework.security.web.authentication.logout.LogoutFilter@3a5b73cb, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@1e3e01b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@703e8fe8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2d29b8d3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@695d804, org.springframework.security.web.session.SessionManagementFilter@34634dff, org.springframework.security.web.access.ExceptionTranslationFilter@1a6c32a2, org.springframework.security.web.access.intercept.AuthorizationFilter@7e389cd6]
+10:26:28.708 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+10:26:28.711 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+10:26:28.769 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6e5091b0:0/SimpleConnection@3cf09930 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=50803]
+10:26:28.808 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.636 seconds (process running for 7.187)
+10:26:29.383 [RMI TCP Connection(1)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:26:29.386 [RMI TCP Connection(1)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+10:26:33.591 [http-nio-8081-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.time.LocalDateTime.toString()" because "dateTimeStr" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "java.time.LocalDateTime.toString()" because "dateTimeStr" is null
+	at br.dev.jstec.mobilplan.application.usecases.usuario.UsuarioMapper.stringToLocalDateTime(UsuarioMapper.java:41)
+	at br.dev.jstec.mobilplan.application.usecases.usuario.UsuarioMapperImpl.toAtualizarUsuarioOutput(UsuarioMapperImpl.java:58)
+	at br.dev.jstec.mobilplan.application.usecases.usuario.AlterarUsuarioUseCase.execute(AlterarUsuarioUseCase.java:90)
+	at br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario.UsuarioController.atualizarUsuario(UsuarioController.java:125)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:141)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario.UsuarioController$$SpringCGLIB$$0.atualizarUsuario(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:145)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+10:27:12.830 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+10:27:13.188 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+10:27:13.209 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+10:27:17.248 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 3784 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+10:27:17.249 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+10:27:17.250 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+10:27:18.197 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:27:18.198 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+10:27:18.232 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:27:18.233 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:27:18.234 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:27:18.234 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 0 JDBC repository interfaces.
+10:27:18.240 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:27:18.241 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:27:18.279 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 3 JPA repository interfaces.
+10:27:18.835 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+10:27:18.936 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1655 ms
+10:27:19.450 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+10:27:20.580 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:27:20.622 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+10:27:21.425 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+10:27:21.813 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+10:27:22.577 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+10:27:22.688 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@59a8891e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@f054e29, org.springframework.security.web.context.SecurityContextHolderFilter@246b2469, org.springframework.security.web.header.HeaderWriterFilter@4d2eb4c6, org.springframework.security.web.authentication.logout.LogoutFilter@4907b755, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@7a86e414, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45c812b4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7657cc5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@426ead99, org.springframework.security.web.session.SessionManagementFilter@52e10d07, org.springframework.security.web.access.ExceptionTranslationFilter@2c03678, org.springframework.security.web.access.intercept.AuthorizationFilter@18bb7eca]
+10:27:23.210 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+10:27:23.213 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+10:27:23.259 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4fb5adb8:0/SimpleConnection@36598d1d [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=50833]
+10:27:23.296 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.484 seconds (process running for 7.03)
+10:27:23.503 [RMI TCP Connection(1)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:27:23.505 [RMI TCP Connection(1)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+10:29:09.129 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+10:29:10.094 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+10:29:10.116 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+10:29:14.517 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 2624 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+10:29:14.520 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+10:29:14.521 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+10:29:15.447 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:29:15.448 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+10:29:15.479 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:29:15.480 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:29:15.481 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:29:15.482 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+10:29:15.488 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:29:15.489 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:29:15.526 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 3 JPA repository interfaces.
+10:29:16.079 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+10:29:16.181 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1625 ms
+10:29:16.691 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+10:29:17.827 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:29:17.868 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+10:29:18.666 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+10:29:19.047 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+10:29:19.821 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+10:29:19.936 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1f406a62, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6b89cbc0, org.springframework.security.web.context.SecurityContextHolderFilter@128acee, org.springframework.security.web.header.HeaderWriterFilter@79948bcf, org.springframework.security.web.authentication.logout.LogoutFilter@45c812b4, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@72dc7b05, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@61e67cc1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@118bace5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a9c91e7, org.springframework.security.web.session.SessionManagementFilter@46c09751, org.springframework.security.web.access.ExceptionTranslationFilter@34634dff, org.springframework.security.web.access.intercept.AuthorizationFilter@1e3e01b]
+10:29:20.466 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+10:29:20.469 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+10:29:20.513 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4fb5adb8:0/SimpleConnection@136fea21 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=50870]
+10:29:20.554 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.48 seconds (process running for 7.039)
+10:29:20.726 [RMI TCP Connection(2)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:29:20.727 [RMI TCP Connection(2)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+10:36:40.381 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+10:36:41.106 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+10:36:41.129 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+10:49:14.691 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 3284 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+10:49:14.693 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+10:49:14.693 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+10:49:15.636 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:49:15.637 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+10:49:15.673 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:49:15.674 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:49:15.675 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:49:15.675 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 0 JDBC repository interfaces.
+10:49:15.681 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:49:15.682 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:49:15.714 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
+10:49:16.254 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+10:49:16.353 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1623 ms
+10:49:16.861 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+10:49:17.983 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:49:18.027 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+10:49:18.852 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+10:49:19.235 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+10:49:20.011 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+10:49:20.124 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@63d93e91, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@a28296e, org.springframework.security.web.context.SecurityContextHolderFilter@456c528c, org.springframework.security.web.header.HeaderWriterFilter@5240654, org.springframework.security.web.authentication.logout.LogoutFilter@2b7e07e0, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@713d2fe8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@112aa99c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@74d76660, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@127205ac, org.springframework.security.web.session.SessionManagementFilter@7657cc5, org.springframework.security.web.access.ExceptionTranslationFilter@26b78c2, org.springframework.security.web.access.intercept.AuthorizationFilter@484e9fee]
+10:49:20.636 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+10:49:20.639 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+10:49:20.684 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6fec6b75:0/SimpleConnection@136fea21 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=51054]
+10:49:20.720 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.473 seconds (process running for 7.03)
+10:49:20.939 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:49:20.944 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+10:53:55.066 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+10:53:55.856 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+10:53:55.878 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+10:53:59.457 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 4704 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+10:53:59.458 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+10:53:59.458 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+10:54:00.395 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:54:00.397 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+10:54:00.427 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:54:00.428 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:54:00.429 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:54:00.429 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+10:54:00.435 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:54:00.436 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:54:00.467 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
+10:54:01.007 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+10:54:01.106 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1614 ms
+10:54:01.628 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+10:54:02.750 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:54:02.788 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+10:54:03.609 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+10:54:03.998 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+10:54:04.784 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+10:54:04.898 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@713d2fe8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@546c43e0, org.springframework.security.web.context.SecurityContextHolderFilter@7a50482c, org.springframework.security.web.header.HeaderWriterFilter@26b78c2, org.springframework.security.web.authentication.logout.LogoutFilter@6b89cbc0, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@426ead99, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@456c528c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@69438db0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63d93e91, org.springframework.security.web.session.SessionManagementFilter@7e389cd6, org.springframework.security.web.access.ExceptionTranslationFilter@172b39c3, org.springframework.security.web.access.intercept.AuthorizationFilter@2e826bd1]
+10:54:05.431 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+10:54:05.434 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+10:54:05.479 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4fb5adb8:0/SimpleConnection@36598d1d [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=51157]
+10:54:05.517 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.492 seconds (process running for 7.08)
+10:54:05.683 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:54:05.686 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+10:55:47.033 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+10:55:47.360 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+10:55:47.382 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+10:55:51.005 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 12600 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+10:55:51.007 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+10:55:51.008 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+10:55:51.951 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:55:51.953 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+10:55:51.983 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:55:51.984 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:55:51.985 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+10:55:51.985 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+10:55:51.991 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+10:55:51.992 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:55:52.024 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
+10:55:52.562 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+10:55:52.662 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1619 ms
+10:55:53.177 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+10:55:54.277 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:55:54.317 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+10:55:55.120 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+10:55:55.501 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+10:55:56.272 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+10:55:56.384 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2fb800ca, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6d8c1584, org.springframework.security.web.context.SecurityContextHolderFilter@145baec6, org.springframework.security.web.header.HeaderWriterFilter@46c09751, org.springframework.security.web.authentication.logout.LogoutFilter@3bd623b2, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@18bb7eca, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3a5b73cb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26b78c2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e826bd1, org.springframework.security.web.session.SessionManagementFilter@2c03678, org.springframework.security.web.access.ExceptionTranslationFilter@583c416c, org.springframework.security.web.access.intercept.AuthorizationFilter@efc5686]
+10:55:56.896 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+10:55:56.899 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+10:55:56.945 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#77f3bb3f:0/SimpleConnection@65b75087 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=51213]
+10:55:56.982 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.432 seconds (process running for 7.021)
+10:55:57.203 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:55:57.207 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+11:03:34.742 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+11:03:35.620 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+11:03:35.642 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+11:03:39.618 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 12152 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+11:03:39.620 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+11:03:39.621 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+11:03:40.556 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+11:03:40.558 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+11:03:40.590 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:03:40.591 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:03:40.592 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:03:40.592 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 0 JDBC repository interfaces.
+11:03:40.603 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+11:03:40.604 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+11:03:40.642 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 3 JPA repository interfaces.
+11:03:41.186 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+11:03:41.289 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1632 ms
+11:03:41.868 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+11:03:42.998 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+11:03:43.038 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+11:03:43.848 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+11:03:44.237 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+11:03:44.992 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+11:03:45.107 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@63d93e91, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@a28296e, org.springframework.security.web.context.SecurityContextHolderFilter@456c528c, org.springframework.security.web.header.HeaderWriterFilter@5240654, org.springframework.security.web.authentication.logout.LogoutFilter@2b7e07e0, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@713d2fe8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@112aa99c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@74d76660, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@127205ac, org.springframework.security.web.session.SessionManagementFilter@7657cc5, org.springframework.security.web.access.ExceptionTranslationFilter@26b78c2, org.springframework.security.web.access.intercept.AuthorizationFilter@484e9fee]
+11:03:45.596 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+11:03:45.599 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+11:03:45.643 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6fec6b75:0/SimpleConnection@651a4c4 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=51536]
+11:03:45.678 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.541 seconds (process running for 7.106)
+11:03:45.809 [RMI TCP Connection(1)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+11:03:45.811 [RMI TCP Connection(1)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+11:07:04.476 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+11:07:05.336 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+11:07:05.358 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+11:07:19.117 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 26608 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+11:07:19.118 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+11:07:19.119 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+11:07:20.074 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+11:07:20.075 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+11:07:20.104 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:07:20.105 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:07:20.106 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:07:20.106 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 0 JDBC repository interfaces.
+11:07:20.112 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+11:07:20.113 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+11:07:20.151 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 3 JPA repository interfaces.
+11:07:20.694 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+11:07:20.792 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1638 ms
+11:07:21.305 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+11:07:22.430 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+11:07:22.472 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+11:07:23.290 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+11:07:23.669 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+11:07:24.454 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+11:07:24.570 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1f406a62, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6b89cbc0, org.springframework.security.web.context.SecurityContextHolderFilter@128acee, org.springframework.security.web.header.HeaderWriterFilter@79948bcf, org.springframework.security.web.authentication.logout.LogoutFilter@45c812b4, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@72dc7b05, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@61e67cc1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@118bace5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a9c91e7, org.springframework.security.web.session.SessionManagementFilter@46c09751, org.springframework.security.web.access.ExceptionTranslationFilter@34634dff, org.springframework.security.web.access.intercept.AuthorizationFilter@1e3e01b]
+11:07:25.088 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+11:07:25.091 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+11:07:25.136 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4fb5adb8:0/SimpleConnection@136fea21 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=51580]
+11:07:25.173 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.516 seconds (process running for 7.067)
+11:07:25.305 [RMI TCP Connection(2)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+11:07:25.309 [RMI TCP Connection(2)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+11:10:08.576 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+11:10:09.458 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+11:10:09.499 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+11:10:13.405 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 28456 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+11:10:13.407 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+11:10:13.408 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+11:10:14.417 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+11:10:14.419 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+11:10:14.451 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:10:14.452 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:10:14.453 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:10:14.453 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 0 JDBC repository interfaces.
+11:10:14.459 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+11:10:14.460 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+11:10:14.495 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+11:10:15.065 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+11:10:15.164 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1715 ms
+11:10:15.691 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+11:10:16.808 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+11:10:16.850 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+11:10:17.671 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+11:10:18.054 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+11:10:18.810 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+11:10:18.923 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2fb800ca, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6d8c1584, org.springframework.security.web.context.SecurityContextHolderFilter@145baec6, org.springframework.security.web.header.HeaderWriterFilter@46c09751, org.springframework.security.web.authentication.logout.LogoutFilter@3bd623b2, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@18bb7eca, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3a5b73cb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26b78c2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e826bd1, org.springframework.security.web.session.SessionManagementFilter@2c03678, org.springframework.security.web.access.ExceptionTranslationFilter@583c416c, org.springframework.security.web.access.intercept.AuthorizationFilter@efc5686]
+11:10:19.439 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+11:10:19.443 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+11:10:19.494 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4afd8f16:0/SimpleConnection@2be71a78 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=51620]
+11:10:19.534 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.583 seconds (process running for 7.14)
+11:10:20.098 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+11:10:20.100 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+11:11:20.481 [http-nio-8081-exec-2] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Criando usuário no keycloak
+11:11:20.984 [http-nio-8081-exec-2] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Criando usuário no banco de dados
+11:11:21.031 [http-nio-8081-exec-2] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Publicando evento de confimação de email
+11:11:21.074 [emailConfirmationListener-1] INFO  b.d.j.m.i.a.EmailConfirmationListener - [message:email.listener.income] [payload:{"id":"7f253f1a-3134-4ea2-b0af-7b58f283962b","email":"sardinha3.jorge@gmail.com","nome":"Jorge Santos","codigo_confirmacao":"606768","occurred_on":"2023-12-27T14:11:21.008464100Z"}]
+11:11:21.075 [emailConfirmationListener-1] INFO  b.d.j.m.i.s.i.EmailTemplateService - Enviando email de confirmação para sardinha3.jorge@gmail.com
+11:29:51.459 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+11:29:52.290 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+11:29:52.313 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+11:30:16.851 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 24528 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+11:30:16.865 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+11:30:16.866 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+11:30:17.817 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+11:30:17.819 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+11:30:17.850 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:30:17.852 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:30:17.853 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+11:30:17.853 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 0 JDBC repository interfaces.
+11:30:17.859 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+11:30:17.860 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+11:30:17.892 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
+11:30:18.455 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+11:30:18.554 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1652 ms
+11:30:19.081 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+11:30:20.197 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+11:30:20.237 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+11:30:21.076 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+11:30:21.470 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+11:30:22.160 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+11:30:22.277 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@732af580, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40bf2ead, org.springframework.security.web.context.SecurityContextHolderFilter@52999774, org.springframework.security.web.header.HeaderWriterFilter@7ccf845a, org.springframework.security.web.authentication.logout.LogoutFilter@4f8d7222, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@5e584389, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@d4a1d38, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4694dfd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ce76938, org.springframework.security.web.session.SessionManagementFilter@51645204, org.springframework.security.web.access.ExceptionTranslationFilter@6c884b0d, org.springframework.security.web.access.intercept.AuthorizationFilter@16a45e5b]
+11:30:22.868 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+11:30:22.871 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+11:30:22.917 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4211a66:0/SimpleConnection@60a64104 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=51794]
+11:30:22.960 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.584 seconds (process running for 7.165)
+11:30:23.497 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+11:30:23.499 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+11:30:36.200 [http-nio-8081-exec-1] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Criando usuário no keycloak
+11:30:36.441 [http-nio-8081-exec-1] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Criando usuário no banco de dados
+11:30:36.525 [http-nio-8081-exec-1] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Publicando evento de confimação de email
+11:30:36.566 [emailConfirmationListener-1] INFO  b.d.j.m.i.a.EmailConfirmationListener - [message:email.listener.income] [payload:{"id":"96f3edf8-768d-4edc-bd05-eaaf37e260d6","email":"sardinha4.jorge@gmail.com","nome":"Jorge Santos","codigo_confirmacao":"105771","occurred_on":"2023-12-27T14:30:36.502647700Z"}]
+11:30:36.568 [emailConfirmationListener-1] INFO  b.d.j.m.i.s.i.EmailTemplateService - Enviando email de confirmação para sardinha4.jorge@gmail.com
+12:17:21.578 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+12:17:22.319 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+12:17:22.340 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+12:17:45.705 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 17104 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+12:17:45.707 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+12:17:45.707 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+12:17:46.639 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+12:17:46.641 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+12:17:46.670 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:17:46.671 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:17:46.672 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:17:46.672 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 0 JDBC repository interfaces.
+12:17:46.678 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+12:17:46.679 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+12:17:46.712 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 3 JPA repository interfaces.
+12:17:47.258 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+12:17:47.357 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1610 ms
+12:17:47.870 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+12:17:48.989 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+12:17:49.029 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+12:17:49.843 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+12:17:50.231 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+12:17:50.926 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+12:17:51.038 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3eb60858, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@469f8de2, org.springframework.security.web.context.SecurityContextHolderFilter@387f53cf, org.springframework.security.web.header.HeaderWriterFilter@24c186cc, org.springframework.security.web.authentication.logout.LogoutFilter@732af580, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@38dd5c3a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@698cc99d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d34baec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14f13587, org.springframework.security.web.session.SessionManagementFilter@a83c657, org.springframework.security.web.access.ExceptionTranslationFilter@5073b0b8, org.springframework.security.web.access.intercept.AuthorizationFilter@39008911]
+12:17:51.614 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+12:17:51.617 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+12:17:51.664 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#2d34a88a:0/SimpleConnection@3261b8bf [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=52031]
+12:17:51.702 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.441 seconds (process running for 7.026)
+12:17:51.892 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+12:17:51.893 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+12:56:30.446 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+12:56:30.808 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+12:56:30.830 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+12:56:35.177 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 15368 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+12:56:35.179 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+12:56:35.180 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+12:56:36.139 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+12:56:36.141 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+12:56:36.170 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:56:36.171 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:56:36.172 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:56:36.172 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 0 JDBC repository interfaces.
+12:56:36.182 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+12:56:36.183 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+12:56:36.214 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
+12:56:36.802 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+12:56:36.916 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1697 ms
+12:56:37.440 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+12:56:38.595 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+12:56:38.634 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+12:56:39.463 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+12:56:39.846 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+12:56:40.530 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+12:56:40.640 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@533c7a52, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3eb60858, org.springframework.security.web.context.SecurityContextHolderFilter@4f8d7222, org.springframework.security.web.header.HeaderWriterFilter@10c23a76, org.springframework.security.web.authentication.logout.LogoutFilter@42491839, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@190c2bbf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2cda8be9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@698cc99d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@469f8de2, org.springframework.security.web.session.SessionManagementFilter@3228b5a1, org.springframework.security.web.access.ExceptionTranslationFilter@28736857, org.springframework.security.web.access.intercept.AuthorizationFilter@7d66a634]
+12:56:41.203 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+12:56:41.206 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+12:56:41.252 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6dd01bfb:0/SimpleConnection@3ad32e52 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=53422]
+12:56:41.289 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.574 seconds (process running for 7.176)
+12:56:41.821 [RMI TCP Connection(1)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+12:56:41.823 [RMI TCP Connection(1)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+12:57:53.090 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+12:57:53.754 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+12:57:53.776 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+12:57:57.830 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 16864 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+12:57:57.831 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+12:57:57.832 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+12:57:58.757 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+12:57:58.758 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+12:57:58.788 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:57:58.789 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:57:58.790 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+12:57:58.791 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+12:57:58.800 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+12:57:58.801 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+12:57:58.833 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
+12:57:59.390 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+12:57:59.494 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1627 ms
+12:58:00.022 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+12:58:01.160 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+12:58:01.201 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+12:58:02.032 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+12:58:02.416 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+12:58:03.112 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+12:58:03.223 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@75288f47, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4effab3b, org.springframework.security.web.context.SecurityContextHolderFilter@1cce2194, org.springframework.security.web.header.HeaderWriterFilter@e343477, org.springframework.security.web.authentication.logout.LogoutFilter@7acc95a2, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@20461e2b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@472d7ab0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3f36d387, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e584389, org.springframework.security.web.session.SessionManagementFilter@16db679e, org.springframework.security.web.access.ExceptionTranslationFilter@34c83eb0, org.springframework.security.web.access.intercept.AuthorizationFilter@24c036b7]
+12:58:03.813 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+12:58:03.816 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+12:58:03.864 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6878e49e:0/SimpleConnection@21da6808 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=53457]
+12:58:03.900 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.505 seconds (process running for 7.07)
+12:58:04.038 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+12:58:04.040 [RMI TCP Connection(3)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+13:01:50.987 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+13:01:51.739 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+13:01:51.760 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+13:01:55.829 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 5520 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+13:01:55.830 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+13:01:55.843 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+13:01:56.800 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+13:01:56.801 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+13:01:56.838 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+13:01:56.843 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+13:01:56.847 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+13:01:56.848 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42 ms. Found 0 JDBC repository interfaces.
+13:01:56.855 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+13:01:56.856 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+13:01:56.888 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 3 JPA repository interfaces.
+13:01:57.475 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+13:01:57.589 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1706 ms
+13:01:58.122 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+13:01:59.259 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+13:01:59.298 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+13:02:00.101 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+13:02:00.488 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+13:02:01.197 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+13:02:01.311 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3952621d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4d7143de, org.springframework.security.web.context.SecurityContextHolderFilter@2ff35d7, org.springframework.security.web.header.HeaderWriterFilter@7b6419dd, org.springframework.security.web.authentication.logout.LogoutFilter@76f65a8b, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@50b03929, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3374a30c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16a45e5b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c595228, org.springframework.security.web.session.SessionManagementFilter@78a5c127, org.springframework.security.web.access.ExceptionTranslationFilter@7af65b49, org.springframework.security.web.access.intercept.AuthorizationFilter@4f6f69ef]
+13:02:01.899 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+13:02:01.903 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+13:02:01.955 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#74d2525f:0/SimpleConnection@4a5939cb [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=53526]
+13:02:01.997 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.614 seconds (process running for 7.181)
+13:02:02.527 [RMI TCP Connection(2)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+13:02:02.529 [RMI TCP Connection(2)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+13:03:47.534 [http-nio-8081-exec-3] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Criando usuário no keycloak
+13:03:47.773 [http-nio-8081-exec-3] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Criando usuário no banco de dados
+13:03:47.832 [http-nio-8081-exec-3] DEBUG b.d.j.m.i.p.u.UsuarioPersistence - Publicando evento de confimação de email
+13:03:47.875 [emailConfirmationListener-1] INFO  b.d.j.m.i.a.EmailConfirmationListener - [message:email.listener.income] [payload:{"id":"078757d0-b83a-4cc0-872b-3f8dc55ea186","email":"sardinha5.jorge@gmail.com","nome":"Jorge Santos","codigo_confirmacao":"772818","occurred_on":"2023-12-27T16:03:47.817611400Z"}]
+13:03:47.876 [emailConfirmationListener-1] INFO  b.d.j.m.i.s.i.EmailTemplateService - Enviando email de confirmação para sardinha5.jorge@gmail.com
+13:11:43.617 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+13:11:43.881 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+13:11:43.903 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+13:11:48.107 [main] INFO  br.dev.jstec.mobilplan.Application - Starting Application using Java 18.0.2 with PID 27248 (C:\Projetos\Mobilplan\mobilplan-back\build\classes\java\main started by Jorge Nascimento in C:\Projetos\Mobilplan\mobilplan-back)
+13:11:48.109 [main] DEBUG br.dev.jstec.mobilplan.Application - Running with Spring Boot v3.1.3, Spring v6.0.11
+13:11:48.109 [main] INFO  br.dev.jstec.mobilplan.Application - The following 1 profile is active: "dev"
+13:11:49.036 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+13:11:49.095 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53 ms. Found 3 JPA repository interfaces.
+13:11:49.654 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+13:11:49.760 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1617 ms
+13:11:50.300 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+13:11:51.452 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+13:11:51.491 [main] INFO  b.d.j.m.i.c.p.e.NoReplyEmailProperties - NoReplyEmailProperties{host='smtp.gmail.com', port=587, username='sardinha.jorge@gmail.com'}
+13:11:52.311 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+13:11:52.697 [main] INFO  b.d.j.m.i.c.p.amqp.QueueProperties - QueueProperties{exchange='user.events', routingKey='email.confirmation', queue='email.confirmation.queue'}
+13:11:53.395 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+13:11:53.504 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5c3d91bc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6cb84986, org.springframework.security.web.context.SecurityContextHolderFilter@6392107e, org.springframework.security.web.header.HeaderWriterFilter@39a4bd89, org.springframework.security.web.authentication.logout.LogoutFilter@148b13e5, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@2ca08575, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3fa43b05, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5083642c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@449be249, org.springframework.security.web.session.SessionManagementFilter@acc6a69, org.springframework.security.web.access.ExceptionTranslationFilter@64e5d7e4, org.springframework.security.web.access.intercept.AuthorizationFilter@6a5f05f5]
+13:11:54.001 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+13:11:54.004 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+13:11:54.051 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#5ec5a449:0/SimpleConnection@5dd7f921 [delegate=amqp://mobilplan@127.0.0.1:5672/, localPort=53675]
+13:11:54.093 [main] INFO  br.dev.jstec.mobilplan.Application - Started Application in 6.44 seconds (process running for 7.004)
+13:11:54.296 [RMI TCP Connection(2)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+13:11:54.298 [RMI TCP Connection(2)-192.168.0.111] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+14:49:28.069 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+14:49:28.600 [emailConfirmationListener-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+14:49:28.622 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

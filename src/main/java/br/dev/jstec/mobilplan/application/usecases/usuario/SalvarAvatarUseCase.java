@@ -1,40 +1,40 @@
-package br.dev.jstec.mobilplan.application.usecases.marceneiro;
+package br.dev.jstec.mobilplan.application.usecases.usuario;
 
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_CONVERTER_IMAGEM;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_SALVAR_IMAGEM;
-import static br.dev.jstec.mobilplan.domain.valueobject.Imagem.of;
 import static java.util.UUID.fromString;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
-import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
+import br.dev.jstec.mobilplan.application.ports.UsuarioPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
-import br.dev.jstec.mobilplan.application.usecases.marceneiro.SalvarLogomarcaUseCase.Input;
-import br.dev.jstec.mobilplan.application.usecases.marceneiro.SalvarLogomarcaUseCase.Output;
+import br.dev.jstec.mobilplan.application.usecases.usuario.SalvarAvatarUseCase.Input;
+import br.dev.jstec.mobilplan.application.usecases.usuario.SalvarAvatarUseCase.Output;
+import br.dev.jstec.mobilplan.domain.valueobject.Imagem;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class SalvarLogomarcaUseCase extends UseCase<Input, Output> {
+public class SalvarAvatarUseCase extends UseCase<Input, Output> {
 
-    private final MarceneiroPort marceneiroPort;
+    private final UsuarioPort usuarioPort;
 
     @Override
-    public Output execute(SalvarLogomarcaUseCase.Input input) {
+    public Output execute(SalvarAvatarUseCase.Input input) {
 
-        var logomarca = of(input.id(), input.inputStream());
+        var avatar = Imagem.of(input.id(), input.inputStream());
 
-        return marceneiroPort.buscarPorId(fromString(input.id()))
-                .map(marceneiro -> {
+        return usuarioPort.buscarPorId(fromString(input.id()))
+                .map(usuario -> {
                     try {
                         return new Output(
-                                marceneiroPort.salvarLogomarca(
-                                        marceneiro,
-                                        logomarca.fileName(),
+                                usuarioPort.salvarAvatar(
+                                        usuario,
+                                        avatar.fileName(),
                                         input.tipoImagem(),
-                                        logomarca.image()
+                                        avatar.image()
                                 )
                         );
                     } catch (IOException e) {

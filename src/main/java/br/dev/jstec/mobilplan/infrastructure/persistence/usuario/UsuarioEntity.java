@@ -4,6 +4,7 @@ import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
@@ -20,6 +21,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Getter
 @Setter
@@ -29,12 +31,13 @@ import org.springframework.data.annotation.LastModifiedDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "usuarios")
-//@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(AuditingEntityListener.class)
 public class UsuarioEntity {
 
-    @Include
+
     @Id
     @Column(name = "id", updatable = false, nullable = false)
+    @Include
     private UUID id;
 
     @Column(name = "situacao", nullable = false)
@@ -43,6 +46,7 @@ public class UsuarioEntity {
     @Column(name = "nome", nullable = false)
     private String nome;
 
+    @Include
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
@@ -75,7 +79,7 @@ public class UsuarioEntity {
     @Column(name = "role")
     private List<String> roles;
 
-    @CreatedDate
+    @CreatedDate()
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
@@ -86,6 +90,5 @@ public class UsuarioEntity {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
 }
 

@@ -9,21 +9,21 @@ import lombok.NoArgsConstructor;
 
 @Builder
 @NoArgsConstructor(access = PRIVATE)
-class LogomarcaFixture {
+class ImagemFixture {
 
-    public static Logomarca buildComFilename() {
+    public static Imagem buildComFilename() {
 
-        return Logomarca.of(UUID.randomUUID().toString());
+        return Imagem.of(UUID.randomUUID().toString());
     }
 
-    public static Logomarca buildComFilenameEInputStream() {
+    public static Imagem buildComFilenameEInputStream() {
 
-        return Logomarca.of(UUID.randomUUID().toString(), loadPngImageAsStream());
+        return Imagem.of(UUID.randomUUID().toString(), loadPngImageAsStream());
     }
 
     private static InputStream loadPngImageAsStream() {
 
-        return LogomarcaFixture.class.getResourceAsStream(
+        return ImagemFixture.class.getResourceAsStream(
                 "/teste1200x1200.png");
     }
 }

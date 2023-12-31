@@ -11,13 +11,13 @@ import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class LogomarcaTest {
+class ImagemTest {
 
     @Test
     @DisplayName("Quando fornecido um InputStream nulo, uma Logomarca deve ser criada com uma imagem padrão")
     void createWithNullInputStream() {
 
-        var logomarca = LogomarcaFixture.buildComFilename();
+        var logomarca = ImagemFixture.buildComFilename();
 
         assertNotNull(logomarca.fileName());
         assertNotNull(logomarca.image());
@@ -30,7 +30,7 @@ class LogomarcaTest {
     @DisplayName("Quando fornecido um InputStream válido, uma Logomarca deve ser criada com uma imagem não nula")
     void createWithValidInputStream() {
 
-        var logomarca = LogomarcaFixture.buildComFilenameEInputStream();
+        var logomarca = ImagemFixture.buildComFilenameEInputStream();
         assertNotNull(logomarca.fileName());
         assertNotNull(logomarca.image());
         assertEquals(200, logomarca.image().getWidth());
@@ -40,7 +40,7 @@ class LogomarcaTest {
     @DisplayName("Deve lançar uma Business Exception quando não fornecido um filename válido")
     void throwExceptionWithFileNameNotValid() {
 
-        var exception = assertThrows(DomainException.class, () -> Logomarca.of(null));
+        var exception = assertThrows(DomainException.class, () -> Imagem.of(null));
 
         assertEquals(ERRO_CAMPO_INVALIDO.getCode(), exception.getErrorMessage().getCode());
         assertEquals(format(ERRO_CAMPO_INVALIDO.getMsg(), "Logomarca"),

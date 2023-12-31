@@ -36,7 +36,7 @@ public enum ErroDeDominio {
     ERRO_SENHA_INVALIDA("mobilplan-019",
         "Senha inválida. A senha deve ter entre 6 e 10 caracteres. "
             + "Dever ao menos uma letra maiúscula, uma minúscula e um número. "
-            + "Não pode conter caracteres especiais (ex: !@#$%&*()"),
+                + "Não pode conter caracteres especiais ex: !@#$%&*()"),
     ERRO_EMAIL_CADASTRADO("mobilplan-020", "O Email {0} já existe em nossa base de dados.");
 
     private final String code;

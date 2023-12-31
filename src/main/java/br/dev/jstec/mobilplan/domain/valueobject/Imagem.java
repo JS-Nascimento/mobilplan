@@ -10,26 +10,26 @@ import java.io.InputStream;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public record Logomarca(
+public record Imagem(
 
         String fileName,
 
         BufferedImage image) {
 
-    public Logomarca {
+    public Imagem {
 
         if (isBlank(fileName)) {
-            throw new DomainException(ERRO_CAMPO_INVALIDO, Logomarca.class.getSimpleName());
+            throw new DomainException(ERRO_CAMPO_INVALIDO, Imagem.class.getSimpleName());
         }
     }
 
-    public static Logomarca of(String fileName) {
+    public static Imagem of(String fileName) {
 
-        return new Logomarca(fileName, processImage(null));
+        return new Imagem(fileName, processImage(null));
     }
 
-    public static Logomarca of(String marceneiroId, InputStream imageStream) {
+    public static Imagem of(String entityId, InputStream imageStream) {
 
-        return new Logomarca(marceneiroId, processImage(imageStream));
+        return new Imagem(entityId, processImage(imageStream));
     }
 }

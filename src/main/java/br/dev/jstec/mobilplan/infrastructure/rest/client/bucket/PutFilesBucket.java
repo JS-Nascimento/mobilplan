@@ -5,5 +5,5 @@ import java.net.URISyntaxException;
 
 public interface PutFilesBucket {
 
-    String put(String key, InputStream inputStream, long contentLength) throws URISyntaxException;
+    String put(String folderName, String key, InputStream inputStream, long contentLength) throws URISyntaxException;
 }

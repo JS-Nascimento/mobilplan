@@ -7,30 +7,36 @@ import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
 import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
 import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository;
+import br.dev.jstec.mobilplan.infrastructure.persistence.helpers.PersistenceHelper;
 import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.PutFilesBucket;
 import jakarta.transaction.Transactional;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.StreamSupport;
-import javax.imageio.ImageIO;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
-public class MarceneiroPersistence implements MarceneiroPort {
+public class MarceneiroPersistence extends PersistenceHelper implements MarceneiroPort {
 
     private final MarceneiroJpaRepository repository;
     private final MarceneiroEntityMapper mapper;
-    private final PutFilesBucket putFilesBucket;
+
+    @Value("${spring.repository.bucket-name.logomarca}")
+    private String bucketName;
+
+    public MarceneiroPersistence(PutFilesBucket putFilesBucket, MarceneiroJpaRepository repository,
+                                 MarceneiroEntityMapper mapper) {
+        super(putFilesBucket);
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     @Override
     public Optional<Marceneiro> buscarPorId(UUID anId) {
@@ -84,19 +90,7 @@ public class MarceneiroPersistence implements MarceneiroPort {
                                   BufferedImage image)
             throws IOException, URISyntaxException {
 
-        var outputStream = new ByteArrayOutputStream();
-
-        ImageIO.write(image, tipoImagem, outputStream);
-
-        var buffer = outputStream.toByteArray();
-        var inputStream = new ByteArrayInputStream(buffer);
-        var contentLength = buffer.length;
-
-        fileName = fileName.concat(".").concat(tipoImagem);
-
-        log.info("Upload logomarca : {}", fileName);
-        var logoUrl = putFilesBucket.put(fileName, inputStream, contentLength);
-
+        var logoUrl = processAndSaveImage(bucketName, fileName, tipoImagem, image);
 
         if (!isBlank(logoUrl)) {
 

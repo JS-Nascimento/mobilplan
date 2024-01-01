@@ -2,6 +2,7 @@ package br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario;
 
 import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_INFORMACAO_INCONSISTENTE;
 import static java.net.URI.create;
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 import static java.util.Optional.ofNullable;
@@ -30,7 +31,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import java.io.IOException;
-import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +59,7 @@ public class UsuarioController {
     private final UsuarioDtoMapper mapper;
     private final UsuarioGateway gateway;
 
+
     @PostMapping("/novo")
     @Operation(
             summary = "Cria um Usuário, retornando seu ID",
@@ -72,10 +73,10 @@ public class UsuarioController {
             @ApiResponse(responseCode = "400", description = "Erro ao atualizar o Usuário.",
                     content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
             @ApiResponse(responseCode = "422", description = "Erro ao criar o Usuário",
-                    content = @Content),
+                    content = @Content)
     })
     @ResponseStatus(value = CREATED)
-    ResponseEntity<ResponseUsuarioDto> criarUsuario(
+    ResponseEntity<EntityModel<ResponseUsuarioDto>> criarUsuario(
             @RequestBody @Valid NewUsuarioDto dto) {
 
         var output = criarUsuarioUseCase
@@ -84,8 +85,12 @@ public class UsuarioController {
         if (nonNull(output)) {
 
             var responseDto = mapper.toResponseUsuarioDto(output);
-            return ResponseEntity.created(create("/v1/usuarios/" + responseDto.id()))
-                    .body(responseDto);
+            EntityModel<ResponseUsuarioDto> resource = EntityModel.of(responseDto);
+            resource.add(linkTo(methodOn(UsuarioController.class).buscarPorId(
+                    requireNonNull(resource.getContent()).id())).withRel("usuario"));
+
+            return ResponseEntity.created(create("/v1/usuarios/" + responseDto.id())).body(resource);
+
         } else {
 
             return ResponseEntity.unprocessableEntity().build();
@@ -94,13 +99,14 @@ public class UsuarioController {
 
     @PostMapping("/novo/confirmar-email")
     @Operation(
-            summary = "Faz a verificação do email do Usuário, retornando uma página HTML",
-            description = "Este endpoint verifica o email do Usuário e retorna uma página HTML com o resultado.",
+            summary = "Faz a verificação do email do Usuário.",
+            description = "Este endpoint verifica o email do Usuário através da confirmação do "
+                    + "código de confirmação enviado anteriormente para o email cadastrado.",
             tags = {"Usuário"}
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Email validado com sucesso",
-                    content = @Content(mediaType = "text/html")),
+                    content = @Content(schema = @Schema(implementation = ResponseUsuarioDto.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao atualizar o Usuário.",
                     content = @Content(schema = @Schema(implementation = ErrorMessage.class)))
     })
@@ -122,9 +128,9 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     @Operation(
-            summary = "Retorna um marceneiro pelo id",
-            description = "Este endpoint retorna um marceneiro específico baseado no ID fornecido.",
-            tags = {"Marceneiro"}
+            summary = "Retorna um usuário pelo id",
+            description = "Este endpoint retorna um usuário específico baseado no ID fornecido.",
+            tags = {"Usuário"}
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Usuário encontrado",
@@ -194,24 +200,25 @@ public class UsuarioController {
             @PathVariable String id,
             @RequestParam("avatar") MultipartFile avatar) throws IOException {
 
-        if (nonNull(avatar) && ("image/png".equals(avatar.getContentType())
-                || "image/jpeg".equals(avatar.getContentType()))) {
-
-            var output = salvarAvatarUseCase
-                    .execute(mapper.toSalvarAvatarInput(id,
-                            Objects.equals(avatar.getContentType(), "image/png") ? "png" : "jpeg",
-                            avatar.getInputStream()));
-
-            var responseDto = mapper.toAvatarUrlDto(output);
-
-            if (nonNull(output)) {
-                EntityModel<AvatarUrlDto> resource = EntityModel.of(responseDto);
-                resource.add(linkTo(methodOn(UsuarioController.class).buscarPorId(id)).withRel("usuario"));
-                return ResponseEntity.ok(resource);
-            }
-
+        if (isNull(avatar) || isBlank(id)) {
+            throw new RequestException(BAD_REQUEST, ERRO_INFORMACAO_INCONSISTENTE,
+                    UsuarioController.class.getSimpleName());
         }
 
-        return ResponseEntity.unprocessableEntity().build();
+        var output = salvarAvatarUseCase
+                .execute(
+                        mapper.toSalvarAvatarInput(
+                                id, avatar.getContentType(), avatar.getInputStream()));
+
+        if (isNull(output)) {
+            return ResponseEntity.unprocessableEntity()
+                    .body(EntityModel.of(new AvatarUrlDto("Erro ao salvar o avatar.")));
+        }
+
+        var responseDto = mapper.toAvatarUrlDto(output);
+        EntityModel<AvatarUrlDto> resource = EntityModel.of(responseDto);
+        resource.add(linkTo(methodOn(UsuarioController.class).buscarPorId(id)).withRel("usuario"));
+
+        return ResponseEntity.ok(resource);
     }
 }

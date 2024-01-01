@@ -1,5 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.exceptions;
 
+import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ATRIBUTO_OBRIGATORIO;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_INFORMACAO_INVALIDA;
 import static java.text.MessageFormat.format;
 import static org.apache.commons.lang3.StringUtils.capitalize;
@@ -11,11 +12,13 @@ import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.exceptions.ErrorMessage;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import jakarta.validation.ConstraintViolationException;
+import java.text.MessageFormat;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 
 @Slf4j
 @ControllerAdvice
@@ -33,6 +36,18 @@ public class CustomExceptionHandler {
             .body(ErrorMessage.builder()
                 .code(ERRO_INFORMACAO_INVALIDA.getCode())
                 .msg(msg)
+                    .build());
+    }
+
+    @ExceptionHandler(MissingServletRequestPartException.class)
+    ResponseEntity<ErrorMessage> handleMissingServletRequestPartException(MissingServletRequestPartException ex) {
+
+        var msg = format(MessageFormat.format(ERRO_ATRIBUTO_OBRIGATORIO.getMsg(), "imagem"), ex.getMessage());
+        log.error(msg);
+        return status(BAD_REQUEST)
+                .body(ErrorMessage.builder()
+                        .code(ERRO_INFORMACAO_INVALIDA.getCode())
+                        .msg(msg)
                 .build());
     }
 

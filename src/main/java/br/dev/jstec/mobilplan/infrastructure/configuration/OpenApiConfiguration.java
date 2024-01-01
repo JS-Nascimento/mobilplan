@@ -8,23 +8,22 @@ import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(
-    info = @Info(
-        title = "MobilPlan API",
-        version = "1.0.0",
-        description = "Aplicativo de gestão de orçamento de móveis sob medida.",
-        contact = @Contact(
-            name = "JS Tecnologia e Sistemas",
-            email = "jorge@jstec.dev.br"
+        info = @Info(
+                title = "MobilPlan API",
+                version = "1.0.0",
+                description = "Aplicativo de gestão de orçamento de móveis sob medida.",
+                contact = @Contact(
+                        name = "JS Tecnologia e Sistemas Ltda",
+                        email = "jorge@jstec.dev.br"
+                ),
+                license = @License(
+                        name = "MIT Licence"
+                )
         ),
-        license = @License(
-            name = "MIT Licence"
+        servers = @Server(
+                url = "/"
         )
-    ),
-    servers = @Server(
-        url = "/"
-    )
 )
 @Configuration
 class OpenApiConfiguration {
-
 }

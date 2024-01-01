@@ -27,15 +27,17 @@ public class ImageUtil {
                 return createBlankImage();
             }
 
-            var image = read(imageStream);
+            BufferedImage image = read(imageStream);
+            if (image == null) {
+                log.warn("Não foi possível ler a imagem do stream");
+                return createBlankImage();
+            }
 
-            return of(image)
-                .size(200, 200)
-                .asBufferedImage();
+            return of(image).size(200, 200).asBufferedImage();
 
         } catch (NullPointerException | IOException e) {
 
-            log.error("Erro ao processar a imagem :", e);
+            log.error("Erro ao processar a imagem: {}", e.getMessage(), e);
             throw new DomainException(ERRO_CAMPO_INVALIDO, "logomarca");
         }
     }

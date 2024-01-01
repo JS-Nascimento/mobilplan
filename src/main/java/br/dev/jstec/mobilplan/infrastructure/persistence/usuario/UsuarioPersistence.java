@@ -4,7 +4,7 @@ import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_
 import static java.util.Optional.of;
 import static java.util.UUID.fromString;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 import br.dev.jstec.mobilplan.application.ports.UsuarioPort;
@@ -175,7 +175,7 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
 
         var logoUrl = processAndSaveImage(bucketName, fileName, tipoImagem, image);
 
-        if (!isBlank(logoUrl)) {
+        if (isNotBlank(logoUrl)) {
 
             var entity = mapper.toUsuarioEntity(usuario);
             entity.setAvatarUrl(logoUrl);

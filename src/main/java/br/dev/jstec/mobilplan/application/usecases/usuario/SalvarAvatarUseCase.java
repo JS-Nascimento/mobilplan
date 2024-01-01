@@ -14,15 +14,26 @@ import br.dev.jstec.mobilplan.domain.valueobject.Imagem;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 
 @RequiredArgsConstructor
 public class SalvarAvatarUseCase extends UseCase<Input, Output> {
 
     private final UsuarioPort usuarioPort;
+    private static final Set<String> SUPPORTED_CONTENT_TYPES = Set.of(
+            MediaType.IMAGE_PNG_VALUE,
+            MediaType.IMAGE_JPEG_VALUE
+    );
+
 
     @Override
     public Output execute(SalvarAvatarUseCase.Input input) {
+
+        if (!SUPPORTED_CONTENT_TYPES.contains(input.tipoImagem())) {
+            throw new BusinessException(ERRO_CONVERTER_IMAGEM);
+        }
 
         var avatar = Imagem.of(input.id(), input.inputStream());
 

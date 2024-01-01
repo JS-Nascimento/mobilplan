@@ -31,7 +31,7 @@ public enum ErroDeNegocio {
     ERRO_SITUACAO_NULA("mobilplan-016", "Situação não pode ser nulo."),
     ERRO_INFORMACAO_INVALIDA("mobilplan-017", "Erro ao validar informações. Erro: {0}"),
     ERRO_CONVERTER_IMAGEM("mobilplan-018",
-        "Erro ao converter a imagem enviado em formato válido."),
+            "Erro ao converter a imagem.  Formato inválido."),
     ERRO_SALVAR_IMAGEM("mobilplan-018", "Erro ao salvar a logomarca."),
     ERRO_SENHA_INVALIDA("mobilplan-019",
         "Senha inválida. A senha deve ter entre 6 e 10 caracteres. "

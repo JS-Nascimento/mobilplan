@@ -1,5 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.rest.controller.usuario;
 
+import static br.dev.jstec.mobilplan.infrastructure.configuration.security.UserContext.getUserLogged;
 import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_INFORMACAO_INCONSISTENTE;
 import static java.net.URI.create;
 import static java.util.Objects.isNull;
@@ -32,8 +33,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,6 +53,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/v1/usuarios")
 @RequiredArgsConstructor
+@Slf4j
 public class UsuarioController {
 
     private final CriarUsuarioUseCase criarUsuarioUseCase;
@@ -65,7 +69,7 @@ public class UsuarioController {
             summary = "Cria um Usuário, retornando seu ID",
             description = "Este endpoint cria um Usuário e retorna nome e id criados. "
                     + "Além disso, inicia o fluxo de validação do email do Usuário, enviando um email de confirmação.",
-            tags = {"Usuário"}
+            tags = {"Novo Usuário"}
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Usuário criado",
@@ -102,7 +106,7 @@ public class UsuarioController {
             summary = "Faz a verificação do email do Usuário.",
             description = "Este endpoint verifica o email do Usuário através da confirmação do "
                     + "código de confirmação enviado anteriormente para o email cadastrado.",
-            tags = {"Usuário"}
+            tags = {"Novo Usuário"}
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Email validado com sucesso",
@@ -126,6 +130,8 @@ public class UsuarioController {
                 .body(gateway.validarCodigo(code, email));
     }
 
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{id}")
     @Operation(
             summary = "Retorna um usuário pelo id",
@@ -150,7 +156,31 @@ public class UsuarioController {
                 .orElseGet(ResponseEntity.notFound()::build);
     }
 
-    @PutMapping("/{id}/me")
+    @GetMapping("/me")
+    @Operation(
+            summary = "Retorna os dados do usuário logado",
+            description = "Este endpoint retorna os dados do próprio usuário logado .",
+            tags = {"Usuário"}
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Usuário encontrado",
+                    content = @Content(schema = @Schema(implementation = ResponseUsuarioDto.class))),
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado",
+                    content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
+            @ApiResponse(responseCode = "400", description = "ID inválido",
+                    content = @Content(schema = @Schema(implementation = ErrorMessage.class)))
+    })
+    @ResponseStatus(value = OK)
+    ResponseEntity<ResponseUsuarioDto> buscarUsuarioLogado() {
+
+        return buscarUsuarioPorIdUseCase
+                .execute(new BuscarUsuarioPorIdUseCase.Input(getUserLogged()))
+                .map(mapper::toUsuarioDto)
+                .map(ResponseEntity::ok)
+                .orElseGet(ResponseEntity.notFound()::build);
+    }
+
+    @PutMapping("/{id}")
     @Operation(
             summary = "Atualiza informacoes do Usuário logado, retornando dados atualizados",
             description = "Este endpoint atualiza informacoes do Usuário logado e retorna dados atualizados. "
@@ -184,12 +214,12 @@ public class UsuarioController {
     @PostMapping("/{id}/avatar")
     @Operation(
             summary = "Salvar o avatar da foto do usuário.",
-            description = "Este endpoint salva o avatar da foto do usuário.",
+            description = "Este endpoint salva o avatar da foto do usuário. Retorna um link para o avatar salvo.",
             tags = {"Usuário"}
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Avatar salvo.",
-                    content = @Content(schema = @Schema(implementation = ResponseUsuarioDto.class))),
+                    content = @Content(schema = @Schema(implementation = AvatarUrlDto.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao atualizar o avatar do usuário.",
                     content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
             @ApiResponse(responseCode = "422", description = "Erro ao validar o avatar do usuário.",

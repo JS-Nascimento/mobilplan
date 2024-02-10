@@ -42,14 +42,17 @@ public class FitaDeBordaEntity {
     @Column(name = "tipo_acabamento", nullable = false)
     private String tipoAcabamento;
 
-    @Column(name = "tipo_precificacao", nullable = false)
-    private String tipoPrecificacao;
+    @Column(name = "precificacao", nullable = false)
+    private String precificacao;
 
     @Column(name = "criado_em", nullable = false, updatable = false)
     private LocalDateTime criadoEm;
 
     @Column(name = "atualizado_em", nullable = false)
     private LocalDateTime atualizadoEm;
+
+    @Column(name = "tenant_id", nullable = false)
+    private String tenantId;
 
     @PreUpdate
     @PrePersist

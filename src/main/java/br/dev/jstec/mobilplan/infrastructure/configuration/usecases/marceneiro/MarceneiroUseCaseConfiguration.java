@@ -1,4 +1,4 @@
-package br.dev.jstec.mobilplan.infrastructure.configuration.marceneiro;
+package br.dev.jstec.mobilplan.infrastructure.configuration.usecases.marceneiro;
 
 import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCase;

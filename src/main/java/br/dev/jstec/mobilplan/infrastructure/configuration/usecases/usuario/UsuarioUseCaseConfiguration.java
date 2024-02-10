@@ -1,4 +1,4 @@
-package br.dev.jstec.mobilplan.infrastructure.configuration.usuario;
+package br.dev.jstec.mobilplan.infrastructure.configuration.usecases.usuario;
 
 import br.dev.jstec.mobilplan.application.ports.UsuarioPort;
 import br.dev.jstec.mobilplan.application.usecases.usuario.AlterarUsuarioUseCase;

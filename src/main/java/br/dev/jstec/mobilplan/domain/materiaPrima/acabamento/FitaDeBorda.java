@@ -5,13 +5,19 @@ import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_CAMPO_
 import static br.dev.jstec.mobilplan.domain.materiaprima.TipoPrecificacao.ML;
 import static br.dev.jstec.mobilplan.domain.materiaprima.Unidade.METRO_LINEAR;
 import static br.dev.jstec.mobilplan.domain.materiaprima.acabamento.TipoAcabamento.FITA_DE_BORDA;
+import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import br.dev.jstec.mobilplan.domain.materiaprima.TipoPrecificacao;
 import br.dev.jstec.mobilplan.domain.materiaprima.Unidade;
+import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@AllArgsConstructor(access = PRIVATE)
+@NoArgsConstructor(force = true)
 public class FitaDeBorda implements Acabamento {
 
     private final TipoPrecificacao precificacao = ML;
@@ -21,18 +27,22 @@ public class FitaDeBorda implements Acabamento {
     private final String cor;
     private final Double largura;
     private final Double preco;
+    private final String tenantId;
+    private LocalDateTime criadoEm;
+    private LocalDateTime atualizadoEm;
     private Long id;
 
-    private FitaDeBorda(String descricao, String cor, double largura, double preco) {
+    private FitaDeBorda(String descricao, String cor, double largura, double preco, String tenantId) {
         this.descricao = descricao;
         this.cor = cor;
         this.largura = largura;
         this.preco = preco;
+        this.tenantId = tenantId;
         validar();
     }
 
-    public static FitaDeBorda of(String descricao, String cor, double largura, double preco) {
-        return new FitaDeBorda(descricao, cor, largura, preco);
+    public static FitaDeBorda of(String descricao, String cor, double largura, double preco, String tenantId) {
+        return new FitaDeBorda(descricao, cor, largura, preco, tenantId);
     }
 
     @Override
@@ -61,6 +71,11 @@ public class FitaDeBorda implements Acabamento {
     }
 
     private void validar() {
+
+        if (tenantId == null || tenantId.isBlank()) {
+            throw new DomainException(ERRO_CAMPO_INVALIDO, "TenantId");
+        }
+
         if (descricao == null || descricao.isBlank()) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "Descrição");
         }

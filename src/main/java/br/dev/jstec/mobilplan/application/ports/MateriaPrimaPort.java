@@ -10,4 +10,6 @@ public interface MateriaPrimaPort {
     void remover(FitaDeBorda fitaDeBorda);
 
     Collection<FitaDeBorda> buscar();
+
+    boolean existe(FitaDeBorda novaFita);
 }

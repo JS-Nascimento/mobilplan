@@ -39,7 +39,10 @@ public enum ErroDeNegocio {
             + "Não pode conter caracteres especiais (ex: !@#$%&*()"),
     ERRO_EMAIL_CADASTRADO("mobilplan-020", "O Email {0} já existe em nossa base de dados."),
     ERRO_EMAIL_NAO_CONFIRMADO("mobilplan-021", "Email de cadastro ainda não confirmado. "
-            + "É necessario confirmar o email antes de continuar.");
+            + "É necessario confirmar o email antes de continuar."),
+    ERRO_ENTIDADE_INEXISTENTE("mobilplan-022",
+            "Não encontrado um registro para {0} com os dados informados."),
+    ;
 
     private final String code;
     private final String msg;

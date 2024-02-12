@@ -4,6 +4,7 @@ import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
+import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,7 +22,7 @@ public class UserContext {
         throw new RequestException(UNAUTHORIZED, ERRO_TOKEN_INVALIDO, UserContext.class.getName());
     }
 
-    public static String getUserLogged() {
-        return getUserLoggedByToken();
+    public static UUID getUserLogged() {
+        return UUID.fromString(getUserLoggedByToken());
     }
 }

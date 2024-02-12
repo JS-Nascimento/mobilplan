@@ -6,6 +6,8 @@ import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
 import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
+import java.time.LocalDateTime;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -24,16 +26,33 @@ public class CriarFitaDeBordaUseCase extends UseCase<CriarFitaDeBordaUseCase.Inp
 
         var fitaSalva = materiaPrima.salvar(novaFita);
 
-        return new Output(fitaSalva.getId(), fitaSalva.getDescricao(), fitaSalva.getCor(),
-                fitaSalva.getLargura(), fitaSalva.getPreco());
+        return new Output(fitaSalva.getId(),
+                fitaSalva.getDescricao(),
+                fitaSalva.getCor(),
+                fitaSalva.getLargura(),
+                fitaSalva.getUnidade().getDescricao(),
+                fitaSalva.getTipoAcabamento().toString(),
+                fitaSalva.getPrecificacao().toString(),
+                fitaSalva.getPreco(),
+                fitaSalva.getCriadoEm(),
+                fitaSalva.getTenantId());
     }
 
     public record Input(
-            String descricao, String cor, double largura, double preco, String tenantId) {
+            String descricao, String cor, double largura, double preco, UUID tenantId) {
 
     }
 
     public record Output(
-            long id, String descricao, String cor, double largura, double preco) {
+            long id,
+            String descricao,
+            String cor,
+            double largura,
+            String unidade,
+            String tipoAcabamento,
+            String precificacao,
+            double preco,
+            LocalDateTime criadoEm,
+            UUID tenantId) {
     }
 }

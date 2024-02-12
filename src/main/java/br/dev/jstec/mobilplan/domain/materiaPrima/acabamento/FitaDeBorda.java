@@ -11,6 +11,7 @@ import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import br.dev.jstec.mobilplan.domain.materiaprima.TipoPrecificacao;
 import br.dev.jstec.mobilplan.domain.materiaprima.Unidade;
 import java.time.LocalDateTime;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,12 +28,12 @@ public class FitaDeBorda implements Acabamento {
     private final String cor;
     private final Double largura;
     private final Double preco;
-    private final String tenantId;
+    private final UUID tenantId;
     private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
     private Long id;
 
-    private FitaDeBorda(String descricao, String cor, double largura, double preco, String tenantId) {
+    private FitaDeBorda(String descricao, String cor, double largura, double preco, UUID tenantId) {
         this.descricao = descricao;
         this.cor = cor;
         this.largura = largura;
@@ -41,8 +42,26 @@ public class FitaDeBorda implements Acabamento {
         validar();
     }
 
-    public static FitaDeBorda of(String descricao, String cor, double largura, double preco, String tenantId) {
+    private FitaDeBorda(Long id, String descricao, String cor, double largura, double preco, UUID tenantId,
+                        LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
+        this.id = id;
+        this.descricao = descricao;
+        this.cor = cor;
+        this.largura = largura;
+        this.preco = preco;
+        this.tenantId = tenantId;
+        this.criadoEm = criadoEm;
+        this.atualizadoEm = atualizadoEm;
+        validar();
+    }
+
+    public static FitaDeBorda of(String descricao, String cor, double largura, double preco, UUID tenantId) {
         return new FitaDeBorda(descricao, cor, largura, preco, tenantId);
+    }
+
+    public static FitaDeBorda with(Long id, String descricao, String cor, double largura, double preco, UUID tenantId,
+                                   LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
+        return new FitaDeBorda(id, descricao, cor, largura, preco, tenantId, criadoEm, atualizadoEm);
     }
 
     @Override
@@ -72,7 +91,7 @@ public class FitaDeBorda implements Acabamento {
 
     private void validar() {
 
-        if (tenantId == null || tenantId.isBlank()) {
+        if (tenantId == null || tenantId.toString().isBlank()) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "TenantId");
         }
 

@@ -174,7 +174,7 @@ public class UsuarioController {
     ResponseEntity<ResponseUsuarioDto> buscarUsuarioLogado() {
 
         return buscarUsuarioPorIdUseCase
-                .execute(new BuscarUsuarioPorIdUseCase.Input(getUserLogged()))
+                .execute(new BuscarUsuarioPorIdUseCase.Input(getUserLogged().toString()))
                 .map(mapper::toUsuarioDto)
                 .map(ResponseEntity::ok)
                 .orElseGet(ResponseEntity.notFound()::build);

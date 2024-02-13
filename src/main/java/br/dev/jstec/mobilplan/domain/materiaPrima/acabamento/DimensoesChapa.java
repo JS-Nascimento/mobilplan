@@ -18,8 +18,7 @@ public class DimensoesChapa {
     public double quantidadePorChapa() {
 
         if ((isNull(altura) || altura == 0)
-                || (isNull(largura) || largura == 0)
-                || (isNull(espessura) || espessura == 0)) {
+                || (isNull(largura) || largura == 0)) {
 
             return 0.0;
         }

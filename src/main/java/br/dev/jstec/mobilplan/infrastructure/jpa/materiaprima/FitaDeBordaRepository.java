@@ -1,4 +1,4 @@
-package br.dev.jstec.mobilplan.infrastructure.jpa;
+package br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima;
 
 import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FitaDeBordaEntity;
 import java.util.Optional;

@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum TipoAcabamento {
 
-    MELAMINICO,
+    MDF,
     FORMICA,
     LACA,
     LAMINA,

@@ -13,7 +13,7 @@ import static org.springframework.data.jpa.domain.Specification.where;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
-import br.dev.jstec.mobilplan.infrastructure.jpa.FitaDeBordaRepository;
+import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.FitaDeBordaRepository;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFitaDeBordaMapper;
 import jakarta.transaction.Transactional;
 import java.util.List;

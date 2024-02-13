@@ -12,5 +12,4 @@ public class DimensoesAcessorio {
     private final double altura;
     private final double largura;
     private final double espessura;
-
 }

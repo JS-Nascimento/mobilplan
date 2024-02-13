@@ -39,6 +39,8 @@ public enum ErroDeDominio {
                 + "Não pode conter caracteres especiais ex: !@#$%&*()"),
     ERRO_EMAIL_CADASTRADO("mobilplan-020", "O Email {0} já existe em nossa base de dados."),
     ERRO_CAMPO_MENOR_IGUAL_ZERO("mobilplan-021", "O valor para o atributo {0} deve ser maior que Zero."),
+    ERRO_COMBINACAO_PERFIL_E_TIPO_PUXADOR_INVALIDO("mobilplan-022",
+            "Quando perfil é {0} Tipo Puxador não deve ser {1}."),
     ;
 
     private final String code;

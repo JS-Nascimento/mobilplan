@@ -7,6 +7,7 @@ public enum TipoPuxador {
 
     SEM_PUXADOR("Sem Puxador"),
     PUXADOR_ALCA("Puxador Alça"),
+    PUXADOR_USINADO("Puxador Usinado"),
     PUXADOR_CAVA("Puxador Cava"),
     PUXADOR_PERFIL("Puxador Perfil");
 

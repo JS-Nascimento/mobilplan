@@ -7,6 +7,7 @@ import static br.dev.jstec.mobilplan.domain.materiaprima.Unidade.METRO_LINEAR;
 import static br.dev.jstec.mobilplan.domain.materiaprima.acabamento.TipoAcabamento.FITA_DE_BORDA;
 import static lombok.AccessLevel.PRIVATE;
 
+import br.dev.jstec.mobilplan.domain.Tenant;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import br.dev.jstec.mobilplan.domain.materiaprima.TipoPrecificacao;
 import br.dev.jstec.mobilplan.domain.materiaprima.Unidade;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor(access = PRIVATE)
 @NoArgsConstructor(force = true)
-public class FitaDeBorda implements Acabamento {
+public class FitaDeBorda extends Tenant implements Acabamento {
 
     private final TipoPrecificacao precificacao = ML;
     private final TipoAcabamento tipoAcabamento = FITA_DE_BORDA;
@@ -28,28 +29,28 @@ public class FitaDeBorda implements Acabamento {
     private final String cor;
     private final Double largura;
     private final Double preco;
-    private final UUID tenantId;
     private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
     private Long id;
 
     private FitaDeBorda(String descricao, String cor, double largura, double preco, UUID tenantId) {
+        super(tenantId);
         this.descricao = descricao;
         this.cor = cor;
         this.largura = largura;
         this.preco = preco;
-        this.tenantId = tenantId;
+
         validar();
     }
 
     private FitaDeBorda(Long id, String descricao, String cor, double largura, double preco, UUID tenantId,
                         LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
+        super(tenantId);
         this.id = id;
         this.descricao = descricao;
         this.cor = cor;
         this.largura = largura;
         this.preco = preco;
-        this.tenantId = tenantId;
         this.criadoEm = criadoEm;
         this.atualizadoEm = atualizadoEm;
         validar();
@@ -91,7 +92,7 @@ public class FitaDeBorda implements Acabamento {
 
     private void validar() {
 
-        if (tenantId == null || tenantId.toString().isBlank()) {
+        if (super.getTenantId() == null || super.getTenantId().toString().isBlank()) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "TenantId");
         }
 

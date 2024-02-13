@@ -8,6 +8,7 @@ import static br.dev.jstec.mobilplan.domain.materiaprima.acabamento.CalculaPorLa
 import static br.dev.jstec.mobilplan.domain.materiaprima.acabamento.TipoAcabamento.MDF;
 import static lombok.AccessLevel.PRIVATE;
 
+import br.dev.jstec.mobilplan.domain.Tenant;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import br.dev.jstec.mobilplan.domain.materiaprima.TipoPrecificacao;
 import br.dev.jstec.mobilplan.domain.materiaprima.Unidade;
@@ -20,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor(access = PRIVATE)
 @NoArgsConstructor(force = true)
-public class Mdf implements Acabamento {
+public class Mdf extends Tenant implements Acabamento {
 
     private final TipoAcabamento tipoAcabamento = MDF;
     private final Unidade unidade = METRO_QUADRADO;
@@ -29,7 +30,6 @@ public class Mdf implements Acabamento {
     private final CalculaPorLado calculaPorLado;
     private final DimensoesChapa dimensoesChapa;
     private final double preco;
-    private final UUID tenantId;
     private TipoPrecificacao precificacao = M2;
     private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
@@ -42,14 +42,14 @@ public class Mdf implements Acabamento {
                 TipoPrecificacao precificacao,
                 double preco,
                 UUID tenantId) {
-
+        super(tenantId);
         this.precificacao = precificacao;
         this.descricao = descricao;
         this.cor = cor;
         this.calculaPorLado = calculaPorLado;
         this.dimensoesChapa = dimensoesChapa;
         this.preco = preco;
-        this.tenantId = tenantId;
+
         validar();
     }
 
@@ -63,7 +63,7 @@ public class Mdf implements Acabamento {
                 UUID tenantId,
                 LocalDateTime criadoEm,
                 LocalDateTime atualizadoEm) {
-
+        super(tenantId);
         this.precificacao = precificacao;
         this.id = id;
         this.descricao = descricao;
@@ -71,7 +71,6 @@ public class Mdf implements Acabamento {
         this.calculaPorLado = calculaPorLado;
         this.dimensoesChapa = dimensoesChapa;
         this.preco = preco;
-        this.tenantId = tenantId;
         this.criadoEm = criadoEm;
         this.atualizadoEm = atualizadoEm;
         validar();
@@ -130,7 +129,7 @@ public class Mdf implements Acabamento {
 
     private void validar() {
 
-        if (tenantId == null || tenantId.toString().isBlank()) {
+        if (super.getTenantId() == null || super.getTenantId().toString().isBlank()) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "TenantId");
         }
         if (descricao == null || descricao.isBlank()) {

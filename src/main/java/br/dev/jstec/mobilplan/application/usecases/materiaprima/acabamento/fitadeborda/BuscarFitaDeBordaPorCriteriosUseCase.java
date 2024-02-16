@@ -1,7 +1,8 @@
-package br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento;
+package br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
+import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -11,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class BuscarFitaDeBordaPorCriteriosUseCase extends
         UseCase<BuscarFitaDeBordaPorCriteriosUseCase.Input, List<BuscarFitaDeBordaPorCriteriosUseCase.Output>> {
 
-    private final MateriaPrimaPort materiaPrima;
+    private final MateriaPrimaPort<FitaDeBorda> materiaPrima;
 
     @Override
     public List<Output> execute(Input input) {

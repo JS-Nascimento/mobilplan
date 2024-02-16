@@ -1,19 +1,19 @@
 package br.dev.jstec.mobilplan.application.ports;
 
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
 import java.util.Collection;
 import java.util.Optional;
 
-public interface MateriaPrimaPort {
+public interface MateriaPrimaPort<T> {
 
-    FitaDeBorda salvar(FitaDeBorda fitaDeBorda);
+    Optional<T> buscarPorId(Long id);
 
-    void remover(FitaDeBorda fitaDeBorda);
+    T salvar(T model);
 
-    Collection<FitaDeBorda> buscar(
+    void remover(T model);
+
+    Collection<T> buscar(
             String descricao, String cor, double largura, double doPreco, double atePreco, String tipoAcabamento);
 
-    boolean existe(FitaDeBorda novaFita);
+    boolean existe(T model);
 
-    Optional<FitaDeBorda> buscarPorId(Long id);
 }

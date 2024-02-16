@@ -1,4 +1,4 @@
-package br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento;
+package br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda;
 
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
 
@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CriarFitaDeBordaUseCase extends UseCase<CriarFitaDeBordaUseCase.Input, CriarFitaDeBordaUseCase.Output> {
 
-    private final MateriaPrimaPort materiaPrima;
+    private final MateriaPrimaPort<FitaDeBorda> materiaPrima;
 
     @Override
     public Output execute(Input input) {
@@ -35,6 +35,7 @@ public class CriarFitaDeBordaUseCase extends UseCase<CriarFitaDeBordaUseCase.Inp
                 fitaSalva.getPrecificacao().toString(),
                 fitaSalva.getPreco(),
                 fitaSalva.getCriadoEm(),
+                fitaSalva.getAtualizadoEm(),
                 fitaSalva.getTenantId());
     }
 
@@ -53,6 +54,7 @@ public class CriarFitaDeBordaUseCase extends UseCase<CriarFitaDeBordaUseCase.Inp
             String precificacao,
             double preco,
             LocalDateTime criadoEm,
+            LocalDateTime atualizadoEm,
             UUID tenantId) {
     }
 }

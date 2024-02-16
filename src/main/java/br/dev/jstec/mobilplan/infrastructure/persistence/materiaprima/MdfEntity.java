@@ -31,13 +31,13 @@ public class MdfEntity {
     @Column(name = "cor", nullable = false, length = 50)
     private String cor;
 
-    @Column(name = "largura", nullable = false, columnDefinition = "numeric(10,1) default 0.0")
+    @Column(name = "largura", nullable = false, columnDefinition = "numeric(10,2) default 0.00")
     private Double largura;
 
-    @Column(name = "altura", nullable = false, columnDefinition = "numeric(10,1) default 0.0")
+    @Column(name = "altura", nullable = false, columnDefinition = "numeric(10,2) default 0.00")
     private Double altura;
 
-    @Column(name = "espessura", nullable = false, columnDefinition = "numeric(10,1) default 0.0")
+    @Column(name = "espessura", nullable = false, columnDefinition = "numeric(10,2) default 0.00")
     private Double espessura;
 
     @Column(name = "preco", nullable = false, columnDefinition = "numeric(10,2) default 0.00")

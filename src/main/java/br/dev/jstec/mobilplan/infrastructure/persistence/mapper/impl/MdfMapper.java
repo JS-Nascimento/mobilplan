@@ -32,6 +32,7 @@ public class MdfMapper implements IMdfMapper {
         entity.setDescricao(model.getDescricao());
         entity.setCor(model.getCor());
         entity.setCalculaPorLado(model.getCalculaPorLado().toString());
+        entity.setAltura(model.getDimensoesChapa().getAltura());
         entity.setEspessura(model.getDimensoesChapa().getAltura());
         entity.setLargura(model.getDimensoesChapa().getLargura());
         entity.setEspessura(model.getDimensoesChapa().getEspessura());

@@ -1,17 +1,18 @@
-package br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento;
+package br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda;
 
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_INEXISTENTE;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UnitUseCase;
+import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class RemoverFitaDeBordaPorIdUseCase extends
         UnitUseCase<RemoverFitaDeBordaPorIdUseCase.Input> {
 
-    private final MateriaPrimaPort materiaPrima;
+    private final MateriaPrimaPort<FitaDeBorda> materiaPrima;
 
     @Override
     public void execute(Input input) {

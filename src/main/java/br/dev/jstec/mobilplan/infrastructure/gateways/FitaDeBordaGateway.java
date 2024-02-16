@@ -9,12 +9,13 @@ import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBord
 import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBordaSpecification.tipoAcabamento;
 import static java.util.Optional.empty;
 import static java.util.stream.Collectors.toList;
-import static org.springframework.data.jpa.domain.Specification.where;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.FitaDeBordaRepository;
+import br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBordaSpecification;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFitaDeBordaMapper;
+import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FitaDeBordaEntity;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -26,11 +27,13 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class MateriaPrimaGateway implements MateriaPrimaPort {
+public class FitaDeBordaGateway implements MateriaPrimaPort<FitaDeBorda> {
 
     private final FitaDeBordaRepository fitaDeBordaRepository;
+
     private final IFitaDeBordaMapper fitaDeBordaMapper;
 
+    @Override
     public Optional<FitaDeBorda> buscarPorId(Long id) {
 
         if (id == null) {
@@ -64,7 +67,8 @@ public class MateriaPrimaGateway implements MateriaPrimaPort {
             String descricao, String cor, double largura, double doPreco, double atePreco, String tipoAcabamento) {
 
         log.info(
-                "Buscando fitas de borda por critérios: descricao={}, cor={}, largura={}, doPreco={}, atePreco={}, tipoAcabamento={}",
+                "Buscando fitas de borda por critérios: descricao={}, cor={},"
+                        + " largura={}, doPreco={}, atePreco={}, tipoAcabamento={}",
                 descricao, cor, largura, doPreco, atePreco, tipoAcabamento);
         var criterios = Specification.where(tenant(getUserLogged()))
                 .and(descricao(descricao))
@@ -82,10 +86,11 @@ public class MateriaPrimaGateway implements MateriaPrimaPort {
     public boolean existe(FitaDeBorda fitaDeBorda) {
 
         var fitaDeBordaEntity = fitaDeBordaMapper.toEntity(fitaDeBorda);
-        var criterios = where(tenant(fitaDeBordaEntity.getTenantId()))
-                .and(descricao(fitaDeBordaEntity.getDescricao()))
-                .and(cor(fitaDeBordaEntity.getCor()))
-                .and(largura(fitaDeBordaEntity.getLargura()));
+        Specification<FitaDeBordaEntity> criterios =
+                Specification.where(FitaDeBordaSpecification.tenant(fitaDeBordaEntity.getTenantId()))
+                        .and(FitaDeBordaSpecification.descricao(fitaDeBordaEntity.getDescricao()))
+                        .and(FitaDeBordaSpecification.cor(fitaDeBordaEntity.getCor()))
+                        .and(FitaDeBordaSpecification.largura(fitaDeBordaEntity.getLargura()));
 
         return fitaDeBordaRepository.exists(criterios);
     }

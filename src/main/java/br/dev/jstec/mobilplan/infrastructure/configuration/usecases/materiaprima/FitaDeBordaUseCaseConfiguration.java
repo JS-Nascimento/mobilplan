@@ -1,20 +1,21 @@
 package br.dev.jstec.mobilplan.infrastructure.configuration.usecases.materiaprima;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.AtualizarFitaDeBordaUseCase;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.BuscarFitaDeBordaPorCriteriosUseCase;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.BuscarFitaDeBordaPorIdUseCase;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.CriarFitaDeBordaUseCase;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.RemoverFitaDeBordaPorIdUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.AtualizarFitaDeBordaUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.BuscarFitaDeBordaPorCriteriosUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.BuscarFitaDeBordaPorIdUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.CriarFitaDeBordaUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.RemoverFitaDeBordaPorIdUseCase;
+import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
-public class MateriaPrimaUseCaseConfiguration {
+public class FitaDeBordaUseCaseConfiguration {
 
-    private final MateriaPrimaPort materiaPrimaPort;
+    private final MateriaPrimaPort<FitaDeBorda> materiaPrimaPort;
 
     @Bean
     public CriarFitaDeBordaUseCase criarFitaDeBordaUseCase() {

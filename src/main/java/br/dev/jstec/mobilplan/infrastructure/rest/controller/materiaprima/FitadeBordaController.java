@@ -4,11 +4,12 @@ import static br.dev.jstec.mobilplan.infrastructure.configuration.security.UserC
 import static org.springframework.http.ResponseEntity.noContent;
 import static org.springframework.http.ResponseEntity.ok;
 
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.AtualizarFitaDeBordaUseCase;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.BuscarFitaDeBordaPorCriteriosUseCase;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.BuscarFitaDeBordaPorIdUseCase;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.CriarFitaDeBordaUseCase;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.RemoverFitaDeBordaPorIdUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.AtualizarFitaDeBordaUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.BuscarFitaDeBordaPorCriteriosUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.BuscarFitaDeBordaPorIdUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.CriarFitaDeBordaUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.RemoverFitaDeBordaPorIdUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.mdf.CriarMdfUseCase;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.FitaDeBordaDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaFitaDeBordaDto;
 import java.util.List;
@@ -38,6 +39,7 @@ public class FitadeBordaController {
     private final BuscarFitaDeBordaPorCriteriosUseCase buscarFitaDeBordaPorCriteriosUseCase;
     private final AtualizarFitaDeBordaUseCase atualizarFitaDeBordaUseCase;
     private final RemoverFitaDeBordaPorIdUseCase removerFitaDeBordaPorIdUseCase;
+    private final CriarMdfUseCase criarMdfUseCase;
 
 
     @PostMapping

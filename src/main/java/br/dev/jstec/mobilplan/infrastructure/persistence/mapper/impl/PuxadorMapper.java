@@ -18,6 +18,7 @@ public class PuxadorMapper implements IPuxadorMapper {
                 entity.getCor(),
                 entity.getDirecao(),
                 entity.getPreco(),
+                entity.getPrecificacao(),
                 entity.getAltura(),
                 entity.getLargura(),
                 entity.getEspessura(),
@@ -38,6 +39,7 @@ public class PuxadorMapper implements IPuxadorMapper {
         entity.setCor(model.getCor());
         entity.setUnidade(model.getUnidade().toString());
         entity.setPreco(model.getPreco());
+        entity.setPrecificacao(model.getPrecificacao().toString());
         entity.setDirecao(model.getDirecao().toString());
         entity.setAltura(model.getDimensoesAcessorio().getAltura());
         entity.setLargura(model.getDimensoesAcessorio().getLargura());

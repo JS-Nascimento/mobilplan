@@ -7,6 +7,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.mobilplan.domain.Tenant;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
+import br.dev.jstec.mobilplan.domain.materiaprima.TipoPrecificacao;
 import br.dev.jstec.mobilplan.domain.materiaprima.Unidade;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -24,20 +25,24 @@ public class Ferragem extends Tenant implements Acessorio {
     private final String cor;
     private final Unidade unidade;
     private final double preco;
+    private final TipoPrecificacao precificacao;
     private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
 
-    private Ferragem(String descricao, String cor, Unidade unidade, double preco, UUID tenantId) {
+    private Ferragem(String descricao, String cor, Unidade unidade, double preco, UUID tenantId,
+                     TipoPrecificacao precificacao) {
         super(tenantId);
         this.descricao = descricao;
         this.cor = cor;
         this.unidade = unidade;
         this.preco = preco;
+        this.precificacao = precificacao;
 
         validar();
     }
 
     private Ferragem(Long id, String descricao, String cor, Unidade unidade, double preco, UUID tenantId,
+                     TipoPrecificacao precificacao,
                      LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
         super(tenantId);
         this.id = id;
@@ -45,19 +50,40 @@ public class Ferragem extends Tenant implements Acessorio {
         this.cor = cor;
         this.unidade = unidade;
         this.preco = preco;
+        this.precificacao = precificacao;
         this.criadoEm = criadoEm;
         this.atualizadoEm = atualizadoEm;
 
         validar();
     }
 
-    public static Ferragem of(String descricao, String cor, String unidade, double preco, UUID tenantId) {
-        return new Ferragem(descricao, cor, valueOf(unidade), preco, tenantId);
+    public static Ferragem of(String descricao,
+                              String cor,
+                              String unidade,
+                              double preco,
+                              String precificacao,
+                              UUID tenantId) {
+        return new Ferragem(descricao, cor, valueOf(unidade), preco, tenantId, TipoPrecificacao.valueOf(precificacao));
     }
 
-    public static Ferragem with(Long id, String descricao, String cor, String unidade, double preco, UUID tenantId,
-                                LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
-        return new Ferragem(id, descricao, cor, valueOf(unidade), preco, tenantId, criadoEm, atualizadoEm);
+    public static Ferragem with(Long id,
+                                String descricao,
+                                String cor,
+                                String unidade,
+                                double preco,
+                                String precificacao,
+                                UUID tenantId,
+                                LocalDateTime criadoEm,
+                                LocalDateTime atualizadoEm) {
+        return new Ferragem(id,
+                descricao,
+                cor,
+                valueOf(unidade),
+                preco,
+                tenantId,
+                TipoPrecificacao.valueOf(precificacao),
+                criadoEm,
+                atualizadoEm);
     }
 
     private void validar() {

@@ -11,12 +11,14 @@ import static java.util.Optional.empty;
 import static java.util.stream.Collectors.toList;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.mdf.BuscarMdfPorCriteriosUseCase;
 import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.Mdf;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.MdfRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IMdfMapper;
 import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.MdfEntity;
 import jakarta.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -62,19 +64,24 @@ public class MdfGateway implements MateriaPrimaPort<Mdf> {
     }
 
     @Override
-    public List<Mdf> buscar(
-            String descricao, String cor, double dimensaoBase, double doPreco, double atePreco, String tipoAcabamento) {
+    public List<Mdf> buscar(Object... objects) {
 
-        log.debug(
-                "Buscando fitas de borda por critérios: descricao={}, cor={}, "
-                        + "largura={}, doPreco={}, atePreco={}, tipoAcabamento={}",
-                descricao, cor, dimensaoBase, doPreco, atePreco, tipoAcabamento);
+        var input = Arrays.stream(objects)
+                .filter(BuscarMdfPorCriteriosUseCase.Input.class::isInstance)
+                .map(BuscarMdfPorCriteriosUseCase.Input.class::cast)
+                .findFirst()
+                .orElse(
+                        new BuscarMdfPorCriteriosUseCase.Input(null, null, 0, 0, 0, null));
+
+
+        log.debug("Buscando fitas de borda por critérios: {}", input);
+
         var criterios = Specification.where(tenant(getUserLogged()))
-                .and(descricao(descricao))
-                .and(cor(cor))
-                .and(espessura(dimensaoBase))
-                .and(intervaloPreco(doPreco, atePreco))
-                .and(tipoAcabamento(tipoAcabamento));
+                .and(descricao(input.descricao())
+                        .and(cor(input.cor()))
+                        .and(espessura(input.espessura()))
+                        .and(intervaloPreco(input.doPreco(), input.atePreco()))
+                        .and(tipoAcabamento(input.tipoAcabamento())));
 
         return this.mdfRepository.findAll(criterios)
                 .stream()

@@ -37,6 +37,9 @@ public class FerragemEntity {
     @Column(name = "preco", nullable = false, columnDefinition = "numeric(10,2) default 0.00")
     private Double preco;
 
+    @Column(name = "precificacao", nullable = false, length = 20)
+    private String precificacao;
+
     @Column(name = "criado_em", nullable = false, updatable = false)
     private LocalDateTime criadoEm;
 

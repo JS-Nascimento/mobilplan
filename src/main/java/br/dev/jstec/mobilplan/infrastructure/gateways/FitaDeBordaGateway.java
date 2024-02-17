@@ -11,12 +11,14 @@ import static java.util.Optional.empty;
 import static java.util.stream.Collectors.toList;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.BuscarFitaDeBordaPorCriteriosUseCase;
 import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.FitaDeBordaRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBordaSpecification;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFitaDeBordaMapper;
 import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FitaDeBordaEntity;
 import jakarta.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -63,19 +65,24 @@ public class FitaDeBordaGateway implements MateriaPrimaPort<FitaDeBorda> {
     }
 
     @Override
-    public List<FitaDeBorda> buscar(
-            String descricao, String cor, double dimensaoBase, double doPreco, double atePreco, String tipoAcabamento) {
+    public List<FitaDeBorda> buscar(Object... objects) {
 
-        log.info(
-                "Buscando fitas de borda por critérios: descricao={}, cor={},"
-                        + " largura={}, doPreco={}, atePreco={}, tipoAcabamento={}",
-                descricao, cor, dimensaoBase, doPreco, atePreco, tipoAcabamento);
+        var input = Arrays.stream(objects)
+                .filter(BuscarFitaDeBordaPorCriteriosUseCase.Input.class::isInstance)
+                .map(BuscarFitaDeBordaPorCriteriosUseCase.Input.class::cast)
+                .findFirst()
+                .orElse(
+                        new BuscarFitaDeBordaPorCriteriosUseCase.Input(
+                                null, null, 0, 0, 0, null));
+
+        log.info("Buscando fitas de borda por critérios: {}", input);
+
         var criterios = Specification.where(tenant(getUserLogged()))
-                .and(descricao(descricao))
-                .and(cor(cor))
-                .and(largura(dimensaoBase))
-                .and(intervaloPreco(doPreco, atePreco))
-                .and(tipoAcabamento(tipoAcabamento));
+                .and(descricao(input.descricao()))
+                .and(cor(input.cor()))
+                .and(largura(input.largura()))
+                .and(intervaloPreco(input.doPreco(), input.atePreco()))
+                .and(tipoAcabamento(input.tipoAcabamento()));
 
         return this.fitaDeBordaRepository.findAll(criterios)
                 .stream()

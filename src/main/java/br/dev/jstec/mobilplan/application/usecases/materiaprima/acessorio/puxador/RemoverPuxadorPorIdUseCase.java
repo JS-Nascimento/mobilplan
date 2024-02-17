@@ -5,22 +5,22 @@ import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_E
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UnitUseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
+import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Puxador;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class RemoverPuxadorPorIdUseCase extends
         UnitUseCase<RemoverPuxadorPorIdUseCase.Input> {
 
-    private final MateriaPrimaPort<FitaDeBorda> materiaPrima;
+    private final MateriaPrimaPort<Puxador> materiaPrima;
 
     @Override
     public void execute(Input input) {
 
-        var fita = materiaPrima.buscarPorId(input.id())
-                .orElseThrow(() -> new BusinessException(ERRO_ENTIDADE_INEXISTENTE, "fita de borda"));
+        var puxador = materiaPrima.buscarPorId(input.id())
+                .orElseThrow(() -> new BusinessException(ERRO_ENTIDADE_INEXISTENTE, "puxador"));
 
-        materiaPrima.remover(fita);
+        materiaPrima.remover(puxador);
     }
 
     public record Input(Long id) {

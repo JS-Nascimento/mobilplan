@@ -5,7 +5,7 @@ import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_E
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
+import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Puxador;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -14,24 +14,29 @@ import lombok.RequiredArgsConstructor;
 public class BuscarPuxadorPorIdUseCase extends
         UseCase<BuscarPuxadorPorIdUseCase.Input, BuscarPuxadorPorIdUseCase.Output> {
 
-    private final MateriaPrimaPort<FitaDeBorda> materiaPrima;
+    private final MateriaPrimaPort<Puxador> materiaPrima;
 
     @Override
     public Output execute(Input input) {
 
         return materiaPrima.buscarPorId(input.id())
-                .map(fita -> new Output(
-                        fita.getId(),
-                        fita.getDescricao(),
-                        fita.getCor(),
-                        fita.getLargura(),
-                        fita.getUnidade().getDescricao(),
-                        fita.getTipoAcabamento().toString(),
-                        fita.getPrecificacao().toString(),
-                        fita.getPreco(),
-                        fita.getCriadoEm(),
-                        fita.getTenantId()))
-                .orElseThrow(() -> new BusinessException(ERRO_ENTIDADE_INEXISTENTE, "fita de borda"));
+                .map(puxador -> new Output(
+                        puxador.getId(),
+                        puxador.isPerfil(),
+                        puxador.getTipoPuxador().getDescricao(),
+                        puxador.getDescricao(),
+                        puxador.getCor(),
+                        puxador.getDirecao().name(),
+                        puxador.getUnidade().getDescricao(),
+                        puxador.getPreco(),
+                        puxador.getPrecificacao().name(),
+                        puxador.getDimensoesAcessorio().getAltura(),
+                        puxador.getDimensoesAcessorio().getLargura(),
+                        puxador.getDimensoesAcessorio().getEspessura(),
+                        puxador.getCriadoEm(),
+                        puxador.getAtualizadoEm(),
+                        puxador.getTenantId()))
+                .orElseThrow(() -> new BusinessException(ERRO_ENTIDADE_INEXISTENTE, "puxador"));
     }
 
     public record Input(Long id) {
@@ -39,14 +44,19 @@ public class BuscarPuxadorPorIdUseCase extends
 
     public record Output(
             long id,
+            boolean perfil,
+            String tipoPuxador,
             String descricao,
             String cor,
-            double largura,
+            String direcao,
             String unidade,
-            String tipoAcabamento,
-            String precificacao,
             double preco,
+            String precificacao,
+            double altura,
+            double largura,
+            double espessura,
             LocalDateTime criadoEm,
+            LocalDateTime atualizadoEm,
             UUID tenantId) {
     }
 }

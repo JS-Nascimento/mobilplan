@@ -51,11 +51,13 @@ public class MdfController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MdfDto> atualizar(@RequestBody MdfDto dto) {
+    public ResponseEntity<MdfDto> atualizar(
+            @PathVariable Long id,
+            @RequestBody MdfDto dto) {
 
         log.debug("Atualizando MDF: {}", dto);
         dto.setTenantId(getUserLogged());
-        dto.setId(dto.getId());
+        dto.setId(id);
         var input = mapper.toUpdateInputModel(dto);
         var output = atualizarMdfUseCase.execute(input);
 

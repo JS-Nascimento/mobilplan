@@ -10,6 +10,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.mobilplan.domain.Tenant;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
+import br.dev.jstec.mobilplan.domain.materiaprima.TipoPrecificacao;
 import br.dev.jstec.mobilplan.domain.materiaprima.Unidade;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -29,6 +30,7 @@ public class Puxador extends Tenant implements Acessorio {
     private final String cor;
     private final Unidade unidade;
     private final Direcao direcao;
+    private final TipoPrecificacao precificacao;
     private Long id;
     private final DimensoesAcessorio dimensoesAcessorio;
     private LocalDateTime criadoEm;
@@ -40,6 +42,7 @@ public class Puxador extends Tenant implements Acessorio {
                     String cor,
                     Direcao direcao,
                     double preco,
+                    TipoPrecificacao precificacao,
                     DimensoesAcessorio dimensoesAcessorio,
                     UUID tenantId) {
         super(tenantId);
@@ -50,6 +53,7 @@ public class Puxador extends Tenant implements Acessorio {
         this.unidade = perfil ? Unidade.METRO_LINEAR : Unidade.UNIDADE;
         this.direcao = direcao;
         this.preco = preco;
+        this.precificacao = precificacao;
         this.dimensoesAcessorio = dimensoesAcessorio;
 
         validar();
@@ -61,6 +65,7 @@ public class Puxador extends Tenant implements Acessorio {
                              String cor,
                              String direcao,
                              double preco,
+                             String precificacao,
                              double altura,
                              double largura,
                              double espessura,
@@ -72,6 +77,7 @@ public class Puxador extends Tenant implements Acessorio {
                 cor,
                 Direcao.valueOf(direcao),
                 preco,
+                TipoPrecificacao.valueOf(precificacao),
                 dimensoesAcessorio,
                 tenantId);
     }
@@ -83,6 +89,7 @@ public class Puxador extends Tenant implements Acessorio {
                                String cor,
                                String direcao,
                                double preco,
+                               String precificacao,
                                double altura,
                                double largura,
                                double espessura,
@@ -98,6 +105,7 @@ public class Puxador extends Tenant implements Acessorio {
                 cor,
                 Direcao.valueOf(direcao),
                 preco,
+                TipoPrecificacao.valueOf(precificacao),
                 dimensoesAcessorio,
                 tenantId);
         puxador.id = id;

@@ -12,7 +12,7 @@ public interface MateriaPrimaPort<T> {
     void remover(T model);
 
     Collection<T> buscar(
-            String descricao, String cor, double largura, double doPreco, double atePreco, String tipoAcabamento);
+            String descricao, String cor, double dimensaoBase, double doPreco, double atePreco, String tipoAcabamento);
 
     boolean existe(T model);
 

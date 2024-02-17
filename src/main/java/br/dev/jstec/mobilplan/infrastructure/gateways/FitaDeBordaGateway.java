@@ -64,16 +64,16 @@ public class FitaDeBordaGateway implements MateriaPrimaPort<FitaDeBorda> {
 
     @Override
     public List<FitaDeBorda> buscar(
-            String descricao, String cor, double largura, double doPreco, double atePreco, String tipoAcabamento) {
+            String descricao, String cor, double dimensaoBase, double doPreco, double atePreco, String tipoAcabamento) {
 
         log.info(
                 "Buscando fitas de borda por critérios: descricao={}, cor={},"
                         + " largura={}, doPreco={}, atePreco={}, tipoAcabamento={}",
-                descricao, cor, largura, doPreco, atePreco, tipoAcabamento);
+                descricao, cor, dimensaoBase, doPreco, atePreco, tipoAcabamento);
         var criterios = Specification.where(tenant(getUserLogged()))
                 .and(descricao(descricao))
                 .and(cor(cor))
-                .and(largura(largura))
+                .and(largura(dimensaoBase))
                 .and(intervaloPreco(doPreco, atePreco))
                 .and(tipoAcabamento(tipoAcabamento));
 

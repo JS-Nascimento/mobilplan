@@ -46,6 +46,9 @@ public class PuxadorEntity {
     @Column(name = "preco", nullable = false, columnDefinition = "numeric(10,2) default 0.00")
     private Double preco;
 
+    @Column(name = "precificacao", nullable = false)
+    private String precificacao;
+
     @Column(name = "largura", nullable = false, columnDefinition = "numeric(10,1) default 0.0")
     private Double largura;
 

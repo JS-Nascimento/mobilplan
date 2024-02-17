@@ -11,7 +11,7 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitad
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.RemoverFitaDeBordaPorIdUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.mdf.CriarMdfUseCase;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.FitaDeBordaDto;
-import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaFitaDeBordaDto;
+import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaMateriaPrimaDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -85,7 +85,7 @@ public class FitadeBordaController {
     }
 
     @PostMapping("/pesquisar")
-    public ResponseEntity<List<FitaDeBordaDto>> buscarPorCriterios(@RequestBody PesquisaFitaDeBordaDto dto) {
+    public ResponseEntity<List<FitaDeBordaDto>> buscarPorCriterios(@RequestBody PesquisaMateriaPrimaDto dto) {
 
         var input = mapper.toInputCriterios(dto);
 

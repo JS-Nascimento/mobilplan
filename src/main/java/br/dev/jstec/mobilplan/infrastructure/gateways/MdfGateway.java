@@ -3,8 +3,8 @@ package br.dev.jstec.mobilplan.infrastructure.gateways;
 import static br.dev.jstec.mobilplan.infrastructure.configuration.security.UserContext.getUserLogged;
 import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification.cor;
 import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification.descricao;
+import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification.espessura;
 import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification.intervaloPreco;
-import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification.largura;
 import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification.tenant;
 import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification.tipoAcabamento;
 import static java.util.Optional.empty;
@@ -63,16 +63,16 @@ public class MdfGateway implements MateriaPrimaPort<Mdf> {
 
     @Override
     public List<Mdf> buscar(
-            String descricao, String cor, double largura, double doPreco, double atePreco, String tipoAcabamento) {
+            String descricao, String cor, double dimensaoBase, double doPreco, double atePreco, String tipoAcabamento) {
 
         log.debug(
                 "Buscando fitas de borda por critérios: descricao={}, cor={}, "
                         + "largura={}, doPreco={}, atePreco={}, tipoAcabamento={}",
-                descricao, cor, largura, doPreco, atePreco, tipoAcabamento);
+                descricao, cor, dimensaoBase, doPreco, atePreco, tipoAcabamento);
         var criterios = Specification.where(tenant(getUserLogged()))
                 .and(descricao(descricao))
                 .and(cor(cor))
-                .and(largura(largura))
+                .and(espessura(dimensaoBase))
                 .and(intervaloPreco(doPreco, atePreco))
                 .and(tipoAcabamento(tipoAcabamento));
 

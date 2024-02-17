@@ -6,7 +6,7 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitad
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.CriarFitaDeBordaUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.RemoverFitaDeBordaPorIdUseCase;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.FitaDeBordaDto;
-import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaFitaDeBordaDto;
+import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaMateriaPrimaDto;
 import java.util.List;
 import org.mapstruct.Mapper;
 
@@ -27,5 +27,5 @@ public interface FitaDeBordaDtoMapper {
 
     RemoverFitaDeBordaPorIdUseCase.Input toDeleteInputModel(Long id);
 
-    BuscarFitaDeBordaPorCriteriosUseCase.Input toInputCriterios(PesquisaFitaDeBordaDto dto);
+    BuscarFitaDeBordaPorCriteriosUseCase.Input toInputCriterios(PesquisaMateriaPrimaDto dto);
 }

@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
 import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
 import br.dev.jstec.mobilplan.application.usecases.NullaryUseCase;
-import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro;
 import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
 import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import java.util.Collection;

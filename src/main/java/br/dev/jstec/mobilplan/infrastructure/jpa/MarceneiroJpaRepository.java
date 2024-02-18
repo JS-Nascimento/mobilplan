@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.jpa;
 
-import br.dev.jstec.mobilplan.infrastructure.persistence.marceneiro.MarceneiroEntity;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.marceneiro.MarceneiroEntity;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.repository.CrudRepository;

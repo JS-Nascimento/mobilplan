@@ -5,7 +5,7 @@ import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_E
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UnitUseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Ferragem;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Ferragem;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

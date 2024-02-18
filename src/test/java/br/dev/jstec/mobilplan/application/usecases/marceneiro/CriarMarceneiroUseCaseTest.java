@@ -14,8 +14,8 @@ import static org.mockito.Mockito.verify;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
-import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
-import br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.MarceneiroFixture;
 import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;

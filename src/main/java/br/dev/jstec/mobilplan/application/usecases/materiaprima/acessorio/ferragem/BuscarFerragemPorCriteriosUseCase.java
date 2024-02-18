@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferra
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Ferragem;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Ferragem;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -17,13 +17,7 @@ public class BuscarFerragemPorCriteriosUseCase extends
     @Override
     public List<Output> execute(Input input) {
 
-        var ferragens = materiaPrima.buscar(
-                input.descricao(),
-                input.cor(),
-                input.unidade(),
-                input.doPreco(),
-                input.atePreco(),
-                input.precificacao());
+        var ferragens = materiaPrima.buscar(input);
 
         return ferragens.stream()
                 .map(ferragem -> new Output(

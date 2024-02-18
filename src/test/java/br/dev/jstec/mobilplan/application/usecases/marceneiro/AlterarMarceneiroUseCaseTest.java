@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCaseFixture.buildInput;
-import static br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture.buildComId;
+import static br.dev.jstec.mobilplan.domain.model.marceneiro.MarceneiroFixture.buildComId;
 import static java.text.MessageFormat.format;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.verify;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
-import br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.MarceneiroFixture;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

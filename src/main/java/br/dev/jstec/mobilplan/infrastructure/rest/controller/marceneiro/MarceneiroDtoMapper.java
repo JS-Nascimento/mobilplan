@@ -10,7 +10,7 @@ import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarMarceneiroPo
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarTodosMarceneirosUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.CriarMarceneiroUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.SalvarLogomarcaUseCase;
-import br.dev.jstec.mobilplan.domain.TipoTelefone;
+import br.dev.jstec.mobilplan.domain.enums.TipoTelefone;
 import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
 import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.TelefoneDto;

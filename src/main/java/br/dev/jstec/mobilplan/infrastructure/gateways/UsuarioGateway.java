@@ -7,7 +7,7 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
 import br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository;
-import br.dev.jstec.mobilplan.infrastructure.persistence.usuario.UsuarioPersistence;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.usuario.UsuarioPersistence;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.usuario.ResponseUsuarioDto;
 import java.time.LocalDateTime;
 import java.util.function.BiConsumer;

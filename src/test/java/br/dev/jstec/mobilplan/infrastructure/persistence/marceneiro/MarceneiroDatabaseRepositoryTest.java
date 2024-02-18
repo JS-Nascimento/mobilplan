@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.persistence.marceneiro;
 
-import static br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture.buildComAuditoria;
+import static br.dev.jstec.mobilplan.domain.model.marceneiro.MarceneiroFixture.buildComAuditoria;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarEmail;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarStringNumerica;
 import static br.dev.jstec.mobilplan.infrastructure.persistence.marceneiro.MarceneiroEntityFixture.buildComMarceneiro;
@@ -15,6 +15,9 @@ import static org.mockito.Mockito.verify;
 
 import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.marceneiro.MarceneiroEntity;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.marceneiro.MarceneiroEntityMapperImpl;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.marceneiro.MarceneiroPersistence;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;

@@ -13,12 +13,12 @@ import static java.util.Optional.empty;
 import static java.util.stream.Collectors.toList;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
-import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.puxador.BuscarPuxadorPorCriteriosUseCase.Input;
-import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Puxador;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.puxador.BuscarPuxadorPorCriteriosUseCase;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Puxador;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.PuxadorRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.PuxadorSpecification;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.PuxadorEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IPuxadorMapper;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.PuxadorEntity;
 import jakarta.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
@@ -69,11 +69,11 @@ public class PuxadorGateway implements MateriaPrimaPort<Puxador> {
     public List<Puxador> buscar(Object... objects) {
 
         var input = Arrays.stream(objects)
-                .filter(Input.class::isInstance)
-                .map(Input.class::cast)
+                .filter(BuscarPuxadorPorCriteriosUseCase.Input.class::isInstance)
+                .map(BuscarPuxadorPorCriteriosUseCase.Input.class::cast)
                 .findFirst()
-                .orElse(
-                        new Input(false, null, null, null, 0, 0, 0, null));
+                .orElse(new
+                        BuscarPuxadorPorCriteriosUseCase.Input(null, null, null, null, 0, 0, 0, null));
 
         log.debug("Buscando fitas de borda por critérios: {}", input);
 

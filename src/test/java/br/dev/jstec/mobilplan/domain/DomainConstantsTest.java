@@ -2,6 +2,7 @@ package br.dev.jstec.mobilplan.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import br.dev.jstec.mobilplan.domain.util.DomainConstants;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

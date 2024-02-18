@@ -4,7 +4,7 @@ import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_I
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_SITUACAO_INEXISTENTE;
 import static br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarSituacaoUseCaseFixture.buildOutput;
 import static br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarMarceneiroPorIdUseCaseFixture.buildOutput;
-import static br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture.buildComAuditoria;
+import static br.dev.jstec.mobilplan.domain.model.marceneiro.MarceneiroFixture.buildComAuditoria;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarObject;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarString;
 import static br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.MarceneiroDtoFixture.buildComTodosMarceneiroOutput;
@@ -32,7 +32,7 @@ import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarTodosMarcene
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.BuscarTodosMarceneirosUseCaseFixture;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.CriarMarceneiroUseCase;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.SalvarLogomarcaUseCase;
-import br.dev.jstec.mobilplan.domain.marceneiro.Situacao;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.Situacao;
 import br.dev.jstec.mobilplan.infrastructure.exceptions.CustomExceptionHandler;
 import java.util.List;
 import java.util.UUID;

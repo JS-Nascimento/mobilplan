@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.application.ports;
 
-import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro;
 import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import java.awt.image.BufferedImage;
 import java.io.IOException;

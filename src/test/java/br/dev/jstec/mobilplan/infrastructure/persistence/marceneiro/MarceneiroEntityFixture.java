@@ -2,7 +2,8 @@ package br.dev.jstec.mobilplan.infrastructure.persistence.marceneiro;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.marceneiro.MarceneiroEntity;
 import java.util.stream.Collectors;
 import lombok.Builder;
 import lombok.NoArgsConstructor;

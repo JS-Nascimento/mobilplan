@@ -3,8 +3,8 @@ package br.dev.jstec.mobilplan.infrastructure.jpa.specification;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_CAMPO_INVALIDO;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FitaDeBordaEntity;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FitaDeBordaEntity_;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FitaDeBordaEntity;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FitaDeBordaEntity_;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;

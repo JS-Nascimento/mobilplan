@@ -12,11 +12,11 @@ import static java.util.stream.Collectors.toList;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.BuscarFerragemPorCriteriosUseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Ferragem;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Ferragem;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.FerragemRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.FerragemSpecification;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FerragemEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFerragemMapper;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FerragemEntity;
 import jakarta.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;

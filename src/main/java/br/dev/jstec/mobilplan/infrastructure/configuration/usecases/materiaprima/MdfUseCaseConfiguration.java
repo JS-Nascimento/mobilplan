@@ -6,7 +6,7 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.mdf.B
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.mdf.BuscarMdfPorIdUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.mdf.CriarMdfUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.mdf.RemoverMdfPorIdUseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.Mdf;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.Mdf;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

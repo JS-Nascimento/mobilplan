@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.domain.valueobject;
 
-import static br.dev.jstec.mobilplan.domain.TipoTelefone.of;
+import static br.dev.jstec.mobilplan.domain.enums.TipoTelefone.of;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarInteger;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarStringNumerica;
 import static br.dev.jstec.mobilplan.domain.valueobject.Telefone.createWithDdiOf;
@@ -8,7 +8,7 @@ import static br.dev.jstec.mobilplan.domain.valueobject.Telefone.formatedOf;
 import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
-import br.dev.jstec.mobilplan.domain.TipoTelefone;
+import br.dev.jstec.mobilplan.domain.enums.TipoTelefone;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.TelefoneDto;
 import lombok.Builder;
 import lombok.NoArgsConstructor;

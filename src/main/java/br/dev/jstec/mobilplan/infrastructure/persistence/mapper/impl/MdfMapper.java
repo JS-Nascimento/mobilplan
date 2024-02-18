@@ -1,8 +1,8 @@
 package br.dev.jstec.mobilplan.infrastructure.persistence.mapper.impl;
 
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.Mdf;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.Mdf;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.MdfEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IMdfMapper;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.MdfEntity;
 import org.springframework.stereotype.Component;
 
 @Component

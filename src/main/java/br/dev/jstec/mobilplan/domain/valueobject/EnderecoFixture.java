@@ -3,8 +3,8 @@ package br.dev.jstec.mobilplan.domain.valueobject;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarString;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarStringComLetraENumero;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarStringNumerica;
-import static br.dev.jstec.mobilplan.domain.valueobject.Endereco.createOf;
 import static br.dev.jstec.mobilplan.domain.valueobject.Endereco.formatedOf;
+import static br.dev.jstec.mobilplan.domain.valueobject.Endereco.of;
 import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
@@ -18,7 +18,7 @@ public class EnderecoFixture {
 
     public static Endereco build() {
 
-        return createOf(
+        return of(
                 gerarStringNumerica(8),
                 "Rua " + gerarString(),
                 gerarStringNumerica(4),
@@ -30,7 +30,7 @@ public class EnderecoFixture {
 
     public static Endereco buildComplememtoVazio() {
 
-        return createOf(
+        return of(
                 gerarStringNumerica(8),
                 "Rua " + gerarString(),
                 gerarStringNumerica(4),
@@ -42,7 +42,7 @@ public class EnderecoFixture {
 
     public static void buildCepNulo() {
 
-        createOf(
+        of(
                 null,
                 "Rua " + gerarString(),
                 gerarStringNumerica(4),
@@ -54,7 +54,7 @@ public class EnderecoFixture {
 
     public static void buildCepInvalido() {
 
-        createOf(
+        of(
                 gerarStringComLetraENumero(8),
                 "Rua " + gerarString(),
                 gerarStringNumerica(4),
@@ -66,7 +66,7 @@ public class EnderecoFixture {
 
     public static void buildLogradouroNulo() {
 
-        createOf(
+        of(
                 gerarStringComLetraENumero(8),
                 null,
                 gerarStringNumerica(4),
@@ -78,7 +78,7 @@ public class EnderecoFixture {
 
     public static void buildNumeroNulo() {
 
-        createOf(
+        of(
                 gerarStringComLetraENumero(8),
                 gerarString(),
                 null,
@@ -90,7 +90,7 @@ public class EnderecoFixture {
 
     public static void buildBairroNulo() {
 
-        createOf(
+        of(
                 gerarStringComLetraENumero(8),
                 gerarString(),
                 gerarStringNumerica(3),
@@ -102,7 +102,7 @@ public class EnderecoFixture {
 
     public static void buildCidadeNula() {
 
-        createOf(
+        of(
                 gerarStringComLetraENumero(8),
                 gerarString(),
                 gerarStringNumerica(3),
@@ -114,7 +114,7 @@ public class EnderecoFixture {
 
     public static void buildUfNula() {
 
-        createOf(
+        of(
                 gerarStringComLetraENumero(8),
                 gerarString(),
                 gerarStringNumerica(3),
@@ -126,7 +126,7 @@ public class EnderecoFixture {
 
     public static void buildComUfInvalido() {
 
-        createOf(
+        of(
                 gerarStringNumerica(8),
                 "Rua " + gerarString(),
                 gerarStringNumerica(4),

@@ -4,13 +4,13 @@ import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_E
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
 import static br.dev.jstec.mobilplan.application.usecases.usuario.AlterarUsuarioUseCase.Input;
 import static br.dev.jstec.mobilplan.application.usecases.usuario.AlterarUsuarioUseCase.Output;
-import static br.dev.jstec.mobilplan.domain.usuario.Usuario.with;
+import static br.dev.jstec.mobilplan.domain.model.usuario.Usuario.with;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.UsuarioPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
-import br.dev.jstec.mobilplan.domain.usuario.UserEmailConfirmation;
-import br.dev.jstec.mobilplan.domain.usuario.Usuario;
+import br.dev.jstec.mobilplan.domain.model.usuario.UserEmailConfirmation;
+import br.dev.jstec.mobilplan.domain.model.usuario.Usuario;
 import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import java.util.Objects;
 import java.util.UUID;

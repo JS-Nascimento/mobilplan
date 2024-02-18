@@ -1,11 +1,11 @@
 package br.dev.jstec.mobilplan.domain;
 
 
-import static br.dev.jstec.mobilplan.domain.TipoTelefone.CELULAR;
-import static br.dev.jstec.mobilplan.domain.TipoTelefone.FIXO;
-import static br.dev.jstec.mobilplan.domain.TipoTelefone.WHATSAPP;
-import static br.dev.jstec.mobilplan.domain.TipoTelefone.byOrdinal;
-import static br.dev.jstec.mobilplan.domain.TipoTelefone.of;
+import static br.dev.jstec.mobilplan.domain.enums.TipoTelefone.CELULAR;
+import static br.dev.jstec.mobilplan.domain.enums.TipoTelefone.FIXO;
+import static br.dev.jstec.mobilplan.domain.enums.TipoTelefone.WHATSAPP;
+import static br.dev.jstec.mobilplan.domain.enums.TipoTelefone.byOrdinal;
+import static br.dev.jstec.mobilplan.domain.enums.TipoTelefone.of;
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_TIPO_TELEFONE_INEXISTENTE;
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_TIPO_TELEFONE_NULO;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarInteger;
@@ -14,7 +14,6 @@ import static java.lang.String.valueOf;
 import static java.text.MessageFormat.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import org.junit.jupiter.api.DisplayName;

@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fita
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.FitaDeBorda;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -17,8 +17,7 @@ public class BuscarFitaDeBordaPorCriteriosUseCase extends
     @Override
     public List<Output> execute(Input input) {
 
-        var fitas = materiaPrima.buscar(input.descricao(), input.cor(), input.largura(), input.doPreco(),
-                input.atePreco(), input.tipoAcabamento());
+        var fitas = materiaPrima.buscar(input);
 
         return fitas.stream()
                 .map(fita -> new Output(

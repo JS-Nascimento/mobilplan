@@ -12,11 +12,11 @@ import static java.util.stream.Collectors.toList;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.BuscarFitaDeBordaPorCriteriosUseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.FitaDeBorda;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.FitaDeBordaRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBordaSpecification;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FitaDeBordaEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFitaDeBordaMapper;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FitaDeBordaEntity;
 import jakarta.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;

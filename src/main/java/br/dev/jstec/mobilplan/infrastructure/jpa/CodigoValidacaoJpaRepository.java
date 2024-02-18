@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.jpa;
 
-import br.dev.jstec.mobilplan.infrastructure.persistence.usuario.CodigoValidacaoEntity;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.usuario.CodigoValidacaoEntity;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.Query;

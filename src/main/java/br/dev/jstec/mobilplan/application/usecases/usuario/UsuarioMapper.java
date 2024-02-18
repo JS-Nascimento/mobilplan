@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.application.usecases.usuario;
 
 import static java.util.Objects.isNull;
 
-import br.dev.jstec.mobilplan.domain.usuario.Usuario;
+import br.dev.jstec.mobilplan.domain.model.usuario.Usuario;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.mapstruct.Mapper;

@@ -1,10 +1,10 @@
 package br.dev.jstec.mobilplan.domain.valueobject;
 
-import static br.dev.jstec.mobilplan.domain.TipoPessoa.FISICA;
-import static br.dev.jstec.mobilplan.domain.TipoPessoa.JURIDICA;
-import static br.dev.jstec.mobilplan.domain.TipoPessoa.of;
+import static br.dev.jstec.mobilplan.domain.enums.TipoPessoa.FISICA;
+import static br.dev.jstec.mobilplan.domain.enums.TipoPessoa.JURIDICA;
+import static br.dev.jstec.mobilplan.domain.enums.TipoPessoa.of;
 
-import br.dev.jstec.mobilplan.domain.TipoPessoa;
+import br.dev.jstec.mobilplan.domain.enums.TipoPessoa;
 
 public record TipoCliente(TipoPessoa tipoPessoa, String documento) {
 

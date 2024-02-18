@@ -1,9 +1,9 @@
 package br.dev.jstec.mobilplan.domain;
 
 
-import static br.dev.jstec.mobilplan.domain.TipoPessoa.FISICA;
-import static br.dev.jstec.mobilplan.domain.TipoPessoa.JURIDICA;
-import static br.dev.jstec.mobilplan.domain.TipoPessoa.of;
+import static br.dev.jstec.mobilplan.domain.enums.TipoPessoa.FISICA;
+import static br.dev.jstec.mobilplan.domain.enums.TipoPessoa.JURIDICA;
+import static br.dev.jstec.mobilplan.domain.enums.TipoPessoa.of;
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_TIPO_PESSOA_NULO;
 import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarString;
 import static org.junit.jupiter.api.Assertions.assertEquals;

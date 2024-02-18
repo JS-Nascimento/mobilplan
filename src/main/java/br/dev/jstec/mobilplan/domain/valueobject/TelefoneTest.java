@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import br.dev.jstec.mobilplan.domain.TipoTelefone;
+import br.dev.jstec.mobilplan.domain.enums.TipoTelefone;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

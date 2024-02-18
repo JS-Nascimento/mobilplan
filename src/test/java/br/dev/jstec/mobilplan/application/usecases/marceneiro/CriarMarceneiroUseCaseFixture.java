@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = PRIVATE)

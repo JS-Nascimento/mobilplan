@@ -27,4 +27,8 @@ public record Email(String value) {
                 + "(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
         return email.matches(regex);
     }
+
+    public static Email of(String email) {
+        return new Email(email);
+    }
 }

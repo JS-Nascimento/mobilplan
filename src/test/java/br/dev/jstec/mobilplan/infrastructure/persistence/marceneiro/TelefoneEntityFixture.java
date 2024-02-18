@@ -4,6 +4,7 @@ import static br.dev.jstec.mobilplan.domain.util.RandomHelper.gerarLong;
 import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.marceneiro.TelefoneEntity;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 

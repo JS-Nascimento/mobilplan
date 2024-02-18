@@ -1,8 +1,8 @@
 package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ID_INVALIDO;
-import static br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro.updateStatus;
-import static br.dev.jstec.mobilplan.domain.marceneiro.Situacao.of;
+import static br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro.updateStatus;
+import static br.dev.jstec.mobilplan.domain.model.marceneiro.Situacao.of;
 import static java.util.UUID.fromString;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;

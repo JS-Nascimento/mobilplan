@@ -12,11 +12,11 @@ import static java.util.stream.Collectors.toList;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.mdf.BuscarMdfPorCriteriosUseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.Mdf;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.Mdf;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.MdfRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.MdfEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IMdfMapper;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.MdfEntity;
 import jakarta.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;

@@ -2,7 +2,7 @@ package br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.puxad
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Puxador;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Puxador;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -17,14 +17,7 @@ public class BuscarPuxadorPorCriteriosUseCase extends
     @Override
     public List<Output> execute(Input input) {
 
-        var puxadores = materiaPrima.buscar(input.perfil(),
-                input.tipoPuxador(),
-                input.descricao(),
-                input.cor(),
-                input.largura(),
-                input.doPreco(),
-                input.atePreco(),
-                input.precificacao());
+        var puxadores = materiaPrima.buscar(input);
 
         return puxadores.stream()
                 .map(puxador -> new Output(
@@ -33,10 +26,10 @@ public class BuscarPuxadorPorCriteriosUseCase extends
                         puxador.getTipoPuxador().getDescricao(),
                         puxador.getDescricao(),
                         puxador.getCor(),
-                        puxador.getDirecao().name(),
+                        puxador.getDirecao().getDescricao(),
                         puxador.getUnidade().getDescricao(),
                         puxador.getPreco(),
-                        puxador.getPrecificacao().name(),
+                        puxador.getPrecificacao().getDescricao(),
                         puxador.getDimensoesAcessorio().getAltura(),
                         puxador.getDimensoesAcessorio().getLargura(),
                         puxador.getDimensoesAcessorio().getEspessura(),
@@ -47,7 +40,7 @@ public class BuscarPuxadorPorCriteriosUseCase extends
     }
 
     public record Input(
-            boolean perfil,
+            Boolean perfil,
             String tipoPuxador,
             String descricao,
             String cor,

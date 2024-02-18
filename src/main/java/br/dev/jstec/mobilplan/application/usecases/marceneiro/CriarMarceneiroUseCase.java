@@ -1,7 +1,7 @@
 package br.dev.jstec.mobilplan.application.usecases.marceneiro;
 
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
-import static br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro.createOf;
+import static br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro.createOf;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;

@@ -5,7 +5,7 @@ import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_TIPO_T
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import br.dev.jstec.mobilplan.domain.TipoTelefone;
+import br.dev.jstec.mobilplan.domain.enums.TipoTelefone;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 
 public record Telefone(
@@ -96,5 +96,14 @@ public record Telefone(
                                            String ddi) {
 
         return new Telefone(tipoTelefone, numero, ddd, ddi);
+    }
+
+    public static Telefone of(String tipoTelefone, String numero, String ddd, String ddi) {
+
+        return new Telefone(
+                TipoTelefone.of(tipoTelefone),
+                numero,
+                ddd,
+                ddi);
     }
 }

@@ -4,6 +4,9 @@ import lombok.Data;
 
 @Data
 public class PesquisaMateriaPrimaDto {
+    Long id;
+    Boolean perfil;
+    String tipoPuxador;
     String descricao;
     String cor;
     String dimensaoBase;
@@ -11,4 +14,5 @@ public class PesquisaMateriaPrimaDto {
     double atePreco;
     String unidade;
     String tipoAcabamento;
+    String tipoPrecificacao;
 }

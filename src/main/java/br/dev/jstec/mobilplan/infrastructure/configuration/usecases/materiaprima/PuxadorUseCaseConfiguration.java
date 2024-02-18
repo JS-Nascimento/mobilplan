@@ -6,7 +6,7 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.puxado
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.puxador.BuscarPuxadorPorIdUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.puxador.CriarPuxadorUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.puxador.RemoverPuxadorPorIdUseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Puxador;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Puxador;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

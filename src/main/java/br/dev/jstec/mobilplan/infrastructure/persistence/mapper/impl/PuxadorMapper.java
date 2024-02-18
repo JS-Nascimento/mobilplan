@@ -1,8 +1,8 @@
 package br.dev.jstec.mobilplan.infrastructure.persistence.mapper.impl;
 
-import br.dev.jstec.mobilplan.domain.materiaprima.acessorios.Puxador;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Puxador;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.PuxadorEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IPuxadorMapper;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.PuxadorEntity;
 import org.springframework.stereotype.Component;
 
 @Component

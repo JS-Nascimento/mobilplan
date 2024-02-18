@@ -73,13 +73,13 @@ public record Endereco(
         );
     }
 
-    public static Endereco createOf(String cep,
-        String logradouro,
-        String numero,
-        String complemento,
-        String bairro,
-        String cidade,
-        String uf) {
+    public static Endereco of(String cep,
+                              String logradouro,
+                              String numero,
+                              String complemento,
+                              String bairro,
+                              String cidade,
+                              String uf) {
         return new Endereco(cep, logradouro, numero, complemento, bairro, cidade, uf);
     }
 

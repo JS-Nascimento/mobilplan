@@ -41,6 +41,8 @@ public enum ErroDeDominio {
     ERRO_CAMPO_MENOR_IGUAL_ZERO("mobilplan-021", "O valor para o atributo {0} deve ser maior que Zero."),
     ERRO_COMBINACAO_PERFIL_E_TIPO_PUXADOR_INVALIDO("mobilplan-022",
             "Quando perfil é {0} Tipo Puxador não deve ser {1}."),
+    ERRO_ENTIDADE_INEXISTENTE("mobilplan-023",
+            "Não existe {0} com os dados informados."),
     ;
 
     private final String code;

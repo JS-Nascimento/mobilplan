@@ -1,7 +1,7 @@
 package br.dev.jstec.mobilplan.infrastructure.persistence.mapper;
 
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FitaDeBordaEntity;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.FitaDeBorda;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FitaDeBordaEntity;
 
 public interface IFitaDeBordaMapper {
 

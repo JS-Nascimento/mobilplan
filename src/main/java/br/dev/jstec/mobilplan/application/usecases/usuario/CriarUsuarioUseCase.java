@@ -1,15 +1,15 @@
 package br.dev.jstec.mobilplan.application.usecases.usuario;
 
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_EMAIL_CADASTRADO;
-import static br.dev.jstec.mobilplan.domain.usuario.Usuario.validationCodeGenerate;
+import static br.dev.jstec.mobilplan.domain.model.usuario.Usuario.validationCodeGenerate;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.UsuarioPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
 import br.dev.jstec.mobilplan.application.usecases.usuario.CriarUsuarioUseCase.Input;
 import br.dev.jstec.mobilplan.application.usecases.usuario.CriarUsuarioUseCase.Output;
-import br.dev.jstec.mobilplan.domain.usuario.UserEmailConfirmation;
-import br.dev.jstec.mobilplan.domain.usuario.Usuario;
+import br.dev.jstec.mobilplan.domain.model.usuario.UserEmailConfirmation;
+import br.dev.jstec.mobilplan.domain.model.usuario.Usuario;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

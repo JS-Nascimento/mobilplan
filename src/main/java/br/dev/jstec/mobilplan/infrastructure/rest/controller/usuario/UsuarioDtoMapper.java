@@ -4,7 +4,7 @@ import br.dev.jstec.mobilplan.application.usecases.usuario.AlterarUsuarioUseCase
 import br.dev.jstec.mobilplan.application.usecases.usuario.BuscarUsuarioPorIdUseCase;
 import br.dev.jstec.mobilplan.application.usecases.usuario.CriarUsuarioUseCase;
 import br.dev.jstec.mobilplan.application.usecases.usuario.SalvarAvatarUseCase;
-import br.dev.jstec.mobilplan.domain.TipoTelefone;
+import br.dev.jstec.mobilplan.domain.enums.TipoTelefone;
 import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.TelefoneDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.usuario.AvatarUrlDto;

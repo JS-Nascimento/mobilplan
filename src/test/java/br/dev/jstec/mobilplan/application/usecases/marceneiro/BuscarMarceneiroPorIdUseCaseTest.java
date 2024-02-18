@@ -10,7 +10,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 import br.dev.jstec.mobilplan.application.ports.MarceneiroPort;
-import br.dev.jstec.mobilplan.domain.marceneiro.MarceneiroFixture;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.MarceneiroFixture;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;

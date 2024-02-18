@@ -6,7 +6,7 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitad
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.BuscarFitaDeBordaPorIdUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.CriarFitaDeBordaUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.RemoverFitaDeBordaPorIdUseCase;
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.FitaDeBorda;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

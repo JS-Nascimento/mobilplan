@@ -5,10 +5,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCase.Input;
 import br.dev.jstec.mobilplan.application.usecases.marceneiro.AlterarMarceneiroUseCase.Output;
-import br.dev.jstec.mobilplan.domain.marceneiro.Marceneiro;
-import br.dev.jstec.mobilplan.domain.valueobject.EnderecoFixture;
-import br.dev.jstec.mobilplan.domain.valueobject.TelefoneFixture;
-import br.dev.jstec.mobilplan.infrastructure.rest.dto.marceneiro.UpdateMarceneiroDto;
+import br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = PRIVATE)

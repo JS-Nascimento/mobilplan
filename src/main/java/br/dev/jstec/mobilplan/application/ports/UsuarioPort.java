@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.application.ports;
 
-import br.dev.jstec.mobilplan.domain.usuario.Usuario;
+import br.dev.jstec.mobilplan.domain.model.usuario.Usuario;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URISyntaxException;

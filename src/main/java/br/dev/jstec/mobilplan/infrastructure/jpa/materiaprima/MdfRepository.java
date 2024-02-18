@@ -1,6 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima;
 
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.MdfEntity;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.MdfEntity;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,8 +1,8 @@
 package br.dev.jstec.mobilplan.infrastructure.persistence.mapper.impl;
 
-import br.dev.jstec.mobilplan.domain.materiaprima.acabamento.FitaDeBorda;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.FitaDeBorda;
+import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FitaDeBordaEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFitaDeBordaMapper;
-import br.dev.jstec.mobilplan.infrastructure.persistence.materiaprima.FitaDeBordaEntity;
 import org.springframework.stereotype.Component;
 
 @Component

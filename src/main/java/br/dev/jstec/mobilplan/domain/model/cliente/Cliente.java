@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = PRIVATE)
 public class Cliente extends Tenant {
 
+    private UUID id;
     private final boolean ativo;
     private final String nome;
     private final TipoPessoa tipoPessoa;
@@ -30,7 +31,6 @@ public class Cliente extends Tenant {
     private final DadosContratuais dadosContratuais;
     private final boolean notificarPorEmail;
     private final boolean notificarPorWhatsapp;
-    private UUID id;
     private Set<Telefone> telefones = new HashSet<>();
     private Set<Endereco> enderecos = new HashSet<>();
     private LocalDateTime criadoEm;

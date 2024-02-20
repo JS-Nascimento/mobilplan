@@ -4,12 +4,14 @@ import static br.dev.jstec.mobilplan.infrastructure.configuration.security.UserC
 import static java.util.Optional.empty;
 
 import br.dev.jstec.mobilplan.application.ports.ClientePort;
+import br.dev.jstec.mobilplan.application.usecases.cliente.BuscarClientePorCriteriosUseCase;
 import br.dev.jstec.mobilplan.domain.model.cliente.Cliente;
 import br.dev.jstec.mobilplan.infrastructure.jpa.ClienteRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.ClienteSpecification;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.cliente.ClienteEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IClienteMapper;
 import jakarta.transaction.Transactional;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
@@ -57,9 +59,28 @@ public class ClienteGateway implements ClientePort {
     }
 
     @Override
-    public Collection<Cliente> buscar(Object... criterios) {
+    public Collection<Cliente> buscar(Object... objects) {
 
-        return null;
+        var input = Arrays.stream(objects)
+                .filter(BuscarClientePorCriteriosUseCase.Input.class::isInstance)
+                .map(BuscarClientePorCriteriosUseCase.Input.class::cast)
+                .findFirst()
+                .orElse(new BuscarClientePorCriteriosUseCase.Input(null, null, null, null, null, null, null));
+
+        log.debug("Buscando clientes por criterios: {}", input);
+
+        var criterios = Specification.where(ClienteSpecification.tenant(getUserLogged()))
+                .and(ClienteSpecification.ativo(input.ativo()))
+                .and(ClienteSpecification.nome(input.nome()))
+                .and(ClienteSpecification.email(input.email()))
+                .and(ClienteSpecification.tipoPessoa(input.tipoPessoa()))
+                .and(ClienteSpecification.notificarPorEmail(input.notificarPorEmail()))
+                .and(ClienteSpecification.notificarPorWhatsapp(input.notificarPorWhatsapp()));
+
+        return this.repository.findAll(criterios)
+                .stream()
+                .map(mapper::toDomainModel)
+                .toList();
     }
 
     @Override

@@ -11,7 +11,7 @@ import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class EnderecoTest {
+class EnderecoUseCaseTest {
 
     @Test
     @DisplayName("Deve disparar exceção quando o CEP for Inválido ")

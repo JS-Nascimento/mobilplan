@@ -110,7 +110,7 @@ public class CriarClienteUseCase extends UseCase<CriarClienteUseCase.Input, Cria
 
     }
 
-    private record TelefoneUseCase(
+    public record TelefoneUseCase(
             String tipoTelefone,
             String numero,
             String ddd,
@@ -122,7 +122,7 @@ public class CriarClienteUseCase extends UseCase<CriarClienteUseCase.Input, Cria
 
     }
 
-    private record EnderecoUseCase(
+    public record EnderecoUseCase(
             String cep,
             String logradouro,
             String numero,

@@ -77,6 +77,7 @@ public class FerragemController {
     @GetMapping("/{id}")
     public ResponseEntity<FerragemDto> buscarPorId(@PathVariable Long id) {
 
+        log.debug("Buscando ferragem por id: {}", id);
         var input = new BuscarFerragemPorIdUseCase.Input(id);
         var output = buscarFerragemPorIdUseCase.execute(input);
 

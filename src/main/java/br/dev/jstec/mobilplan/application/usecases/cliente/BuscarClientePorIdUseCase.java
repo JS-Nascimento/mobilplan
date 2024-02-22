@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+
 @RequiredArgsConstructor
 public class BuscarClientePorIdUseCase
         extends UseCase<BuscarClientePorIdUseCase.Input, BuscarClientePorIdUseCase.Output> {
@@ -30,7 +29,7 @@ public class BuscarClientePorIdUseCase
                 cliente.isAtivo(),
                 cliente.getNome(),
                 cliente.getTipoPessoa().toString(),
-                cliente.getEmail().toString(),
+                cliente.getEmail().value(),
                 cliente.getDadosContratuais().getDocumentoFiscal(),
                 cliente.getDadosContratuais().getDocumentoIdentificador(),
                 cliente.getDadosContratuais().getEstadoCivil().getDescricao(),
@@ -38,21 +37,21 @@ public class BuscarClientePorIdUseCase
                 cliente.isNotificarPorWhatsapp(),
                 cliente.getTelefones().stream()
                         .map(telefone -> new TelefoneUseCase(
-                                telefone.tipoTelefone().toString(),
-                                telefone.numero(),
-                                telefone.ddd(),
-                                telefone.ddi()
+                                telefone.getTipoTelefone().toString(),
+                                telefone.getNumero(),
+                                telefone.getDdd(),
+                                telefone.getDdi()
                         ))
                         .collect(Collectors.toList()),
                 cliente.getEnderecos().stream()
                         .map(endereco -> new EnderecoUseCase(
-                                endereco.cep(),
-                                endereco.logradouro(),
-                                endereco.numero(),
-                                endereco.complemento(),
-                                endereco.bairro(),
-                                endereco.cidade(),
-                                endereco.uf()
+                                endereco.getCep(),
+                                endereco.getLogradouro(),
+                                endereco.getNumero(),
+                                endereco.getComplemento(),
+                                endereco.getBairro(),
+                                endereco.getCidade(),
+                                endereco.getUf()
                         ))
                         .collect(Collectors.toList()),
                 cliente.getCriadoEm(),

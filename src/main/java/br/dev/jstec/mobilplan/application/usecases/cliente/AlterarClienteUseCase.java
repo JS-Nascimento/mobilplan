@@ -1,6 +1,5 @@
 package br.dev.jstec.mobilplan.application.usecases.cliente;
 
-import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_INEXISTENTE;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
@@ -8,16 +7,15 @@ import br.dev.jstec.mobilplan.application.ports.ClientePort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
 import br.dev.jstec.mobilplan.domain.model.cliente.Cliente;
 import br.dev.jstec.mobilplan.domain.model.cliente.DadosContratuais;
-import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
-import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
+import br.dev.jstec.mobilplan.domain.valueobject.EnderecoVO;
+import br.dev.jstec.mobilplan.domain.valueobject.TelefoneVO;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+
 @RequiredArgsConstructor
 public class AlterarClienteUseCase extends UseCase<AlterarClienteUseCase.Input, AlterarClienteUseCase.Output> {
 
@@ -38,7 +36,7 @@ public class AlterarClienteUseCase extends UseCase<AlterarClienteUseCase.Input, 
                 .collect(Collectors.toSet());
 
         var clienteAtualizar = Cliente.with(
-                clienteAtual.getId(),
+                input.id,
                 input.ativo,
                 input.nome,
                 input.tipoPessoa,
@@ -57,10 +55,6 @@ public class AlterarClienteUseCase extends UseCase<AlterarClienteUseCase.Input, 
                 clienteAtual.getTenantId()
         );
 
-        if (clientePort.existe(clienteAtualizar)) {
-            throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "Cliente");
-        }
-
         var clienteSalvo = clientePort.salvar(clienteAtualizar);
 
         return new Output(
@@ -76,21 +70,21 @@ public class AlterarClienteUseCase extends UseCase<AlterarClienteUseCase.Input, 
                 clienteSalvo.isNotificarPorWhatsapp(),
                 clienteSalvo.getTelefones().stream()
                         .map(telefone -> new TelefoneUseCase(
-                                telefone.tipoTelefone().toString(),
-                                telefone.numero(),
-                                telefone.ddd(),
-                                telefone.ddi()
+                                telefone.getTipoTelefone().toString(),
+                                telefone.getNumero(),
+                                telefone.getDdd(),
+                                telefone.getDdi()
                         ))
                         .collect(Collectors.toList()),
                 clienteSalvo.getEnderecos().stream()
                         .map(endereco -> new EnderecoUseCase(
-                                endereco.cep(),
-                                endereco.logradouro(),
-                                endereco.numero(),
-                                endereco.complemento(),
-                                endereco.bairro(),
-                                endereco.cidade(),
-                                endereco.uf()
+                                endereco.getCep(),
+                                endereco.getLogradouro(),
+                                endereco.getNumero(),
+                                endereco.getComplemento(),
+                                endereco.getBairro(),
+                                endereco.getCidade(),
+                                endereco.getUf()
                         ))
                         .collect(Collectors.toList()),
                 clienteSalvo.getCriadoEm(),
@@ -123,8 +117,8 @@ public class AlterarClienteUseCase extends UseCase<AlterarClienteUseCase.Input, 
             String ddd,
             String ddi
     ) {
-        Telefone getTelefoneModel() {
-            return Telefone.of(this.tipoTelefone, this.numero, this.ddd, this.ddi);
+        TelefoneVO getTelefoneModel() {
+            return TelefoneVO.with(this.tipoTelefone, this.numero, this.ddd, this.ddi);
         }
 
     }
@@ -138,8 +132,8 @@ public class AlterarClienteUseCase extends UseCase<AlterarClienteUseCase.Input, 
             String cidade,
             String uf
     ) {
-        Endereco getEnderecoModel() {
-            return Endereco.of(this.cep, this.logradouro, this.numero, this.complemento, this.bairro, this.cidade,
+        EnderecoVO getEnderecoModel() {
+            return EnderecoVO.with(this.cep, this.logradouro, this.numero, this.complemento, this.bairro, this.cidade,
                     this.uf);
         }
     }

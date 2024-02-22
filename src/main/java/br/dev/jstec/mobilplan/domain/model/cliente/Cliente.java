@@ -7,8 +7,8 @@ import br.dev.jstec.mobilplan.domain.enums.TipoPessoa;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import br.dev.jstec.mobilplan.domain.model.Tenant;
 import br.dev.jstec.mobilplan.domain.valueobject.Email;
-import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
-import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
+import br.dev.jstec.mobilplan.domain.valueobject.EnderecoVO;
+import br.dev.jstec.mobilplan.domain.valueobject.TelefoneVO;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
@@ -31,8 +31,8 @@ public class Cliente extends Tenant {
     private final DadosContratuais dadosContratuais;
     private final boolean notificarPorEmail;
     private final boolean notificarPorWhatsapp;
-    private Set<Telefone> telefones = new HashSet<>();
-    private Set<Endereco> enderecos = new HashSet<>();
+    private Set<TelefoneVO> telefones = new HashSet<>();
+    private Set<EnderecoVO> enderecos = new HashSet<>();
     private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
 
@@ -40,8 +40,8 @@ public class Cliente extends Tenant {
                     String nome,
                     TipoPessoa tipoPessoa,
                     Email email,
-                    Set<Telefone> telefones,
-                    Set<Endereco> enderecos,
+                    Set<TelefoneVO> telefones,
+                    Set<EnderecoVO> enderecos,
                     DadosContratuais dadosContratuais,
                     boolean notificarPorEmail,
                     boolean notificarPorWhatsapp,
@@ -60,12 +60,40 @@ public class Cliente extends Tenant {
         validar();
     }
 
+    private Cliente(UUID id,
+                    boolean ativo,
+                    String nome,
+                    TipoPessoa tipoPessoa,
+                    Email email,
+                    Set<TelefoneVO> telefones,
+                    Set<EnderecoVO> enderecos,
+                    DadosContratuais dadosContratuais,
+                    boolean notificarPorEmail,
+                    boolean notificarPorWhatsapp,
+                    LocalDateTime criadoEm,
+                    LocalDateTime atualizadoEm,
+                    UUID tenantId) {
+        super(tenantId);
+        this.id = id;
+        this.ativo = ativo;
+        this.nome = nome;
+        this.tipoPessoa = tipoPessoa;
+        this.email = email;
+        this.dadosContratuais = dadosContratuais;
+        this.notificarPorEmail = notificarPorEmail;
+        this.notificarPorWhatsapp = notificarPorWhatsapp;
+        this.telefones = telefones;
+        this.enderecos = enderecos;
+        this.criadoEm = criadoEm;
+        this.atualizadoEm = atualizadoEm;
+    }
+
     public static Cliente of(boolean ativo,
                              String nome,
                              String tipoPessoa,
                              String email,
-                             Set<Telefone> telefones,
-                             Set<Endereco> enderecos,
+                             Set<TelefoneVO> telefones,
+                             Set<EnderecoVO> enderecos,
                              DadosContratuais dadosContratuais,
                              boolean notificarPorEmail,
                              boolean notificarPorWhatsapp,
@@ -88,8 +116,8 @@ public class Cliente extends Tenant {
                                String nome,
                                String tipoPessoa,
                                String email,
-                               Set<Telefone> telefones,
-                               Set<Endereco> enderecos,
+                               Set<TelefoneVO> telefones,
+                               Set<EnderecoVO> enderecos,
                                DadosContratuais dadosContratuais,
                                boolean notificarPorEmail,
                                boolean notificarPorWhatsapp,
@@ -97,7 +125,9 @@ public class Cliente extends Tenant {
                                LocalDateTime atualizadoEm,
                                UUID tenantId) {
 
-        return new Cliente(ativo,
+        return new Cliente(
+                id,
+                ativo,
                 nome,
                 TipoPessoa.of(tipoPessoa),
                 Email.of(email),
@@ -106,6 +136,8 @@ public class Cliente extends Tenant {
                 dadosContratuais,
                 notificarPorEmail,
                 notificarPorWhatsapp,
+                criadoEm,
+                atualizadoEm,
                 tenantId);
     }
 

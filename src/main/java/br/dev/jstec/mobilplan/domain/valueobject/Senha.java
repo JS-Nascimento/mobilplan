@@ -17,7 +17,7 @@ import lombok.Value;
 @Value
 public class Senha {
 
-    private final String value;
+    String value;
 
     private Senha(String value, boolean validar) {
         if (validar) {

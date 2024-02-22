@@ -26,7 +26,7 @@ public enum TipoTelefone {
         }
 
         return stream(values())
-            .filter(tipo -> descricao.equals(tipo.descricao))
+                .filter(tipo -> descricao.equalsIgnoreCase(tipo.descricao))
             .findFirst()
             .orElseGet(() -> null);
     }

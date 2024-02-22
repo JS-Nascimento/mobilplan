@@ -1,5 +1,7 @@
 package br.dev.jstec.mobilplan.domain.util;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
@@ -53,5 +55,7 @@ public class NumberHelper {
         return currencyFormatter.format(bd);
     }
 
-
+    public static String removeNotNumbers(String valor) {
+        return valor.replaceAll("[^0-9]", EMPTY);
+    }
 }

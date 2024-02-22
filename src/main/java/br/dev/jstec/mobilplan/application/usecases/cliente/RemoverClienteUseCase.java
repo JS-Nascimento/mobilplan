@@ -7,9 +7,8 @@ import br.dev.jstec.mobilplan.application.ports.ClientePort;
 import br.dev.jstec.mobilplan.application.usecases.UnitUseCase;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+
 @RequiredArgsConstructor
 public class RemoverClienteUseCase extends UnitUseCase<RemoverClienteUseCase.Input> {
 

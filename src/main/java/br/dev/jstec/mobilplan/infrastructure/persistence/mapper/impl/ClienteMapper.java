@@ -2,8 +2,8 @@ package br.dev.jstec.mobilplan.infrastructure.persistence.mapper.impl;
 
 import br.dev.jstec.mobilplan.domain.model.cliente.Cliente;
 import br.dev.jstec.mobilplan.domain.model.cliente.DadosContratuais;
-import br.dev.jstec.mobilplan.domain.valueobject.Endereco;
-import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
+import br.dev.jstec.mobilplan.domain.valueobject.EnderecoVO;
+import br.dev.jstec.mobilplan.domain.valueobject.TelefoneVO;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.cliente.ClienteEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.cliente.DadosContratuaisEmbedded;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.cliente.EnderecoCollection;
@@ -60,14 +60,14 @@ public class ClienteMapper implements IClienteMapper {
         return entity;
     }
 
-    private Set<Telefone> toTelefoneDomainModel(Set<TelefoneCollection> telefoneCollections) {
+    private Set<TelefoneVO> toTelefoneDomainModel(Set<TelefoneCollection> telefoneCollections) {
 
         if (telefoneCollections == null || telefoneCollections.isEmpty()) {
             return Collections.emptySet();
         }
 
         return telefoneCollections.stream()
-                .map(telefoneCollection -> Telefone.of(
+                .map(telefoneCollection -> TelefoneVO.with(
                         telefoneCollection.getTipoTelefone(),
                         telefoneCollection.getNumero(),
                         telefoneCollection.getDdd(),
@@ -76,20 +76,20 @@ public class ClienteMapper implements IClienteMapper {
                 .collect(Collectors.toSet());
     }
 
-    private Set<Endereco> toEnderecoDomainModel(Set<EnderecoCollection> enderecoCollections) {
+    private Set<EnderecoVO> toEnderecoDomainModel(Set<EnderecoCollection> enderecoCollections) {
         if (enderecoCollections == null || enderecoCollections.isEmpty()) {
             return Collections.emptySet();
         }
 
         return enderecoCollections.stream()
-                .map(enderecoCollection -> Endereco.of(
+                .map(enderecoCollection -> EnderecoVO.with(
+                        enderecoCollection.getCep(),
                         enderecoCollection.getLogradouro(),
                         enderecoCollection.getNumero(),
                         enderecoCollection.getComplemento(),
                         enderecoCollection.getBairro(),
                         enderecoCollection.getCidade(),
-                        enderecoCollection.getUf(),
-                        enderecoCollection.getCep()
+                        enderecoCollection.getUf()
                 ))
                 .collect(Collectors.toSet());
     }
@@ -107,7 +107,7 @@ public class ClienteMapper implements IClienteMapper {
         );
     }
 
-    private Set<TelefoneCollection> toTelefoneCollection(Set<Telefone> telefones) {
+    private Set<TelefoneCollection> toTelefoneCollection(Set<TelefoneVO> telefones) {
 
         if (telefones == null || telefones.isEmpty()) {
             return Collections.emptySet();
@@ -115,15 +115,15 @@ public class ClienteMapper implements IClienteMapper {
 
         return telefones.stream()
                 .map(telefone -> new TelefoneCollection(
-                        telefone.tipoTelefone().getDescricao(),
-                        telefone.numero(),
-                        telefone.ddd(),
-                        telefone.ddi()
+                        telefone.getTipoTelefone().getDescricao(),
+                        telefone.getNumero(),
+                        telefone.getDdd(),
+                        telefone.getDdi()
                 ))
                 .collect(Collectors.toSet());
     }
 
-    private Set<EnderecoCollection> toEnderecoCollection(Set<Endereco> enderecos) {
+    private Set<EnderecoCollection> toEnderecoCollection(Set<EnderecoVO> enderecos) {
 
         if (enderecos == null || enderecos.isEmpty()) {
             return Collections.emptySet();
@@ -131,13 +131,13 @@ public class ClienteMapper implements IClienteMapper {
 
         return enderecos.stream()
                 .map(endereco -> new EnderecoCollection(
-                        endereco.logradouro(),
-                        endereco.numero(),
-                        endereco.complemento(),
-                        endereco.bairro(),
-                        endereco.cidade(),
-                        endereco.uf(),
-                        endereco.cep()
+                        endereco.getLogradouro(),
+                        endereco.getNumero(),
+                        endereco.getComplemento(),
+                        endereco.getBairro(),
+                        endereco.getCidade(),
+                        endereco.getUf(),
+                        endereco.getCep()
                 ))
                 .collect(Collectors.toSet());
     }

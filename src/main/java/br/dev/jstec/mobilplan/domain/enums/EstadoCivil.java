@@ -29,7 +29,8 @@ public enum EstadoCivil {
         }
 
         return stream(EstadoCivil.values())
-                .filter(tipo -> descricao.equals(tipo.descricao) || descricao.equals(tipo.name()))
+                .filter(tipo -> descricao.equalsIgnoreCase(tipo.descricao)
+                        || descricao.equalsIgnoreCase(tipo.name()))
                 .findFirst()
                 .orElseThrow(() -> new DomainException(ERRO_ENTIDADE_INEXISTENTE, "Estado Civil"));
     }

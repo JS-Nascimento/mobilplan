@@ -1,5 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.persistence.entity.cliente;
 
+import static jakarta.persistence.GenerationType.AUTO;
 import static java.time.LocalDateTime.now;
 
 import jakarta.persistence.CollectionTable;
@@ -7,6 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
@@ -15,8 +17,6 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
-import lombok.EqualsAndHashCode;
-import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,12 +24,11 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "cliente")
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ClienteEntity {
 
     @Id
+    @GeneratedValue(strategy = AUTO, generator = "uuid2")
     @Column(name = "id", updatable = false, nullable = false)
-    @Include
     private UUID id;
 
     @Column(name = "ativo", nullable = false)

@@ -44,6 +44,7 @@ public class ClienteController {
     public ResponseEntity<ClienteDto> criar(@RequestBody ClienteDto dto) {
 
         log.debug("Criando cliente: {}", dto);
+        dto.setTenantId(getUserLogged());
         var input = mapper.toInsertInputModel(dto);
         var output = criarClienteUseCase.execute(input);
 

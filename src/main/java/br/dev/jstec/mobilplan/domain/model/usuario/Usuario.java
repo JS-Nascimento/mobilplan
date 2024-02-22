@@ -12,9 +12,10 @@ import br.dev.jstec.mobilplan.domain.valueobject.Senha;
 import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+import lombok.EqualsAndHashCode;
+import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,8 +25,10 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class Usuario extends Events {
 
+    @Include
     UUID id;
     Nome nome;
     Email email;
@@ -250,23 +253,6 @@ public class Usuario extends Events {
                 usuario.updatedBy,
                 usuario.updatedAt
         );
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 
     public static String validationCodeGenerate() {

@@ -152,7 +152,7 @@ public class Cliente extends Tenant implements Serializable {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "TenantId");
         }
         if (nome == null || nome.isBlank()) {
-            throw new DomainException(ERRO_CAMPO_INVALIDO, "Descrição");
+            throw new DomainException(ERRO_CAMPO_INVALIDO, "Nome");
         }
     }
 }

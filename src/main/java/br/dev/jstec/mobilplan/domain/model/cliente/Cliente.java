@@ -9,20 +9,26 @@ import br.dev.jstec.mobilplan.domain.model.Tenant;
 import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import br.dev.jstec.mobilplan.domain.valueobject.EnderecoVO;
 import br.dev.jstec.mobilplan.domain.valueobject.TelefoneVO;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(force = true)
 @AllArgsConstructor(access = PRIVATE)
-public class Cliente extends Tenant {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+public class Cliente extends Tenant implements Serializable {
 
+
+    @Include
     private UUID id;
     private final boolean ativo;
     private final String nome;

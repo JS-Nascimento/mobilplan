@@ -46,6 +46,7 @@ public class ClienteMapper implements IClienteMapper {
     public ClienteEntity toEntity(Cliente cliente) {
 
         var entity = new ClienteEntity();
+        entity.setId(cliente.getId());
         entity.setAtivo(cliente.isAtivo());
         entity.setNome(cliente.getNome());
         entity.setTipoPessoa(cliente.getTipoPessoa().getDescricao());

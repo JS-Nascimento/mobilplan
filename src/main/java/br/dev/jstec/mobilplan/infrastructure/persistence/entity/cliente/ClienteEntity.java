@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,11 +25,13 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "cliente")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ClienteEntity {
 
     @Id
     @GeneratedValue(strategy = AUTO, generator = "uuid2")
     @Column(name = "id", updatable = false, nullable = false)
+    @EqualsAndHashCode.Include
     private UUID id;
 
     @Column(name = "ativo", nullable = false)

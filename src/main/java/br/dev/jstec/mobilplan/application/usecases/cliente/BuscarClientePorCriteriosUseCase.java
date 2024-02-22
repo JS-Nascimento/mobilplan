@@ -26,7 +26,7 @@ public class BuscarClientePorCriteriosUseCase
                         cliente.isAtivo(),
                         cliente.getNome(),
                         cliente.getTipoPessoa().toString(),
-                        cliente.getEmail().toString(),
+                        cliente.getEmail().value(),
                         cliente.getDadosContratuais().getDocumentoFiscal(),
                         cliente.getDadosContratuais().getDocumentoIdentificador(),
                         cliente.getDadosContratuais().getEstadoCivil().getDescricao(),

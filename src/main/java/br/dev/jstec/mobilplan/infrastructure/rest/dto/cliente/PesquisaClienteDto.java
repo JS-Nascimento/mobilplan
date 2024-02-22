@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 public class PesquisaClienteDto {
 
     UUID id;
-    boolean ativo;
+    Boolean ativo;
     String nome;
     String tipoPessoa;
     String email;
-    boolean notificarPorEmail;
-    boolean notificarPorWhatsapp;
+    Boolean notificarPorEmail;
+    Boolean notificarPorWhatsapp;
 }

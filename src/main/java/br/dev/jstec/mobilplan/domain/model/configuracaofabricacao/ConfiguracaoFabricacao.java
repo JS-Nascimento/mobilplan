@@ -19,14 +19,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = PRIVATE, force = true)
 public class ConfiguracaoFabricacao extends Tenant implements Serializable {
 
+    @Include
+    private Long id;
     private final String descricao;
     private final PadraoGaveta gaveta;
     private final PadraoPortaGiro portasGiro;
     private final PadraoFitagem fitagem;
-    @Include
-    private Long id;
     private LocalDateTime criadoEm;
-
     private LocalDateTime alteradoEm;
 
 

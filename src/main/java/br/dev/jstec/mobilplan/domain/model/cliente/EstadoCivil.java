@@ -1,4 +1,4 @@
-package br.dev.jstec.mobilplan.domain.enums;
+package br.dev.jstec.mobilplan.domain.model.cliente;
 
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_CAMPO_INVALIDO;
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_ENTIDADE_INEXISTENTE;

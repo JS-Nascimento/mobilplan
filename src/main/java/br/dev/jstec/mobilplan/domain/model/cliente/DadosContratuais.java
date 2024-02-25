@@ -1,9 +1,8 @@
 package br.dev.jstec.mobilplan.domain.model.cliente;
 
-import static br.dev.jstec.mobilplan.domain.enums.EstadoCivil.EMPRESA;
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_CAMPO_INVALIDO;
+import static br.dev.jstec.mobilplan.domain.model.cliente.EstadoCivil.EMPRESA;
 
-import br.dev.jstec.mobilplan.domain.enums.EstadoCivil;
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import br.dev.jstec.mobilplan.domain.valueobject.Cnpj;
 import br.dev.jstec.mobilplan.domain.valueobject.Cpf;

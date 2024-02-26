@@ -26,7 +26,7 @@ public class ConfiguracaoPadraoMapper implements IConfiguracaoPadraoMapper {
         entity.setAtualizadoEm(configuracaoFabricacao.getAlteradoEm());
         entity.setTenantId(configuracaoFabricacao.getTenantId());
 
-        return null;
+        return entity;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ConfiguracaoPadraoMapper implements IConfiguracaoPadraoMapper {
                 configuracaoFabricacao.getGaveta().getFolgaProfunidadeGavetaEmRelacaoGabinete(),
                 configuracaoFabricacao.getGaveta().getCorpoEmRelacaoFrente(),
                 configuracaoFabricacao.getGaveta().getEspessuraCorpo());
-        );
+
     }
 
     private PadraoPortaGiroEmbedded toPadraoPortaGiroEmbedded(ConfiguracaoFabricacao configuracaoFabricacao) {

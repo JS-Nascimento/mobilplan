@@ -42,7 +42,7 @@ public class PadraoGaveta {
         validar();
     }
 
-    public static PadraoGaveta with(TipoFundo tipoMontagemFundo,
+    public static PadraoGaveta with(String tipoMontagemFundo,
                                     int espessuraFundo,
                                     int rebaixoFundo,
                                     int folgaTrilhos,
@@ -51,7 +51,8 @@ public class PadraoGaveta {
                                     int corpoEmRelacaoFrente,
                                     int espessuraCorpo) {
 
-        return new PadraoGaveta(tipoMontagemFundo,
+        return new PadraoGaveta(
+                TipoFundo.valueOf(tipoMontagemFundo),
                 espessuraFundo,
                 rebaixoFundo,
                 folgaTrilhos,

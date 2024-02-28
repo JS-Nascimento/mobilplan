@@ -1,5 +1,8 @@
 package br.dev.jstec.mobilplan.application.usecases.configuracaofabricacao;
 
+import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
+
+import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.ConfiguracaoFabricacaoPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
 import br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.ConfiguracaoFabricacao;
@@ -11,15 +14,19 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class CriarConfiguracaoFabricacaoUseCase
-        extends UseCase<CriarConfiguracaoFabricacaoUseCase.Input, CriarConfiguracaoFabricacaoUseCase.Output> {
+public class AlterarConfiguracaoFabricacaoUseCase
+        extends UseCase<AlterarConfiguracaoFabricacaoUseCase.Input, AlterarConfiguracaoFabricacaoUseCase.Output> {
 
     private final ConfiguracaoFabricacaoPort configuracaoFabricacaoPort;
 
     @Override
     public Output execute(Input input) {
 
-        var configuracaFabricacao = ConfiguracaoFabricacao.of(
+        var configuracaoFabricacaoAtual = configuracaoFabricacaoPort.buscarPorTenant()
+                .orElseThrow(() -> new BusinessException(ERRO_ENTIDADE_EXISTENTE, "Configuração de fabricação"));
+
+        var configuracaFabricacao = ConfiguracaoFabricacao.with(
+                configuracaoFabricacaoAtual.getId(),
                 input.descricao,
                 PadraoGaveta.with(
                         input.tipoMontagemFundo,
@@ -49,7 +56,9 @@ public class CriarConfiguracaoFabricacaoUseCase
                         input.portaPadraoFitagem,
                         input.frenteGavetaPadraoFitagem
                 ),
-                input.tenantId);
+                configuracaoFabricacaoAtual.getCriadoEm(),
+                configuracaoFabricacaoAtual.getAlteradoEm(),
+                configuracaoFabricacaoAtual.getTenantId());
 
         var configuracaoFabricacaoSalva = configuracaoFabricacaoPort.salvar(configuracaFabricacao);
 
@@ -86,6 +95,7 @@ public class CriarConfiguracaoFabricacaoUseCase
     }
 
     public record Input(
+            long id,
             String descricao,
             String tipoMontagemFundo,
             int espessuraFundoGaveta,
@@ -110,6 +120,8 @@ public class CriarConfiguracaoFabricacaoUseCase
             String tampoPadraoFitagem,
             String portaPadraoFitagem,
             String frenteGavetaPadraoFitagem,
+            LocalDateTime criadoEm,
+            LocalDateTime alteradoEm,
             UUID tenantId
     ) {
 

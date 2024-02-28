@@ -11,9 +11,9 @@ import lombok.RequiredArgsConstructor;
 
 
 @RequiredArgsConstructor
-public class BuscarConfiguracaoPadraoPorTenantUseCase
+public class BuscarConfiguracaoFabricacaoPorTenantUseCase
         extends
-        NullaryUseCase<BuscarConfiguracaoPadraoPorTenantUseCase.Output> {
+        NullaryUseCase<BuscarConfiguracaoFabricacaoPorTenantUseCase.Output> {
 
     private final ConfiguracaoFabricacaoPort configuracaoFabricacaoPort;
 

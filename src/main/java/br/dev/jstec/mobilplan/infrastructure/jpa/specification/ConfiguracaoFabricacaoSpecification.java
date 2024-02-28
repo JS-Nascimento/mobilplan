@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import org.springframework.data.jpa.domain.Specification;
 
-public class ConfiguracaoPadraoSpecification {
+public class ConfiguracaoFabricacaoSpecification {
 
-    private ConfiguracaoPadraoSpecification() {
+    private ConfiguracaoFabricacaoSpecification() {
         throw new IllegalStateException("Utility class");
     }
 

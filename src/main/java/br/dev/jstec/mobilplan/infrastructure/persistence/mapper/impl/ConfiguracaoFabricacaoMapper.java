@@ -8,11 +8,11 @@ import br.dev.jstec.mobilplan.infrastructure.persistence.entity.configuracaofabr
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.configuracaofabricacao.PadraoFitagemEmbedded;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.configuracaofabricacao.PadraoGavetaEmbedded;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.configuracaofabricacao.PadraoPortaGiroEmbedded;
-import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IConfiguracaoPadraoMapper;
+import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IConfiguracaoFabricacaoMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConfiguracaoPadraoMapper implements IConfiguracaoPadraoMapper {
+public class ConfiguracaoFabricacaoMapper implements IConfiguracaoFabricacaoMapper {
     @Override
     public ConfiguracaoFabricacaoEntity toEntity(ConfiguracaoFabricacao configuracaoFabricacao) {
 

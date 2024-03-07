@@ -161,8 +161,8 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
             return ResponseUsuarioDto.resumedOf(
                     u.getId().toString(),
                     u.getNome(),
-                    u.getEmail(),
                     u.getSituacao(),
+                    u.getEmail(),
                     u.isEmailConfirmado());
         }).orElseThrow(() -> new RequestException(BAD_REQUEST, ERRO_INFORMACAO_INCONSISTENTE,
                 UsuarioPersistence.class.getSimpleName()));

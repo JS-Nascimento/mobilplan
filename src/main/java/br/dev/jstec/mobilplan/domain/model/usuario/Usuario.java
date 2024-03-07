@@ -183,7 +183,7 @@ public class Usuario extends Events {
                 new Email(email),
                 false,
                 Senha.ofPureText(senha),
-                Set.of("mobilplan_usuario_group"),
+                Set.of("mobilplan_usuario"),
                 Situacao.INATIVO,
                 null
         );

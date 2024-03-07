@@ -25,7 +25,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "usuarios_codigo_validacao")
+@Table(name = "usuario_codigo_validacao")
 @EntityListeners(AuditingEntityListener.class)
 public class CodigoValidacaoEntity {
 

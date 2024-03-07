@@ -52,7 +52,7 @@ public class PadraoGaveta {
                                     int espessuraCorpo) {
 
         return new PadraoGaveta(
-                TipoFundo.valueOf(tipoMontagemFundo),
+                TipoFundo.of(tipoMontagemFundo),
                 espessuraFundo,
                 rebaixoFundo,
                 folgaTrilhos,
@@ -71,6 +71,5 @@ public class PadraoGaveta {
         if (tipoMontagemFundo == TipoFundo.SOBREPOSTO && rebaixoFundo > 0) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "Rebaixo do fundo");
         }
-
     }
 }

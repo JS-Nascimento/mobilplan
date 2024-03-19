@@ -23,16 +23,16 @@ public class Ferragem extends CommonAttributes implements Acessorio {
     private Ferragem(Long id, String descricao, String cor, Unidade unidade, double preco, UUID tenantId,
                      TipoPrecificacao precificacao, String imagem,
                      LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
-        super(id,
-                descricao,
+        super(descricao,
                 cor,
                 unidade,
                 preco,
                 precificacao,
                 imagem,
+                tenantId,
+                id,
                 criadoEm,
-                atualizadoEm,
-                tenantId);
+                atualizadoEm);
         validar();
     }
 

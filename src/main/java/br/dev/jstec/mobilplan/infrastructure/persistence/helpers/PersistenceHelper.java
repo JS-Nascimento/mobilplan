@@ -5,8 +5,8 @@ import static javax.imageio.ImageIO.getWriterFormatNames;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.PutFilesBucket;
 import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.S3BucketClient;
+import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.StorageGateway;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class PersistenceHelper {
 
-    private final PutFilesBucket putFilesBucket;
+    private final StorageGateway storageGateway;
 
     protected String processAndSaveImage(String bucketName,
                                          String fileName,
@@ -55,7 +55,7 @@ public abstract class PersistenceHelper {
                 var contentLength = buffer.length;
 
                 fileName = fileName.concat(".").concat(contentType);
-                var url = putFilesBucket.put(bucketName, fileName, inputStream, contentLength);
+                var url = storageGateway.put(bucketName, fileName, inputStream, contentLength);
 
                 return isBlank(url) ? EMPTY : url;
             }

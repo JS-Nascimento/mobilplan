@@ -15,4 +15,5 @@ public class PesquisaMateriaPrimaDto {
     String unidade;
     String tipoAcabamento;
     String tipoPrecificacao;
+    String imagem;
 }

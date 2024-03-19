@@ -13,8 +13,7 @@ import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
 import br.dev.jstec.mobilplan.infrastructure.jpa.CodigoValidacaoJpaRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.UsuarioJpaRepository;
 import br.dev.jstec.mobilplan.infrastructure.persistence.helpers.PersistenceHelper;
-import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.PutFilesBucket;
-import br.dev.jstec.mobilplan.infrastructure.rest.client.keycloak.KeycloakUserClient;
+import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.StorageGateway;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.usuario.ResponseUsuarioDto;
 import br.dev.jstec.mobilplan.infrastructure.services.EventService;
 import jakarta.transaction.Transactional;
@@ -37,7 +36,6 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
     private final CodigoValidacaoJpaRepository codigoValidacaoJpaRepository;
     private final UsuarioEntityMapper mapper;
     private final PasswordEncoder passwordEncoder;
-    private final KeycloakUserClient keycloakUserClient;
     private final EventService eventService;
 
     @Value("${spring.application.waiting-time-to-confirm-email-in-minutes}")
@@ -46,16 +44,16 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
     @Value("${spring.repository.bucket-name.avatar}")
     private String bucketName;
 
-    public UsuarioPersistence(PutFilesBucket putFilesBucket, UsuarioJpaRepository repository,
+    public UsuarioPersistence(StorageGateway storageGateway, UsuarioJpaRepository repository,
                               CodigoValidacaoJpaRepository codigoValidacaoJpaRepository, UsuarioEntityMapper mapper,
-                              PasswordEncoder passwordEncoder, KeycloakUserClient keycloakUserClient,
+                              PasswordEncoder passwordEncoder,
                               EventService eventService) {
-        super(putFilesBucket);
+        super(storageGateway);
         this.repository = repository;
         this.codigoValidacaoJpaRepository = codigoValidacaoJpaRepository;
         this.mapper = mapper;
         this.passwordEncoder = passwordEncoder;
-        this.keycloakUserClient = keycloakUserClient;
+
         this.eventService = eventService;
     }
 
@@ -89,13 +87,13 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
         try {
 
             log.debug("Criando usuário no keycloak");
-            userId = keycloakUserClient
-                    .createUser(
-                            usuario.getNome().value(),
-                            usuario.getEmail().value(),
-                            usuario.getSenha().getValue(),
-                            usuario.getRoles()
-                    );
+//            userId = keycloakUserClient
+//                    .createUser(
+//                            usuario.getNome().value(),
+//                            usuario.getEmail().value(),
+//                            usuario.getSenha().getValue(),
+//                            usuario.getRoles()
+//                    );
 
             var usuarioEntity = mapper.toUsuarioEntity(usuario);
             usuarioEntity.setId(fromString(userId));
@@ -110,10 +108,10 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
 
             log.error("Erro ao criar usuário, iniciando compensação", e);
 
-            if (userId != null) {
-
-                keycloakUserClient.deleteUser(userId);
-            }
+//            if (userId != null) {
+//
+//                keycloakUserClient.deleteUser(userId);
+//            }
             throw new RequestException(
                     BAD_REQUEST,
                     ERRO_INFORMACAO_INCONSISTENTE,
@@ -156,7 +154,7 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
 
             repository.save(u);
 
-            keycloakUserClient.updateUserStatus(u.getId().toString(), true);
+//            keycloakUserClient.updateUserStatus(u.getId().toString(), true);
 
             return ResponseUsuarioDto.resumedOf(
                     u.getId().toString(),

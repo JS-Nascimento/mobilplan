@@ -8,7 +8,7 @@ import br.dev.jstec.mobilplan.domain.model.marceneiro.Marceneiro;
 import br.dev.jstec.mobilplan.domain.valueobject.Email;
 import br.dev.jstec.mobilplan.infrastructure.jpa.MarceneiroJpaRepository;
 import br.dev.jstec.mobilplan.infrastructure.persistence.helpers.PersistenceHelper;
-import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.PutFilesBucket;
+import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.StorageGateway;
 import jakarta.transaction.Transactional;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -31,9 +31,9 @@ public class MarceneiroPersistence extends PersistenceHelper implements Marcenei
     @Value("${spring.repository.bucket-name.logomarca}")
     private String bucketName;
 
-    public MarceneiroPersistence(PutFilesBucket putFilesBucket, MarceneiroJpaRepository repository,
+    public MarceneiroPersistence(StorageGateway storageGateway, MarceneiroJpaRepository repository,
                                  MarceneiroEntityMapper mapper) {
-        super(putFilesBucket);
+        super(storageGateway);
         this.repository = repository;
         this.mapper = mapper;
     }

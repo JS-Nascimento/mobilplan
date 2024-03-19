@@ -18,7 +18,7 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 @Component
 @Slf4j
-public class S3BucketClient implements PutFilesBucket {
+public class S3BucketClient implements StorageGateway {
 
     private final S3Client s3Client;
     private final String bucketName;

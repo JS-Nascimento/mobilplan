@@ -17,6 +17,7 @@ public class FerragemMapper implements IFerragemMapper {
                 entity.getUnidade(),
                 entity.getPreco(),
                 entity.getPrecificacao(),
+                entity.getImagem(),
                 entity.getTenantId(),
                 entity.getCriadoEm(),
                 entity.getAtualizadoEm()
@@ -33,6 +34,7 @@ public class FerragemMapper implements IFerragemMapper {
         entity.setUnidade(model.getUnidade().name());
         entity.setPreco(model.getPreco());
         entity.setPrecificacao(model.getPrecificacao().name());
+        entity.setImagem(model.getImagem());
         entity.setTenantId(model.getTenantId());
 
         return entity;

@@ -1,6 +1,5 @@
 package br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem;
 
-import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_EXISTENTE;
 import static br.dev.jstec.mobilplan.application.exceptions.ErroDeNegocio.ERRO_ENTIDADE_INEXISTENTE;
 
 import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
@@ -32,8 +31,8 @@ public class AtualizarFerragemUseCase
                 Objects.equals(input.cor(), ferragemAtual.getCor())
                         ? ferragemAtual.getCor()
                         : input.cor(),
-                Objects.equals(input.unidade(), ferragemAtual.getUnidade().getDescricao())
-                        ? ferragemAtual.getUnidade().getDescricao()
+                Objects.equals(input.unidade(), ferragemAtual.getUnidade().name())
+                        ? ferragemAtual.getUnidade().name()
                         : input.unidade(),
                 Objects.equals(input.preco(), ferragemAtual.getPreco())
                         ? ferragemAtual.getPreco()
@@ -41,26 +40,26 @@ public class AtualizarFerragemUseCase
                 Objects.equals(input.precificacao(), ferragemAtual.getPrecificacao().name())
                         ? ferragemAtual.getPrecificacao().name()
                         : input.precificacao(),
+                Objects.equals(input.imagem, ferragemAtual.getImagem())
+                        ? ferragemAtual.getImagem()
+                        : input.imagem,
                 ferragemAtual.getTenantId(),
                 ferragemAtual.getCriadoEm(),
                 ferragemAtual.getAtualizadoEm());
 
-        if (materiaPrima.existe(ferragemAtualizar)) {
-            throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "Puxador");
-        }
-
-        var puxadorSalvo = materiaPrima.salvar(ferragemAtualizar);
+        var ferragemSalva = materiaPrima.salvar(ferragemAtualizar);
 
         return new Output(
-                puxadorSalvo.getId(),
-                puxadorSalvo.getDescricao(),
-                puxadorSalvo.getCor(),
-                puxadorSalvo.getUnidade().getDescricao(),
-                puxadorSalvo.getPreco(),
-                puxadorSalvo.getPrecificacao().name(),
-                puxadorSalvo.getCriadoEm(),
-                puxadorSalvo.getAtualizadoEm(),
-                puxadorSalvo.getTenantId());
+                ferragemSalva.getId(),
+                ferragemSalva.getDescricao(),
+                ferragemSalva.getCor(),
+                ferragemSalva.getUnidade().getDescricao(),
+                ferragemSalva.getPreco(),
+                ferragemSalva.getPrecificacao().name(),
+                ferragemSalva.getImagem(),
+                ferragemSalva.getCriadoEm(),
+                ferragemSalva.getAtualizadoEm(),
+                ferragemSalva.getTenantId());
     }
 
     public record Input(Long id,
@@ -69,6 +68,7 @@ public class AtualizarFerragemUseCase
                         String unidade,
                         double preco,
                         String precificacao,
+                        String imagem,
                         UUID tenantId) {
     }
 
@@ -79,6 +79,7 @@ public class AtualizarFerragemUseCase
             String unidade,
             double preco,
             String precificacao,
+            String imagem,
             LocalDateTime criadoEm,
             LocalDateTime atualizadoEm,
             UUID tenantId) {

@@ -9,13 +9,16 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferrag
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.BuscarFerragemPorIdUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.CriarFerragemUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.RemoverFerragemPorIdUseCase;
+import br.dev.jstec.mobilplan.infrastructure.helpers.PaginationHelper;
+import br.dev.jstec.mobilplan.infrastructure.helpers.RequestPageable;
+import br.dev.jstec.mobilplan.infrastructure.helpers.ResponsePageable;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.FerragemDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaMateriaPrimaDto;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/materia-prima/ferragem")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "http://localhost:3000")
 public class FerragemController {
 
     private final FerragemDtoMapper mapper;
@@ -85,12 +89,15 @@ public class FerragemController {
     }
 
     @PostMapping("/pesquisar")
-    public ResponseEntity<List<FerragemDto>> buscarPorCriterios(@RequestBody PesquisaMateriaPrimaDto dto) {
+    public ResponseEntity<ResponsePageable<FerragemDto>> buscarPorCriterios(
+            @RequestBody PesquisaMateriaPrimaDto dto,
+            RequestPageable pageable) {
 
         var input = mapper.toInputCriterios(dto);
+        var output = mapper.toDto(buscarFerragemPorCriteriosUseCase.execute(input));
 
-        var output = buscarFerragemPorCriteriosUseCase.execute(input);
-        return ok(
-                mapper.toDto(output));
+        var paginatedContent = PaginationHelper.getPaginatedResponse(output, pageable);
+
+        return ResponseEntity.ok().body(paginatedContent);
     }
 }

@@ -24,9 +24,10 @@ public class BuscarFerragemPorCriteriosUseCase extends
                         ferragem.getId(),
                         ferragem.getDescricao(),
                         ferragem.getCor(),
-                        ferragem.getUnidade().getDescricao(),
+                        ferragem.getUnidade().name(),
                         ferragem.getPreco(),
                         ferragem.getPrecificacao().name(),
+                        ferragem.getImagem(),
                         ferragem.getCriadoEm(),
                         ferragem.getAtualizadoEm(),
                         ferragem.getTenantId()))
@@ -50,6 +51,7 @@ public class BuscarFerragemPorCriteriosUseCase extends
             String unidade,
             double preco,
             String precificacao,
+            String imagem,
             LocalDateTime criadoEm,
             LocalDateTime atualizadoEm,
             UUID tenantId) {

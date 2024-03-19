@@ -8,10 +8,17 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 
 @Getter
 public class CustomJwtAuthenticationToken extends JwtAuthenticationToken {
-    private final String userId;
 
-    public CustomJwtAuthenticationToken(Jwt jwt, Collection<? extends GrantedAuthority> authorities, String userId) {
+    private final String userId;
+    private final String email;
+    private final String nome;
+
+
+    public CustomJwtAuthenticationToken(Jwt jwt, Collection<? extends GrantedAuthority>
+            authorities, String userId, String nome, String email) {
         super(jwt, authorities);
         this.userId = userId;
+        this.nome = nome;
+        this.email = email;
     }
 }

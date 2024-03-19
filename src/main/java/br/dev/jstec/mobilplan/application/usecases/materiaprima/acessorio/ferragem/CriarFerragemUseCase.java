@@ -24,6 +24,7 @@ public class CriarFerragemUseCase extends UseCase<CriarFerragemUseCase.Input, Cr
                 input.unidade(),
                 input.preco(),
                 input.precificacao(),
+                input.imagem(),
                 input.tenantId());
 
         if (materiaPrima.existe(novaFerragem)) {
@@ -36,9 +37,10 @@ public class CriarFerragemUseCase extends UseCase<CriarFerragemUseCase.Input, Cr
                 ferragem.getId(),
                 ferragem.getDescricao(),
                 ferragem.getCor(),
-                ferragem.getUnidade().getDescricao(),
+                ferragem.getUnidade().name(),
                 ferragem.getPreco(),
                 ferragem.getPrecificacao().name(),
+                ferragem.getImagem(),
                 ferragem.getCriadoEm(),
                 ferragem.getAtualizadoEm(),
                 ferragem.getTenantId());
@@ -49,6 +51,7 @@ public class CriarFerragemUseCase extends UseCase<CriarFerragemUseCase.Input, Cr
                         String unidade,
                         double preco,
                         String precificacao,
+                        String imagem,
                         UUID tenantId) {
     }
 
@@ -59,6 +62,7 @@ public class CriarFerragemUseCase extends UseCase<CriarFerragemUseCase.Input, Cr
             String unidade,
             double preco,
             String precificacao,
+            String imagem,
             LocalDateTime criadoEm,
             LocalDateTime atualizadoEm,
             UUID tenantId) {

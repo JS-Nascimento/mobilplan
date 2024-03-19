@@ -24,7 +24,7 @@ public class BuscarFerragemPorIdUseCase extends
                         ferragem.getId(),
                         ferragem.getDescricao(),
                         ferragem.getCor(),
-                        ferragem.getUnidade().getDescricao(),
+                        ferragem.getUnidade().name(),
                         ferragem.getPreco(),
                         ferragem.getPrecificacao().name(),
                         ferragem.getCriadoEm(),

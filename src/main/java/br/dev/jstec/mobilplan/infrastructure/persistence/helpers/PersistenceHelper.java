@@ -1,5 +1,6 @@
 package br.dev.jstec.mobilplan.infrastructure.persistence.helpers;
 
+import static br.dev.jstec.mobilplan.infrastructure.configuration.security.UserContext.getUserLogged;
 import static java.util.Optional.of;
 import static javax.imageio.ImageIO.getWriterFormatNames;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
@@ -14,14 +15,30 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 
-@RequiredArgsConstructor
+
 @Slf4j
 public abstract class PersistenceHelper {
 
+    @Value("${spring.repository.bucket-name}")
+    private String bucketName;
     private final StorageGateway storageGateway;
+
+    public PersistenceHelper(StorageGateway storageGateway) {
+        this.storageGateway = storageGateway;
+    }
+
+    protected String processAndSaveImage(String fileName,
+                                         String tipoImagem,
+                                         BufferedImage image
+    ) throws IOException, URISyntaxException {
+
+        final String userDirectory = bucketName.concat("/").concat(getUserLogged().toString());
+        return processAndSaveImage(userDirectory, fileName, tipoImagem, image);
+    }
+
 
     protected String processAndSaveImage(String bucketName,
                                          String fileName,

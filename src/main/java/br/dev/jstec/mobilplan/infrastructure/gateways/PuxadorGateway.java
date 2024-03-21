@@ -20,6 +20,9 @@ import br.dev.jstec.mobilplan.infrastructure.jpa.specification.PuxadorSpecificat
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.PuxadorEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IPuxadorMapper;
 import jakarta.transaction.Transactional;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -107,5 +110,11 @@ public class PuxadorGateway implements MateriaPrimaPort<Puxador> {
                 .and(PuxadorSpecification.espessura(entity.getEspessura()));
 
         return repository.exists(criterios);
+    }
+
+    @Override
+    public String salvarImagem(Puxador model, String fileName, String tipoImagem, BufferedImage image)
+            throws IOException, URISyntaxException {
+        return null;
     }
 }

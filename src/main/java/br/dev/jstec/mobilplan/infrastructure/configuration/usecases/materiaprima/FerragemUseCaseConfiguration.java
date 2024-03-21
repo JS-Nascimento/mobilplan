@@ -7,6 +7,7 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferrag
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.CriarFerragemUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.ImportarFerragensEmLoteUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.RemoverFerragemPorIdUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.SalvarImagemFerragemUseCase;
 import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Ferragem;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -46,5 +47,10 @@ public class FerragemUseCaseConfiguration {
     @Bean
     public ImportarFerragensEmLoteUseCase importarFerragensEmLoteUseCase() {
         return new ImportarFerragensEmLoteUseCase(materiaPrimaPort);
+    }
+
+    @Bean
+    public SalvarImagemFerragemUseCase salvarImagemFerragemUseCase() {
+        return new SalvarImagemFerragemUseCase(materiaPrimaPort);
     }
 }

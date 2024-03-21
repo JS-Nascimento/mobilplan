@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @JsonPropertyOrder({
         "id",
@@ -36,6 +37,9 @@ public record ResponseUsuarioDto(
         String avatarFilename,
         @JsonInclude(NON_NULL)
         String avatarUrl,
+
+        List<String> roles,
+
         @JsonInclude(NON_NULL)
         LocalDateTime createdAt,
         @JsonInclude(NON_NULL)
@@ -62,6 +66,7 @@ public record ResponseUsuarioDto(
                 null,
                 null,
                 null,
+                List.of(),
                 null,
                 null,
                 null);

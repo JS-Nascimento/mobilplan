@@ -18,6 +18,9 @@ import br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBordaSpecif
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FitaDeBordaEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFitaDeBordaMapper;
 import jakarta.transaction.Transactional;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -100,5 +103,11 @@ public class FitaDeBordaGateway implements MateriaPrimaPort<FitaDeBorda> {
                         .and(FitaDeBordaSpecification.largura(fitaDeBordaEntity.getLargura()));
 
         return fitaDeBordaRepository.exists(criterios);
+    }
+
+    @Override
+    public String salvarImagem(FitaDeBorda model, String fileName, String tipoImagem, BufferedImage image)
+            throws IOException, URISyntaxException {
+        return null;
     }
 }

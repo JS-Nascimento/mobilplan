@@ -26,12 +26,15 @@ public class CustomUserDetails implements UserDetails {
         }
         return usuario.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()))
-//                .map(SimpleGrantedAuthority::new)
                 .toList();
     }
 
     public String getNome() {
         return usuario.getNome();
+    }
+
+    public String getAvatar() {
+        return usuario.getAvatarUrl();
     }
 
     public String getId() {

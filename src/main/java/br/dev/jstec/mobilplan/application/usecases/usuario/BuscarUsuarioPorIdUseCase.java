@@ -5,6 +5,7 @@ import static java.util.UUID.fromString;
 import br.dev.jstec.mobilplan.application.ports.UsuarioPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
 import br.dev.jstec.mobilplan.domain.valueobject.Telefone;
+import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 
@@ -36,6 +37,7 @@ public class BuscarUsuarioPorIdUseCase extends
             Telefone telefone,
             String avatarFilename,
             String avatarUrl,
+            List<String> roles,
             String createdAt,
             String updatedBy,
             String updatedAt) {

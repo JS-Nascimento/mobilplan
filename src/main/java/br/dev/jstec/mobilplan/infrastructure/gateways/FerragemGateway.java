@@ -9,6 +9,8 @@ import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.FerragemSp
 import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.FerragemSpecification.unidade;
 import static java.util.Optional.empty;
 import static java.util.stream.Collectors.toList;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.BuscarFerragemPorCriteriosUseCase;
@@ -16,23 +18,32 @@ import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Ferragem;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.FerragemRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.FerragemSpecification;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FerragemEntity;
+import br.dev.jstec.mobilplan.infrastructure.persistence.helpers.PersistenceHelper;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFerragemMapper;
+import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.StorageGateway;
 import jakarta.transaction.Transactional;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
-public class FerragemGateway implements MateriaPrimaPort<Ferragem> {
+public class FerragemGateway extends PersistenceHelper implements MateriaPrimaPort<Ferragem> {
 
     private final FerragemRepository repository;
     private final IFerragemMapper mapper;
+
+    public FerragemGateway(StorageGateway storageGateway, FerragemRepository repository, IFerragemMapper mapper) {
+        super(storageGateway);
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     @Override
     public Optional<Ferragem> buscarPorId(Long id) {
@@ -100,5 +111,25 @@ public class FerragemGateway implements MateriaPrimaPort<Ferragem> {
                         .and(FerragemSpecification.tipoPrecificacao(entity.getPrecificacao()));
 
         return repository.exists(criterios);
+    }
+
+    @Override
+    public String salvarImagem(Ferragem model, String fileName, String tipoImagem, BufferedImage image)
+            throws IOException, URISyntaxException {
+
+
+        var logoUrl = processAndSaveImage(fileName, tipoImagem, image);
+
+        if (isNotBlank(logoUrl)) {
+
+            var entity = mapper.toEntity(model);
+            entity.setImagem(logoUrl);
+
+            log.info("Salvando informações da Imagem para a Ferragem : {}", entity);
+            repository.save(entity);
+
+            return logoUrl;
+        }
+        return EMPTY;
     }
 }

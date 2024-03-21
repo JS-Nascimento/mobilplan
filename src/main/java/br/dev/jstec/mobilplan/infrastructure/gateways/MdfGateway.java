@@ -18,6 +18,9 @@ import br.dev.jstec.mobilplan.infrastructure.jpa.specification.MdfSpecification;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.MdfEntity;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IMdfMapper;
 import jakarta.transaction.Transactional;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -102,5 +105,11 @@ public class MdfGateway implements MateriaPrimaPort<Mdf> {
                 .and(MdfSpecification.espessura(entity.getEspessura()));
 
         return mdfRepository.exists(criterios);
+    }
+
+    @Override
+    public String salvarImagem(Mdf model, String fileName, String tipoImagem, BufferedImage image)
+            throws IOException, URISyntaxException {
+        return null;
     }
 }

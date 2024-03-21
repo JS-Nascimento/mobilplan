@@ -1,6 +1,10 @@
 package br.dev.jstec.mobilplan.infrastructure.rest.controller.materiaprima;
 
 import static br.dev.jstec.mobilplan.infrastructure.configuration.security.UserContext.getUserLogged;
+import static br.dev.jstec.mobilplan.infrastructure.exceptions.ErroTecnico.ERRO_INFORMACAO_INCONSISTENTE;
+import static java.util.Objects.isNull;
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.ResponseEntity.noContent;
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -10,12 +14,16 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferrag
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.CriarFerragemUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.ImportarFerragensEmLoteUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.RemoverFerragemPorIdUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.SalvarImagemFerragemUseCase;
+import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
 import br.dev.jstec.mobilplan.infrastructure.helpers.PaginationHelper;
 import br.dev.jstec.mobilplan.infrastructure.helpers.RequestPageable;
 import br.dev.jstec.mobilplan.infrastructure.helpers.ResponsePageable;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.FerragemDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.ImportarEmLoteResponseDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaMateriaPrimaDto;
+import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.ResponseImagemDto;
+import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +55,7 @@ public class FerragemController {
     private final BuscarFerragemPorIdUseCase buscarFerragemPorIdUseCase;
     private final BuscarFerragemPorCriteriosUseCase buscarFerragemPorCriteriosUseCase;
     private final ImportarFerragensEmLoteUseCase importarFerragensEmLoteUseCase;
+    private final SalvarImagemFerragemUseCase salvarImagemFerragemUseCase;
 
     @PostMapping
     public ResponseEntity<FerragemDto> criar(@RequestBody FerragemDto dto) {
@@ -114,5 +123,28 @@ public class FerragemController {
         var output = importarFerragensEmLoteUseCase.execute(input);
 
         return ResponseEntity.ok().body(mapper.toImportarEmLoteResponseDto(output));
+    }
+
+    @PutMapping("/{id}/imagem")
+    public ResponseEntity<ResponseImagemDto> atualizarImagem(@PathVariable Long id,
+                                                             @RequestParam("imagem") MultipartFile imagem) throws
+            IOException {
+
+        if (isNull(imagem) || isBlank(getUserLogged().toString())) {
+            throw new RequestException(BAD_REQUEST, ERRO_INFORMACAO_INCONSISTENTE,
+                    FerragemController.class.getSimpleName());
+        }
+
+        log.debug("Atualizando imagem da ferragem: {}", id);
+        var output = salvarImagemFerragemUseCase
+                .execute(new SalvarImagemFerragemUseCase
+                        .Input(id, imagem.getContentType(), imagem.getInputStream()));
+
+        if (isNull(output)) {
+            return ResponseEntity.unprocessableEntity()
+                    .body(new ResponseImagemDto("Erro ao salvar imagem."));
+        }
+
+        return ok(new ResponseImagemDto(output.imagem()));
     }
 }

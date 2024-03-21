@@ -28,7 +28,7 @@ public class MarceneiroPersistence extends PersistenceHelper implements Marcenei
     private final MarceneiroJpaRepository repository;
     private final MarceneiroEntityMapper mapper;
 
-    @Value("${spring.repository.bucket-name.logomarca}")
+    @Value("${spring.repository.bucket-name}")
     private String bucketName;
 
     public MarceneiroPersistence(StorageGateway storageGateway, MarceneiroJpaRepository repository,

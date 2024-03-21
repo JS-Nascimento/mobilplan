@@ -15,9 +15,7 @@ spring:
     waiting-time-to-confirm-email-in-minutes: 30
 
   repository:
-    bucket-name:
-      logomarca: logomarca
-      avatar: avatar
+    bucket-name: mobilplan
 
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -84,7 +82,7 @@ keycloak:
 logging:
   level:
     org.springframework:
-      security: TRACE
+      security: INFO
     org.hibernate: ERROR
 
 server:

@@ -8,11 +8,13 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferrag
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.BuscarFerragemPorCriteriosUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.BuscarFerragemPorIdUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.CriarFerragemUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.ImportarFerragensEmLoteUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.RemoverFerragemPorIdUseCase;
 import br.dev.jstec.mobilplan.infrastructure.helpers.PaginationHelper;
 import br.dev.jstec.mobilplan.infrastructure.helpers.RequestPageable;
 import br.dev.jstec.mobilplan.infrastructure.helpers.ResponsePageable;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.FerragemDto;
+import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.ImportarEmLoteResponseDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaMateriaPrimaDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +28,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @Validated
 @RestController
@@ -42,6 +46,7 @@ public class FerragemController {
     private final RemoverFerragemPorIdUseCase removerFerragemPorIdUseCase;
     private final BuscarFerragemPorIdUseCase buscarFerragemPorIdUseCase;
     private final BuscarFerragemPorCriteriosUseCase buscarFerragemPorCriteriosUseCase;
+    private final ImportarFerragensEmLoteUseCase importarFerragensEmLoteUseCase;
 
     @PostMapping
     public ResponseEntity<FerragemDto> criar(@RequestBody FerragemDto dto) {
@@ -99,5 +104,15 @@ public class FerragemController {
         var paginatedContent = PaginationHelper.getPaginatedResponse(output, pageable);
 
         return ResponseEntity.ok().body(paginatedContent);
+    }
+
+    @PostMapping("/importar-em-lote")
+    public ResponseEntity<ImportarEmLoteResponseDto> importarEmLote(@RequestParam MultipartFile file) {
+
+        var input = new ImportarFerragensEmLoteUseCase.Input(file, getUserLogged());
+
+        var output = importarFerragensEmLoteUseCase.execute(input);
+
+        return ResponseEntity.ok().body(mapper.toImportarEmLoteResponseDto(output));
     }
 }

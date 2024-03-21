@@ -8,7 +8,6 @@ import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.domain.AuditorAware;
-import org.springframework.security.oauth2.jwt.JwtClaimNames;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +24,7 @@ public class AuditorAwareImpl implements AuditorAware<UUID> {
             return Optional.empty();
         }
 
-        var subject = jwtToken.getToken().getClaimAsString(JwtClaimNames.SUB);
+        var subject = jwtToken.getToken().getClaimAsString("userId");
 
         try {
 

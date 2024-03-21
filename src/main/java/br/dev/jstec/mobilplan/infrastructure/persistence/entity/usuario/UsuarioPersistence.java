@@ -41,7 +41,7 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
     @Value("${spring.application.waiting-time-to-confirm-email-in-minutes}")
     private int waitingTime;
 
-    @Value("${spring.repository.bucket-name.avatar}")
+    @Value("${spring.repository.bucket-name}")
     private String bucketName;
 
     public UsuarioPersistence(StorageGateway storageGateway, UsuarioJpaRepository repository,
@@ -154,8 +154,6 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
 
             repository.save(u);
 
-//            keycloakUserClient.updateUserStatus(u.getId().toString(), true);
-
             return ResponseUsuarioDto.resumedOf(
                     u.getId().toString(),
                     u.getNome(),
@@ -170,6 +168,8 @@ public class UsuarioPersistence extends PersistenceHelper implements UsuarioPort
 
     public String salvarAvatar(Usuario usuario, String fileName, String tipoImagem, BufferedImage image)
             throws IOException, URISyntaxException {
+
+        bucketName = bucketName.concat("/").concat(usuario.getId().toString());
 
         var logoUrl = processAndSaveImage(bucketName, fileName, tipoImagem, image);
 

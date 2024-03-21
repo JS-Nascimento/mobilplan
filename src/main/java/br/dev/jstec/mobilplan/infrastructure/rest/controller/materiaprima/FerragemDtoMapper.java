@@ -5,8 +5,10 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferrag
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.BuscarFerragemPorCriteriosUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.BuscarFerragemPorIdUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.CriarFerragemUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.ImportarFerragensEmLoteUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.RemoverFerragemPorIdUseCase;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.FerragemDto;
+import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.ImportarEmLoteResponseDto;
 import br.dev.jstec.mobilplan.infrastructure.rest.dto.materiaprima.PesquisaMateriaPrimaDto;
 import java.util.List;
 import org.mapstruct.Mapper;
@@ -29,5 +31,7 @@ public interface FerragemDtoMapper {
     RemoverFerragemPorIdUseCase.Input toDeleteInputModel(Long id);
 
     BuscarFerragemPorCriteriosUseCase.Input toInputCriterios(PesquisaMateriaPrimaDto dto);
+
+    ImportarEmLoteResponseDto toImportarEmLoteResponseDto(ImportarFerragensEmLoteUseCase.Output output);
 
 }

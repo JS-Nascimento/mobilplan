@@ -211,7 +211,7 @@ public class UsuarioController {
                 .orElseGet(() -> ResponseEntity.unprocessableEntity().build());
     }
 
-    @PostMapping("/{id}/avatar")
+    @PostMapping("/avatar")
     @Operation(
             summary = "Salvar o avatar da foto do usuário.",
             description = "Este endpoint salva o avatar da foto do usuário. Retorna um link para o avatar salvo.",
@@ -227,10 +227,9 @@ public class UsuarioController {
     })
     @ResponseStatus(value = CREATED)
     ResponseEntity<EntityModel<AvatarUrlDto>> salvarAvatar(
-            @PathVariable String id,
             @RequestParam("avatar") MultipartFile avatar) throws IOException {
 
-        if (isNull(avatar) || isBlank(id)) {
+        if (isNull(avatar) || isBlank(getUserLogged().toString())) {
             throw new RequestException(BAD_REQUEST, ERRO_INFORMACAO_INCONSISTENTE,
                     UsuarioController.class.getSimpleName());
         }
@@ -238,7 +237,7 @@ public class UsuarioController {
         var output = salvarAvatarUseCase
                 .execute(
                         mapper.toSalvarAvatarInput(
-                                id, avatar.getContentType(), avatar.getInputStream()));
+                                getUserLogged().toString(), avatar.getContentType(), avatar.getInputStream()));
 
         if (isNull(output)) {
             return ResponseEntity.unprocessableEntity()
@@ -247,7 +246,9 @@ public class UsuarioController {
 
         var responseDto = mapper.toAvatarUrlDto(output);
         EntityModel<AvatarUrlDto> resource = EntityModel.of(responseDto);
-        resource.add(linkTo(methodOn(UsuarioController.class).buscarPorId(id)).withRel("usuario"));
+        resource.add(linkTo(methodOn(UsuarioController.class)
+                .buscarPorId(getUserLogged().toString()))
+                .withRel("usuario"));
 
         return ResponseEntity.ok(resource);
     }

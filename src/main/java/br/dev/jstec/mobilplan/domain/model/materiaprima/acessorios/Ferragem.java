@@ -73,4 +73,36 @@ public class Ferragem extends CommonAttributes implements Acessorio {
                 criadoEm,
                 atualizadoEm);
     }
+
+    public static boolean validateCsvImport(String descricao, String cor, String unidade,
+                                            double preco, String precificacao) {
+
+
+        try {
+
+            if (descricao.isBlank() || cor.isBlank() || unidade.isBlank() || precificacao.isBlank()) {
+                return false;
+            }
+
+            if (preco <= 0) {
+                return false;
+            }
+
+            if (!Unidade.validate(unidade)) {
+                return false;
+            }
+
+            if (!TipoPrecificacao.validate(precificacao)) {
+                return false;
+            }
+
+        } catch (
+                Exception e) {
+
+            return false;
+
+        }
+
+        return true;
+    }
 }

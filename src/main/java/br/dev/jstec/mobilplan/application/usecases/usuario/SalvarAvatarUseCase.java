@@ -35,7 +35,7 @@ public class SalvarAvatarUseCase extends UseCase<Input, Output> {
             throw new BusinessException(ERRO_CONVERTER_IMAGEM);
         }
 
-        var avatar = Imagem.of(input.id(), input.inputStream());
+        var avatar = Imagem.of("avatar", input.inputStream());
 
         return usuarioPort.buscarPorId(fromString(input.id()))
                 .map(usuario -> {

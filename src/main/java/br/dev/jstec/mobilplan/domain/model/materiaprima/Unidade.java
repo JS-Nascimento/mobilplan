@@ -32,8 +32,17 @@ public enum Unidade {
         }
 
         return stream(Unidade.values())
-                .filter(tipo -> descricao.equals(tipo.descricao) || descricao.equals(tipo.name()))
+                .filter(tipo -> descricao.equalsIgnoreCase(tipo.descricao) || descricao.equalsIgnoreCase(tipo.name()))
                 .findFirst()
                 .orElseThrow(() -> new DomainException(ERRO_ENTIDADE_INEXISTENTE, "Unidade"));
+    }
+
+    public static boolean validate(String descricao) {
+        try {
+            of(descricao);
+            return true;
+        } catch (DomainException e) {
+            return false;
+        }
     }
 }

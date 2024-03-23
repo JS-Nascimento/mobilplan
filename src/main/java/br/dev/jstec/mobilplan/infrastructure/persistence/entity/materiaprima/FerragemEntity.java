@@ -43,6 +43,9 @@ public class FerragemEntity {
     @Column(name = "url_imagem", length = 2000)
     private String imagem;
 
+    @Column(name = "image_name", length = 500)
+    private String imageName;
+
     @Column(name = "criado_em", nullable = false, updatable = false)
     private LocalDateTime criadoEm;
 

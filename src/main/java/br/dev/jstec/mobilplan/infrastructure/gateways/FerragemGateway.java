@@ -133,4 +133,19 @@ public class FerragemGateway extends PersistenceHelper implements MateriaPrimaPo
         }
         return EMPTY;
     }
+
+    @Override
+    public boolean removerImagem(Ferragem model, String url) {
+
+        var entity = mapper.toEntity(model);
+
+        var resultado = deleteImage(url);
+
+        if (resultado) {
+            entity.setImagem(null);
+            repository.save(entity);
+        }
+
+        return resultado;
+    }
 }

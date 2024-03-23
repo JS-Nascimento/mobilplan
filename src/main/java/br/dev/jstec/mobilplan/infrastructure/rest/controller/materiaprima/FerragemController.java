@@ -14,6 +14,7 @@ import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferrag
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.CriarFerragemUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.ImportarFerragensEmLoteUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.RemoverFerragemPorIdUseCase;
+import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.RemoverImagemFerragemUseCase;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acessorio.ferragem.SalvarImagemFerragemUseCase;
 import br.dev.jstec.mobilplan.infrastructure.exceptions.RequestException;
 import br.dev.jstec.mobilplan.infrastructure.helpers.PaginationHelper;
@@ -28,7 +29,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,7 +45,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/v1/materia-prima/ferragem")
 @RequiredArgsConstructor
 @Slf4j
-@CrossOrigin(origins = "http://localhost:3000")
+//
 public class FerragemController {
 
     private final FerragemDtoMapper mapper;
@@ -56,6 +56,7 @@ public class FerragemController {
     private final BuscarFerragemPorCriteriosUseCase buscarFerragemPorCriteriosUseCase;
     private final ImportarFerragensEmLoteUseCase importarFerragensEmLoteUseCase;
     private final SalvarImagemFerragemUseCase salvarImagemFerragemUseCase;
+    private final RemoverImagemFerragemUseCase removerImagemFerragemUseCase;
 
     @PostMapping
     public ResponseEntity<FerragemDto> criar(@RequestBody FerragemDto dto) {
@@ -146,5 +147,17 @@ public class FerragemController {
         }
 
         return ok(new ResponseImagemDto(output.imagem()));
+    }
+
+    @DeleteMapping("/{id}/imagem")
+    public ResponseEntity<Boolean> removerImagem(@PathVariable Long id, @RequestParam("imagem") String imagem) {
+
+        log.debug("Removendo imagem da ferragem: {}", id);
+
+        var input = new RemoverImagemFerragemUseCase.Input(id, imagem);
+        var output = removerImagemFerragemUseCase.execute(input);
+
+        return ok(output.deletado());
+
     }
 }

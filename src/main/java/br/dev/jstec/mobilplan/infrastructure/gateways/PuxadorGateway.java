@@ -117,4 +117,9 @@ public class PuxadorGateway implements MateriaPrimaPort<Puxador> {
             throws IOException, URISyntaxException {
         return null;
     }
+
+    @Override
+    public boolean removerImagem(Puxador model, String url) {
+        return false;
+    }
 }

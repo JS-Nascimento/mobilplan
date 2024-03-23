@@ -33,6 +33,10 @@ public abstract class PersistenceHelper {
 
     }
 
+    protected boolean deleteImage(String url) {
+        return storageGateway.deleteFromUrl(url);
+    }
+
     protected String processAndSaveImage(String fileName,
                                          String tipoImagem,
                                          BufferedImage image

@@ -112,4 +112,9 @@ public class MdfGateway implements MateriaPrimaPort<Mdf> {
             throws IOException, URISyntaxException {
         return null;
     }
+
+    @Override
+    public boolean removerImagem(Mdf model, String url) {
+        return false;
+    }
 }

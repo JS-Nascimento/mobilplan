@@ -21,4 +21,6 @@ public interface MateriaPrimaPort<T> {
     String salvarImagem(T model, String fileName,
                         String tipoImagem, BufferedImage image)
             throws IOException, URISyntaxException;
+
+    boolean removerImagem(T model, String url);
 }

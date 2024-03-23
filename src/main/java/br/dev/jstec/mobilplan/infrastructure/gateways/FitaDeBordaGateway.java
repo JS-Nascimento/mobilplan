@@ -110,4 +110,11 @@ public class FitaDeBordaGateway implements MateriaPrimaPort<FitaDeBorda> {
             throws IOException, URISyntaxException {
         return null;
     }
+
+    @Override
+    public boolean removerImagem(FitaDeBorda model, String url) {
+        return false;
+    }
+
+
 }

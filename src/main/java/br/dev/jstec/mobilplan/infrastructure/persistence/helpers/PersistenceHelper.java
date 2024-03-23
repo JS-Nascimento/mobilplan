@@ -26,8 +26,11 @@ public abstract class PersistenceHelper {
     private String bucketName;
     private final StorageGateway storageGateway;
 
+    private String userDirectory;
+
     public PersistenceHelper(StorageGateway storageGateway) {
         this.storageGateway = storageGateway;
+
     }
 
     protected String processAndSaveImage(String fileName,
@@ -35,16 +38,19 @@ public abstract class PersistenceHelper {
                                          BufferedImage image
     ) throws IOException, URISyntaxException {
 
-        final String userDirectory = bucketName.concat("/").concat(getUserLogged().toString());
+        userDirectory = bucketName.concat("/").concat(getUserLogged().toString());
         return processAndSaveImage(userDirectory, fileName, tipoImagem, image);
     }
 
 
-    protected String processAndSaveImage(String bucketName,
+    protected String processAndSaveImage(String folderName,
                                          String fileName,
                                          String tipoImagem,
                                          BufferedImage image
     ) throws IOException, URISyntaxException {
+
+        userDirectory = bucketName.concat("/").concat(getUserLogged().toString());
+        var folder = userDirectory.concat("/").concat(folderName);
 
         if (image == null) {
             log.warn("A imagem fornecida é nula");
@@ -72,7 +78,7 @@ public abstract class PersistenceHelper {
                 var contentLength = buffer.length;
 
                 fileName = fileName.concat(".").concat(contentType);
-                var url = storageGateway.put(bucketName, fileName, inputStream, contentLength);
+                var url = storageGateway.put(folder, fileName, inputStream, contentLength);
 
                 return isBlank(url) ? EMPTY : url;
             }

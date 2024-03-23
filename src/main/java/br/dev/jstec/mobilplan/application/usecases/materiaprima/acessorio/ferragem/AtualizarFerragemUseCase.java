@@ -6,6 +6,8 @@ import br.dev.jstec.mobilplan.application.exceptions.BusinessException;
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.UseCase;
 import br.dev.jstec.mobilplan.domain.model.materiaprima.acessorios.Ferragem;
+import br.dev.jstec.mobilplan.domain.valueobject.Imagem;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -22,6 +24,8 @@ public class AtualizarFerragemUseCase
 
         var ferragemAtual = materiaPrima.buscarPorId(input.id())
                 .orElseThrow(() -> new BusinessException(ERRO_ENTIDADE_INEXISTENTE, "ferragem"));
+
+        var imagem = Imagem.of(Long.toString(input.id()), input.inputStream());
 
         var ferragemAtualizar = Ferragem.with(
                 ferragemAtual.getId(),
@@ -69,6 +73,8 @@ public class AtualizarFerragemUseCase
                         double preco,
                         String precificacao,
                         String imagem,
+                        String tipoImagem,
+                        InputStream inputStream,
                         UUID tenantId) {
     }
 

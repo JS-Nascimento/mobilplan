@@ -117,8 +117,9 @@ public class FerragemGateway extends PersistenceHelper implements MateriaPrimaPo
     public String salvarImagem(Ferragem model, String fileName, String tipoImagem, BufferedImage image)
             throws IOException, URISyntaxException {
 
+        var folderName = "ferragens";
 
-        var logoUrl = processAndSaveImage(fileName, tipoImagem, image);
+        var logoUrl = processAndSaveImage(folderName, fileName, tipoImagem, image);
 
         if (isNotBlank(logoUrl)) {
 

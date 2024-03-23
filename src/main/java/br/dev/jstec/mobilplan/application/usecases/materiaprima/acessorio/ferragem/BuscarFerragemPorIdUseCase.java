@@ -27,6 +27,7 @@ public class BuscarFerragemPorIdUseCase extends
                         ferragem.getUnidade().name(),
                         ferragem.getPreco(),
                         ferragem.getPrecificacao().name(),
+                        ferragem.getImagem(),
                         ferragem.getCriadoEm(),
                         ferragem.getAtualizadoEm(),
                         ferragem.getTenantId()))
@@ -43,6 +44,7 @@ public class BuscarFerragemPorIdUseCase extends
             String unidade,
             double preco,
             String precificacao,
+            String imagem,
             LocalDateTime criadoEm,
             LocalDateTime atualizadoEm,
             UUID tenantId) {

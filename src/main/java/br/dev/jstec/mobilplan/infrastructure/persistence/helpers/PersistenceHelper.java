@@ -13,6 +13,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
 import lombok.extern.slf4j.Slf4j;
@@ -53,8 +56,7 @@ public abstract class PersistenceHelper {
                                          BufferedImage image
     ) throws IOException, URISyntaxException {
 
-        userDirectory = bucketName.concat("/").concat(getUserLogged().toString());
-        var folder = userDirectory.concat("/").concat(folderName);
+        var folder = getFolderName(folderName);
 
         if (image == null) {
             log.warn("A imagem fornecida é nula");
@@ -81,11 +83,29 @@ public abstract class PersistenceHelper {
             try (var inputStream = new ByteArrayInputStream(buffer)) {
                 var contentLength = buffer.length;
 
-                fileName = fileName.concat(".").concat(contentType);
-                var url = storageGateway.put(folder, fileName, inputStream, contentLength);
+                var url = storageGateway.put(folder, getFileName(fileName, contentType), inputStream, contentLength);
 
                 return isBlank(url) ? EMPTY : url;
             }
         }
+    }
+
+    private String getFolderName(String folderName) {
+        userDirectory = bucketName.concat("/").concat(getUserLogged().toString());
+        return userDirectory.concat("/").concat(folderName);
+    }
+
+    private String getFileName(String fileName, String contentType) {
+        var formatter = DateTimeFormatter
+                .ofPattern("yyyyMMddHHmmss")
+                .withZone(ZoneOffset.UTC);
+
+        var timeStamp = formatter.format(OffsetDateTime.now());
+
+        return fileName
+                .concat("-")
+                .concat(timeStamp)
+                .concat(".")
+                .concat(contentType);
     }
 }

@@ -9,7 +9,7 @@ import static java.lang.String.valueOf;
 import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
-import br.dev.jstec.mobilplan.domain.model.Tenant;
+import br.dev.jstec.mobilplan.domain.model.materiaprima.CommonAttributes;
 import br.dev.jstec.mobilplan.domain.model.materiaprima.TipoPrecificacao;
 import br.dev.jstec.mobilplan.domain.model.materiaprima.Unidade;
 import java.time.LocalDateTime;
@@ -21,16 +21,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor(access = PRIVATE)
 @NoArgsConstructor(force = true)
-public class Puxador extends Tenant implements Acessorio {
+public class Puxador extends CommonAttributes implements Acessorio {
 
     private final boolean perfil;
     private final TipoPuxador tipoPuxador;
-    private final double preco;
-    private final String descricao;
-    private final String cor;
-    private final Unidade unidade;
     private final Direcao direcao;
-    private final TipoPrecificacao precificacao;
     private final DimensoesAcessorio dimensoesAcessorio;
     private Long id;
     private LocalDateTime criadoEm;
@@ -43,17 +38,19 @@ public class Puxador extends Tenant implements Acessorio {
                     Direcao direcao,
                     double preco,
                     TipoPrecificacao precificacao,
+                    String imagem,
                     DimensoesAcessorio dimensoesAcessorio,
                     UUID tenantId) {
-        super(tenantId);
+        super(descricao,
+                cor,
+                perfil ? Unidade.METRO_LINEAR : Unidade.UNIDADE,
+                preco,
+                precificacao,
+                imagem,
+                tenantId);
         this.perfil = perfil;
         this.tipoPuxador = tipoPuxador;
-        this.descricao = descricao;
-        this.cor = cor;
-        this.unidade = perfil ? Unidade.METRO_LINEAR : Unidade.UNIDADE;
         this.direcao = direcao;
-        this.preco = preco;
-        this.precificacao = precificacao;
         this.dimensoesAcessorio = dimensoesAcessorio;
 
         validar();
@@ -66,6 +63,7 @@ public class Puxador extends Tenant implements Acessorio {
                              String direcao,
                              double preco,
                              String precificacao,
+                             String imagem,
                              double altura,
                              double largura,
                              double espessura,
@@ -78,6 +76,7 @@ public class Puxador extends Tenant implements Acessorio {
                 Direcao.of(direcao),
                 preco,
                 TipoPrecificacao.of(precificacao),
+                imagem,
                 dimensoesAcessorio,
                 tenantId);
     }
@@ -90,6 +89,7 @@ public class Puxador extends Tenant implements Acessorio {
                                String direcao,
                                double preco,
                                String precificacao,
+                               String imagem,
                                double altura,
                                double largura,
                                double espessura,
@@ -106,6 +106,7 @@ public class Puxador extends Tenant implements Acessorio {
                 Direcao.of(direcao),
                 preco,
                 TipoPrecificacao.of(precificacao),
+                imagem,
                 dimensoesAcessorio,
                 tenantId);
         puxador.id = id;
@@ -114,17 +115,11 @@ public class Puxador extends Tenant implements Acessorio {
         return puxador;
     }
 
-    private void validar() {
+    @Override
+    protected void validar() {
 
-        if (super.getTenantId() == null || super.getTenantId().toString().isBlank()) {
-            throw new DomainException(ERRO_CAMPO_INVALIDO, "TenantId");
-        }
-        if (descricao == null || descricao.isBlank()) {
-            throw new DomainException(ERRO_CAMPO_INVALIDO, "Descrição");
-        }
-        if (cor == null || cor.isBlank()) {
-            throw new DomainException(ERRO_CAMPO_INVALIDO, "Cor");
-        }
+        super.validar();
+
         if (dimensoesAcessorio == null) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "Dimensões");
         }
@@ -140,9 +135,6 @@ public class Puxador extends Tenant implements Acessorio {
         if (direcao == null) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "Direção");
         }
-        if (preco <= 0) {
-            throw new DomainException(ERRO_CAMPO_MENOR_IGUAL_ZERO, "Preço");
-        }
 
         if (tipoPuxador == null) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "Tipo de puxador");
@@ -157,25 +149,5 @@ public class Puxador extends Tenant implements Acessorio {
             throw new DomainException(ERRO_COMBINACAO_PERFIL_E_TIPO_PUXADOR_INVALIDO, valueOf(perfil),
                     tipoPuxador.getDescricao());
         }
-    }
-
-    @Override
-    public String getDescricao() {
-        return descricao;
-    }
-
-    @Override
-    public Unidade getUnidade() {
-        return unidade;
-    }
-
-    @Override
-    public double getPreco() {
-        return preco;
-    }
-
-    @Override
-    public String getCor() {
-        return cor;
     }
 }

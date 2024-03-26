@@ -58,6 +58,9 @@ public class PuxadorEntity {
     @Column(name = "espessura", nullable = false, columnDefinition = "numeric(10,1) default 0.0")
     private Double espessura;
 
+    @Column(name = "url_imagem", length = 2000)
+    private String imagem;
+
     @Column(name = "criado_em", nullable = false, updatable = false)
     private LocalDateTime criadoEm;
 

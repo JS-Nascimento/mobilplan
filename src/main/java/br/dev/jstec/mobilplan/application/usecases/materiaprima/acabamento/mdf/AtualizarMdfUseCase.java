@@ -45,6 +45,9 @@ public class AtualizarMdfUseCase extends UseCase<AtualizarMdfUseCase.Input, Atua
                 Objects.equals(input.precificacao(), mdfAtual.getPrecificacao().toString())
                         ? mdfAtual.getPrecificacao().toString()
                         : input.precificacao(),
+                Objects.equals(input.imagem(), mdfAtual.getImagem())
+                        ? mdfAtual.getImagem()
+                        : input.imagem(),
                 Objects.equals(input.preco(), mdfAtual.getPreco())
                         ? mdfAtual.getPreco()
                         : input.preco(),
@@ -83,6 +86,7 @@ public class AtualizarMdfUseCase extends UseCase<AtualizarMdfUseCase.Input, Atua
             double largura,
             double espessura,
             String precificacao,
+            String imagem,
             double preco,
             LocalDateTime criadoEm,
             LocalDateTime atualizadoEm,

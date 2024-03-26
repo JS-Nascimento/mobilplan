@@ -9,6 +9,8 @@ import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBord
 import static br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBordaSpecification.tipoAcabamento;
 import static java.util.Optional.empty;
 import static java.util.stream.Collectors.toList;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 import br.dev.jstec.mobilplan.application.ports.MateriaPrimaPort;
 import br.dev.jstec.mobilplan.application.usecases.materiaprima.acabamento.fitadeborda.BuscarFitaDeBordaPorCriteriosUseCase;
@@ -16,7 +18,9 @@ import br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento.FitaDeBorda;
 import br.dev.jstec.mobilplan.infrastructure.jpa.materiaprima.FitaDeBordaRepository;
 import br.dev.jstec.mobilplan.infrastructure.jpa.specification.FitaDeBordaSpecification;
 import br.dev.jstec.mobilplan.infrastructure.persistence.entity.materiaprima.FitaDeBordaEntity;
+import br.dev.jstec.mobilplan.infrastructure.persistence.helpers.PersistenceHelper;
 import br.dev.jstec.mobilplan.infrastructure.persistence.mapper.IFitaDeBordaMapper;
+import br.dev.jstec.mobilplan.infrastructure.rest.client.bucket.StorageGateway;
 import jakarta.transaction.Transactional;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -24,19 +28,26 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
-public class FitaDeBordaGateway implements MateriaPrimaPort<FitaDeBorda> {
+public class FitaDeBordaGateway extends PersistenceHelper implements MateriaPrimaPort<FitaDeBorda> {
 
     private final FitaDeBordaRepository fitaDeBordaRepository;
 
     private final IFitaDeBordaMapper fitaDeBordaMapper;
+
+    private static final String FOLDER_NAME = "fitas-de-borda";
+
+    public FitaDeBordaGateway(StorageGateway storageGateway,
+                              FitaDeBordaRepository fitaDeBordaRepository, IFitaDeBordaMapper fitaDeBordaMapper) {
+        super(storageGateway);
+        this.fitaDeBordaRepository = fitaDeBordaRepository;
+        this.fitaDeBordaMapper = fitaDeBordaMapper;
+    }
 
     @Override
     public Optional<FitaDeBorda> buscarPorId(Long id) {
@@ -108,13 +119,36 @@ public class FitaDeBordaGateway implements MateriaPrimaPort<FitaDeBorda> {
     @Override
     public String salvarImagem(FitaDeBorda model, String fileName, String tipoImagem, BufferedImage image)
             throws IOException, URISyntaxException {
-        return null;
+
+
+        var logoUrl = processAndSaveImage(FOLDER_NAME, fileName, tipoImagem, image);
+
+        if (isNotBlank(logoUrl)) {
+
+            var entity = fitaDeBordaMapper.toEntity(model);
+            entity.setImagem(logoUrl);
+
+            log.info("Salvando informações da Imagem para a {} : {}", FOLDER_NAME, entity);
+            fitaDeBordaRepository.save(entity);
+
+            return logoUrl;
+        }
+        return EMPTY;
     }
 
     @Override
     public boolean removerImagem(FitaDeBorda model, String url) {
-        return false;
-    }
 
+        var entity = fitaDeBordaMapper.toEntity(model);
+
+        var resultado = deleteImage(url);
+
+        if (resultado) {
+            entity.setImagem(null);
+            fitaDeBordaRepository.save(entity);
+        }
+
+        return resultado;
+    }
 
 }

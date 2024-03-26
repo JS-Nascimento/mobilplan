@@ -19,6 +19,7 @@ public class MdfMapper implements IMdfMapper {
                 entity.getLargura(),
                 entity.getEspessura(),
                 entity.getPrecificacao(),
+                entity.getImagem(),
                 entity.getPreco(),
                 entity.getTenantId(),
                 entity.getCriadoEm(),
@@ -40,6 +41,7 @@ public class MdfMapper implements IMdfMapper {
         entity.setTipoAcabamento(model.getTipoAcabamento().toString());
         entity.setPreco(model.getPreco());
         entity.setPrecificacao(model.getPrecificacao().toString());
+        entity.setImagem(model.getImagem());
         entity.setCriadoEm(model.getCriadoEm());
         entity.setAtualizadoEm(model.getAtualizadoEm());
         entity.setTenantId(model.getTenantId());

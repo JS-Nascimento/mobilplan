@@ -28,6 +28,7 @@ public class BuscarFitaDeBordaPorCriteriosUseCase extends
                         fita.getUnidade().getDescricao(),
                         fita.getTipoAcabamento().toString(),
                         fita.getPrecificacao().toString(),
+                        fita.getImagem(),
                         fita.getPreco(),
                         fita.getCriadoEm(),
                         fita.getTenantId()))
@@ -47,6 +48,7 @@ public class BuscarFitaDeBordaPorCriteriosUseCase extends
             String unidade,
             String tipoAcabamento,
             String precificacao,
+            String imagem,
             double preco,
             LocalDateTime criadoEm,
             UUID tenantId) {

@@ -38,6 +38,9 @@ public class AtualizarFitaDeBordaUseCase
                 Objects.equals(input.preco(), fitaAtual.getPreco())
                         ? fitaAtual.getPreco()
                         : input.preco(),
+                Objects.equals(input.imagem(), fitaAtual.getImagem())
+                        ? fitaAtual.getImagem()
+                        : input.imagem(),
                 fitaAtual.getTenantId(),
                 fitaAtual.getCriadoEm(),
                 fitaAtual.getAtualizadoEm());
@@ -55,6 +58,7 @@ public class AtualizarFitaDeBordaUseCase
                 fitaSalva.getUnidade().getDescricao(),
                 fitaSalva.getTipoAcabamento().toString(),
                 fitaSalva.getPrecificacao().toString(),
+                fitaSalva.getImagem(),
                 fitaSalva.getPreco(),
                 fitaSalva.getCriadoEm(),
                 fitaSalva.getAtualizadoEm(),
@@ -66,6 +70,7 @@ public class AtualizarFitaDeBordaUseCase
                         String cor,
                         double largura,
                         double preco,
+                        String imagem,
                         UUID tenantId,
                         LocalDateTime criadoEm,
                         LocalDateTime atualizadoEm) {
@@ -80,6 +85,7 @@ public class AtualizarFitaDeBordaUseCase
             String unidade,
             String tipoAcabamento,
             String precificacao,
+            String imagem,
             double preco,
             LocalDateTime criadoEm,
             LocalDateTime atualizadoEm,

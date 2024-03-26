@@ -22,6 +22,7 @@ public class CriarMdfUseCase extends UseCase<CriarMdfUseCase.Input, CriarMdfUseC
                 input.largura(),
                 input.espessura(),
                 input.precificacao(),
+                input.imagem(),
                 input.preco(),
                 input.tenantId());
 
@@ -35,6 +36,7 @@ public class CriarMdfUseCase extends UseCase<CriarMdfUseCase.Input, CriarMdfUseC
                 mdfSalvo.getDimensoesChapa().getLargura(),
                 mdfSalvo.getDimensoesChapa().getEspessura(),
                 mdfSalvo.getPrecificacao().toString(),
+                mdfSalvo.getImagem(),
                 mdfSalvo.getPreco(),
                 mdfSalvo.getTenantId(),
                 mdfSalvo.getCriadoEm(),
@@ -51,6 +53,7 @@ public class CriarMdfUseCase extends UseCase<CriarMdfUseCase.Input, CriarMdfUseC
             double largura,
             double espessura,
             String precificacao,
+            String imagem,
             double preco,
             UUID tenantId
     ) {
@@ -65,6 +68,7 @@ public class CriarMdfUseCase extends UseCase<CriarMdfUseCase.Input, CriarMdfUseC
             double largura,
             double espessura,
             String precificacao,
+            String imagem,
             double preco,
             UUID tenantId,
             LocalDateTime criadoEm,

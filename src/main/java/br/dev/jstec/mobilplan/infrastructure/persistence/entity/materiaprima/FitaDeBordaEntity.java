@@ -46,6 +46,9 @@ public class FitaDeBordaEntity {
     @Column(name = "precificacao", nullable = false)
     private String precificacao;
 
+    @Column(name = "url_imagem", length = 2000)
+    private String imagem;
+
     @Column(name = "criado_em", nullable = false, updatable = false)
     private LocalDateTime criadoEm;
 

@@ -16,6 +16,7 @@ public class FitaDeBordaMapper implements IFitaDeBordaMapper {
                 entity.getCor(),
                 entity.getLargura(),
                 entity.getPreco(),
+                entity.getImagem(),
                 entity.getTenantId(),
                 entity.getCriadoEm(),
                 entity.getAtualizadoEm());
@@ -32,6 +33,7 @@ public class FitaDeBordaMapper implements IFitaDeBordaMapper {
         entity.setTipoAcabamento(model.getTipoAcabamento().toString());
         entity.setPreco(model.getPreco());
         entity.setPrecificacao(model.getPrecificacao().toString());
+        entity.setImagem(model.getImagem());
         entity.setCriadoEm(model.getCriadoEm());
         entity.setAtualizadoEm(model.getAtualizadoEm());
         entity.setTenantId(model.getTenantId());

@@ -18,7 +18,8 @@ public class CriarFitaDeBordaUseCase extends UseCase<CriarFitaDeBordaUseCase.Inp
     @Override
     public Output execute(Input input) {
 
-        var novaFita = FitaDeBorda.of(input.descricao(), input.cor(), input.largura(), input.preco(), input.tenantId());
+        var novaFita = FitaDeBorda.of(input.descricao(), input.cor(), input.largura(),
+                input.preco(), input.imagem(), input.tenantId());
 
         if (materiaPrima.existe(novaFita)) {
             throw new BusinessException(ERRO_ENTIDADE_EXISTENTE, "fita de borda");
@@ -33,6 +34,7 @@ public class CriarFitaDeBordaUseCase extends UseCase<CriarFitaDeBordaUseCase.Inp
                 fitaSalva.getUnidade().getDescricao(),
                 fitaSalva.getTipoAcabamento().toString(),
                 fitaSalva.getPrecificacao().toString(),
+                fitaSalva.getImagem(),
                 fitaSalva.getPreco(),
                 fitaSalva.getCriadoEm(),
                 fitaSalva.getAtualizadoEm(),
@@ -40,7 +42,7 @@ public class CriarFitaDeBordaUseCase extends UseCase<CriarFitaDeBordaUseCase.Inp
     }
 
     public record Input(
-            String descricao, String cor, double largura, double preco, UUID tenantId) {
+            String descricao, String cor, double largura, double preco, String imagem, UUID tenantId) {
 
     }
 
@@ -52,6 +54,7 @@ public class CriarFitaDeBordaUseCase extends UseCase<CriarFitaDeBordaUseCase.Inp
             String unidade,
             String tipoAcabamento,
             String precificacao,
+            String imagem,
             double preco,
             LocalDateTime criadoEm,
             LocalDateTime atualizadoEm,

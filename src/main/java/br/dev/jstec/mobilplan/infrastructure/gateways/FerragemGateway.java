@@ -39,6 +39,8 @@ public class FerragemGateway extends PersistenceHelper implements MateriaPrimaPo
     private final FerragemRepository repository;
     private final IFerragemMapper mapper;
 
+    private static final String FOLDER_NAME = "ferragens";
+
     public FerragemGateway(StorageGateway storageGateway, FerragemRepository repository, IFerragemMapper mapper) {
         super(storageGateway);
         this.repository = repository;
@@ -117,9 +119,7 @@ public class FerragemGateway extends PersistenceHelper implements MateriaPrimaPo
     public String salvarImagem(Ferragem model, String fileName, String tipoImagem, BufferedImage image)
             throws IOException, URISyntaxException {
 
-        var folderName = "ferragens";
-
-        var logoUrl = processAndSaveImage(folderName, fileName, tipoImagem, image);
+        var logoUrl = processAndSaveImage(FOLDER_NAME, fileName, tipoImagem, image);
 
         if (isNotBlank(logoUrl)) {
 

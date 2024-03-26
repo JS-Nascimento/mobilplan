@@ -45,6 +45,9 @@ public class AtualizarPuxadorUseCase
                 Objects.equals(input.precificacao(), puxadorAtual.getPrecificacao().name())
                         ? puxadorAtual.getPrecificacao().name()
                         : input.precificacao(),
+                Objects.equals(input.imagem(), puxadorAtual.getImagem())
+                        ? puxadorAtual.getImagem()
+                        : input.imagem(),
                 Objects.equals(input.altura(), puxadorAtual.getDimensoesAcessorio().getAltura())
                         ? puxadorAtual.getDimensoesAcessorio().getAltura()
                         : input.altura(),
@@ -74,6 +77,7 @@ public class AtualizarPuxadorUseCase
                 puxadorSalvo.getUnidade().getDescricao(),
                 puxadorSalvo.getPreco(),
                 puxadorSalvo.getPrecificacao().name(),
+                puxadorSalvo.getImagem(),
                 puxadorSalvo.getDimensoesAcessorio().getAltura(),
                 puxadorSalvo.getDimensoesAcessorio().getLargura(),
                 puxadorSalvo.getDimensoesAcessorio().getEspessura(),
@@ -90,6 +94,7 @@ public class AtualizarPuxadorUseCase
                         String direcao,
                         double preco,
                         String precificacao,
+                        String imagem,
                         double altura,
                         double largura,
                         double espessura,
@@ -107,6 +112,7 @@ public class AtualizarPuxadorUseCase
             String unidade,
             double preco,
             String precificacao,
+            String imagem,
             double altura,
             double largura,
             double espessura,

@@ -22,6 +22,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
     @Include
     private Long id;
     private final String descricao;
+    private final EstrategiaDeConstrucao estrategiaDeConstrucao;
     private final PadraoGaveta gaveta;
     private final PadraoPortaGiro portasGiro;
     private final PadraoFitagem fitagem;
@@ -34,6 +35,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
                                    PadraoGaveta gaveta,
                                    PadraoPortaGiro portasGiro,
                                    PadraoFitagem fitagem,
+                                   EstrategiaDeConstrucao estrategiaDeConstrucao,
                                    LocalDateTime criadoEm,
                                    LocalDateTime alteradoEm,
                                    UUID tenantId) {
@@ -45,6 +47,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
         this.fitagem = fitagem;
         this.criadoEm = criadoEm;
         this.alteradoEm = alteradoEm;
+        this.estrategiaDeConstrucao = estrategiaDeConstrucao;
 
         validar();
     }
@@ -54,6 +57,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
             PadraoGaveta gaveta,
             PadraoPortaGiro portasGiro,
             PadraoFitagem fitagem,
+            EstrategiaDeConstrucao estrategiaDeConstrucao,
             UUID tenantId) {
 
         return new ConfiguracaoFabricacao(null,
@@ -61,6 +65,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
                 gaveta,
                 portasGiro,
                 fitagem,
+                estrategiaDeConstrucao,
                 null,
                 null,
                 tenantId);
@@ -72,6 +77,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
             PadraoGaveta gaveta,
             PadraoPortaGiro portasGiro,
             PadraoFitagem fitagem,
+            EstrategiaDeConstrucao estrategiaDeConstrucao,
             LocalDateTime criadoEm,
             LocalDateTime alteradoEm,
             UUID tenantId) {
@@ -81,16 +87,17 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
                 gaveta,
                 portasGiro,
                 fitagem,
+                estrategiaDeConstrucao,
                 criadoEm,
                 alteradoEm,
                 tenantId);
     }
 
-    private void validar() {
+    @Override
+    protected void validar() {
 
-        if (super.getTenantId() == null || super.getTenantId().toString().isBlank()) {
-            throw new DomainException(ERRO_CAMPO_INVALIDO, "TenantId");
-        }
+        super.validar();
+
         if (isBlank(descricao)) {
             throw new DomainException(ERRO_CAMPO_INVALIDO, "Descrição");
         }

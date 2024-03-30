@@ -6,6 +6,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import br.dev.jstec.mobilplan.domain.model.Tenant;
+import br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums.TipoEstrategiaDeConstrucao;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -22,7 +23,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
     @Include
     private Long id;
     private final String descricao;
-    private final EstrategiaDeConstrucao estrategiaDeConstrucao;
+    private final TipoEstrategiaDeConstrucao tipoEstrategiaDeConstrucao;
     private final PadraoGaveta gaveta;
     private final PadraoPortaGiro portasGiro;
     private final PadraoFitagem fitagem;
@@ -35,7 +36,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
                                    PadraoGaveta gaveta,
                                    PadraoPortaGiro portasGiro,
                                    PadraoFitagem fitagem,
-                                   EstrategiaDeConstrucao estrategiaDeConstrucao,
+                                   TipoEstrategiaDeConstrucao tipoEstrategiaDeConstrucao,
                                    LocalDateTime criadoEm,
                                    LocalDateTime alteradoEm,
                                    UUID tenantId) {
@@ -47,7 +48,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
         this.fitagem = fitagem;
         this.criadoEm = criadoEm;
         this.alteradoEm = alteradoEm;
-        this.estrategiaDeConstrucao = estrategiaDeConstrucao;
+        this.tipoEstrategiaDeConstrucao = tipoEstrategiaDeConstrucao;
 
         validar();
     }
@@ -57,7 +58,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
             PadraoGaveta gaveta,
             PadraoPortaGiro portasGiro,
             PadraoFitagem fitagem,
-            EstrategiaDeConstrucao estrategiaDeConstrucao,
+            TipoEstrategiaDeConstrucao tipoEstrategiaDeConstrucao,
             UUID tenantId) {
 
         return new ConfiguracaoFabricacao(null,
@@ -65,7 +66,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
                 gaveta,
                 portasGiro,
                 fitagem,
-                estrategiaDeConstrucao,
+                tipoEstrategiaDeConstrucao,
                 null,
                 null,
                 tenantId);
@@ -77,7 +78,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
             PadraoGaveta gaveta,
             PadraoPortaGiro portasGiro,
             PadraoFitagem fitagem,
-            EstrategiaDeConstrucao estrategiaDeConstrucao,
+            TipoEstrategiaDeConstrucao tipoEstrategiaDeConstrucao,
             LocalDateTime criadoEm,
             LocalDateTime alteradoEm,
             UUID tenantId) {
@@ -87,7 +88,7 @@ public class ConfiguracaoFabricacao extends Tenant implements Serializable {
                 gaveta,
                 portasGiro,
                 fitagem,
-                estrategiaDeConstrucao,
+                tipoEstrategiaDeConstrucao,
                 criadoEm,
                 alteradoEm,
                 tenantId);

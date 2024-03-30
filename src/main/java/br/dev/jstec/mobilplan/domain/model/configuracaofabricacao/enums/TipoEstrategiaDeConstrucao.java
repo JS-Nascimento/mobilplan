@@ -1,4 +1,4 @@
-package br.dev.jstec.mobilplan.domain.model.configuracaofabricacao;
+package br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums;
 
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_CAMPO_INVALIDO;
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_ENTIDADE_INEXISTENTE;
@@ -9,19 +9,19 @@ import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
 import lombok.Getter;
 
 @Getter
-public enum EstrategiaDeConstrucao {
+public enum TipoEstrategiaDeConstrucao {
 
     BASE_SOBRE_LATERAL,
     BASE_ENTRE_LATERAIS;
 
-    public static EstrategiaDeConstrucao of(String descricao) {
+    public static TipoEstrategiaDeConstrucao of(String descricao) {
 
         if (isNull(descricao)) {
 
             throw new DomainException(ERRO_CAMPO_INVALIDO, "Padrao de fitagem");
         }
 
-        return stream(EstrategiaDeConstrucao.values())
+        return stream(TipoEstrategiaDeConstrucao.values())
                 .filter(tipo -> descricao.equalsIgnoreCase(tipo.name()))
                 .findFirst()
                 .orElseThrow(

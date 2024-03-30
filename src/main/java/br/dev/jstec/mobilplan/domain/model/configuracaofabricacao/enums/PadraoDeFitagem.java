@@ -1,4 +1,4 @@
-package br.dev.jstec.mobilplan.domain.model.configuracaofabricacao;
+package br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums;
 
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_CAMPO_INVALIDO;
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_ENTIDADE_INEXISTENTE;
@@ -29,5 +29,14 @@ public enum PadraoDeFitagem {
                 .filter(tipo -> descricao.equalsIgnoreCase(tipo.name()))
                 .findFirst()
                 .orElseThrow(() -> new DomainException(ERRO_ENTIDADE_INEXISTENTE, "Padrao de fitagem", descricao));
+    }
+
+    public static boolean validate(String descricao) {
+        try {
+            of(descricao);
+            return true;
+        } catch (DomainException e) {
+            return false;
+        }
     }
 }

@@ -3,9 +3,11 @@ package br.dev.jstec.mobilplan.domain.model.materiaprima.acabamento;
 import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_CAMPO_MENOR_IGUAL_ZERO;
 import static br.dev.jstec.mobilplan.domain.model.materiaprima.TipoPrecificacao.ML;
 import static br.dev.jstec.mobilplan.domain.model.materiaprima.Unidade.METRO_LINEAR;
+import static java.util.Objects.isNull;
 import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
+import br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums.PadraoDeFitagem;
 import br.dev.jstec.mobilplan.domain.model.materiaprima.CommonAttributes;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -64,6 +66,22 @@ public class FitaDeBorda extends CommonAttributes implements Acabamento {
     @Override
     public TipoAcabamento getTipoAcabamento() {
         return tipoAcabamento;
+    }
+
+    public static double calcularMetragem(double altura, double largura, PadraoDeFitagem padraoDeFitagem) {
+        if (isNull(padraoDeFitagem)) {
+            return 0.0;
+        }
+
+        return switch (padraoDeFitagem) {
+            case NENHUM -> 0.0;
+            case UMA_ALTURA -> altura;
+            case UMA_ALTURA_UMA_LARGURA -> altura + largura;
+            case UMA_ALTURA_DUAS_LARGURAS -> altura + (largura * 2);
+            case DUAS_ALTURAS -> altura * 2;
+            case DUAS_ALTURAS_UMA_LARGURA -> (altura * 2) + largura;
+            case QUATRO_LADOS -> (largura + altura) * 2;
+        };
     }
 
     @Override

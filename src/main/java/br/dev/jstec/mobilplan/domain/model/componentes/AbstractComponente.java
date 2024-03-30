@@ -1,9 +1,10 @@
 package br.dev.jstec.mobilplan.domain.model.componentes;
 
-import br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.PadraoDeFitagem;
+import br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums.PadraoDeFitagem;
 import br.dev.jstec.mobilplan.domain.model.materiaprima.MateriaPrima;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public abstract class AbstractComponente implements Estrutural {
 

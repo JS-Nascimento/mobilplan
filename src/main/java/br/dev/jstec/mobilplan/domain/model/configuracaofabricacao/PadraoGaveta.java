@@ -5,6 +5,7 @@ import static br.dev.jstec.mobilplan.domain.exceptions.ErroDeDominio.ERRO_CAMPO_
 import static lombok.AccessLevel.PRIVATE;
 
 import br.dev.jstec.mobilplan.domain.exceptions.DomainException;
+import br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums.TipoFundo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

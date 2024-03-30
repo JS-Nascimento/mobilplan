@@ -1,10 +1,11 @@
 package br.dev.jstec.mobilplan.domain.model.configuracaofabricacao;
 
-import static br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.PadraoDeFitagem.NENHUM;
-import static br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.PadraoDeFitagem.of;
+import static br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums.PadraoDeFitagem.NENHUM;
+import static br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums.PadraoDeFitagem.of;
 import static java.util.Objects.isNull;
 import static lombok.AccessLevel.PRIVATE;
 
+import br.dev.jstec.mobilplan.domain.model.configuracaofabricacao.enums.PadraoDeFitagem;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,10 @@ public class PadraoFitagem {
     private final PadraoDeFitagem tampo;
     private final PadraoDeFitagem porta;
     private final PadraoDeFitagem frenteGaveta;
+    private final PadraoDeFitagem contraFrenteGaveta;
+    private final PadraoDeFitagem traseiroGaveta;
+    private final PadraoDeFitagem lateralGaveta;
+    private final PadraoDeFitagem fundoGaveta;
 
     private PadraoFitagem(PadraoDeFitagem base,
                           PadraoDeFitagem lateral,
@@ -32,7 +37,11 @@ public class PadraoFitagem {
                           PadraoDeFitagem prateleiraExterna,
                           PadraoDeFitagem tampo,
                           PadraoDeFitagem porta,
-                          PadraoDeFitagem frenteGaveta) {
+                          PadraoDeFitagem frenteGaveta,
+                          PadraoDeFitagem contraFrenteGaveta,
+                          PadraoDeFitagem traseiroGaveta,
+                          PadraoDeFitagem lateralGaveta,
+                          PadraoDeFitagem fundoGaveta) {
 
         this.base = isNull(base) ? NENHUM : base;
         this.lateral = isNull(lateral) ? NENHUM : lateral;
@@ -44,6 +53,10 @@ public class PadraoFitagem {
         this.tampo = isNull(tampo) ? NENHUM : tampo;
         this.porta = isNull(porta) ? NENHUM : porta;
         this.frenteGaveta = isNull(frenteGaveta) ? NENHUM : frenteGaveta;
+        this.contraFrenteGaveta = isNull(contraFrenteGaveta) ? NENHUM : contraFrenteGaveta;
+        this.traseiroGaveta = isNull(traseiroGaveta) ? NENHUM : traseiroGaveta;
+        this.lateralGaveta = isNull(lateralGaveta) ? NENHUM : lateralGaveta;
+        this.fundoGaveta = isNull(fundoGaveta) ? NENHUM : fundoGaveta;
     }
 
     public static PadraoFitagem with(String base,
@@ -55,7 +68,11 @@ public class PadraoFitagem {
                                      String prateleiraExterna,
                                      String tampo,
                                      String porta,
-                                     String frenteGaveta) {
+                                     String frenteGaveta,
+                                     String contraFrenteGaveta,
+                                     String traseiroGaveta,
+                                     String lateralGaveta,
+                                     String fundoGaveta) {
 
         return new PadraoFitagem(
                 of(base),
@@ -67,6 +84,11 @@ public class PadraoFitagem {
                 of(prateleiraExterna),
                 of(tampo),
                 of(porta),
-                of(frenteGaveta));
+                of(frenteGaveta),
+                of(contraFrenteGaveta),
+                of(traseiroGaveta),
+                of(lateralGaveta),
+                of(fundoGaveta)
+        );
     }
 }
